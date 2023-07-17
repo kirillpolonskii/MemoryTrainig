@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Memory Training</string>
+    <!-- STRINGS FOR BUTTONS -->
+    <string name="btn_mahjong_set_training_ru">кости маджонг</string>
+    <string name="btn_color_set_training_ru">порядок цветов</string>
+    <string name="btn_figure_set_training_ru">порядок фигур</string>
+    <string name="btn_word_set_training_ru">порядок слов</string>
+    <string name="btn_phrase_set_training_ru">порядок фраз</string>
+    <string name="btn_picture_training_ru">детали на картинке</string>
+</resources>
