@@ -4,5 +4,11 @@
         <item name="android:background">@drawable/btn_round_corner_bg</item>
         <item name="android:layout_marginTop">@dimen/main_menu_margin</item>
         <item name="android:layout_marginBottom">@dimen/main_menu_margin</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="layout_constraintWidth_default">percent</item>
+        <item name="layout_constraintWidth_percent">.65</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+        <item name="android:textSize">20sp</item>
+
     </style>
 </resources>

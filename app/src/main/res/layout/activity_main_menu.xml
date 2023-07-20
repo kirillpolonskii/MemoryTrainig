@@ -6,76 +6,81 @@
     android:layout_height="match_parent"
     tools:context=".activities.MainMenuActivity">
 
+    <ImageButton
+        android:id="@+id/btn_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/outline_info_40"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/info"
+        />
+
     <Button
         android:id="@+id/btn_mahjong_set_training"
-        android:layout_width="wrap_content"
+        style="@style/main_menu_btn"
         android:layout_height="wrap_content"
         android:text="@string/btn_mahjong_set_training_ru"
         app:layout_constraintBottom_toTopOf="@id/btn_color_set_training"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
-        style="@style/main_menu_btn"
-        tools:ignore="TextContrastCheck" />
+         />
 
     <Button
         android:id="@+id/btn_color_set_training"
-        android:layout_width="wrap_content"
+        style="@style/main_menu_btn"
         android:layout_height="wrap_content"
         android:text="@string/btn_color_set_training_ru"
         app:layout_constraintBottom_toTopOf="@id/btn_figure_set_training"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_mahjong_set_training"
-        app:layout_constraintEnd_toEndOf="parent"
-        style="@style/main_menu_btn"
-        tools:ignore="TextContrastCheck" />
+         />
+
     <Button
         android:id="@+id/btn_figure_set_training"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:insetTop="6dp"
-        android:insetBottom="6dp"
-        android:text="@string/btn_figure_set_training_ru"
-        app:layout_constraintBottom_toTopOf="@id/btn_word_set_training"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_color_set_training"
         style="@style/main_menu_btn"
-        tools:ignore="TextContrastCheck" />
+        android:layout_height="wrap_content"
+        android:text="@string/btn_figure_set_training_ru"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/btn_word_set_training"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_color_set_training"
+        />
 
     <Button
         android:id="@+id/btn_word_set_training"
-        android:layout_width="wrap_content"
+        style="@style/main_menu_btn"
         android:layout_height="wrap_content"
         android:text="@string/btn_word_set_training_ru"
         app:layout_constraintBottom_toTopOf="@id/btn_phrase_set_training"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_figure_set_training"
-        style="@style/main_menu_btn"
-        tools:ignore="TextContrastCheck" />
+        />
 
     <Button
         android:id="@+id/btn_phrase_set_training"
-        android:layout_width="wrap_content"
+        style="@style/main_menu_btn"
         android:layout_height="wrap_content"
         android:text="@string/btn_phrase_set_training_ru"
         app:layout_constraintBottom_toTopOf="@id/btn_picture_training"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_word_set_training"
-        style="@style/main_menu_btn"
-        tools:ignore="TextContrastCheck" />
+        />
 
     <Button
         android:id="@+id/btn_picture_training"
-        android:layout_width="wrap_content"
+        style="@style/main_menu_btn"
         android:layout_height="wrap_content"
         android:text="@string/btn_picture_training_ru"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_phrase_set_training"
-        style="@style/main_menu_btn"
-        tools:ignore="TextContrastCheck" />
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
