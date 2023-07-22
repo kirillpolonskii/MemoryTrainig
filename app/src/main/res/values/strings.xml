@@ -6,6 +6,9 @@
     <string name="btn_figure_set_training_ru">фигуры</string>
     <string name="btn_word_set_training_ru">слова</string>
     <string name="btn_phrase_set_training_ru">фразы</string>
-    <string name="btn_picture_training_ru">детали</string>
+    <string name="btn_details_training_ru">детали</string>
     <string name="info">info</string>
+    <string name="en">en</string>
+    <string name="ru">ru</string>
+    <string name="statistics">statistics</string>
 </resources>
