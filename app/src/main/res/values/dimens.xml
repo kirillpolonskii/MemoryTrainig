@@ -2,4 +2,5 @@
 <resources>
 
     <dimen name="main_menu_margin">15dp</dimen>
+    <dimen name="switch_lang_text_size">30sp</dimen>
 </resources>

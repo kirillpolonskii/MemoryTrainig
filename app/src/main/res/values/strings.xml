@@ -8,7 +8,8 @@
     <string name="btn_phrase_set_training_ru">фразы</string>
     <string name="btn_details_training_ru">детали</string>
     <string name="info">info</string>
-    <string name="en">en</string>
-    <string name="ru">ru</string>
+    <string name="en">EN</string>
+    <string name="ru">RU</string>
     <string name="statistics">statistics</string>
+
 </resources>

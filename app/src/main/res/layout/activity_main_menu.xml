@@ -4,17 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MainMenuActivity">
-
+    tools:context=".activities.MainMenuActivity"
+    android:background="@color/white_blue"
+    >
     <ImageButton
         android:id="@+id/btn_info"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/outline_info_40"
+        android:src="@drawable/outline_info_48"
         android:contentDescription="@string/info"
         android:layout_margin="20dp"
+        android:background="@drawable/btn_info_bg_selector"
+        android:elevation="20dp"
         />
 
     <Button
@@ -26,8 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
-
-         />
+        />
 
     <Button
         android:id="@+id/btn_color_set_training"
@@ -85,7 +87,60 @@
         app:layout_constraintTop_toBottomOf="@id/btn_phrase_set_training"
         />
 
-    <com.google.android.material.button.MaterialButtonToggleGroup
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.35"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/btn_stats"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_details_training">
+        <com.addisonelliott.segmentedbutton.SegmentedButtonGroup
+            android:id="@+id/tgbtn_enru"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:elevation="4dp"
+            android:background="@color/white_blue"
+            app:radius="30dp"
+            app:selectedBackground="?attr/colorPrimary"
+            app:borderColor="?attr/colorPrimary"
+            app:borderWidth="3dp"
+            app:ripple="false"
+            >
+
+            <com.addisonelliott.segmentedbutton.SegmentedButton
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                app:selectedTextColor="@color/white"
+                app:textColor="?attr/colorPrimary"
+                app:textSize="@dimen/switch_lang_text_size"
+                android:fontFamily="sans-serif-black"
+
+                app:text="@string/en"
+                android:contentDescription="@string/en"
+                />
+            <!--android:layout_weight="1"-->
+            <com.addisonelliott.segmentedbutton.SegmentedButton
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                app:selectedTextColor="@color/white"
+                app:textSize="@dimen/switch_lang_text_size"
+                android:fontFamily="sans-serif-black"
+                app:textColor="?attr/colorPrimary"
+                app:text="@string/ru"
+                android:contentDescription="@string/ru"
+                />
+        </com.addisonelliott.segmentedbutton.SegmentedButtonGroup>
+    </FrameLayout>
+
+    <!--<com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/tgbtn_enru"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -102,6 +157,7 @@
             android:layout_height="wrap_content"
             android:text="@string/ru"
             style="@style/switch_lang_btn"
+            android:elevation="4dp"
             />
         <Button
             android:id="@+id/btn_en"
@@ -109,20 +165,23 @@
             android:layout_height="wrap_content"
             android:text="@string/en"
             style="@style/switch_lang_btn"
+            android:elevation="5dp"
+            android:stateListAnimator="@null"
             />
 
-    </com.google.android.material.button.MaterialButtonToggleGroup>
+    </com.google.android.material.button.MaterialButtonToggleGroup>-->
 
     <ImageButton
         android:id="@+id/btn_stats"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:background="@drawable/outline_assessment_24"
-        app:layout_constraintLeft_toRightOf="@id/tgbtn_enru"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_details_training"
+        android:background="@drawable/btn_stats_bg"
         android:contentDescription="@string/statistics"
-        />
+        android:elevation="5dp"
+        android:src="@drawable/outline_assessment_60"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/frame_layout"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_details_training" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
