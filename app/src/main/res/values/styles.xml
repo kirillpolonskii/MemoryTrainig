@@ -10,7 +10,7 @@
         <item name="android:fontFamily">sans-serif-black</item>
         <item name="android:textSize">20sp</item>
         <item name="android:stateListAnimator">"@null"</item>
-        <item name="android:elevation">15dp</item>
+        <item name="android:elevation">25dp</item>
     </style>
 
     <style name="switch_lang_btn" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">

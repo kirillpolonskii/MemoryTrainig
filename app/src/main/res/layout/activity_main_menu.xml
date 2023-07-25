@@ -1,35 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MainMenuActivity"
     android:background="@color/white_blue"
-    >
+    app:layoutDescription="@xml/activity_main_menu_scene"
+    tools:context=".activities.MainMenuActivity">
+
     <ImageButton
         android:id="@+id/btn_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/outline_info_48"
-        android:contentDescription="@string/info"
         android:layout_margin="20dp"
         android:background="@drawable/btn_info_bg_selector"
+        android:contentDescription="@string/info"
         android:elevation="20dp"
-        />
+        android:src="@drawable/outline_info_48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_mahjong_set_training"
         style="@style/main_menu_btn"
         android:layout_height="wrap_content"
         android:text="@string/btn_mahjong_set_training_ru"
-        app:layout_constraintBottom_toTopOf="@id/btn_color_set_training"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        />
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
         android:id="@+id/btn_color_set_training"
@@ -39,8 +35,7 @@
         app:layout_constraintBottom_toTopOf="@id/btn_figure_set_training"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_mahjong_set_training"
-         />
+        app:layout_constraintTop_toBottomOf="@id/btn_mahjong_set_training" />
 
     <Button
         android:id="@+id/btn_figure_set_training"
@@ -51,8 +46,7 @@
         app:layout_constraintBottom_toTopOf="@id/btn_word_set_training"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_color_set_training"
-        />
+        app:layout_constraintTop_toBottomOf="@id/btn_color_set_training" />
 
     <Button
         android:id="@+id/btn_word_set_training"
@@ -62,8 +56,7 @@
         app:layout_constraintBottom_toTopOf="@id/btn_phrase_set_training"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_figure_set_training"
-        />
+        app:layout_constraintTop_toBottomOf="@id/btn_figure_set_training" />
 
     <Button
         android:id="@+id/btn_phrase_set_training"
@@ -73,8 +66,7 @@
         app:layout_constraintBottom_toTopOf="@id/btn_details_training"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_word_set_training"
-        />
+        app:layout_constraintTop_toBottomOf="@id/btn_word_set_training" />
 
     <Button
         android:id="@+id/btn_details_training"
@@ -84,59 +76,56 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_phrase_set_training"
-        />
+        app:layout_constraintTop_toBottomOf="@id/btn_phrase_set_training" />
 
     <FrameLayout
         android:id="@+id/frame_layout"
-        android:layout_height="wrap_content"
         android:layout_width="0dp"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent="0.35"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/btn_stats"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_details_training">
+        app:layout_constraintTop_toBottomOf="@id/btn_details_training"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.35">
+
         <com.addisonelliott.segmentedbutton.SegmentedButtonGroup
             android:id="@+id/tgbtn_enru"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:elevation="4dp"
             android:background="@color/white_blue"
-            app:radius="30dp"
-            app:selectedBackground="?attr/colorPrimary"
+            android:elevation="4dp"
             app:borderColor="?attr/colorPrimary"
             app:borderWidth="3dp"
+            app:radius="30dp"
             app:ripple="false"
-            >
+            app:selectedBackground="?attr/colorPrimary">
 
             <com.addisonelliott.segmentedbutton.SegmentedButton
                 android:layout_width="match_parent"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/en"
+                android:fontFamily="sans-serif-black"
                 android:padding="4dp"
                 app:selectedTextColor="@color/white"
-                app:textColor="?attr/colorPrimary"
-                app:textSize="@dimen/switch_lang_text_size"
-                android:fontFamily="sans-serif-black"
-
                 app:text="@string/en"
-                android:contentDescription="@string/en"
-                />
+
+                app:textColor="?attr/colorPrimary"
+                app:textSize="@dimen/switch_lang_text_size" />
             <!--android:layout_weight="1"-->
             <com.addisonelliott.segmentedbutton.SegmentedButton
                 android:layout_width="match_parent"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/ru"
+                android:fontFamily="sans-serif-black"
                 android:padding="4dp"
                 app:selectedTextColor="@color/white"
-                app:textSize="@dimen/switch_lang_text_size"
-                android:fontFamily="sans-serif-black"
-                app:textColor="?attr/colorPrimary"
                 app:text="@string/ru"
-                android:contentDescription="@string/ru"
-                />
+                app:textColor="?attr/colorPrimary"
+                app:textSize="@dimen/switch_lang_text_size" />
         </com.addisonelliott.segmentedbutton.SegmentedButtonGroup>
     </FrameLayout>
 
@@ -184,4 +173,4 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_details_training" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>
