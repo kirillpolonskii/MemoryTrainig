@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.youngsophomore.viewgroups.MyMotionLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/motion_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white_blue"
     app:layoutDescription="@xml/activity_main_menu_scene"
-    tools:context=".activities.MainMenuActivity">
+    tools:context=".activities.MainMenuActivity"
+    app:motionDebug="SHOW_ALL">
 
     <ImageButton
         android:id="@+id/btn_info"
@@ -25,6 +28,11 @@
         style="@style/main_menu_btn"
         android:layout_height="wrap_content"
         android:text="@string/btn_mahjong_set_training_ru"
+        app:layout_constraintBottom_toTopOf="@id/btn_color_set_training"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="1"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
@@ -34,7 +42,7 @@
         android:text="@string/btn_color_set_training_ru"
         app:layout_constraintBottom_toTopOf="@id/btn_figure_set_training"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+
         app:layout_constraintTop_toBottomOf="@id/btn_mahjong_set_training" />
 
     <Button
@@ -45,7 +53,6 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/btn_word_set_training"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_color_set_training" />
 
     <Button
@@ -55,7 +62,6 @@
         android:text="@string/btn_word_set_training_ru"
         app:layout_constraintBottom_toTopOf="@id/btn_phrase_set_training"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_figure_set_training" />
 
     <Button
@@ -65,7 +71,6 @@
         android:text="@string/btn_phrase_set_training_ru"
         app:layout_constraintBottom_toTopOf="@id/btn_details_training"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_word_set_training" />
 
     <Button
@@ -73,10 +78,11 @@
         style="@style/main_menu_btn"
         android:layout_height="wrap_content"
         android:text="@string/btn_details_training_ru"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/btn_stats"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_phrase_set_training" />
+        app:layout_constraintTop_toBottomOf="@id/btn_phrase_set_training"
+
+        />
 
     <FrameLayout
         android:id="@+id/frame_layout"
@@ -93,7 +99,7 @@
             android:id="@+id/tgbtn_enru"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="10dp"
             android:background="@color/white_blue"
             android:elevation="4dp"
             app:borderColor="?attr/colorPrimary"
@@ -168,9 +174,11 @@
         android:contentDescription="@string/statistics"
         android:elevation="5dp"
         android:src="@drawable/outline_assessment_60"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/frame_layout"
         app:layout_constraintLeft_toRightOf="@id/frame_layout"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_details_training" />
+        app:layout_constraintTop_toTopOf="@id/frame_layout"
 
-</androidx.constraintlayout.motion.widget.MotionLayout>
+        />
+
+</com.youngsophomore.viewgroups.MyMotionLayout>
