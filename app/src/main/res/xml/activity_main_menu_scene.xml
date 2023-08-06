@@ -8,12 +8,14 @@
     <Transition
         motion:constraintSetStart="@id/start"
         motion:constraintSetEnd="@id/end"
-        motion:duration="1000"
+        motion:duration="10"
+        motion:motionInterpolator="linear"
         >
         <OnSwipe
             motion:limitBoundsTo="@id/btn_mahjong_set_training"
             motion:dragDirection="dragLeft"
-
+            motion:dragScale="2"
+            motion:onTouchUp="autoComplete"
             />
     </Transition>
     <!--motion:touchRegionId="@id/btn_mahjong_set_training"-->

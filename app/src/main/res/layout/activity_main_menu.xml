@@ -18,7 +18,7 @@
         android:layout_margin="20dp"
         android:background="@drawable/btn_info_bg_selector"
         android:contentDescription="@string/info"
-        android:elevation="20dp"
+        android:elevation="@dimen/btn_info_elev"
         android:src="@drawable/outline_info_48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -96,18 +96,20 @@
         app:layout_constraintWidth_percent="0.35">
 
         <com.addisonelliott.segmentedbutton.SegmentedButtonGroup
-            android:id="@+id/tgbtn_enru"
+            android:id="@+id/sgbtn_enru"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@color/white_blue"
-            android:elevation="4dp"
+            android:elevation="@dimen/sgbtn_elev"
             app:borderColor="?attr/colorPrimary"
             app:borderWidth="3dp"
             app:radius="30dp"
             app:ripple="false"
-            app:selectedBackground="?attr/colorPrimary">
-
+            app:selectedBackground="?attr/colorPrimary"
+            app:selectionAnimationDuration="0"
+            >
+            <!--            app:selectedButtonRadius="30dp"-->
             <com.addisonelliott.segmentedbutton.SegmentedButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -117,9 +119,9 @@
                 android:padding="4dp"
                 app:selectedTextColor="@color/white"
                 app:text="@string/en"
-
                 app:textColor="?attr/colorPrimary"
-                app:textSize="@dimen/switch_lang_text_size" />
+                app:textSize="@dimen/switch_lang_text_size"
+                />
             <!--android:layout_weight="1"-->
             <com.addisonelliott.segmentedbutton.SegmentedButton
                 android:layout_width="match_parent"
@@ -135,44 +137,13 @@
         </com.addisonelliott.segmentedbutton.SegmentedButtonGroup>
     </FrameLayout>
 
-    <!--<com.google.android.material.button.MaterialButtonToggleGroup
-        android:id="@+id/tgbtn_enru"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/btn_stats"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_details_training"
-        app:checkedButton="@id/btn_ru"
-        app:singleSelection="true"
-        >
-        <Button
-            android:id="@+id/btn_ru"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/ru"
-            style="@style/switch_lang_btn"
-            android:elevation="4dp"
-            />
-        <Button
-            android:id="@+id/btn_en"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/en"
-            style="@style/switch_lang_btn"
-            android:elevation="5dp"
-            android:stateListAnimator="@null"
-            />
-
-    </com.google.android.material.button.MaterialButtonToggleGroup>-->
-
     <ImageButton
         android:id="@+id/btn_stats"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:background="@drawable/btn_stats_bg"
         android:contentDescription="@string/statistics"
-        android:elevation="5dp"
+        android:elevation="@dimen/btn_stats_elev"
         android:src="@drawable/outline_assessment_60"
         app:layout_constraintBottom_toBottomOf="@id/frame_layout"
         app:layout_constraintLeft_toRightOf="@id/frame_layout"

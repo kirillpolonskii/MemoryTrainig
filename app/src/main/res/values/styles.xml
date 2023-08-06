@@ -10,15 +10,15 @@
         <item name="android:fontFamily">sans-serif-black</item>
         <item name="android:textSize">20sp</item>
         <item name="android:stateListAnimator">"@null"</item>
-        <item name="android:elevation">25dp</item>
+        <item name="android:elevation">@dimen/btn_training_elev</item>
     </style>
 
-    <style name="switch_lang_btn" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
+    <!--<style name="switch_lang_btn" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
         <item name="cornerRadius">19dp</item>
         <item name="strokeColor">?attr/colorPrimary</item>
         <item name="strokeWidth">3dp</item>
         <item name="android:backgroundTint">@color/btn_switch_lang_bg_color</item>
         <item name="android:textColor">@color/btn_switch_lang_text_color</item>
 
-    </style>
+    </style>-->
 </resources>

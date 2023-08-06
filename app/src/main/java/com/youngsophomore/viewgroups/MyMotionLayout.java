@@ -15,12 +15,14 @@ import androidx.constraintlayout.motion.widget.MotionLayout;
 import com.addisonelliott.segmentedbutton.SegmentedButtonGroup;
 import com.youngsophomore.R;
 
+import java.util.Arrays;
+
 public class MyMotionLayout extends MotionLayout {
     private static final String DEBUG_TAG = "Gestures";
 
-    private ImageButton btn_info;
+    private ImageButton btnInfo;
     private SegmentedButtonGroup segmentedButtonGroup;
-    private ImageButton btn_stats;
+    private ImageButton btnStats;
     public MyMotionLayout(@NonNull Context context) {
         super(context);
         Log.d(DEBUG_TAG, "In MyMotionLayout(Context context)");
@@ -29,8 +31,7 @@ public class MyMotionLayout extends MotionLayout {
     public MyMotionLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         Log.d(DEBUG_TAG, "In MyMotionLayout(Context context, AttributeSet attrs)");
-        btn_info = findViewById(R.id.btn_info);
-        btn_stats = findViewById(R.id.btn_stats);
+
     }
 
     public MyMotionLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -41,12 +42,20 @@ public class MyMotionLayout extends MotionLayout {
     @Override
     public boolean onInterceptTouchEvent(MotionEvent motionEvent){
         int action = motionEvent.getAction();
-
+        btnInfo = findViewById(R.id.btn_info);
+        btnStats = findViewById(R.id.btn_stats);
+        segmentedButtonGroup = findViewById(R.id.sgbtn_enru);
         switch (action) {
             case (MotionEvent.ACTION_DOWN):
                 Log.d(DEBUG_TAG, "onInterceptTouchEvent. Action was DOWN");
-                if(touchEventInsideTargetView(btn_info, motionEvent)){
+                if(btnStats != null && touchEventInsideTargetView(btnStats, motionEvent) ||
+                        btnInfo != null && touchEventInsideTargetView(btnInfo, motionEvent) ||
+                        segmentedButtonGroup != null && touchEventInsideTargetView(segmentedButtonGroup, motionEvent)){
+                    Log.d(DEBUG_TAG, "onInterceptTouchEvent. Action was DOWN. return false");
                     return false;
+                }
+                else{
+                    Log.d(DEBUG_TAG, "onInterceptTouchEvent. btn_info is null");
                 }
                 return super.onTouchEvent(motionEvent);
                 //return false;
@@ -105,8 +114,21 @@ public class MyMotionLayout extends MotionLayout {
         }
     }
     private boolean touchEventInsideTargetView(View v, MotionEvent ev) {
-        return ev.getX() > v.getLeft() && ev.getX() < v.getRight() &&
-                ev.getY() > v.getBottom() && ev.getY() < v.getTop();
+        int[] location = new int[2];
+        v.getLocationOnScreen(location);
+        int viewX = location[0];
+        int viewY = location[1];
+        float evX = ev.getRawX();
+        float evY = ev.getRawY();
+        int viewWidth = v.getWidth();
+        int viewHeight = v.getHeight();
+        Log.d(DEBUG_TAG, "touchEventInsideTargetView -- view: " + Arrays.toString(location) +
+                                v.getWidth() + " " + v.getHeight());
+        Log.d(DEBUG_TAG, "touchEventInsideTargetView -- event: " +
+                                ev.getX() + " " + ev.getY() + " " + ev.getRawX() + " " + ev.getRawY());
+        return evX >= viewX && evX <= viewX + viewWidth &&
+                evY >= viewY && evY <= viewY + viewHeight;
+
     }
 }
 
