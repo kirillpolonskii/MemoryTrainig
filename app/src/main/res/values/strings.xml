@@ -11,5 +11,6 @@
     <string name="en">EN</string>
     <string name="ru">RU</string>
     <string name="statistics">statistics</string>
+    <string name="settings">settings</string>
 
 </resources>

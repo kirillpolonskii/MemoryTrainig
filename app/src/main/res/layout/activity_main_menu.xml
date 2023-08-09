@@ -33,7 +33,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHorizontal_bias="1"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintVertical_chainStyle="packed"
+
+        />
+    <ImageButton
+        android:id="@+id/btn_mahjong_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/btn_mahjong_set_training"
+        app:layout_constraintTop_toTopOf="@id/btn_mahjong_set_training"
+
+        android:layout_marginStart="8dp"
+        android:background="@drawable/btn_info_bg_selector"
+        android:contentDescription="@string/settings"
+        android:elevation="@dimen/btn_info_elev"
+        android:src="@drawable/outline_settings_48"
+
+        />
 
     <Button
         android:id="@+id/btn_color_set_training"
@@ -50,7 +66,6 @@
         style="@style/main_menu_btn"
         android:layout_height="wrap_content"
         android:text="@string/btn_figure_set_training_ru"
-        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/btn_word_set_training"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_color_set_training" />
@@ -94,7 +109,7 @@
         app:layout_constraintTop_toBottomOf="@id/btn_details_training"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.35">
-
+        <!--Попробуй match_parent, чтобы кнопки не уменьшались вместе с размером текста-->
         <com.addisonelliott.segmentedbutton.SegmentedButtonGroup
             android:id="@+id/sgbtn_enru"
             android:layout_width="match_parent"
@@ -108,7 +123,7 @@
             app:ripple="false"
             app:selectedBackground="?attr/colorPrimary"
             app:selectionAnimationDuration="0"
-            >
+            tools:ignore="TouchTargetSizeCheck">
             <!--            app:selectedButtonRadius="30dp"-->
             <com.addisonelliott.segmentedbutton.SegmentedButton
                 android:layout_width="match_parent"
@@ -120,8 +135,7 @@
                 app:selectedTextColor="@color/white"
                 app:text="@string/en"
                 app:textColor="?attr/colorPrimary"
-                app:textSize="@dimen/switch_lang_text_size"
-                />
+                app:textSize="@dimen/switch_lang_text_size" />
             <!--android:layout_weight="1"-->
             <com.addisonelliott.segmentedbutton.SegmentedButton
                 android:layout_width="match_parent"
