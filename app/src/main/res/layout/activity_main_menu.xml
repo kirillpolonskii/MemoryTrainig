@@ -24,14 +24,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_mahjong_set_training"
+        android:id="@+id/btn_mahjong_training"
         style="@style/main_menu_btn"
         android:layout_height="wrap_content"
-        android:text="@string/btn_mahjong_set_training_ru"
-        app:layout_constraintBottom_toTopOf="@id/btn_color_set_training"
+        android:text="@string/btn_mahjong_training_ru"
+        app:layout_constraintBottom_toTopOf="@id/btn_colors_training"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+
         app:layout_constraintHorizontal_bias="1"
         app:layout_constraintVertical_chainStyle="packed"
 
@@ -40,53 +40,94 @@
         android:id="@+id/btn_mahjong_settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/btn_mahjong_set_training"
-        app:layout_constraintTop_toTopOf="@id/btn_mahjong_set_training"
-
-        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@id/btn_mahjong_training"
+        app:layout_constraintTop_toTopOf="@id/btn_mahjong_training"
         android:background="@drawable/btn_info_bg_selector"
         android:contentDescription="@string/settings"
-        android:elevation="@dimen/btn_info_elev"
         android:src="@drawable/outline_settings_48"
-
         />
 
     <Button
-        android:id="@+id/btn_color_set_training"
+        android:id="@+id/btn_colors_training"
         style="@style/main_menu_btn"
         android:layout_height="wrap_content"
-        android:text="@string/btn_color_set_training_ru"
-        app:layout_constraintBottom_toTopOf="@id/btn_figure_set_training"
+        android:text="@string/btn_colors_training_ru"
+        app:layout_constraintBottom_toTopOf="@id/btn_figures_training"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_mahjong_training"
+        />
 
-        app:layout_constraintTop_toBottomOf="@id/btn_mahjong_set_training" />
+    <ImageButton
+        android:id="@+id/btn_colors_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/btn_colors_training"
+        app:layout_constraintTop_toTopOf="@id/btn_colors_training"
+
+        android:background="@drawable/btn_info_bg_selector"
+        android:contentDescription="@string/settings"
+        android:src="@drawable/outline_settings_48"
+        />
 
     <Button
-        android:id="@+id/btn_figure_set_training"
+        android:id="@+id/btn_figures_training"
         style="@style/main_menu_btn"
         android:layout_height="wrap_content"
-        android:text="@string/btn_figure_set_training_ru"
-        app:layout_constraintBottom_toTopOf="@id/btn_word_set_training"
+        android:text="@string/btn_figures_training_ru"
+        app:layout_constraintBottom_toTopOf="@id/btn_words_training"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_color_set_training" />
+        app:layout_constraintTop_toBottomOf="@id/btn_colors_training"
+        />
+    <ImageButton
+        android:id="@+id/btn_figures_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/btn_figures_training"
+        app:layout_constraintTop_toTopOf="@id/btn_figures_training"
+        android:background="@drawable/btn_info_bg_selector"
+        android:contentDescription="@string/settings"
+        android:src="@drawable/outline_settings_48"
+        />
 
     <Button
-        android:id="@+id/btn_word_set_training"
+        android:id="@+id/btn_words_training"
         style="@style/main_menu_btn"
         android:layout_height="wrap_content"
-        android:text="@string/btn_word_set_training_ru"
-        app:layout_constraintBottom_toTopOf="@id/btn_phrase_set_training"
+        android:text="@string/btn_words_training_ru"
+        app:layout_constraintBottom_toTopOf="@id/btn_phrases_training"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_figure_set_training" />
+        app:layout_constraintTop_toBottomOf="@id/btn_figures_training"
+        />
+    <ImageButton
+        android:id="@+id/btn_words_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/btn_words_training"
+        app:layout_constraintTop_toTopOf="@id/btn_words_training"
+        android:background="@drawable/btn_info_bg_selector"
+        android:contentDescription="@string/settings"
+        android:src="@drawable/outline_settings_48"
+        />
 
     <Button
-        android:id="@+id/btn_phrase_set_training"
+        android:id="@+id/btn_phrases_training"
         style="@style/main_menu_btn"
         android:layout_height="wrap_content"
-        android:text="@string/btn_phrase_set_training_ru"
+        android:text="@string/btn_phrases_training_ru"
         app:layout_constraintBottom_toTopOf="@id/btn_details_training"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_word_set_training" />
+        app:layout_constraintTop_toBottomOf="@id/btn_words_training"
+        />
+    <ImageButton
+        android:id="@+id/btn_phrases_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/btn_phrases_training"
+        app:layout_constraintTop_toTopOf="@id/btn_phrases_training"
+        android:background="@drawable/btn_info_bg_selector"
+        android:contentDescription="@string/settings"
+        android:src="@drawable/outline_settings_48"
+        />
 
     <Button
         android:id="@+id/btn_details_training"
@@ -95,8 +136,17 @@
         android:text="@string/btn_details_training_ru"
         app:layout_constraintBottom_toBottomOf="@id/btn_stats"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_phrase_set_training"
-
+        app:layout_constraintTop_toBottomOf="@id/btn_phrases_training"
+        />
+    <ImageButton
+        android:id="@+id/btn_details_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/btn_details_training"
+        app:layout_constraintTop_toTopOf="@id/btn_details_training"
+        android:background="@drawable/btn_info_bg_selector"
+        android:contentDescription="@string/settings"
+        android:src="@drawable/outline_settings_48"
         />
 
     <FrameLayout

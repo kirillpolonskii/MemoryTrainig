@@ -11,6 +11,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.PixelFormat;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -24,6 +25,7 @@ import android.widget.Toast;
 import com.addisonelliott.segmentedbutton.SegmentedButton;
 import com.addisonelliott.segmentedbutton.SegmentedButtonGroup;
 import com.youngsophomore.R;
+import com.youngsophomore.viewgroups.MyMotionLayout;
 
 public class MainMenuActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
@@ -209,6 +211,15 @@ public class MainMenuActivity extends AppCompatActivity implements GestureDetect
                     default:
                         return false;
                 }
+            }
+        });
+        ImageButton btnMahjongSettings = findViewById(R.id.btn_mahjong_settings);
+        btnMahjongSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(DEBUG_TAG, "btnMahjongSettings click");
+
+
             }
         });
     }

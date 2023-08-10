@@ -4,7 +4,7 @@
     <dimen name="main_menu_margin">12dp</dimen>
     <dimen name="btn_info_elev">23dp</dimen>
     <dimen name="btn_training_elev">25dp</dimen>
-    <dimen name="sgbtn_elev">6dp</dimen>
+    <dimen name="sgbtn_elev">5dp</dimen>
     <dimen name="btn_stats_elev">8dp</dimen>
     <dimen name="switch_lang_text_size">21sp</dimen>
 </resources>
