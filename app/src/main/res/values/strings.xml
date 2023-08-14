@@ -13,4 +13,8 @@
     <string name="statistics">statistics</string>
     <string name="settings">settings</string>
 
+    <string name="remember_time">Время на запоминание (с):</string>
+    <string name="bones_amount">Количество костей:</string>
+    <string name="equal_bones_amount">Количество одинаковых костей:</string>
+
 </resources>

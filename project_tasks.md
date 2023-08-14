@@ -22,7 +22,13 @@
   + ~~Сделать так, чтобы при выдвинутой кнопке тренировки свайп по любой другой переводил экран в base_state и продолжал работу~~
   + ~~Добавить обработчики нажатия для всех кнопок~~</font>
   + Сравнить какой дизайн кнопки смены языка лучше: отражающий кнопки меню или текущий
-+ Сделать SettingsActivity
++ <font size = "1">~~Добавить toolbar~~</font>
++ Сделать MahjongSettingsActivity
++ Сделать ColorsSettingsActivity
++ Сделать FiguresSettingsActivity
++ Сделать WordsSettingsActivity
++ Сделать PhrasesSettingsActivity
++ Сделать DetailsSettingsActivity
 + Сделать Statistics
 
 # Код
@@ -30,9 +36,14 @@
   + <font size = "1">~~Создать анимацию перемещения кнопки по экрану при свайпе влево/вправо~~
   + ~~Добавить кнопкам тренировок эффект нажатия. Посмотреть, как выглядит этот эффект на смене языка и, если выглядит неаутентично, поменять.~~
   + ~~Добавить обработчик нажатий на кнопки тренировок~~</font>
-+ Добавить Toolbar
-+ Обновить знания по Shared Preferences и реализации настроек
-+ Сделать SettingsActivity
+  + Найти способ перенести вызов findViewById из onTouchEvent()
++ <font size = "1">~~Обновить знания по Shared Preferences и реализации настроек~~</font>
++ Сделать MahjongSettingsActivity
++ Сделать ColorsSettingsActivity
++ Сделать FiguresSettingsActivity
++ Сделать WordsSettingsActivity
++ Сделать PhrasesSettingsActivity
++ Сделать DetailsSettingsActivity
 + Сделать Statistics
 
 

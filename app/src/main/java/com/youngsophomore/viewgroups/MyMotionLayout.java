@@ -2,6 +2,7 @@ package com.youngsophomore.viewgroups;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -12,12 +13,10 @@ import android.widget.ImageButton;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.motion.widget.MotionLayout;
-import androidx.constraintlayout.motion.widget.MotionScene;
 
 import com.addisonelliott.segmentedbutton.SegmentedButtonGroup;
 import com.youngsophomore.R;
-
-import java.util.Arrays;
+import com.youngsophomore.activities.MahjongSettingsActivity;
 
 public class MyMotionLayout extends MotionLayout implements MotionLayout.TransitionListener {
     private static final String DEBUG_TAG = "Gestures";
@@ -231,6 +230,8 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
 
                     if(idBtnWithEvent == R.id.btn_mahjong_settings) {
                         Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. mahjong settings was clicked");
+                        Intent intent = new Intent(getContext(), MahjongSettingsActivity.class);
+                        getContext().startActivity(intent);
                     }
                     if(idBtnWithEvent == R.id.btn_colors_settings) {
                         Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. colors settings was clicked");

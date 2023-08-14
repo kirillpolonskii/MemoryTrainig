@@ -27,18 +27,19 @@ import com.addisonelliott.segmentedbutton.SegmentedButtonGroup;
 import com.youngsophomore.R;
 import com.youngsophomore.viewgroups.MyMotionLayout;
 
-public class MainMenuActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
+public class MainMenuActivity extends AppCompatActivity {
 
     private static final String DEBUG_TAG = "Gestures";
-    private GestureDetectorCompat gestureDetector;
-
+    private MyMotionLayout myMotionLayout;
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         Log.d(DEBUG_TAG, "IN onCreate()");
-        gestureDetector = new GestureDetectorCompat(this, this);
+
+        myMotionLayout = findViewById(R.id.motion_layout);
+
         ImageButton btnStats = findViewById(R.id.btn_stats);
         btnStats.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -217,71 +218,11 @@ public class MainMenuActivity extends AppCompatActivity implements GestureDetect
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event){
-        int action = event.getAction();
-//        switch(action) {
-//            case (MotionEvent.ACTION_DOWN) :
-//                Log.d(DEBUG_TAG,"Action was DOWN");
-//                return true;
-//            case (MotionEvent.ACTION_MOVE) :
-//                Log.d(DEBUG_TAG,"Action was MOVE");
-//                return true;
-//            case (MotionEvent.ACTION_UP) :
-//                Log.d(DEBUG_TAG,"Action was UP");
-//                return true;
-//            case (MotionEvent.ACTION_CANCEL) :
-//                Log.d(DEBUG_TAG,"Action was CANCEL");
-//                return true;
-//            case (MotionEvent.ACTION_OUTSIDE) :
-//                Log.d(DEBUG_TAG,"Movement occurred outside bounds " +
-//                        "of current screen element");
-//                return true;
-//            default :
-//                return super.onTouchEvent(event);
-//        }
-        if (this.gestureDetector.onTouchEvent(event)) {
-            return true;
-        }
-        return super.onTouchEvent(event);
+    public void onResume(){
+        myMotionLayout.transitionToState(R.id.base_state);
+        super.onResume();
     }
 
-    @Override
-    public boolean onDown(@NonNull MotionEvent motionEvent) {
-        Log.d(DEBUG_TAG,"onDown: " + motionEvent.toString());
-        return true;
-    }
 
-    @Override
-    public void onShowPress(@NonNull MotionEvent motionEvent) {
-        Log.d(DEBUG_TAG, "onShowPress: " + motionEvent.toString());
-    }
 
-    @Override
-    public boolean onSingleTapUp(@NonNull MotionEvent motionEvent) {
-        Log.d(DEBUG_TAG, "onSingleTapUp: " + motionEvent.toString());
-        return true;
-    }
-
-    @Override
-    public boolean onScroll(@Nullable MotionEvent motionEvent, @NonNull MotionEvent motionEvent1, float v, float v1) {
-        Log.d(DEBUG_TAG, "onScroll: " + motionEvent.toString() + motionEvent1.toString());
-        return true;
-    }
-
-    @Override
-    public void onLongPress(@NonNull MotionEvent motionEvent) {
-        Log.d(DEBUG_TAG, "onLongPress: " + motionEvent.toString());
-    }
-
-    @Override
-    public boolean onFling(@Nullable MotionEvent motionEvent, @NonNull MotionEvent motionEvent1, float v, float v1) {
-        Log.d(DEBUG_TAG, "onFling: " + motionEvent.toString() + motionEvent1.toString());
-        return true;
-    }
-    public int dpToPx(int dp){
-        return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
-    }
-    public float convertDpToPixel(float dp, Context context){
-        return dp * ((float) context.getResources().getDisplayMetrics().density / DisplayMetrics.DENSITY_DEFAULT);
-    }
 }
