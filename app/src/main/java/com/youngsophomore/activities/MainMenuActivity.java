@@ -86,7 +86,7 @@ public class MainMenuActivity extends AppCompatActivity implements GestureDetect
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_info_elev);
-                        Log.d(DEBUG_TAG, "btnInfo onTouch. Action was UP. open statistics" +
+                        Log.d(DEBUG_TAG, "btnInfo onTouch. Action was UP. open info" +
                                 ", R.dimen.btn_info_elev = " + R.dimen.btn_info_elev +
                                 ", elev = " + elevPx);
                         view.setElevation(elevPx);
@@ -213,15 +213,7 @@ public class MainMenuActivity extends AppCompatActivity implements GestureDetect
                 }
             }
         });
-        ImageButton btnMahjongSettings = findViewById(R.id.btn_mahjong_settings);
-        btnMahjongSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(DEBUG_TAG, "btnMahjongSettings click");
 
-
-            }
-        });
     }
 
     @Override

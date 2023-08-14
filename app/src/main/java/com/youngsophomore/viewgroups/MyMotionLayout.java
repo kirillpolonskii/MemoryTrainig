@@ -25,13 +25,36 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
     private ImageButton btnInfo;
     private SegmentedButtonGroup segmentedButtonGroup;
     private ImageButton btnStats;
-    private ImageButton btnMahjongSettings;
     private Button btnMahjongTraining;
     private Button btnColorsTraining;
     private Button btnFiguresTraining;
     private Button btnWordsTraining;
     private Button btnPhrasesTraining;
     private Button btnDetailsTraining;
+    private ImageButton btnMahjongSettings;
+    private ImageButton btnColorsSettings;
+    private ImageButton btnFiguresSettings;
+    private ImageButton btnWordsSettings;
+    private ImageButton btnPhrasesSettings;
+    private ImageButton btnDetailsSettings;
+    private final int idBtnMahjongTraining = R.id.btn_mahjong_training;
+    private final int idBtnColorsTraining = R.id.btn_colors_training;
+    private final int idBtnFiguresTraining = R.id.btn_figures_training;
+    private final int idBtnWordsTraining = R.id.btn_words_training;
+    private final int idBtnPhrasesTraining = R.id.btn_phrases_training;
+    private final int idBtnDetailsTraining = R.id.btn_details_training;
+    private final int idBtnMahjongSettings = R.id.btn_mahjong_settings;
+    private final int idBtnColorsSettings = R.id.btn_colors_settings;
+    private final int idBtnFiguresSettings = R.id.btn_figures_settings;
+    private final int idBtnWordsSettings = R.id.btn_words_settings;
+    private final int idBtnPhrasesSettings = R.id.btn_phrases_settings;
+    private final int idBtnDetailsSettings = R.id.btn_details_settings;
+
+    private boolean viewWasMoved;
+    private int idBtnWithEvent = 0;
+    Button btnWithEvent;
+    ImageButton btnSettingsWithEvent;
+
     public MyMotionLayout(@NonNull Context context) {
         super(context);
         Log.d(DEBUG_TAG, "In MyMotionLayout(Context context)");
@@ -40,7 +63,6 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
     public MyMotionLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         Log.d(DEBUG_TAG, "In MyMotionLayout(Context context, AttributeSet attrs)");
-
     }
 
     public MyMotionLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -61,15 +83,14 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
                 Log.d(DEBUG_TAG, "onInterceptTouchEvent. Action was DOWN");
                 if(btnStats != null && touchEventInsideTargetView(btnStats, motionEvent) ||
                     btnInfo != null && touchEventInsideTargetView(btnInfo, motionEvent) ||
-                    segmentedButtonGroup != null && touchEventInsideTargetView(segmentedButtonGroup, motionEvent) ||
-                    btnMahjongSettings != null && touchEventInsideTargetView(btnMahjongSettings, motionEvent)){
+                    segmentedButtonGroup != null && touchEventInsideTargetView(segmentedButtonGroup, motionEvent)){
                     Log.d(DEBUG_TAG, "onInterceptTouchEvent. Action was DOWN. return false");
 
                     return false;
 
                 }
                 else{
-                    Log.d(DEBUG_TAG, "onInterceptTouchEvent. btn_info is null");
+                    Log.d(DEBUG_TAG, "onInterceptTouchEvent. Event will be passed further");
                 }
                 return super.onTouchEvent(motionEvent);
                 //return false;
@@ -109,37 +130,128 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
         btnWordsTraining = findViewById(R.id.btn_words_training);
         btnPhrasesTraining = findViewById(R.id.btn_phrases_training);
         btnDetailsTraining = findViewById(R.id.btn_details_training);
-        Button btnWithEvent = new Button(getContext());
 
-        boolean eventInTrainingBtn = false;
-        boolean setInBaseState = false;
+        btnMahjongSettings = findViewById(R.id.btn_mahjong_settings);
+        btnColorsSettings = findViewById(R.id.btn_colors_settings);
+        btnFiguresSettings = findViewById(R.id.btn_figures_settings);
+        btnWordsSettings = findViewById(R.id.btn_words_settings);
+        btnPhrasesSettings = findViewById(R.id.btn_phrases_settings);
+        btnDetailsSettings = findViewById(R.id.btn_details_settings);
+
         switch (action) {
             case (MotionEvent.ACTION_DOWN):
                 Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. Action was DOWN");
-                if(touchEventInsideTargetView(btnMahjongTraining, motionEvent))
+                if(touchEventInsideTargetView(btnMahjongTraining, motionEvent)) {
                     btnWithEvent = btnMahjongTraining;
-                if(touchEventInsideTargetView(btnColorsTraining, motionEvent))
+                    idBtnWithEvent = idBtnMahjongTraining;
+                    btnWithEvent.setElevation(0);
+                }
+                if(touchEventInsideTargetView(btnColorsTraining, motionEvent)) {
                     btnWithEvent = btnColorsTraining;
-                if(touchEventInsideTargetView(btnFiguresTraining, motionEvent))
+                    idBtnWithEvent = R.id.btn_colors_training;
+                    btnWithEvent.setElevation(0);
+                }
+                if(touchEventInsideTargetView(btnFiguresTraining, motionEvent)) {
                     btnWithEvent = btnFiguresTraining;
-                if(touchEventInsideTargetView(btnWordsTraining, motionEvent))
+                    idBtnWithEvent = R.id.btn_figures_training;
+                    btnWithEvent.setElevation(0);
+                }
+                if(touchEventInsideTargetView(btnWordsTraining, motionEvent)) {
                     btnWithEvent = btnWordsTraining;
-                if(touchEventInsideTargetView(btnPhrasesTraining, motionEvent))
+                    idBtnWithEvent = R.id.btn_words_training;
+                    btnWithEvent.setElevation(0);
+                }
+                if(touchEventInsideTargetView(btnPhrasesTraining, motionEvent)) {
                     btnWithEvent = btnPhrasesTraining;
-                if(touchEventInsideTargetView(btnDetailsTraining, motionEvent))
+                    idBtnWithEvent = R.id.btn_phrases_training;
+                    btnWithEvent.setElevation(0);
+                }
+                if(touchEventInsideTargetView(btnDetailsTraining, motionEvent)) {
                     btnWithEvent = btnDetailsTraining;
+                    idBtnWithEvent = R.id.btn_details_training;
+                    btnWithEvent.setElevation(0);
+                }
+
+                if(touchEventInsideTargetView(btnMahjongSettings, motionEvent)) {
+                    btnSettingsWithEvent = btnMahjongSettings;
+                    idBtnWithEvent = R.id.btn_mahjong_settings;
+                }
+                if(touchEventInsideTargetView(btnColorsSettings, motionEvent)) {
+                    btnSettingsWithEvent = btnColorsSettings;
+                    idBtnWithEvent = R.id.btn_colors_settings;
+                }
+                if(touchEventInsideTargetView(btnFiguresSettings, motionEvent)) {
+                    btnSettingsWithEvent = btnFiguresSettings;
+                    idBtnWithEvent = R.id.btn_figures_settings;
+                }
+                if(touchEventInsideTargetView(btnWordsSettings, motionEvent)) {
+                    btnSettingsWithEvent = btnWordsSettings;
+                    idBtnWithEvent = R.id.btn_words_settings;
+                }
+                if(touchEventInsideTargetView(btnPhrasesSettings, motionEvent)) {
+                    btnSettingsWithEvent = btnPhrasesSettings;
+                    idBtnWithEvent = R.id.btn_phrases_settings;
+                }
+                if(touchEventInsideTargetView(btnDetailsSettings, motionEvent)) {
+                    btnSettingsWithEvent = btnDetailsSettings;
+                    idBtnWithEvent = R.id.btn_details_settings;
+                }
 
                 return super.onTouchEvent(motionEvent);
             case (MotionEvent.ACTION_MOVE):
                 Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. Action was MOVE");
+                viewWasMoved = true;
                 if(!eventBtnCorrespondsWithState(btnWithEvent, myMotionLayout.getCurrentState()) ||
-                        myMotionLayout.getCurrentState() != -1){
+                        myMotionLayout.getCurrentState() != -1){ // попробовать здесь &&
                     myMotionLayout.transitionToState(R.id.base_state);
                 }
                 return super.onTouchEvent(motionEvent);
             case (MotionEvent.ACTION_UP):
                 Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. Action was UP");
-                Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. Is state == mahjong_end " + (myMotionLayout.getCurrentState() == R.id.mahjong_end));
+                if(!viewWasMoved){
+                    if(idBtnWithEvent == idBtnMahjongTraining) {
+                        Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. mahjong training was clicked");
+
+                    }
+                    if(idBtnWithEvent == R.id.btn_colors_training) {
+                        Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. colors training was clicked");
+                    }
+                    if(idBtnWithEvent == R.id.btn_figures_training) {
+                        Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. figures training was clicked");
+                    }
+                    if(idBtnWithEvent == R.id.btn_words_training) {
+                        Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. words training was clicked");
+                    }
+                    if(idBtnWithEvent == R.id.btn_phrases_training) {
+                        Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. phrases training was clicked");
+                    }
+                    if(idBtnWithEvent == R.id.btn_details_training) {
+                        Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. details training was clicked");
+                    }
+
+                    if(idBtnWithEvent == R.id.btn_mahjong_settings) {
+                        Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. mahjong settings was clicked");
+                    }
+                    if(idBtnWithEvent == R.id.btn_colors_settings) {
+                        Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. colors settings was clicked");
+                    }
+                    if(idBtnWithEvent == R.id.btn_figures_settings) {
+                        Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. figures settings was clicked");
+                    }
+                    if(idBtnWithEvent == R.id.btn_words_settings) {
+                        Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. words settings was clicked");
+                    }
+                    if(idBtnWithEvent == R.id.btn_phrases_settings) {
+                        Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. phrases settings was clicked");
+                    }
+                    if(idBtnWithEvent == R.id.btn_details_settings) {
+                        Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. details settings was clicked");
+                    }
+
+                }
+                viewWasMoved = false;
+                int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_training_elev);
+                btnWithEvent.setElevation(elevPx);
                 return super.onTouchEvent(motionEvent);
             case (MotionEvent.ACTION_CANCEL):
                 Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. Action was CANCEL");
