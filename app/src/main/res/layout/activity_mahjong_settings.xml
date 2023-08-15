@@ -80,7 +80,9 @@
         app:ripple="false"
         app:selectedBackground="?attr/colorPrimary"
         app:selectionAnimationDuration="0"
-        tools:ignore="TouchTargetSizeCheck">
+        tools:ignore="TouchTargetSizeCheck"
+
+        >
         <com.addisonelliott.segmentedbutton.SegmentedButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -91,7 +93,9 @@
             app:selectedTextColor="@color/white"
             app:text="@string/bones_amount_12"
             app:textColor="?attr/colorPrimary"
-            app:textSize="@dimen/switch_lang_text_size" />
+            app:textSize="@dimen/switch_lang_text_size"
+
+            />
         <!--android:layout_weight="1"-->
         <com.addisonelliott.segmentedbutton.SegmentedButton
             android:layout_width="match_parent"
