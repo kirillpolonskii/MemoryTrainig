@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:background="@drawable/btn_info_bg_selector"
+        android:background="@drawable/btn_info_bg"
         android:contentDescription="@string/info"
         android:elevation="@dimen/btn_info_elev"
         android:src="@drawable/outline_info_48"
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/btn_mahjong_training"
         app:layout_constraintTop_toTopOf="@id/btn_mahjong_training"
-        android:background="@drawable/btn_info_bg_selector"
+        android:background="@drawable/btn_info_bg"
         android:contentDescription="@string/settings"
         android:src="@drawable/outline_settings_48"
         />
@@ -64,7 +64,7 @@
         app:layout_constraintStart_toEndOf="@id/btn_colors_training"
         app:layout_constraintTop_toTopOf="@id/btn_colors_training"
 
-        android:background="@drawable/btn_info_bg_selector"
+        android:background="@drawable/btn_info_bg"
         android:contentDescription="@string/settings"
         android:src="@drawable/outline_settings_48"
         />
@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/btn_figures_training"
         app:layout_constraintTop_toTopOf="@id/btn_figures_training"
-        android:background="@drawable/btn_info_bg_selector"
+        android:background="@drawable/btn_info_bg"
         android:contentDescription="@string/settings"
         android:src="@drawable/outline_settings_48"
         />
@@ -104,7 +104,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/btn_words_training"
         app:layout_constraintTop_toTopOf="@id/btn_words_training"
-        android:background="@drawable/btn_info_bg_selector"
+        android:background="@drawable/btn_info_bg"
         android:contentDescription="@string/settings"
         android:src="@drawable/outline_settings_48"
         />
@@ -124,7 +124,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/btn_phrases_training"
         app:layout_constraintTop_toTopOf="@id/btn_phrases_training"
-        android:background="@drawable/btn_info_bg_selector"
+        android:background="@drawable/btn_info_bg"
         android:contentDescription="@string/settings"
         android:src="@drawable/outline_settings_48"
         />
@@ -144,7 +144,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/btn_details_training"
         app:layout_constraintTop_toTopOf="@id/btn_details_training"
-        android:background="@drawable/btn_info_bg_selector"
+        android:background="@drawable/btn_info_bg"
         android:contentDescription="@string/settings"
         android:src="@drawable/outline_settings_48"
         />
@@ -165,7 +165,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="@color/white_blue"
+            android:background="@color/light_blue"
             android:elevation="@dimen/sgbtn_elev"
             app:borderColor="?attr/colorPrimary"
             app:borderWidth="3dp"

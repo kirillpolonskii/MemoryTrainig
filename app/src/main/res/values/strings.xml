@@ -16,5 +16,11 @@
     <string name="remember_time">Время на запоминание (с):</string>
     <string name="bones_amount">Количество костей:</string>
     <string name="equal_bones_amount">Количество одинаковых костей:</string>
+    <string name="bones_amount_12">12</string>
+    <string name="bones_amount_24">24</string>
+    <string name="equal_bones_amount_2">2</string>
+    <string name="equal_bones_amount_3">3</string>
+    <string name="equal_bones_amount_4">4</string>
+    <string name="equal_bones_amount_6">6</string>
 
 </resources>

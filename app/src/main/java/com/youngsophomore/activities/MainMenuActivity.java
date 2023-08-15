@@ -113,37 +113,7 @@ public class MainMenuActivity extends AppCompatActivity {
                 //sgBtnGroup.setElevation(0);
             }
         });
-        /*sgBtnGroup.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                int action = motionEvent.getAction();
-                switch(action) {
-                    case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "sgBtnGroup onTouch. Action was DOWN");
-                        view.setElevation(0);
-                        return true;
-                    case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "sgBtnGroup onTouch. Action was MOVE");
-                        return true;
-                    case (MotionEvent.ACTION_UP):
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_elev);
-                        Log.d(DEBUG_TAG, "sgBtnGroup onTouch. Action was UP. open statistics" +
-                                ", R.dimen.sgbtn_elev = " + R.dimen.sgbtn_elev +
-                                ", elev = " + elevPx);
-                        view.setElevation(elevPx);
-                        return true;
-                    case (MotionEvent.ACTION_CANCEL):
-                        Log.d(DEBUG_TAG, "sgBtnGroup onTouch. Action was CANCEL");
-                        return true;
-                    case (MotionEvent.ACTION_OUTSIDE):
-                        Log.d(DEBUG_TAG, "sgBtnGroup onTouch. Movement occurred outside bounds " +
-                                "of current screen element");
-                        return true;
-                    default:
-                        return false;
-                }
-            }
-        });*/
+
         SegmentedButton sgBtnEn = sgBtnGroup.getButton(0);
         sgBtnEn.setOnTouchListener(new View.OnTouchListener() {
             @Override

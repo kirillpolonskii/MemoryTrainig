@@ -102,19 +102,7 @@
             motion:layout_constraintVertical_chainStyle="packed"
 
             />
-        <!--<Constraint
-            android:id="@id/btn_mahjong_settings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            motion:layout_constraintStart_toEndOf="@id/btn_mahjong_training"
-            motion:layout_constraintTop_toTopOf="@id/btn_mahjong_training"
 
-            android:background="@drawable/btn_info_bg_selector"
-            android:contentDescription="@string/settings"
-            android:elevation="@dimen/btn_info_elev"
-            android:src="@drawable/outline_settings_48"
-
-            />-->
         <Constraint
             android:id="@id/btn_colors_training"
             style="@style/main_menu_btn"
@@ -126,19 +114,7 @@
             motion:layout_constraintWidth_percent=".65"
             motion:layout_constraintHeight="wrap_content"
             />
-        <!--<Constraint
-            android:id="@id/btn_colors_settings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            motion:layout_constraintStart_toEndOf="@id/btn_colors_training"
-            motion:layout_constraintTop_toTopOf="@id/btn_colors_training"
 
-            android:background="@drawable/btn_info_bg_selector"
-            android:contentDescription="@string/settings"
-            android:elevation="@dimen/btn_info_elev"
-            android:src="@drawable/outline_settings_48"
-
-            />-->
         <Constraint
             android:id="@id/btn_figures_training"
             style="@style/main_menu_btn"
@@ -206,7 +182,7 @@
             motion:layout_constraintEnd_toEndOf="parent"
 
             android:layout_marginEnd="8dp"
-            android:background="@drawable/btn_info_bg_selector"
+            android:background="@drawable/btn_info_bg"
             android:contentDescription="@string/settings"
             android:elevation="@dimen/btn_info_elev"
             android:src="@drawable/outline_settings_48"
@@ -289,7 +265,7 @@
             motion:layout_constraintEnd_toEndOf="parent"
 
             android:layout_marginEnd="8dp"
-            android:background="@drawable/btn_info_bg_selector"
+            android:background="@drawable/btn_info_bg"
             android:contentDescription="@string/settings"
             android:elevation="@dimen/btn_info_elev"
             android:src="@drawable/outline_settings_48"
@@ -375,7 +351,7 @@
             motion:layout_constraintEnd_toEndOf="parent"
 
             android:layout_marginEnd="8dp"
-            android:background="@drawable/btn_info_bg_selector"
+            android:background="@drawable/btn_info_bg"
             android:contentDescription="@string/settings"
             android:elevation="@dimen/btn_info_elev"
             android:src="@drawable/outline_settings_48"
@@ -461,7 +437,7 @@
             motion:layout_constraintEnd_toEndOf="parent"
 
             android:layout_marginEnd="8dp"
-            android:background="@drawable/btn_info_bg_selector"
+            android:background="@drawable/btn_info_bg"
             android:contentDescription="@string/settings"
             android:elevation="@dimen/btn_info_elev"
             android:src="@drawable/outline_settings_48"
@@ -547,7 +523,7 @@
             motion:layout_constraintEnd_toEndOf="parent"
 
             android:layout_marginEnd="8dp"
-            android:background="@drawable/btn_info_bg_selector"
+            android:background="@drawable/btn_info_bg"
             android:contentDescription="@string/settings"
             android:elevation="@dimen/btn_info_elev"
             android:src="@drawable/outline_settings_48"
@@ -633,7 +609,7 @@
             motion:layout_constraintEnd_toEndOf="parent"
 
             android:layout_marginEnd="8dp"
-            android:background="@drawable/btn_info_bg_selector"
+            android:background="@drawable/btn_info_bg"
             android:contentDescription="@string/settings"
             android:elevation="@dimen/btn_info_elev"
             android:src="@drawable/outline_settings_48"
