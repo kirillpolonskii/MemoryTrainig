@@ -25,7 +25,7 @@ public class MahjongSettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mahjong_settings);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("Стартовые настройки: ");
+        toolbar.setTitle(getString(R.string.tbr_mahjong_settings_title));
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -60,19 +60,10 @@ public class MahjongSettingsActivity extends AppCompatActivity {
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_bones_elev);
-                        Log.d(DEBUG_TAG, "sgBtnBonesAmount12 onTouch. Action was UP. open statistics" +
-                                ", R.dimen.sgbtn_elev = " + R.dimen.sgbtn_elev +
-                                ", elev = " + elevPx);
+                        Log.d(DEBUG_TAG, "sgBtnBonesAmount12 onTouch. Action was UP");
                         //sgBtnGroup.onTouchEvent(motionEvent);
                         sgBtnGroupBones.setElevation(elevPx);
 
-                        return true;
-                    case (MotionEvent.ACTION_CANCEL):
-                        Log.d(DEBUG_TAG, "sgBtnBonesAmount12 onTouch. Action was CANCEL");
-                        return true;
-                    case (MotionEvent.ACTION_OUTSIDE):
-                        Log.d(DEBUG_TAG, "sgBtnBonesAmount12 onTouch. Movement occurred outside bounds " +
-                                "of current screen element");
                         return true;
                     default:
                         return false;

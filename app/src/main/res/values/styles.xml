@@ -12,6 +12,32 @@
         <item name="android:stateListAnimator">"@null"</item>
         <item name="android:elevation">@dimen/btn_training_elev</item>
     </style>
+
+    <style name="SegmentedButtonGroupStyle">
+        <item name="android:background">@color/light_blue</item>
+        <item name="borderColor">?attr/colorPrimary</item>
+        <item name="borderWidth">3dp</item>
+        <item name="radius">30dp</item>
+        <item name="ripple">false</item>
+        <item name="selectedBackground">?attr/colorPrimary</item>
+        <item name="selectionAnimationDuration">0</item>
+        <item name="dividerWidth">1dp</item>
+        <item name="divider">?attr/colorPrimary</item>
+    </style>
+
+    <style name="SegmentedButtonStyle">
+        <item name="android:fontFamily">sans-serif-black</item>
+        <item name="selectedTextColor">@color/white</item>
+        <item name="textColor">?attr/colorPrimary</item>
+        <item name="textSize">@dimen/switch_lang_text_size</item>
+    </style>
+
+    <style name="SettingsTextViewStyle">
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textSize">@dimen/settings_text_size</item>
+        <item name="android:layout_marginStart">4dp</item>
+        <item name="android:singleLine">false</item>
+    </style>
     
     <style name="NumberPickerTheme" parent="Theme.MemoryTraining">
         <item name="android:colorControlNormal">?attr/colorPrimary</item>

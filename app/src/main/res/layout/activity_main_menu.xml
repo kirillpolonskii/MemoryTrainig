@@ -165,39 +165,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="@color/light_blue"
             android:elevation="@dimen/sgbtn_elev"
-            app:borderColor="?attr/colorPrimary"
-            app:borderWidth="3dp"
-            app:radius="30dp"
-            app:ripple="false"
-            app:selectedBackground="?attr/colorPrimary"
-            app:selectionAnimationDuration="0"
+            style="@style/SegmentedButtonGroupStyle"
             tools:ignore="TouchTargetSizeCheck">
-            <!--            app:selectedButtonRadius="30dp"-->
+            <!--            style="@style/SegmentedButtonGroupStyle"-->
             <com.addisonelliott.segmentedbutton.SegmentedButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="@string/en"
-                android:fontFamily="sans-serif-black"
                 android:padding="4dp"
-                app:selectedTextColor="@color/white"
                 app:text="@string/en"
-                app:textColor="?attr/colorPrimary"
-                app:textSize="@dimen/switch_lang_text_size" />
+                style="@style/SegmentedButtonStyle" />
             <!--android:layout_weight="1"-->
             <com.addisonelliott.segmentedbutton.SegmentedButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="@string/ru"
-                android:fontFamily="sans-serif-black"
                 android:padding="4dp"
-                app:selectedTextColor="@color/white"
                 app:text="@string/ru"
-                app:textColor="?attr/colorPrimary"
-                app:textSize="@dimen/switch_lang_text_size" />
+                style="@style/SegmentedButtonStyle" />
         </com.addisonelliott.segmentedbutton.SegmentedButtonGroup>
     </FrameLayout>
 

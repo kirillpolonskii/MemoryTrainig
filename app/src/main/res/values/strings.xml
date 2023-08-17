@@ -13,6 +13,7 @@
     <string name="statistics">statistics</string>
     <string name="settings">settings</string>
 
+    <string name="tbr_mahjong_settings_title">Стартовые настройки: маджонг</string>
     <string name="remember_time">Время на запоминание (с):</string>
     <string name="bones_amount">Количество костей:</string>
     <string name="equal_bones_amount">Количество одинаковых костей:</string>
@@ -27,5 +28,21 @@
     <string name="saved_mahjong_remember_time_key">MAHJONG_REMEMBER_TIME</string>
     <string name="saved_mahjong_bones_amount_key">MAHJONG_BONES_AMOUNT</string>
     <string name="saved_mahjong_equal_bones_amount_key">MAHJONG_EQUAL_BONES_AMOUNT</string>
+
+    <string name="tbr_colors_settings_title">Стартовые настройки: цвета</string>
+    <string name="colors_amount">Количество цветов в последовательности:</string>
+    <string name="distinct_colors_amount">Количество различных цветов:</string>
+    <string name="max_repeat_colors_amount">Максимальное количество повторений цвета:</string>
+    <string name="color_show_time">Время показа цвета (с):</string>
+    <string name="max_repeat_colors_amount_0">0</string>
+    <string name="max_repeat_colors_amount_1">1</string>
+    <string name="max_repeat_colors_amount_2">2</string>
+    <string name="max_repeat_colors_amount_3">3</string>
+    <string name="max_repeat_colors_amount_4">4</string>
+
+    <string name="saved_colors_amount_key">COLORS_AMOUNT</string>
+    <string name="saved_distinct_colors_amount_key">DISTINCT_COLORS_AMOUNT</string>
+    <string name="saved_max_repeat_colors_amount_key">MAX_REPEAT_COLORS_AMOUNT</string>
+    <string name="saved_color_show_time_key">COLOR_SHOW_TIME</string>
 
 </resources>

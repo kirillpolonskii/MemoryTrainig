@@ -23,10 +23,14 @@
   + ~~Добавить обработчики нажатия для всех кнопок~~</font>
   + Сравнить какой дизайн кнопки смены языка лучше: отражающий кнопки меню или текущий
 + <font size = "1">~~Добавить toolbar~~
-+ ~~Переделать интерфейс в соответствии с новой идеей о выделении кнопок светло-голубым цветом~~</font>
++ ~~Переделать интерфейс в соответствии с новой идеей о выделении кнопок светло-голубым цветом~~
++ ~~Вынести общие для текста настроек атрибуты в отдельный стиль~~
++ ~~Вынести общие для segmented button group атрибуты в отдельный стиль~~
++ ~~Вынести общие для segmented button атрибуты в отдельный стиль~~</font>
 + Сделать MahjongSettingsActivity
   + <font size = "1">~~Построить интерфейс~~</font>
 + Сделать ColorsSettingsActivity
+  + <font size = "1">~~Построить интерфейс~~</font>
 + Сделать FiguresSettingsActivity
 + Сделать WordsSettingsActivity
 + Сделать PhrasesSettingsActivity
@@ -44,6 +48,8 @@
 + Сделать MahjongSettingsActivity
   + <font size = "1">~~Добавить логику сохранения и загрузки значений из SharedPreferences~~</font>
 + Сделать ColorsSettingsActivity
+  + <font size = "1">~~Придумать, как сопоставлять значения различных цветов с выбранным значением количества цветов~~
+  + ~~Добавить логику сохранения и загрузки значений из SharedPreferences~~</font>
 + Сделать FiguresSettingsActivity
 + Сделать WordsSettingsActivity
 + Сделать PhrasesSettingsActivity
