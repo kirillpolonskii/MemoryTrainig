@@ -61,4 +61,9 @@
     <string name="saved_max_repeat_shapes_amount_key">MAX_REPEAT_SHAPES_AMOUNT</string>
     <string name="saved_shape_show_time_key">SHAPE_SHOW_TIME</string>
 
+    <string name="tbr_words_settings_title">Стартовые настройки: слова</string>
+    <string name="words_collection">Коллекция слов:</string>
+    <string name="word_show_time">Время показа слова (с):</string>
+
+
 </resources>

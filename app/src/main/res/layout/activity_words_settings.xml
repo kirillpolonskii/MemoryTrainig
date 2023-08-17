@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_blue"
+    tools:context=".activities.WordsSettingsActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tv_words_collection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/spr_words_collection"
+        app:layout_constraintBottom_toBottomOf="@id/spr_words_collection"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/spr_words_collection"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintHorizontal_bias="0"
+        android:text="@string/words_collection"
+        style="@style/SettingsTextViewStyle"
+        />
+
+    <Spinner
+        android:id="@+id/spr_words_collection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toEndOf="@id/tv_words_collection"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="15dp"
+
+        />
+
+    <TextView
+        android:id="@+id/tv_word_show_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/pckr_word_show_time"
+        app:layout_constraintBottom_toBottomOf="@id/pckr_word_show_time"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/pckr_word_show_time"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintHorizontal_bias="0"
+        android:text="@string/word_show_time"
+        style="@style/SettingsTextViewStyle"
+        />
+
+    <NumberPicker
+        android:id="@+id/pckr_word_show_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/spr_words_collection"
+        app:layout_constraintStart_toEndOf="@id/tv_word_show_time"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:theme="@style/NumberPickerTheme"
+        android:textColor="?attr/colorPrimary"
+        android:colorControlNormal="?attr/colorPrimary"
+        android:layout_marginStart="15dp"
+
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

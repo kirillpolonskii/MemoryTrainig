@@ -35,6 +35,7 @@
   + <font size = "1">~~Построить интерфейс~~</font>
 + Сделать WordsSettingsActivity
   + Построить интерфейс
+  + Создать свою разметку для элементов списка
 + Сделать PhrasesSettingsActivity
 + Сделать DetailsSettingsActivity
 + Сделать Statistics
@@ -56,6 +57,9 @@
   + <font size = "1">~~Придумать, как сопоставлять значения различных цветов с выбранным значением количества цветов~~
   + ~~Добавить логику сохранения и загрузки значений из SharedPreferences~~</font>
 + Сделать WordsSettingsActivity
+  + <font size = "1">~~Выбрать способ хранения коллекций слов~~</font>
+  + Написать класс для хранения и загрузки коллекций слов и фраз
+  + Добавить логику сохранения и загрузки значений из SharedPreferences
 + Сделать PhrasesSettingsActivity
 + Сделать DetailsSettingsActivity
 + Сделать Statistics
