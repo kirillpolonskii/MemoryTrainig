@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ShapesSettingsActivity"
+    android:background="@color/white_blue">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tv_shapes_amount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.6"
+        app:layout_constraintTop_toTopOf="@id/pckr_shapes_amount"
+        app:layout_constraintBottom_toBottomOf="@id/pckr_shapes_amount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/pckr_shapes_amount"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintHorizontal_bias="0"
+        android:text="@string/shapes_amount"
+        style="@style/SettingsTextViewStyle"
+        />
+
+    <NumberPicker
+        android:id="@+id/pckr_shapes_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toEndOf="@id/tv_shapes_amount"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:theme="@style/NumberPickerTheme"
+        android:textColor="?attr/colorPrimary"
+        android:colorControlNormal="?attr/colorPrimary"
+        android:layout_marginStart="15dp"
+
+        />
+
+    <TextView
+        android:id="@+id/tv_distinct_shapes_amount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.6"
+        app:layout_constraintTop_toTopOf="@id/pckr_distinct_shapes_amount"
+        app:layout_constraintBottom_toBottomOf="@id/pckr_distinct_shapes_amount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/pckr_distinct_shapes_amount"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintHorizontal_bias="0"
+        android:text="@string/distinct_shapes_amount"
+        style="@style/SettingsTextViewStyle"
+        />
+
+    <NumberPicker
+        android:id="@+id/pckr_distinct_shapes_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/pckr_shapes_amount"
+        app:layout_constraintStart_toEndOf="@id/tv_distinct_shapes_amount"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:theme="@style/NumberPickerTheme"
+        android:textColor="?attr/colorPrimary"
+        android:colorControlNormal="?attr/colorPrimary"
+        android:layout_marginStart="15dp"
+
+        />
+    <TextView
+        android:id="@+id/tv_max_repeat_shapes_amount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.6"
+        app:layout_constraintTop_toTopOf="@id/sgbtn_max_repeat_shapes_amount"
+        app:layout_constraintBottom_toBottomOf="@id/sgbtn_max_repeat_shapes_amount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/sgbtn_max_repeat_shapes_amount"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintHorizontal_bias="0"
+
+        android:text="@string/max_repeat_shapes_amount"
+        style="@style/SettingsTextViewStyle"
+        />
+
+    <com.addisonelliott.segmentedbutton.SegmentedButtonGroup
+        android:id="@+id/sgbtn_max_repeat_shapes_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_max_repeat_shapes_amount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pckr_distinct_shapes_amount"
+        android:layout_marginEnd="15dp"
+        android:elevation="@dimen/sgbtn_bones_elev"
+        style="@style/SegmentedButtonGroupStyle"
+        tools:ignore="TouchTargetSizeCheck">
+        <com.addisonelliott.segmentedbutton.SegmentedButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/info"
+            android:padding="8dp"
+            app:text="@string/max_repeat_shapes_amount_0"
+            style="@style/SegmentedButtonStyle" />
+        <com.addisonelliott.segmentedbutton.SegmentedButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/info"
+            android:padding="8dp"
+            app:text="@string/max_repeat_shapes_amount_1"
+            style="@style/SegmentedButtonStyle" />
+        <com.addisonelliott.segmentedbutton.SegmentedButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/info"
+            android:padding="8dp"
+            app:text="@string/max_repeat_shapes_amount_2"
+            style="@style/SegmentedButtonStyle"/>
+        <com.addisonelliott.segmentedbutton.SegmentedButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/info"
+            android:padding="8dp"
+            app:text="@string/max_repeat_shapes_amount_3"
+            style="@style/SegmentedButtonStyle" />
+        <!--android:layout_weight="1"-->
+        <com.addisonelliott.segmentedbutton.SegmentedButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/info"
+            android:padding="8dp"
+            app:text="@string/max_repeat_shapes_amount_4"
+            style="@style/SegmentedButtonStyle"/>
+    </com.addisonelliott.segmentedbutton.SegmentedButtonGroup>
+
+    <TextView
+        android:id="@+id/tv_shape_show_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/pckr_shape_show_time"
+        app:layout_constraintBottom_toBottomOf="@id/pckr_shape_show_time"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/pckr_shape_show_time"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintHorizontal_bias="0"
+        android:text="@string/shape_show_time"
+        style="@style/SettingsTextViewStyle"
+        />
+
+    <NumberPicker
+        android:id="@+id/pckr_shape_show_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/sgbtn_max_repeat_shapes_amount"
+        app:layout_constraintStart_toEndOf="@id/tv_shape_show_time"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:theme="@style/NumberPickerTheme"
+        android:textColor="?attr/colorPrimary"
+        android:colorControlNormal="?attr/colorPrimary"
+        android:layout_marginStart="15dp"
+
+        />
+
+    <ImageButton
+        android:id="@+id/btn_save"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_save_and_play"
+        app:layout_constraintTop_toBottomOf="@id/pckr_shape_show_time"
+        android:background="@drawable/btn_save_bg"
+        android:contentDescription="@string/info"
+        android:elevation="@dimen/btn_stats_elev"
+        android:src="@drawable/baseline_save_60"
+
+        />
+
+    <ImageButton
+        android:id="@+id/btn_save_and_play"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pckr_shape_show_time"
+        app:layout_constraintStart_toEndOf="@id/btn_save"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:background="@drawable/btn_save_and_play_bg"
+        android:contentDescription="@string/info"
+        android:elevation="@dimen/btn_stats_elev"
+        android:src="@drawable/round_play_arrow_60"
+
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

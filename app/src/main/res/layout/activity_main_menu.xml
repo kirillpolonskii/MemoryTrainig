@@ -52,7 +52,7 @@
         style="@style/main_menu_btn"
         android:layout_height="wrap_content"
         android:text="@string/btn_colors_training_ru"
-        app:layout_constraintBottom_toTopOf="@id/btn_figures_training"
+        app:layout_constraintBottom_toTopOf="@id/btn_shapes_training"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_mahjong_training"
         />
@@ -70,20 +70,20 @@
         />
 
     <Button
-        android:id="@+id/btn_figures_training"
+        android:id="@+id/btn_shapes_training"
         style="@style/main_menu_btn"
         android:layout_height="wrap_content"
-        android:text="@string/btn_figures_training_ru"
+        android:text="@string/btn_shapes_training_ru"
         app:layout_constraintBottom_toTopOf="@id/btn_words_training"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_colors_training"
         />
     <ImageButton
-        android:id="@+id/btn_figures_settings"
+        android:id="@+id/btn_shapes_settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/btn_figures_training"
-        app:layout_constraintTop_toTopOf="@id/btn_figures_training"
+        app:layout_constraintStart_toEndOf="@id/btn_shapes_training"
+        app:layout_constraintTop_toTopOf="@id/btn_shapes_training"
         android:background="@drawable/btn_info_bg"
         android:contentDescription="@string/settings"
         android:src="@drawable/outline_settings_48"
@@ -96,18 +96,17 @@
         android:text="@string/btn_words_training_ru"
         app:layout_constraintBottom_toTopOf="@id/btn_phrases_training"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_figures_training"
-        />
+        app:layout_constraintTop_toBottomOf="@id/btn_shapes_training" />
+
     <ImageButton
         android:id="@+id/btn_words_settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/btn_words_training"
-        app:layout_constraintTop_toTopOf="@id/btn_words_training"
         android:background="@drawable/btn_info_bg"
         android:contentDescription="@string/settings"
         android:src="@drawable/outline_settings_48"
-        />
+        app:layout_constraintStart_toEndOf="@id/btn_words_training"
+        app:layout_constraintTop_toTopOf="@id/btn_words_training" />
 
     <Button
         android:id="@+id/btn_phrases_training"

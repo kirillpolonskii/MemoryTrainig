@@ -17,54 +17,54 @@ import com.addisonelliott.segmentedbutton.SegmentedButton;
 import com.addisonelliott.segmentedbutton.SegmentedButtonGroup;
 import com.youngsophomore.R;
 
-public class ColorsSettingsActivity extends AppCompatActivity {
+public class ShapesSettingsActivity extends AppCompatActivity {
     private static final String DEBUG_TAG = "Gestures";
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_colors_settings);
+        setContentView(R.layout.activity_shapes_settings);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(getString(R.string.tbr_colors_settings_title));
+        toolbar.setTitle(getString(R.string.tbr_shapes_settings_title));
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        NumberPicker pckrColorsAmount = findViewById(R.id.pckr_colors_amount);
-        NumberPicker pckrDistinctColorsAmount = findViewById(R.id.pckr_distinct_colors_amount);
-        pckrColorsAmount.setMinValue(4);
-        pckrColorsAmount.setMaxValue(25);
-        pckrDistinctColorsAmount.setMinValue(2);
-        pckrDistinctColorsAmount.setMaxValue(4);
-        pckrColorsAmount.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+        NumberPicker pckrShapesAmount = findViewById(R.id.pckr_shapes_amount);
+        NumberPicker pckrDistinctShapesAmount = findViewById(R.id.pckr_distinct_shapes_amount);
+        pckrShapesAmount.setMinValue(4);
+        pckrShapesAmount.setMaxValue(25);
+        pckrDistinctShapesAmount.setMinValue(2);
+        pckrDistinctShapesAmount.setMaxValue(4);
+        pckrShapesAmount.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                if(newVal < 16){
-                    pckrDistinctColorsAmount.setMaxValue(newVal);
+                if(newVal < 10){
+                    pckrDistinctShapesAmount.setMaxValue(newVal);
                 }
                 else{
-                    pckrDistinctColorsAmount.setMaxValue(15);
+                    pckrDistinctShapesAmount.setMaxValue(9);
                 }
             }
         });
 
-        NumberPicker pckrColorShowTime = findViewById(R.id.pckr_color_show_time);
-        pckrColorShowTime.setMinValue(1);
-        pckrColorShowTime.setMaxValue(6);
+        NumberPicker pckrShapeShowTime = findViewById(R.id.pckr_shape_show_time);
+        pckrShapeShowTime.setMinValue(1);
+        pckrShapeShowTime.setMaxValue(6);
 
-        SegmentedButtonGroup sgBtnGroupMaxRepeat = findViewById(R.id.sgbtn_max_repeat_colors_amount);
+        SegmentedButtonGroup sgBtnGroupMaxRepeat = findViewById(R.id.sgbtn_max_repeat_shapes_amount);
 
         SharedPreferences sharedPreferences =
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-        int colorsAmount = sharedPreferences.getInt(getString(R.string.saved_colors_amount_key), 4);
-        int distinctColorsAmount = sharedPreferences.getInt(getString(R.string.saved_distinct_colors_amount_key), 2);
-        int maxRepeatColorsAmount = sharedPreferences.getInt(getString(R.string.saved_max_repeat_colors_amount_key), 1);
-        int colorShowTime = sharedPreferences.getInt(getString(R.string.saved_color_show_time_key), 2);
+        int shapesAmount = sharedPreferences.getInt(getString(R.string.saved_shapes_amount_key), 4);
+        int distinctShapesAmount = sharedPreferences.getInt(getString(R.string.saved_distinct_shapes_amount_key), 2);
+        int maxRepeatShapesAmount = sharedPreferences.getInt(getString(R.string.saved_max_repeat_shapes_amount_key), 1);
+        int shapeShowTime = sharedPreferences.getInt(getString(R.string.saved_shape_show_time_key), 2);
 
-        pckrColorsAmount.setValue(colorsAmount);
-        pckrDistinctColorsAmount.setValue(distinctColorsAmount);
-        sgBtnGroupMaxRepeat.setPosition(maxRepeatColorsAmount, false);
-        pckrColorShowTime.setValue(colorShowTime);
+        pckrShapesAmount.setValue(shapesAmount);
+        pckrDistinctShapesAmount.setValue(distinctShapesAmount);
+        sgBtnGroupMaxRepeat.setPosition(maxRepeatShapesAmount, false);
+        pckrShapeShowTime.setValue(shapeShowTime);
 
         SegmentedButton sgBtnMaxRepeat0 = sgBtnGroupMaxRepeat.getButton(0);
         sgBtnMaxRepeat0.setOnTouchListener(new View.OnTouchListener() {
@@ -216,14 +216,14 @@ public class ColorsSettingsActivity extends AppCompatActivity {
                         Log.d(DEBUG_TAG, "btnSave onTouch. Action was UP. open info");
                         view.setElevation(elevPx);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putInt(getString(R.string.saved_colors_amount_key),
-                                pckrColorsAmount.getValue());
-                        editor.putInt(getString(R.string.saved_distinct_colors_amount_key),
-                                pckrDistinctColorsAmount.getValue());
-                        editor.putInt(getString(R.string.saved_max_repeat_colors_amount_key),
+                        editor.putInt(getString(R.string.saved_shapes_amount_key),
+                                pckrShapesAmount.getValue());
+                        editor.putInt(getString(R.string.saved_distinct_shapes_amount_key),
+                                pckrDistinctShapesAmount.getValue());
+                        editor.putInt(getString(R.string.saved_max_repeat_shapes_amount_key),
                                 sgBtnGroupMaxRepeat.getPosition());
-                        editor.putInt(getString(R.string.saved_color_show_time_key),
-                                pckrColorShowTime.getValue());
+                        editor.putInt(getString(R.string.saved_shape_show_time_key),
+                                pckrShapeShowTime.getValue());
                         editor.apply();
                         onBackPressed();
                         return true;

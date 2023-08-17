@@ -31,8 +31,10 @@
   + <font size = "1">~~Построить интерфейс~~</font>
 + Сделать ColorsSettingsActivity
   + <font size = "1">~~Построить интерфейс~~</font>
-+ Сделать FiguresSettingsActivity
++ Сделать ShapesSettingsActivity
+  + <font size = "1">~~Построить интерфейс~~</font>
 + Сделать WordsSettingsActivity
+  + Построить интерфейс
 + Сделать PhrasesSettingsActivity
 + Сделать DetailsSettingsActivity
 + Сделать Statistics
@@ -50,7 +52,9 @@
 + Сделать ColorsSettingsActivity
   + <font size = "1">~~Придумать, как сопоставлять значения различных цветов с выбранным значением количества цветов~~
   + ~~Добавить логику сохранения и загрузки значений из SharedPreferences~~</font>
-+ Сделать FiguresSettingsActivity
++ Сделать ShapesSettingsActivity
+  + <font size = "1">~~Придумать, как сопоставлять значения различных цветов с выбранным значением количества цветов~~
+  + ~~Добавить логику сохранения и загрузки значений из SharedPreferences~~</font>
 + Сделать WordsSettingsActivity
 + Сделать PhrasesSettingsActivity
 + Сделать DetailsSettingsActivity
