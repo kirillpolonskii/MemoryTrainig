@@ -105,6 +105,7 @@ public class MainMenuActivity extends AppCompatActivity {
             }
         });
         SegmentedButtonGroup sgBtnGroup = findViewById(R.id.sgbtn_enru);
+        sgBtnGroup.setPosition(1, false);
         sgBtnGroup.setOnPositionChangedListener(new SegmentedButtonGroup.OnPositionChangedListener() {
             @Override
             public void onPositionChanged(final int position) {

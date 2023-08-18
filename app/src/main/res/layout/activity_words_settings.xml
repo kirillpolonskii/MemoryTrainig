@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,57 +14,73 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
-    <TextView
-        android:id="@+id/tv_words_collection"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/spr_words_collection"
-        app:layout_constraintBottom_toBottomOf="@id/spr_words_collection"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/spr_words_collection"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintHorizontal_bias="0"
-        android:text="@string/words_collection"
-        style="@style/SettingsTextViewStyle"
-        />
-
-    <Spinner
-        android:id="@+id/spr_words_collection"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/frgt_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintStart_toEndOf="@id/tv_words_collection"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="15dp"
-
-        />
-
-    <TextView
-        android:id="@+id/tv_word_show_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/pckr_word_show_time"
-        app:layout_constraintBottom_toBottomOf="@id/pckr_word_show_time"
+        app:layout_constraintBottom_toTopOf="@id/btn_add_words_collection"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/pckr_word_show_time"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintHorizontal_bias="0"
-        android:text="@string/word_show_time"
-        style="@style/SettingsTextViewStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0"
+        android:layout_marginVertical="10dp"
         />
 
-    <NumberPicker
-        android:id="@+id/pckr_word_show_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/spr_words_collection"
-        app:layout_constraintStart_toEndOf="@id/tv_word_show_time"
+
+    <ImageButton
+        android:id="@+id/btn_add_words_collection"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_save_words_settings"
+
+        android:background="@drawable/btn_save_bg"
+        android:contentDescription="@string/info"
+        android:elevation="@dimen/btn_stats_elev"
+        android:src="@drawable/outline_note_add_60"
+        android:layout_marginBottom="40dp"
+        />
+    <ImageButton
+        android:id="@+id/btn_save_words_settings"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_add_words_collection"
+        app:layout_constraintStart_toEndOf="@id/btn_add_words_collection"
+        app:layout_constraintEnd_toStartOf="@id/btn_save_words_settings_and_play"
+
+        android:background="@drawable/btn_save_bg"
+        android:contentDescription="@string/info"
+        android:elevation="@dimen/btn_stats_elev"
+        android:src="@drawable/baseline_save_60"
+
+        />
+    <ImageButton
+        android:id="@+id/btn_save_words_settings_and_play"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_add_words_collection"
+        app:layout_constraintStart_toEndOf="@id/btn_save_words_settings"
+        app:layout_constraintEnd_toStartOf="@id/btn_confirm_words_collection"
+
+        android:background="@drawable/btn_save_bg"
+        android:contentDescription="@string/info"
+        android:elevation="@dimen/btn_stats_elev"
+        android:src="@drawable/round_play_arrow_60"
+
+        />
+    <ImageButton
+        android:id="@+id/btn_confirm_words_collection"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_add_words_collection"
+        app:layout_constraintStart_toEndOf="@id/btn_save_words_settings_and_play"
         app:layout_constraintEnd_toEndOf="parent"
 
-        android:theme="@style/NumberPickerTheme"
-        android:textColor="?attr/colorPrimary"
-        android:colorControlNormal="?attr/colorPrimary"
-        android:layout_marginStart="15dp"
+        android:background="@drawable/btn_save_bg"
+        android:contentDescription="@string/info"
+        android:elevation="@dimen/btn_stats_elev"
+        android:src="@drawable/outline_library_add_check_60"
 
         />
 

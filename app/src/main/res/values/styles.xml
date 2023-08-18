@@ -44,6 +44,20 @@
         <item name="android:textColorPrimary">?attr/colorPrimary</item>
     </style>
 
+    <style name="SpinnerItemStyle" parent="Widget.AppCompat.TextView.SpinnerItem">
+        <item name="android:colorControlNormal">?attr/colorPrimary</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textSize">20sp</item>
+
+
+    </style>
+    <style name="SpinnerItemDropdownStyle" parent="Widget.AppCompat.DropDownItem.Spinner">
+        <item name="android:colorControlNormal">?attr/colorPrimary</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textSize">22sp</item>
+
+    </style>
+
 
     <!--<style name="switch_lang_btn" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
         <item name="cornerRadius">19dp</item>

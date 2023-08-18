@@ -9,7 +9,7 @@
     <string name="btn_details_training_ru">детали</string>
     <string name="info">info</string>
     <string name="en">EN</string>
-    <string name="ru">RU</string>
+    <string name="ru">РУ</string>
     <string name="statistics">statistics</string>
     <string name="settings">settings</string>
 
@@ -62,8 +62,13 @@
     <string name="saved_shape_show_time_key">SHAPE_SHOW_TIME</string>
 
     <string name="tbr_words_settings_title">Стартовые настройки: слова</string>
+    <string name="tbr_words_add_collection_title">Добавить коллекцию слов</string>
     <string name="words_collection">Коллекция слов:</string>
     <string name="word_show_time">Время показа слова (с):</string>
+    <string name="et_words_collection_title_hint">Введите название коллекции</string>
+    <string name="et_words_collection_hint">Введите коллекцию слов через пробел</string>
+    <string name="saved_words_collection_position_key">WORDS_COLLECTION_POSITION</string>
+    <string name="saved_word_show_time_key">WORD_SHOW_TIME</string>
 
 
 </resources>
