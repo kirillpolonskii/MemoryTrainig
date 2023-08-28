@@ -6,12 +6,20 @@ import java.util.Arrays;
 public class CollectionsStorage {
     private static ArrayList<String> wordsCollectionsTitles;
     private static ArrayList<ArrayList<String>> wordsCollections;
+    private static ArrayList<String> phrasesCollectionsTitles;
+    private static ArrayList<ArrayList<String>> phrasesCollections;
+
 
     static {
         wordsCollectionsTitles = new ArrayList<>();
-        wordsCollectionsTitles.add("FirstCollection");
+        wordsCollectionsTitles.add("FirstWordsCollection");
 
         wordsCollections = new ArrayList<>();
+
+        phrasesCollectionsTitles = new ArrayList<>();
+        phrasesCollectionsTitles.add("FirstPhrasesCollection");
+
+        phrasesCollections = new ArrayList<>();
     }
 
     public static void addWordsCollection(String title, String newCollection){
@@ -28,6 +36,20 @@ public class CollectionsStorage {
 
     public static String getWordsCollectionTitle(int position){
         return wordsCollectionsTitles.get(position);
+    }
+
+    public static void addPhrasesCollection(String title, ArrayList<String> newCollection){
+        phrasesCollectionsTitles.add(title);
+
+        phrasesCollections.add(newCollection);
+    }
+
+    public static ArrayList<String> getPhrasesCollectionsTitles(){
+        return phrasesCollectionsTitles;
+    }
+
+    public static String getPhrasesCollectionTitle(int position){
+        return phrasesCollectionsTitles.get(position);
     }
 
 

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_blue"
+    tools:context=".fragments.AddPhraseFragment">
+
+    <EditText
+        android:id="@+id/et_new_phrase"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:hint="@string/et_phrases_collection_hint"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:textSize="22sp"
+        android:textColor="?attr/colorPrimary"
+        android:backgroundTint="?attr/colorPrimary"
+
+        android:importantForAutofill="no"
+        />
+
+</FrameLayout>

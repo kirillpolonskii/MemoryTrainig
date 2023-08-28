@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.NumberPicker;
@@ -53,9 +54,8 @@ public class WordsSettingsActivity extends AppCompatActivity {
         ImageButton btnSaveWordsSettingsAndPlay = findViewById(R.id.btn_save_words_settings_and_play);
         ImageButton btnConfirmWordsCollection = findViewById(R.id.btn_confirm_words_collection);
 
-        btnConfirmWordsCollection.setEnabled(false);
-        btnConfirmWordsCollection.setAlpha(0.5f);
-        btnConfirmWordsCollection.setElevation(0);
+        deactivateBtn(btnConfirmWordsCollection);
+
 
         btnAddWordsCollection.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -72,20 +72,11 @@ public class WordsSettingsActivity extends AppCompatActivity {
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                         Log.d(DEBUG_TAG, "btnAddWordsCollection onTouch. Action was UP");
-                        btnAddWordsCollection.setEnabled(false);
-                        btnSaveWordsSettings.setEnabled(false);
-                        btnSaveWordsSettingsAndPlay.setEnabled(false);
-                        btnConfirmWordsCollection.setEnabled(true);
 
-                        btnAddWordsCollection.setAlpha(0.5f);
-                        btnSaveWordsSettings.setAlpha(0.5f);
-                        btnSaveWordsSettingsAndPlay.setAlpha(0.5f);
-                        btnConfirmWordsCollection.setAlpha(1f);
-
-                        btnAddWordsCollection.setElevation(0);
-                        btnSaveWordsSettings.setElevation(0);
-                        btnSaveWordsSettingsAndPlay.setElevation(0);
-                        btnConfirmWordsCollection.setElevation(elevPx);
+                        deactivateBtn(btnAddWordsCollection);
+                        deactivateBtn(btnSaveWordsSettings);
+                        deactivateBtn(btnSaveWordsSettingsAndPlay);
+                        activateBtn(btnConfirmWordsCollection, elevPx);
 
                         fragmentManager.beginTransaction()
                                 .replace(R.id.frgt_view, AddWordsCollectionFragment.class, null, ADD_COLLECTION_FRAGMENT_TAG)
@@ -185,19 +176,11 @@ public class WordsSettingsActivity extends AppCompatActivity {
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                         Log.d(DEBUG_TAG, "btnConfirmWordsCollection onTouch. Action was UP");
                         //view.setElevation(elevPx);
-                        btnAddWordsCollection.setEnabled(true);
-                        btnSaveWordsSettings.setEnabled(true);
-                        btnSaveWordsSettingsAndPlay.setEnabled(true);
-                        btnConfirmWordsCollection.setEnabled(false);
 
-                        btnAddWordsCollection.setAlpha(1f);
-                        btnSaveWordsSettings.setAlpha(1f);
-                        btnSaveWordsSettingsAndPlay.setAlpha(1f);
-                        btnConfirmWordsCollection.setAlpha(0.5f);
-
-                        btnAddWordsCollection.setElevation(elevPx);
-                        btnSaveWordsSettings.setElevation(elevPx);
-                        btnSaveWordsSettingsAndPlay.setElevation(elevPx);
+                        activateBtn(btnAddWordsCollection, elevPx);
+                        activateBtn(btnSaveWordsSettings, elevPx);
+                        activateBtn(btnSaveWordsSettingsAndPlay, elevPx);
+                        deactivateBtn(btnConfirmWordsCollection);
 
                         Fragment addWordsCollectionFragment = fragmentManager.findFragmentByTag(ADD_COLLECTION_FRAGMENT_TAG);
                         EditText etWordsCollectionTitle = addWordsCollectionFragment.getView()
@@ -224,6 +207,17 @@ public class WordsSettingsActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void activateBtn(ImageButton btn, int elevPx){
+        btn.setEnabled(true);
+        btn.setAlpha(1f);
+        btn.setElevation(elevPx);
+    }
+    private void deactivateBtn(ImageButton btn){
+        btn.setEnabled(false);
+        btn.setAlpha(0.5f);
+        btn.setElevation(0);
     }
 
     @Override

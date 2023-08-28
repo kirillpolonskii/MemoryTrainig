@@ -70,5 +70,20 @@
     <string name="saved_words_collection_position_key">WORDS_COLLECTION_POSITION</string>
     <string name="saved_word_show_time_key">WORD_SHOW_TIME</string>
 
+    <string name="tbr_phrases_settings_title">Стартовые настройки: фразы</string>
+    <string name="tbr_phrases_add_collection_title">Добавить коллекцию фраз</string>
+    <string name="phrases_collection">Коллекция фраз:</string>
+    <string name="phrase_show_time">Время показа фразы (с):</string>
+    <string name="et_phrases_collection_title_hint">Введите название фразы</string>
+    <string name="et_phrases_collection_hint">Введите фразу</string>
+    <string name="new_phrases_collection_key">NEW_PHRASES_COLLECTION</string>
+    <string name="new_phrase_key">NEW_PHRASE</string>
+    <string name="saved_phrases_collection_position_key">PHRASES_COLLECTION_POSITION</string>
+    <string name="saved_phrase_show_time_key">PHRASE_SHOW_TIME</string>
+
+    <string name="tbr_details_settings_title">Стартовые настройки: детали</string>
+    <string name="images_collection">Изображение:</string>
+    <string name="image_show_time">Время показа изображения (с):</string>
+
 
 </resources>
