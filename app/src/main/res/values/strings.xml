@@ -82,8 +82,14 @@
     <string name="saved_phrase_show_time_key">PHRASE_SHOW_TIME</string>
 
     <string name="tbr_details_settings_title">Стартовые настройки: детали</string>
+    <string name="tbr_details_add_image_title">Добавить изображение</string>
     <string name="images_collection">Изображение:</string>
     <string name="image_show_time">Время показа изображения (с):</string>
+    <string name="new_image">Новое изображение:</string>
+    <string name="new_questions_collection">Коллекция вопросов</string>
+    <string name="et_question_hint">Новый вопрос</string>
+    <string name="et_answer_hint">Ответ на вопрос</string>
+
 
 
 </resources>

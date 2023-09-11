@@ -13,6 +13,9 @@
         android:theme="@style/Theme.MemoryTraining"
         tools:targetApi="31">
         <activity
+            android:name=".activities.AddImageActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.DetailsSettingsActivity"
             android:exported="false" />
         <activity

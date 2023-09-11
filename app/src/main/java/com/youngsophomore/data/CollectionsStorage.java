@@ -9,6 +9,9 @@ public class CollectionsStorage {
     private static ArrayList<String> phrasesCollectionsTitles;
     private static ArrayList<ArrayList<String>> phrasesCollections;
 
+    private static ArrayList<String> questionsCollectionsTitles; // collection named after image
+    private static ArrayList<ArrayList<Question>> questionsCollections;
+
 
     static {
         wordsCollectionsTitles = new ArrayList<>();
@@ -50,6 +53,11 @@ public class CollectionsStorage {
 
     public static String getPhrasesCollectionTitle(int position){
         return phrasesCollectionsTitles.get(position);
+    }
+
+    public static void addQuestionsCollections(String title, ArrayList<Question> newCollection){
+        questionsCollectionsTitles.add(title);
+        questionsCollections.add(newCollection);
     }
 
 
