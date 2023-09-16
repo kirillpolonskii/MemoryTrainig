@@ -49,7 +49,7 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.View
         Log.d(DEBUG_TAG, "QuestionsAdapter: In onCreateViewHolder()");
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.text_row_item, viewGroup, false);
+                .inflate(R.layout.new_question_list_item, viewGroup, false);
 
         return new QuestionsAdapter.ViewHolder(view);
     }

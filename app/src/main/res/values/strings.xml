@@ -89,7 +89,17 @@
     <string name="new_questions_collection">Коллекция вопросов</string>
     <string name="et_question_hint">Новый вопрос</string>
     <string name="et_answer_hint">Ответ на вопрос</string>
+    <string name="new_questions_collection_key">NEW_QUESTIONS_COLLECTION</string>
+    <!--<string name="new_phrase_key">NEW_PHRASE</string>-->
+    <string name="saved_images_collection_position_key">IMAGES_COLLECTION_POSITION</string>
+    <string name="saved_image_show_time_key">IMAGE_SHOW_TIME</string>
 
+    <string name="question_type_dialog_title">Вид вопроса</string>
+    <string name="question_type_dialog_message">Новый вопрос содержит только один ответ?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
 
+    <string name="correct_answer_dialog_title">Правильность ответа</string>
+    <string name="correct_answer_dialog_message">Является ли ответ правильным?</string>
 
 </resources>

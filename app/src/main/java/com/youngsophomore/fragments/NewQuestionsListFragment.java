@@ -3,64 +3,69 @@ package com.youngsophomore.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.divider.MaterialDividerItemDecoration;
 import com.youngsophomore.R;
+import com.youngsophomore.adapters.QuestionsAdapter;
+import com.youngsophomore.data.Question;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link NewQuestionsListFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
 public class NewQuestionsListFragment extends Fragment {
+    private static final String DEBUG_TAG = "Gestures";
+    private ArrayList<Question> newQuestionsCollection;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public NewQuestionsListFragment() {
+        Log.d(DEBUG_TAG, "in NewQuestionsListFragment() of NewQuestionsListFragment");
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment NewQuestionsListFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static NewQuestionsListFragment newInstance(String param1, String param2) {
+    public static NewQuestionsListFragment newInstance() {
+        Log.d(DEBUG_TAG, "in newInstance() of NewQuestionsListFragment");
         NewQuestionsListFragment fragment = new NewQuestionsListFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        Log.d(DEBUG_TAG, "in onCreate() of NewQuestionsListFragment");
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            newQuestionsCollection = getArguments().getParcelableArrayList(getString(R.string.new_questions_collection_key));
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.d(DEBUG_TAG, "in onCreateView() of NewQuestionsListFragment");
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_new_questions_list, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState)
+    {
+        super.onViewCreated(view, savedInstanceState);
+        Log.d(DEBUG_TAG, "in onViewCreated() of NewPhrasesListFragment");
+
+        QuestionsAdapter questionsAdapter = new QuestionsAdapter(newQuestionsCollection);
+        RecyclerView rvNewQuestionsCollection = view.findViewById(R.id.rv_new_questions_collection);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        rvNewQuestionsCollection.setLayoutManager(layoutManager);
+        rvNewQuestionsCollection.setAdapter(questionsAdapter);
+        MaterialDividerItemDecoration dividerItemDecoration =
+                new MaterialDividerItemDecoration(rvNewQuestionsCollection.getContext(),
+                    layoutManager.getOrientation());
+        dividerItemDecoration.setDividerColorResource(getContext(), R.color.blue);
+        rvNewQuestionsCollection.addItemDecoration(dividerItemDecoration);
     }
 }

@@ -16,13 +16,15 @@ public class CollectionsStorage {
     static {
         wordsCollectionsTitles = new ArrayList<>();
         wordsCollectionsTitles.add("FirstWordsCollection");
-
         wordsCollections = new ArrayList<>();
 
         phrasesCollectionsTitles = new ArrayList<>();
         phrasesCollectionsTitles.add("FirstPhrasesCollection");
-
         phrasesCollections = new ArrayList<>();
+
+        questionsCollectionsTitles = new ArrayList<>();
+        questionsCollectionsTitles.add("Image1");
+        questionsCollections = new ArrayList<>();
     }
 
     public static void addWordsCollection(String title, String newCollection){
@@ -58,6 +60,10 @@ public class CollectionsStorage {
     public static void addQuestionsCollections(String title, ArrayList<Question> newCollection){
         questionsCollectionsTitles.add(title);
         questionsCollections.add(newCollection);
+    }
+
+    public static ArrayList<String> getQuestionsCollectionsTitles(){
+        return questionsCollectionsTitles;
     }
 
 

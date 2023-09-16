@@ -30,7 +30,7 @@ public class NewPhrasesListFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static NewPhrasesListFragment newInstance(String param1, String param2) {
+    public static NewPhrasesListFragment newInstance() {
         Log.d(DEBUG_TAG, "in newInstance() of NewPhrasesListFragment");
         return new NewPhrasesListFragment();
     }

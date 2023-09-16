@@ -78,7 +78,7 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
                         view.setElevation(elevPx);
 
                         deactivateBtn(btnAddPhrase);
-                        deactivateBtn(btnConfirmPhrase);
+                        deactivateBtn(btnConfirmPhrasesCollection);
                         activateBtn(btnConfirmPhrase, elevPx);
 
                         fragmentManager.beginTransaction()

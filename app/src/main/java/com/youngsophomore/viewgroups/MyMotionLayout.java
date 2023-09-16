@@ -17,6 +17,7 @@ import androidx.constraintlayout.motion.widget.MotionLayout;
 import com.addisonelliott.segmentedbutton.SegmentedButtonGroup;
 import com.youngsophomore.R;
 import com.youngsophomore.activities.ColorsSettingsActivity;
+import com.youngsophomore.activities.DetailsSettingsActivity;
 import com.youngsophomore.activities.MahjongSettingsActivity;
 import com.youngsophomore.activities.PhrasesSettingsActivity;
 import com.youngsophomore.activities.ShapesSettingsActivity;
@@ -272,6 +273,8 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
                     if(idBtnWithEvent == R.id.btn_details_settings) {
                         Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. details settings was clicked");
                         btnSettingsWithEvent.setElevation(elevSettingsPx);
+                        Intent intent = new Intent(getContext(), DetailsSettingsActivity.class);
+                        getContext().startActivity(intent);
                     }
 
                 }
