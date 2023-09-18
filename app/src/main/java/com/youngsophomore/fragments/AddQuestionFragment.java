@@ -35,20 +35,20 @@ public class AddQuestionFragment extends Fragment
         implements QuestionTypeDialogFragment.QuestionTypeDialogListener,
                     CorrectAnswerDialogFragment.CorrectAnswerDialogListener{
     private static final String DEBUG_TAG = "Gestures";
-    private ArrayList<String> answers;
+    //private ArrayList<String> answers;
     EditText etNewQuestion;
     EditText etNewAnswer;
 
     Question question;
     int etNewQuestionId;
     int etNewAnswerId;
-    private boolean isAnswerCorrect;
+    private boolean haveCorrectAnswer;
+    AnswersAdapter answersAdapter;
 
 
     public AddQuestionFragment() {
         Log.d(DEBUG_TAG, "in AddQuestionFragment() of AddQuestionFragment");
-        answers = new ArrayList<>();
-        answers.add("answers +");
+
         // Required empty public constructor
     }
 
@@ -170,32 +170,31 @@ public class AddQuestionFragment extends Fragment
                         Log.d(DEBUG_TAG, "btnConfirmAnswer onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
+                        showCorrectAnswerDialog();
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                         Log.d(DEBUG_TAG, "btnConfirmAnswer onTouch. Action was UP");
                         v.setElevation(elevPx);
 
                         /*
                         * действия в этом месте:
-                        * 1. ~~спросить через диалог, является ли ответ правильным~~. Если уже есть правильный
+                        * 1. спросить через диалог, является ли ответ правильным. Если уже есть правильный
                         * ответ и вопрос с одним правильным вариантом, то выдать сообщение
-                        * 2. изменить текст ответа
-                        * 3. добавить его в коллекцию ответов
-                        * 4. изменить отображение RecyclerView
+                        * 2. ~~изменить текст ответа~~
+                        * 3. ~~добавить его в коллекцию ответов~~
+                        * 4. ~~изменить отображение RecyclerView~~
                         * */
-                        showCorrectAnswerDialog();
 
-                        question.addAnswerToCollection(etNewAnswer.getText().toString());
-                        etNewAnswer.setText("");
+                        
                         Log.d(DEBUG_TAG, "view.getChildCount() bef removeView = " +
                                 ((ConstraintLayout) view).getChildCount());
                         ((ViewGroup) view).removeView(etNewAnswer);
                         Log.d(DEBUG_TAG, "view.getChildCount() aft removeView = " +
                                 ((ConstraintLayout) view).getChildCount());
 
-                        ConstraintLayout.LayoutParams etNewQuestionParams = new ConstraintLayout.LayoutParams(
+                        /*ConstraintLayout.LayoutParams etNewQuestionParams = new ConstraintLayout.LayoutParams(
                                 ConstraintLayout.LayoutParams.MATCH_PARENT,
                                 0
-                        );
+                        );*/
                         //etNewAnswerParams.matchConstraintPercentHeight = 0.4f;
 
                         //etNewQuestion.setLayoutParams(etNewQuestionParams);
@@ -222,14 +221,13 @@ public class AddQuestionFragment extends Fragment
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState)
-    {
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Log.d(DEBUG_TAG, "in onViewCreated() of AddQuestionFragment");
 
 
 
-        AnswersAdapter answersAdapter = new AnswersAdapter(answers);
+        answersAdapter = new AnswersAdapter(question.getAnswers());
         RecyclerView rvAnswers = view.findViewById(R.id.rv_answers_collection);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         rvAnswers.setLayoutManager(layoutManager);
@@ -252,6 +250,10 @@ public class AddQuestionFragment extends Fragment
         DialogFragment newFragment = new CorrectAnswerDialogFragment();
         newFragment.show(getChildFragmentManager(), "CorrectAnswerDialogFragment");
     }
+    public void showMessageDialog(String title, String message) {
+        DialogFragment newFragment = new MessageDialogFragment(title, message);
+        newFragment.show(getChildFragmentManager(), "CorrectAnswerDialogFragment");
+    }
 
     public Question getQuestion(){
         return question;
@@ -265,14 +267,29 @@ public class AddQuestionFragment extends Fragment
     @Override
     public void onQuestionTypeNegClick(DialogFragment dialog) {
         question.setSingleAnswer(false);
+        
     }
 
     @Override
     public void onCorrectAnswerPosClick(DialogFragment dialog) {
-        isAnswerCorrect = true;
+
+        if(question.isSingleAnswer() && haveCorrectAnswer){
+            showMessageDialog(getResources().getString(R.string.msg_dlg_too_many_correct_answers_title),
+                    getResources().getString(R.string.msg_dlg_too_many_correct_answers_message));
+        }
+        else{
+            // добавить вопрос в коллекцию и обновить RecyclerView
+            question.addAnswerToCollection(etNewAnswer.getText().toString());
+            answersAdapter.notifyDataSetChanged();
+            haveCorrectAnswer = false;
+        }
+        etNewAnswer.setText("");
+        haveCorrectAnswer = true;
     }
     @Override
     public void onCorrectAnswerNegClick(DialogFragment dialog) {
-        isAnswerCorrect = false;
+        question.addAnswerToCollection(etNewAnswer.getText().toString());
+        answersAdapter.notifyDataSetChanged();
+        etNewAnswer.setText("");
     }
 }
