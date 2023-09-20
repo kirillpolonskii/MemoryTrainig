@@ -28,12 +28,15 @@ import com.youngsophomore.R;
 import com.youngsophomore.adapters.AnswersAdapter;
 import com.youngsophomore.adapters.QuestionsAdapter;
 import com.youngsophomore.data.Question;
+import com.youngsophomore.interfaces.RecyclerViewClickListener;
 
 import java.util.ArrayList;
 
 public class AddQuestionFragment extends Fragment
         implements QuestionTypeDialogFragment.QuestionTypeDialogListener,
-                    CorrectAnswerDialogFragment.CorrectAnswerDialogListener{
+                    CorrectAnswerDialogFragment.CorrectAnswerDialogListener,
+        DeleteAnswerDialogFragment.DeleteAnswerDialogListener,
+                    RecyclerViewClickListener {
     private static final String DEBUG_TAG = "Gestures";
     //private ArrayList<String> answers;
     EditText etNewQuestion;
@@ -227,7 +230,7 @@ public class AddQuestionFragment extends Fragment
 
 
 
-        answersAdapter = new AnswersAdapter(question.getAnswers());
+        answersAdapter = new AnswersAdapter(question.getAnswers(), this);
         RecyclerView rvAnswers = view.findViewById(R.id.rv_answers_collection);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         rvAnswers.setLayoutManager(layoutManager);
@@ -254,6 +257,10 @@ public class AddQuestionFragment extends Fragment
         DialogFragment newFragment = new MessageDialogFragment(title, message);
         newFragment.show(getChildFragmentManager(), "CorrectAnswerDialogFragment");
     }
+    public void showDeleteAnswerDialog(int position){
+        DialogFragment newFragment = new DeleteAnswerDialogFragment(position);
+        newFragment.show(getChildFragmentManager(), "CorrectAnswerDialogFragment");
+    }
 
     public Question getQuestion(){
         return question;
@@ -267,7 +274,6 @@ public class AddQuestionFragment extends Fragment
     @Override
     public void onQuestionTypeNegClick(DialogFragment dialog) {
         question.setSingleAnswer(false);
-        
     }
 
     @Override
@@ -291,5 +297,21 @@ public class AddQuestionFragment extends Fragment
         question.addAnswerToCollection(etNewAnswer.getText().toString());
         answersAdapter.notifyDataSetChanged();
         etNewAnswer.setText("");
+    }
+
+    @Override
+    public void onItemLongClick(int position) {
+        showDeleteAnswerDialog(position);
+    }
+
+    @Override
+    public void onDeleteAnswerPosClick(DialogFragment dialog, int position) {
+        question.removeAnswerFromCollection(position);
+        answersAdapter.notifyItemRemoved(position);
+    }
+
+    @Override
+    public void onDeleteAnswerNegClick(DialogFragment dialog) {
+
     }
 }

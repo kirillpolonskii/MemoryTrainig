@@ -63,6 +63,9 @@ public class Question implements Parcelable {
     public void addAnswerToCollection(String newAnswer){
         answers.add(newAnswer);
     }
+    public void removeAnswerFromCollection(int position){
+        answers.remove(position);
+    }
     public void setSingleAnswer(boolean isSingleAnswer){
         this.isSingleAnswer = isSingleAnswer;
     }
