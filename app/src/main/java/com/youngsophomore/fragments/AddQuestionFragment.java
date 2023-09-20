@@ -285,7 +285,8 @@ public class AddQuestionFragment extends Fragment
         }
         else{
             // добавить вопрос в коллекцию и обновить RecyclerView
-            question.addAnswerToCollection(etNewAnswer.getText().toString());
+            String newAnswer = etNewAnswer.getText().toString() + " +";
+            question.addAnswerToCollection(newAnswer);
             answersAdapter.notifyDataSetChanged();
             haveCorrectAnswer = false;
         }
@@ -294,7 +295,8 @@ public class AddQuestionFragment extends Fragment
     }
     @Override
     public void onCorrectAnswerNegClick(DialogFragment dialog) {
-        question.addAnswerToCollection(etNewAnswer.getText().toString());
+        String newAnswer = etNewAnswer.getText().toString() + " -";
+        question.addAnswerToCollection(newAnswer);
         answersAdapter.notifyDataSetChanged();
         etNewAnswer.setText("");
     }

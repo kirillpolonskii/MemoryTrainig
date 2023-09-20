@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.youngsophomore.R;
+import com.youngsophomore.data.CollectionsStorage;
 import com.youngsophomore.data.Question;
 import com.youngsophomore.fragments.AddPhraseFragment;
 import com.youngsophomore.fragments.AddQuestionFragment;
@@ -27,6 +28,7 @@ public class AddImageActivity extends AppCompatActivity {
     private final String ADD_QUESTION_FRAGMENT_TAG = "add_question_fragment";
     private static final String DEBUG_TAG = "Gestures";
     private ArrayList<Question> newQuestions;
+    String newQuestionsCollectionTitle;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -118,15 +120,44 @@ public class AddImageActivity extends AppCompatActivity {
                         * в объекте Bundle.
                         * */
 
-                        /*Fragment newQuestionFragment = fragmentManager.findFragmentByTag(ADD_QUESTION_FRAGMENT_TAG);
-                        EditText etNewPhrase = newQuestionFragment.getView().findViewById(R.id.et_new_phrase);
-                        newPhrasesCollectionCharS.add(etNewPhrase.getText().toString());
-                        bundle.putCharSequenceArrayList(getString(R.string.new_phrases_collection_key), newPhrasesCollectionCharS);
+                        AddQuestionFragment newQuestionFragment =
+                                (AddQuestionFragment) fragmentManager.findFragmentByTag(ADD_QUESTION_FRAGMENT_TAG);
+                        Question newQuestion = newQuestionFragment.getQuestion();
+                        newQuestion.putAnswersInOneString();
+                        newQuestions.add(newQuestion);
+                        bundle.putParcelableArrayList(getString(R.string.new_questions_collection_key), newQuestions);
                         fragmentManager.beginTransaction()
-                                .replace(R.id.frgt_view, NewPhrasesListFragment.class, bundle, NEW_PHRASES_LIST_FRAGMENT_TAG)
+                                .replace(R.id.frgt_view, NewQuestionsListFragment.class, bundle, NEW_QUESTIONS_FRAGMENT_TAG)
                                 .setReorderingAllowed(true)
                                 .commit();
-                        fragmentManager.popBackStack();*/
+                        fragmentManager.popBackStack();
+                        /*SharedPreferences.Editor editor = sharedPreferences.edit();*/
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
+        btnConfirmQuestionsCollection.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                int action = event.getAction();
+                switch(action) {
+                    case (MotionEvent.ACTION_DOWN):
+                        Log.d(DEBUG_TAG, "btnConfirmQuestionsCollection onTouch. Action was DOWN");
+                        view.setElevation(0);
+                        return true;
+                    case (MotionEvent.ACTION_MOVE):
+                        Log.d(DEBUG_TAG, "btnConfirmQuestionsCollection onTouch. Action was MOVE");
+                        return true;
+                    case (MotionEvent.ACTION_UP):
+                        int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
+                        Log.d(DEBUG_TAG, "btnConfirmQuestionsCollection onTouch. Action was UP");
+                        view.setElevation(elevPx);
+
+                        newQuestionsCollectionTitle = "test1";
+                        CollectionsStorage.addQuestionsCollections(newQuestionsCollectionTitle, newQuestions);
+                        onBackPressed();
                         /*SharedPreferences.Editor editor = sharedPreferences.edit();*/
                         return true;
                     default:

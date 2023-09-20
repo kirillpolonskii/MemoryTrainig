@@ -15,6 +15,7 @@ public class Question implements Parcelable {
 
     public Question(){
         this.answers = new ArrayList<>();
+        answersInOneString = "";
     }
 
     public Question(String questionText, ArrayList<String> answers, String answersInOneString){
@@ -50,6 +51,12 @@ public class Question implements Parcelable {
     public String getAnswersInOneString() {
         return answersInOneString;
     }
+    public void putAnswersInOneString(){
+        for(int i = 0; i < answers.size() - 1; ++i){
+            answersInOneString += answers.get(i) + "\n";
+        }
+        answersInOneString += answers.get(answers.size() - 1);
+    }
 
     public void setQuestionText(String questionText) {
         this.questionText = questionText;
@@ -66,6 +73,7 @@ public class Question implements Parcelable {
     public void removeAnswerFromCollection(int position){
         answers.remove(position);
     }
+
     public void setSingleAnswer(boolean isSingleAnswer){
         this.isSingleAnswer = isSingleAnswer;
     }
