@@ -1,5 +1,8 @@
 package com.youngsophomore.data;
 
+import android.net.Uri;
+import android.util.ArrayMap;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -11,6 +14,7 @@ public class CollectionsStorage {
 
     private static ArrayList<String> questionsCollectionsTitles; // collection named after image
     private static ArrayList<ArrayList<Question>> questionsCollections;
+    private static ArrayMap<String, Uri> imageNamesForUri;
 
 
     static {
@@ -25,6 +29,7 @@ public class CollectionsStorage {
         questionsCollectionsTitles = new ArrayList<>();
         questionsCollectionsTitles.add("Image1");
         questionsCollections = new ArrayList<>();
+        imageNamesForUri = new ArrayMap<>();
     }
 
     public static void addWordsCollection(String title, String newCollection){
@@ -57,9 +62,10 @@ public class CollectionsStorage {
         return phrasesCollectionsTitles.get(position);
     }
 
-    public static void addQuestionsCollections(String title, ArrayList<Question> newCollection){
+    public static void addQuestionsCollections(String title, Uri imageUri, ArrayList<Question> newCollection){
         questionsCollectionsTitles.add(title);
         questionsCollections.add(newCollection);
+        imageNamesForUri.put(title, imageUri);
     }
 
     public static ArrayList<String> getQuestionsCollectionsTitles(){

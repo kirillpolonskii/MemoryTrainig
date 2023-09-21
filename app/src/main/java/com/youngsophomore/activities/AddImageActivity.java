@@ -2,33 +2,48 @@ package com.youngsophomore.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.youngsophomore.R;
 import com.youngsophomore.data.CollectionsStorage;
 import com.youngsophomore.data.Question;
 import com.youngsophomore.fragments.AddPhraseFragment;
 import com.youngsophomore.fragments.AddQuestionFragment;
+import com.youngsophomore.fragments.CorrectAnswerDialogFragment;
+import com.youngsophomore.fragments.NewImageNameDialogFragment;
 import com.youngsophomore.fragments.NewPhrasesListFragment;
 import com.youngsophomore.fragments.NewQuestionsListFragment;
 
 import java.util.ArrayList;
 
-public class AddImageActivity extends AppCompatActivity {
+public class AddImageActivity extends AppCompatActivity implements
+        NewImageNameDialogFragment.NewImageNameDialogListener {
     private final String NEW_QUESTIONS_FRAGMENT_TAG = "new_questions_fragment";
     private final String ADD_QUESTION_FRAGMENT_TAG = "add_question_fragment";
     private static final String DEBUG_TAG = "Gestures";
     private ArrayList<Question> newQuestions;
     String newQuestionsCollectionTitle;
+    Uri imageUri;
+    public final int NEW_IMAGE_REQUEST_CODE = 20;
+    TextView tvNewImageName;
+    int tvNewImageNameId;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -155,8 +170,8 @@ public class AddImageActivity extends AppCompatActivity {
                         Log.d(DEBUG_TAG, "btnConfirmQuestionsCollection onTouch. Action was UP");
                         view.setElevation(elevPx);
 
-                        newQuestionsCollectionTitle = "test1";
-                        CollectionsStorage.addQuestionsCollections(newQuestionsCollectionTitle, newQuestions);
+
+                        CollectionsStorage.addQuestionsCollections(newQuestionsCollectionTitle, imageUri, newQuestions);
                         onBackPressed();
                         /*SharedPreferences.Editor editor = sharedPreferences.edit();*/
                         return true;
@@ -165,7 +180,50 @@ public class AddImageActivity extends AppCompatActivity {
                 }
             }
         });
+        ImageButton btnNewImage = findViewById(R.id.btn_new_image);
+        btnNewImage.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                int action = event.getAction();
+                switch(action) {
+                    case (MotionEvent.ACTION_DOWN):
+                        Log.d(DEBUG_TAG, "btnNewImage onTouch. Action was DOWN");
+                        view.setElevation(0);
+                        return true;
+                    case (MotionEvent.ACTION_MOVE):
+                        Log.d(DEBUG_TAG, "btnNewImage onTouch. Action was MOVE");
+                        return true;
+                    case (MotionEvent.ACTION_UP):
+                        int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
+                        Log.d(DEBUG_TAG, "btnNewImage onTouch. Action was UP");
+                        view.setElevation(elevPx);
+                        openFileChooser();
 
+                        showNewImageNameDialog();
+                        
+                        /*SharedPreferences.Editor editor = sharedPreferences.edit();*/
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent){
+        super.onActivityResult(requestCode, resultCode, intent);
+        if(requestCode == NEW_IMAGE_REQUEST_CODE && resultCode == Activity.RESULT_OK && intent != null){
+            imageUri = intent.getData();
+            Log.d(DEBUG_TAG, "Uri from file picker = " + imageUri);
+        }
+    }
+
+    public void openFileChooser(){
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        startActivityForResult(intent, NEW_IMAGE_REQUEST_CODE);
     }
 
     private void activateBtn(ImageButton btn, int elevPx){
@@ -183,5 +241,46 @@ public class AddImageActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp(){
         onBackPressed();
         return true;
+    }
+    public void showNewImageNameDialog() {
+        DialogFragment newFragment = new NewImageNameDialogFragment();
+        newFragment.show(getSupportFragmentManager(), "NewImageNameDialogFragment");
+    }
+
+    @Override
+    public void onNewImageNamePosClick(DialogFragment dialog, String newImageName) {
+        newQuestionsCollectionTitle = newImageName;
+        tvNewImageName = new TextView(AddImageActivity.this, null, 0, R.style.SettingsTextViewStyle);
+        tvNewImageNameId = View.generateViewId();
+        tvNewImageName.setId(tvNewImageNameId);
+        tvNewImageName.setText(newQuestionsCollectionTitle);
+        ConstraintLayout.LayoutParams tvNewImageNameParams = new ConstraintLayout.LayoutParams(
+                ConstraintLayout.LayoutParams.WRAP_CONTENT,
+                ConstraintLayout.LayoutParams.WRAP_CONTENT
+        );
+        tvNewImageName.setLayoutParams(tvNewImageNameParams);
+
+        ConstraintLayout clAddImage = findViewById(R.id.cl_add_image);
+        clAddImage.removeView(clAddImage.findViewById(R.id.btn_new_image));
+
+        //((ViewGroup) view.getParent()).removeView(etNewQuestion);
+
+        //etNewAnswer.setActivated(true);
+        //etNewAnswer.setImportantForAutofill(View.IMPORTANT_FOR_AUTOFILL_NO);
+
+        clAddImage.addView(tvNewImageName);
+        ConstraintSet constraintSet = new ConstraintSet();
+        constraintSet.clone(clAddImage);
+        constraintSet.connect(tvNewImageNameId, ConstraintSet.TOP,
+                R.id.tv_new_image, ConstraintSet.TOP);
+        constraintSet.connect(tvNewImageNameId, ConstraintSet.BOTTOM,
+                R.id.tv_new_image, ConstraintSet.BOTTOM);
+        constraintSet.connect(tvNewImageNameId, ConstraintSet.START,
+                R.id.tv_new_image, ConstraintSet.END);
+        //constraintSet.constrainHeight(etNewAnswerId, ConstraintSet.MATCH_CONSTRAINT_PERCENT);
+        //constraintSet.constrainDefaultHeight(etNewAnswerId, ConstraintSet.MATCH_CONSTRAINT_PERCENT);
+        constraintSet.applyTo(clAddImage);
+        
+
     }
 }

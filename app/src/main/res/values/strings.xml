@@ -108,7 +108,8 @@
 
     <string name="delete_answer_dialog_title">Удаление ответа</string>
     <string name="delete_answer_dialog_message">Вы действительно хотите удалить ответ?</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="et_new_image_dialog_hint">Введите уникальное название</string>
+    <string name="new_image_dialog_title">Название нового изображения</string>
 
 </resources>

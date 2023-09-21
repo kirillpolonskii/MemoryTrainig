@@ -177,16 +177,6 @@ public class AddQuestionFragment extends Fragment
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                         Log.d(DEBUG_TAG, "btnConfirmAnswer onTouch. Action was UP");
                         v.setElevation(elevPx);
-
-                        /*
-                        * действия в этом месте:
-                        * 1. спросить через диалог, является ли ответ правильным. Если уже есть правильный
-                        * ответ и вопрос с одним правильным вариантом, то выдать сообщение
-                        * 2. ~~изменить текст ответа~~
-                        * 3. ~~добавить его в коллекцию ответов~~
-                        * 4. ~~изменить отображение RecyclerView~~
-                        * */
-
                         
                         Log.d(DEBUG_TAG, "view.getChildCount() bef removeView = " +
                                 ((ConstraintLayout) view).getChildCount());
@@ -194,13 +184,6 @@ public class AddQuestionFragment extends Fragment
                         Log.d(DEBUG_TAG, "view.getChildCount() aft removeView = " +
                                 ((ConstraintLayout) view).getChildCount());
 
-                        /*ConstraintLayout.LayoutParams etNewQuestionParams = new ConstraintLayout.LayoutParams(
-                                ConstraintLayout.LayoutParams.MATCH_PARENT,
-                                0
-                        );*/
-                        //etNewAnswerParams.matchConstraintPercentHeight = 0.4f;
-
-                        //etNewQuestion.setLayoutParams(etNewQuestionParams);
                         ((ViewGroup) view).addView(etNewQuestion);
                         etNewQuestion.setText(question.getQuestionText());
                         ConstraintSet constraintSet = new ConstraintSet();
