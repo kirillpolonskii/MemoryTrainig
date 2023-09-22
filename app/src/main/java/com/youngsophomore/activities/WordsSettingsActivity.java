@@ -2,6 +2,7 @@ package com.youngsophomore.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -9,6 +10,8 @@ import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -22,6 +25,7 @@ import com.youngsophomore.R;
 import com.youngsophomore.data.CollectionsStorage;
 import com.youngsophomore.fragments.AddWordsCollectionFragment;
 import com.youngsophomore.fragments.DisplayWordsSettingsFragment;
+import com.youngsophomore.fragments.InfoDialogFragment;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -207,6 +211,24 @@ public class WordsSettingsActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.mi_btn_info) {
+            Log.d(DEBUG_TAG, "info button in WordsSettingsActivity");
+            showInfoDialog(R.layout.fragment_words_settings_info);
+        }
+        return true;
+    }
+    public void showInfoDialog(int layoutResource) {
+        DialogFragment newFragment = new InfoDialogFragment(layoutResource);
+        newFragment.show(getSupportFragmentManager(), "InfoDialogFragment");
     }
 
     private void activateBtn(ImageButton btn, int elevPx){

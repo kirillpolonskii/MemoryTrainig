@@ -2,12 +2,15 @@ package com.youngsophomore.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.DialogFragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
@@ -16,6 +19,7 @@ import android.widget.NumberPicker;
 import com.addisonelliott.segmentedbutton.SegmentedButton;
 import com.addisonelliott.segmentedbutton.SegmentedButtonGroup;
 import com.youngsophomore.R;
+import com.youngsophomore.fragments.InfoDialogFragment;
 
 public class MahjongSettingsActivity extends AppCompatActivity {
     private static final String DEBUG_TAG = "Gestures";
@@ -26,9 +30,23 @@ public class MahjongSettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mahjong_settings);
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(getString(R.string.tbr_mahjong_settings_title));
-
+        //toolbar.setContentInsetsAbsolute(0, 0);
+        //toolbar.setPadding(0, 0, 0, 0);
+        /*toolbar.inflateMenu(R.menu.menu_toolbar);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                int itemId = item.getItemId();
+                if (itemId == R.id.mi_btn_info) {
+                    Log.d(DEBUG_TAG, "info button in MahjongSettingsActivity");
+                    return true;
+                }
+                return false;
+            }
+        });*/
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         SharedPreferences sharedPreferences =
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
@@ -274,6 +292,24 @@ public class MahjongSettingsActivity extends AppCompatActivity {
             }
 
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.mi_btn_info) {
+            Log.d(DEBUG_TAG, "info button in MahjongSettingsActivity");
+            showInfoDialog(R.layout.fragment_mahjong_settings_info);
+        }
+        return true;
+    }
+    public void showInfoDialog(int layoutResource) {
+        DialogFragment newFragment = new InfoDialogFragment(layoutResource);
+        newFragment.show(getSupportFragmentManager(), "InfoDialogFragment");
     }
 
     private int sgBtnGroupBonesPosToAmount(int selectedPosition){

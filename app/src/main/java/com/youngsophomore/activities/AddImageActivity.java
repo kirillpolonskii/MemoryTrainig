@@ -52,6 +52,7 @@ public class AddImageActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_add_image);
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(getString(R.string.tbr_details_add_image_title));
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

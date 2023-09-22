@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/mi_btn_info"
+        android:icon="@drawable/outline_info_white_48"
+        android:title="@string/mi_info_title"
+        app:showAsAction="always"
+        />
+</menu>

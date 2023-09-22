@@ -26,42 +26,28 @@
         android:layout_marginVertical="10dp"
         />
 
-
-    <ImageButton
-        android:id="@+id/btn_add_words_collection"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn_save_words_settings"
-
-        android:background="@drawable/btn_save_bg"
-        android:contentDescription="@string/info"
-        android:elevation="@dimen/btn_stats_elev"
-        android:src="@drawable/outline_note_add_60"
-        android:layout_marginBottom="40dp"
-        />
     <ImageButton
         android:id="@+id/btn_save_words_settings"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        app:layout_constraintBottom_toBottomOf="@id/btn_add_words_collection"
-        app:layout_constraintStart_toEndOf="@id/btn_add_words_collection"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btn_save_words_settings_and_play"
 
         android:background="@drawable/btn_save_bg"
         android:contentDescription="@string/info"
         android:elevation="@dimen/btn_stats_elev"
         android:src="@drawable/baseline_save_60"
+        android:layout_marginBottom="40dp"
 
         />
     <ImageButton
         android:id="@+id/btn_save_words_settings_and_play"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        app:layout_constraintBottom_toBottomOf="@id/btn_add_words_collection"
+        app:layout_constraintBottom_toBottomOf="@id/btn_save_words_settings"
         app:layout_constraintStart_toEndOf="@id/btn_save_words_settings"
-        app:layout_constraintEnd_toStartOf="@id/btn_confirm_words_collection"
+        app:layout_constraintEnd_toStartOf="@id/btn_add_words_collection"
 
         android:background="@drawable/btn_save_bg"
         android:contentDescription="@string/info"
@@ -70,11 +56,25 @@
 
         />
     <ImageButton
+        android:id="@+id/btn_add_words_collection"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_save_words_settings"
+        app:layout_constraintStart_toEndOf="@id/btn_save_words_settings_and_play"
+        app:layout_constraintEnd_toStartOf="@id/btn_confirm_words_collection"
+
+        android:background="@drawable/btn_save_bg"
+        android:contentDescription="@string/info"
+        android:elevation="@dimen/btn_stats_elev"
+        android:src="@drawable/outline_note_add_60"
+
+        />
+    <ImageButton
         android:id="@+id/btn_confirm_words_collection"
         android:layout_width="60dp"
         android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="@id/btn_add_words_collection"
-        app:layout_constraintStart_toEndOf="@id/btn_save_words_settings_and_play"
+        app:layout_constraintStart_toEndOf="@id/btn_add_words_collection"
         app:layout_constraintEnd_toEndOf="parent"
 
         android:background="@drawable/btn_save_bg"
