@@ -2,6 +2,7 @@ package com.youngsophomore.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
@@ -10,6 +11,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -19,6 +22,7 @@ import android.widget.Spinner;
 
 import com.youngsophomore.R;
 import com.youngsophomore.data.CollectionsStorage;
+import com.youngsophomore.fragments.InfoDialogFragment;
 
 public class PhrasesSettingsActivity extends AppCompatActivity {
     private static final String DEBUG_TAG = "Gestures";
@@ -139,6 +143,24 @@ public class PhrasesSettingsActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.mi_btn_info) {
+            Log.d(DEBUG_TAG, "info button in ShapesSettingsActivity");
+            showInfoDialog(R.layout.fragment_phrases_settings_info);
+        }
+        return true;
+    }
+    public void showInfoDialog(int layoutResource) {
+        DialogFragment newFragment = new InfoDialogFragment(layoutResource);
+        newFragment.show(getSupportFragmentManager(), "InfoDialogFragment");
     }
 
     @Override

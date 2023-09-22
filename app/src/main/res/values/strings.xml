@@ -121,5 +121,17 @@
     <string name="tv_add_words_collection">Добавить коллекцию слов</string>
     <string name="tv_confirm_words_collection">Сохранить коллекцию слов</string>
 
+    <string name="tv_add_phrases_collection">Добавить коллекцию фраз</string>
+
+    <string name="tv_add_phrase">Добавить фразу в коллекцию</string>
+    <string name="tv_save_phrase">Сохранить фразу в коллекции</string>
+    <string name="tv_confirm_phrases_collection">Подтвердить коллекцию фраз</string>
+
+    <string name="tv_add_image">Добавить изображение и коллекцию вопросов</string>
+
+    <string name="tv_add_question">Добавить вопрос в коллекцию</string>
+    <string name="tv_save_question">Сохранить вопрос в коллекции</string>
+    <string name="tv_confirm_questions_collection">Подтвердить коллекцию вопросов</string>
+
 
 </resources>

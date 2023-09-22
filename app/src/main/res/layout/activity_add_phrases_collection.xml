@@ -55,7 +55,7 @@
         android:background="@drawable/btn_save_bg"
         android:contentDescription="@string/info"
         android:elevation="@dimen/btn_stats_elev"
-        android:src="@drawable/round_phrase_add_60"
+        android:src="@drawable/round_add_to_collection_60"
         android:layout_marginBottom="40dp"
         />
 
@@ -70,7 +70,7 @@
         android:background="@drawable/btn_save_bg"
         android:contentDescription="@string/info"
         android:elevation="@dimen/btn_stats_elev"
-        android:src="@drawable/round_phrase_save_60"
+        android:src="@drawable/round_save_in_collection_60"
         android:layout_marginBottom="40dp"
         />
 

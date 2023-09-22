@@ -3,6 +3,7 @@ package com.youngsophomore.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
@@ -12,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +27,7 @@ import com.youngsophomore.data.CollectionsStorage;
 import com.youngsophomore.fragments.AddPhraseFragment;
 import com.youngsophomore.fragments.AddWordsCollectionFragment;
 import com.youngsophomore.fragments.DisplayWordsSettingsFragment;
+import com.youngsophomore.fragments.InfoDialogFragment;
 import com.youngsophomore.fragments.NewPhrasesListFragment;
 
 import java.util.ArrayList;
@@ -40,7 +44,7 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_phrases_collection);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(getString(R.string.tbr_phrases_settings_title));
+        toolbar.setTitle(getString(R.string.tbr_phrases_add_collection_title));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -168,6 +172,24 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.mi_btn_info) {
+            Log.d(DEBUG_TAG, "info button in ShapesSettingsActivity");
+            showInfoDialog(R.layout.fragment_add_phrases_info);
+        }
+        return true;
+    }
+    public void showInfoDialog(int layoutResource) {
+        DialogFragment newFragment = new InfoDialogFragment(layoutResource);
+        newFragment.show(getSupportFragmentManager(), "InfoDialogFragment");
     }
 
     private void activateBtn(ImageButton btn, int elevPx){
