@@ -14,6 +14,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +29,7 @@ import com.youngsophomore.data.Question;
 import com.youngsophomore.fragments.AddPhraseFragment;
 import com.youngsophomore.fragments.AddQuestionFragment;
 import com.youngsophomore.fragments.CorrectAnswerDialogFragment;
+import com.youngsophomore.fragments.InfoDialogFragment;
 import com.youngsophomore.fragments.NewImageNameDialogFragment;
 import com.youngsophomore.fragments.NewPhrasesListFragment;
 import com.youngsophomore.fragments.NewQuestionsListFragment;
@@ -225,6 +228,24 @@ public class AddImageActivity extends AppCompatActivity implements
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
         startActivityForResult(intent, NEW_IMAGE_REQUEST_CODE);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.mi_btn_info) {
+            Log.d(DEBUG_TAG, "info button in ShapesSettingsActivity");
+            showInfoDialog(R.layout.fragment_add_image_info);
+        }
+        return true;
+    }
+    public void showInfoDialog(int layoutResource) {
+        DialogFragment newFragment = new InfoDialogFragment(layoutResource);
+        newFragment.show(getSupportFragmentManager(), "InfoDialogFragment");
     }
 
     private void activateBtn(ImageButton btn, int elevPx){

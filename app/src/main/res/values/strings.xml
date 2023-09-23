@@ -82,7 +82,7 @@
     <string name="saved_phrase_show_time_key">PHRASE_SHOW_TIME</string>
 
     <string name="tbr_details_settings_title">Настройки: детали</string>
-    <string name="tbr_details_add_image_title">Добавить изображение</string>
+    <string name="tbr_details_add_image_title">Новое изображение</string>
     <string name="images_collection">Изображение:</string>
     <string name="image_show_time">Время показа изображения (с):</string>
     <string name="new_image">Новое изображение:</string>
@@ -129,9 +129,12 @@
 
     <string name="tv_add_image">Добавить изображение и коллекцию вопросов</string>
 
+    <string name="tv_choose_image">Выбрать изображение</string>
     <string name="tv_add_question">Добавить вопрос в коллекцию</string>
     <string name="tv_save_question">Сохранить вопрос в коллекции</string>
     <string name="tv_confirm_questions_collection">Подтвердить коллекцию вопросов</string>
+    <string name="tv_add_answer">Добавить ответ</string>
+    <string name="tv_save_answer">Сохранить ответ</string>
 
 
 </resources>
