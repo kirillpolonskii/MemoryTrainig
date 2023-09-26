@@ -51,6 +51,25 @@
 + ~~Добавить кнопку info на каждую активность настроек для показа диалогового окна инструкций~~
   + ~~Сделать заголовки toolbar меньше~~
   + ~~Сделать интерфейс для каждого диалогового окна~~
++ Сделать фрагмент с секундомером
++ Сделать MahjongTrainingActivity
+  + Изучить добавление своих графических ресурсов
+  + Повторить анимацию
++ Сделать ColorsTrainingActivity
+  + Сделать ColorsPrepFragment
+  + Сделать ColorsTrainingFragment
++ Сделать ShapesTrainingActivity
+  + Сделать ShapesPrepFragment
+  + Сделать ShapesTrainingFragment
++ Сделать WordsTrainingActivity
+  + Сделать WordsPrepFragment
+  + Сделать WordsTrainingFragment
++ Сделать PhrasesTrainingActivity
+  + Сделать PhrasesPrepFragment
+  + Сделать PhrasesTrainingFragment
++ Сделать DetailsTrainingActivity
+  + Сделать DetailsPrepFragment
+  + Сделать DetailsTrainingFragment
 + Сделать Statistics
 
 # Код
@@ -90,7 +109,7 @@
 + Сделать AddImageActivity
   + ~~Реализовать класс Question и адаптер для RecyclerView в NewQuestionsListFragment~~</font>
   + Сделать NewQuestionFragment
-    + <font size = "1">~~НаписаimageUriть логику замены edittext добавления текста вопроса на edittext добавления варианта ответа и наоборот~~
+    + <font size = "1">~~Написать imageUri логику замены edittext добавления текста вопроса на edittext добавления варианта ответа и наоборот~~
     + ~~Написать логику AlertDialog для определения вида вопроса и правильности ответа~~
     + ~~Написать логику удаления ответа из списка по долгому нажатию на элемент~~</font>
   + Сделать NewQuestionsListFragment
@@ -102,6 +121,26 @@
   + ~~Написать сохранение коллекции вопросов и uri изображения в паре с его названием от пользователя~~
 + Добавить кнопку info на каждую активность настроек для показа диалогового окна инструкций
   + Написать ShowInfoDialogFragment
++ Сделать фрагмент с секундомером
++ Сделать MahjongTrainingActivity
+  + ~~Изучить GridLayout и обработку нажатий на ячейки~~
+  + Написать логику формирования массива костей
++ Сделать ColorsTrainingActivity
+  + Сделать ColorsPrepFragment: логика рандомной генерации последовательности (отдельный класс), логика отрисовки фигур или 
+  загрузки изображений
+  + Сделать ColorsTrainingFragment
++ Сделать ShapesTrainingActivity
+  + Сделать ShapesPrepFragment
+  + Сделать ShapesTrainingFragment
++ Сделать WordsTrainingActivity
+  + Сделать WordsPrepFragment
+  + Сделать WordsTrainingFragment
++ Сделать PhrasesTrainingActivity
+  + Сделать PhrasesPrepFragment
+  + Сделать PhrasesTrainingFragment
++ Сделать DetailsTrainingActivity
+  + Сделать DetailsPrepFragment
+  + Сделать DetailsTrainingFragment
 + Сделать Statistics
 
 
