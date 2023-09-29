@@ -30,20 +30,6 @@ public class MahjongSettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mahjong_settings);
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(getString(R.string.tbr_mahjong_settings_title));
-        //toolbar.setContentInsetsAbsolute(0, 0);
-        //toolbar.setPadding(0, 0, 0, 0);
-        /*toolbar.inflateMenu(R.menu.menu_toolbar);
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                int itemId = item.getItemId();
-                if (itemId == R.id.mi_btn_info) {
-                    Log.d(DEBUG_TAG, "info button in MahjongSettingsActivity");
-                    return true;
-                }
-                return false;
-            }
-        });*/
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -51,16 +37,15 @@ public class MahjongSettingsActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences =
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         int mahjongRememberTime = sharedPreferences.getInt(getString(R.string.saved_mahjong_remember_time_key), 2);
-        int mahjongBonesAmount = sharedPreferences.getInt(getString(R.string.saved_mahjong_bones_amount_key), 12);
-        int mahjongEqualBonesAmount = sharedPreferences.getInt(getString(R.string.saved_mahjong_equal_bones_amount_key), 2);
+        int mahjongBonesAmount = sharedPreferences.getInt(getString(R.string.saved_mahjong_bones_amount_key), 0);
+        int mahjongEqualBonesAmount = sharedPreferences.getInt(getString(R.string.saved_mahjong_equal_bones_amount_key), 0);
         NumberPicker numberPicker = findViewById(R.id.number_picker);
         numberPicker.setMinValue(1);
         numberPicker.setMaxValue(10);
         numberPicker.setValue(mahjongRememberTime);
 
         SegmentedButtonGroup sgBtnGroupBones = findViewById(R.id.sgbtn_bones_amount);
-        sgBtnGroupBones.setPosition(
-                sharedPreferences.getInt(getString(R.string.saved_mahjong_bones_amount_key), 0), false);
+        sgBtnGroupBones.setPosition(mahjongBonesAmount, false);
         SegmentedButton sgBtnBonesAmount12 = sgBtnGroupBones.getButton(0);
 
         sgBtnBonesAmount12.setOnTouchListener(new View.OnTouchListener() {
@@ -124,8 +109,7 @@ public class MahjongSettingsActivity extends AppCompatActivity {
         });
 
         SegmentedButtonGroup sgBtnGroupEqualBones = findViewById(R.id.sgbtn_equal_bones_amount);
-        sgBtnGroupEqualBones.setPosition(
-                sharedPreferences.getInt(getString(R.string.saved_mahjong_equal_bones_amount_key), 0), false);
+        sgBtnGroupEqualBones.setPosition(mahjongEqualBonesAmount, false);
         SegmentedButton sgBtnEqualBonesAmount2 = sgBtnGroupEqualBones.getButton(0);
         sgBtnEqualBonesAmount2.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -310,32 +294,6 @@ public class MahjongSettingsActivity extends AppCompatActivity {
     public void showInfoDialog(int layoutResource) {
         DialogFragment newFragment = new InfoDialogFragment(layoutResource);
         newFragment.show(getSupportFragmentManager(), "InfoDialogFragment");
-    }
-
-    private int sgBtnGroupBonesPosToAmount(int selectedPosition){
-        switch(selectedPosition){
-            case 0:
-                return 12;
-            case 1:
-                return 24;
-            default:
-                return 12;
-        }
-    }
-
-    private int sgBtnGroupEqualBonesPosToAmount(int selectedPosition){
-        switch(selectedPosition){
-            case 0:
-                return 2;
-            case 1:
-                return 3;
-            case 2:
-                return 4;
-            case 3:
-                return 6;
-            default:
-                return 2;
-        }
     }
 
     @Override

@@ -26,6 +26,7 @@ import com.youngsophomore.data.CollectionsStorage;
 import com.youngsophomore.fragments.AddWordsCollectionFragment;
 import com.youngsophomore.fragments.DisplayWordsSettingsFragment;
 import com.youngsophomore.fragments.InfoDialogFragment;
+import com.youngsophomore.helpers.PrepHelper;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -58,7 +59,7 @@ public class WordsSettingsActivity extends AppCompatActivity {
         ImageButton btnSaveWordsSettingsAndPlay = findViewById(R.id.btn_save_words_settings_and_play);
         ImageButton btnConfirmWordsCollection = findViewById(R.id.btn_confirm_words_collection);
 
-        deactivateBtn(btnConfirmWordsCollection);
+        PrepHelper.deactivateBtn(btnConfirmWordsCollection);
 
 
         btnAddWordsCollection.setOnTouchListener(new View.OnTouchListener() {
@@ -77,10 +78,10 @@ public class WordsSettingsActivity extends AppCompatActivity {
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                         Log.d(DEBUG_TAG, "btnAddWordsCollection onTouch. Action was UP");
 
-                        deactivateBtn(btnAddWordsCollection);
-                        deactivateBtn(btnSaveWordsSettings);
-                        deactivateBtn(btnSaveWordsSettingsAndPlay);
-                        activateBtn(btnConfirmWordsCollection, elevPx);
+                        PrepHelper.deactivateBtn(btnAddWordsCollection);
+                        PrepHelper.deactivateBtn(btnSaveWordsSettings);
+                        PrepHelper.deactivateBtn(btnSaveWordsSettingsAndPlay);
+                        PrepHelper.activateBtn(btnConfirmWordsCollection, elevPx);
 
                         fragmentManager.beginTransaction()
                                 .replace(R.id.frgt_view, AddWordsCollectionFragment.class, null, ADD_COLLECTION_FRAGMENT_TAG)
@@ -181,10 +182,10 @@ public class WordsSettingsActivity extends AppCompatActivity {
                         Log.d(DEBUG_TAG, "btnConfirmWordsCollection onTouch. Action was UP");
                         //view.setElevation(elevPx);
 
-                        activateBtn(btnAddWordsCollection, elevPx);
-                        activateBtn(btnSaveWordsSettings, elevPx);
-                        activateBtn(btnSaveWordsSettingsAndPlay, elevPx);
-                        deactivateBtn(btnConfirmWordsCollection);
+                        PrepHelper.activateBtn(btnAddWordsCollection, elevPx);
+                        PrepHelper.activateBtn(btnSaveWordsSettings, elevPx);
+                        PrepHelper.activateBtn(btnSaveWordsSettingsAndPlay, elevPx);
+                        PrepHelper.deactivateBtn(btnConfirmWordsCollection);
 
                         Fragment addWordsCollectionFragment = fragmentManager.findFragmentByTag(ADD_COLLECTION_FRAGMENT_TAG);
                         EditText etWordsCollectionTitle = addWordsCollectionFragment.getView()
@@ -231,16 +232,7 @@ public class WordsSettingsActivity extends AppCompatActivity {
         newFragment.show(getSupportFragmentManager(), "InfoDialogFragment");
     }
 
-    private void activateBtn(ImageButton btn, int elevPx){
-        btn.setEnabled(true);
-        btn.setAlpha(1f);
-        btn.setElevation(elevPx);
-    }
-    private void deactivateBtn(ImageButton btn){
-        btn.setEnabled(false);
-        btn.setAlpha(0.5f);
-        btn.setElevation(0);
-    }
+    
 
     @Override
     public boolean onSupportNavigateUp(){

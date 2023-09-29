@@ -33,6 +33,7 @@ import com.youngsophomore.fragments.InfoDialogFragment;
 import com.youngsophomore.fragments.NewImageNameDialogFragment;
 import com.youngsophomore.fragments.NewPhrasesListFragment;
 import com.youngsophomore.fragments.NewQuestionsListFragment;
+import com.youngsophomore.helpers.PrepHelper;
 
 import java.util.ArrayList;
 
@@ -73,7 +74,7 @@ public class AddImageActivity extends AppCompatActivity implements
         ImageButton btnConfirmQuestion = findViewById(R.id.btn_confirm_question);
         ImageButton btnConfirmQuestionsCollection = findViewById(R.id.btn_confirm_questions_collection);
 
-        deactivateBtn(btnConfirmQuestion);
+        PrepHelper.deactivateBtn(btnConfirmQuestion);
 
         btnAddQuestion.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -92,9 +93,9 @@ public class AddImageActivity extends AppCompatActivity implements
                         Log.d(DEBUG_TAG, "btnAddQuestion onTouch. Action was UP");
                         view.setElevation(elevPx);
 
-                        deactivateBtn(btnAddQuestion);
-                        deactivateBtn(btnConfirmQuestionsCollection);
-                        activateBtn(btnConfirmQuestion, elevPx);
+                        PrepHelper.deactivateBtn(btnAddQuestion);
+                        PrepHelper.deactivateBtn(btnConfirmQuestionsCollection);
+                        PrepHelper.activateBtn(btnConfirmQuestion, elevPx);
 
                         fragmentManager.beginTransaction()
                                 .replace(R.id.frgt_view, AddQuestionFragment.class, null, ADD_QUESTION_FRAGMENT_TAG)
@@ -127,9 +128,9 @@ public class AddImageActivity extends AppCompatActivity implements
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                         Log.d(DEBUG_TAG, "btnConfirmQuestion onTouch. Action was UP");
                         view.setElevation(elevPx);
-                        activateBtn(btnAddQuestion, elevPx);
-                        activateBtn(btnConfirmQuestionsCollection, elevPx);
-                        deactivateBtn(btnConfirmQuestion);
+                        PrepHelper.activateBtn(btnAddQuestion, elevPx);
+                        PrepHelper.activateBtn(btnConfirmQuestionsCollection, elevPx);
+                        PrepHelper.deactivateBtn(btnConfirmQuestion);
                         /*
                         * Какие данные есть на фрагменте: текст вопроса, список ответов на него в
                         * формате "<текст ответа> +/-".
@@ -246,17 +247,6 @@ public class AddImageActivity extends AppCompatActivity implements
     public void showInfoDialog(int layoutResource) {
         DialogFragment newFragment = new InfoDialogFragment(layoutResource);
         newFragment.show(getSupportFragmentManager(), "InfoDialogFragment");
-    }
-
-    private void activateBtn(ImageButton btn, int elevPx){
-        btn.setEnabled(true);
-        btn.setAlpha(1f);
-        btn.setElevation(elevPx);
-    }
-    private void deactivateBtn(ImageButton btn){
-        btn.setEnabled(false);
-        btn.setAlpha(0.5f);
-        btn.setElevation(0);
     }
 
     @Override

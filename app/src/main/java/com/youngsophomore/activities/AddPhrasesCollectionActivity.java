@@ -29,6 +29,7 @@ import com.youngsophomore.fragments.AddWordsCollectionFragment;
 import com.youngsophomore.fragments.DisplayWordsSettingsFragment;
 import com.youngsophomore.fragments.InfoDialogFragment;
 import com.youngsophomore.fragments.NewPhrasesListFragment;
+import com.youngsophomore.helpers.PrepHelper;
 
 import java.util.ArrayList;
 
@@ -62,7 +63,7 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
         ImageButton btnConfirmPhrase = findViewById(R.id.btn_confirm_phrase);
         ImageButton btnConfirmPhrasesCollection = findViewById(R.id.btn_confirm_phrases_collection);
 
-        deactivateBtn(btnConfirmPhrase);
+        PrepHelper.deactivateBtn(btnConfirmPhrase);
 
         btnAddPhrase.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -81,9 +82,9 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
                         Log.d(DEBUG_TAG, "btnAddPhrase onTouch. Action was UP");
                         view.setElevation(elevPx);
 
-                        deactivateBtn(btnAddPhrase);
-                        deactivateBtn(btnConfirmPhrasesCollection);
-                        activateBtn(btnConfirmPhrase, elevPx);
+                        PrepHelper.deactivateBtn(btnAddPhrase);
+                        PrepHelper.deactivateBtn(btnConfirmPhrasesCollection);
+                        PrepHelper.activateBtn(btnConfirmPhrase, elevPx);
 
                         fragmentManager.beginTransaction()
                                 .replace(R.id.frgt_view, AddPhraseFragment.class, null, ADD_PHRASE_FRAGMENT_TAG)
@@ -117,9 +118,9 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                         Log.d(DEBUG_TAG, "btnConfirmPhrase onTouch. Action was UP");
                         view.setElevation(elevPx);
-                        activateBtn(btnAddPhrase, elevPx);
-                        activateBtn(btnConfirmPhrase, elevPx);
-                        deactivateBtn(btnConfirmPhrase);
+                        PrepHelper.activateBtn(btnAddPhrase, elevPx);
+                        PrepHelper.activateBtn(btnConfirmPhrase, elevPx);
+                        PrepHelper.deactivateBtn(btnConfirmPhrase);
 
                         Fragment newPhraseFragment = fragmentManager.findFragmentByTag(ADD_PHRASE_FRAGMENT_TAG);
                         EditText etNewPhrase = newPhraseFragment.getView().findViewById(R.id.et_new_phrase);
@@ -190,17 +191,6 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
     public void showInfoDialog(int layoutResource) {
         DialogFragment newFragment = new InfoDialogFragment(layoutResource);
         newFragment.show(getSupportFragmentManager(), "InfoDialogFragment");
-    }
-
-    private void activateBtn(ImageButton btn, int elevPx){
-        btn.setEnabled(true);
-        btn.setAlpha(1f);
-        btn.setElevation(elevPx);
-    }
-    private void deactivateBtn(ImageButton btn){
-        btn.setEnabled(false);
-        btn.setAlpha(0.5f);
-        btn.setElevation(0);
     }
 
     @Override

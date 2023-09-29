@@ -19,6 +19,7 @@ import com.youngsophomore.R;
 import com.youngsophomore.activities.ColorsSettingsActivity;
 import com.youngsophomore.activities.DetailsSettingsActivity;
 import com.youngsophomore.activities.MahjongSettingsActivity;
+import com.youngsophomore.activities.MahjongTrainingActivity;
 import com.youngsophomore.activities.PhrasesSettingsActivity;
 import com.youngsophomore.activities.ShapesSettingsActivity;
 import com.youngsophomore.activities.WordsSettingsActivity;
@@ -222,7 +223,9 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
                     int elevSettingsPx = getResources().getDimensionPixelSize(R.dimen.btn_info_elev);
                     if(idBtnWithEvent == idBtnMahjongTraining) {
                         Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. mahjong training was clicked");
-
+                        btnSettingsWithEvent.setElevation(elevSettingsPx);
+                        Intent intent = new Intent(getContext(), MahjongTrainingActivity.class);
+                        getContext().startActivity(intent);
                     }
                     if(idBtnWithEvent == R.id.btn_colors_training) {
                         Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. colors training was clicked");
