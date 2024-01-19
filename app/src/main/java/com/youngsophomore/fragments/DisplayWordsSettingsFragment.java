@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
@@ -17,7 +18,7 @@ import android.widget.Spinner;
 import com.youngsophomore.R;
 import com.youngsophomore.data.CollectionsStorage;
 
-public class DisplayWordsSettingsFragment extends Fragment {
+public class DisplayWordsSettingsFragment extends Fragment /*implements AdapterView.OnItemLongClickListener*/ {
 
     private static final String DEBUG_TAG = "Gestures";
     public DisplayWordsSettingsFragment() {
@@ -46,6 +47,14 @@ public class DisplayWordsSettingsFragment extends Fragment {
         adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
         Spinner sprWordsCollection = fragment.findViewById(R.id.spr_words_collection);
         sprWordsCollection.setAdapter(adapter);
+        sprWordsCollection.setLongClickable(true);
+        sprWordsCollection.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d(DEBUG_TAG, "in DisplayWordsSettingsFragment: long click on " + position);
+                return true;
+            }
+        });
 
         SharedPreferences sharedPreferences =
                 getContext().getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
@@ -65,6 +74,6 @@ public class DisplayWordsSettingsFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
     }
+
 }

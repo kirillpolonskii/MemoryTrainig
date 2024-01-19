@@ -61,7 +61,6 @@ public class WordsSettingsActivity extends AppCompatActivity {
 
         PrepHelper.deactivateBtn(btnConfirmWordsCollection);
 
-
         btnAddWordsCollection.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
@@ -224,8 +223,9 @@ public class WordsSettingsActivity extends AppCompatActivity {
         if(item.getItemId() == R.id.mi_btn_info) {
             Log.d(DEBUG_TAG, "info button in WordsSettingsActivity");
             showInfoDialog(R.layout.fragment_words_settings_info);
+            return true;
         }
-        return true;
+        return false;
     }
     public void showInfoDialog(int layoutResource) {
         DialogFragment newFragment = new InfoDialogFragment(layoutResource);

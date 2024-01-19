@@ -154,8 +154,9 @@ public class DetailsSettingsActivity extends AppCompatActivity {
         if(item.getItemId() == R.id.mi_btn_info) {
             Log.d(DEBUG_TAG, "info button in ShapesSettingsActivity");
             showInfoDialog(R.layout.fragment_details_settings_info);
+            return true;
         }
-        return true;
+        return false;
     }
     public void showInfoDialog(int layoutResource) {
         DialogFragment newFragment = new InfoDialogFragment(layoutResource);

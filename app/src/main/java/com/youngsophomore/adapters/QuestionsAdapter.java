@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.youngsophomore.R;
 import com.youngsophomore.data.Question;
+import com.youngsophomore.interfaces.RecyclerViewClickListener;
 
 import java.util.ArrayList;
 
@@ -18,22 +19,36 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.View
 
     private static final String DEBUG_TAG = "Gestures";
     private ArrayList<Question> localQuestions;
+    private RecyclerViewClickListener rvClickListener;
 
-    public QuestionsAdapter(ArrayList<Question> questions) {
+    public QuestionsAdapter(ArrayList<Question> questions, RecyclerViewClickListener rvClickListener) {
         Log.d(DEBUG_TAG, "In QuestionsAdapter()");
         localQuestions = questions;
+        this.rvClickListener = rvClickListener;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView tvQuestionText;
         private final TextView tvAnswers;
 
-
-        public ViewHolder(View view) {
+        public ViewHolder(View view, RecyclerViewClickListener rvClickListener) {
             super(view);
 
             tvQuestionText = (TextView) view.findViewById(R.id.tv_question_text);
             tvAnswers = (TextView) view.findViewById(R.id.tv_answers);
+            view.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    if(rvClickListener != null){
+                        int pos = getAdapterPosition();
+                        if(pos != RecyclerView.NO_POSITION){
+                            rvClickListener.onItemLongClick(pos);
+                        }
+                    }
+                    return true;
+                }
+
+            });
         }
 
         public TextView getTVQuestionText() {
@@ -51,7 +66,7 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.View
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.new_question_list_item, viewGroup, false);
 
-        return new QuestionsAdapter.ViewHolder(view);
+        return new QuestionsAdapter.ViewHolder(view, rvClickListener);
     }
 
     @Override

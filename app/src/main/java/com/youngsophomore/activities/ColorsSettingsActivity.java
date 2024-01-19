@@ -257,8 +257,9 @@ public class ColorsSettingsActivity extends AppCompatActivity {
         if(item.getItemId() == R.id.mi_btn_info) {
             Log.d(DEBUG_TAG, "info button in ColorsSettingsActivity");
             showInfoDialog(R.layout.fragment_mahjong_settings_info);
+            return true;
         }
-        return true;
+        return false;
     }
     public void showInfoDialog(int layoutResource) {
         DialogFragment newFragment = new InfoDialogFragment(layoutResource);

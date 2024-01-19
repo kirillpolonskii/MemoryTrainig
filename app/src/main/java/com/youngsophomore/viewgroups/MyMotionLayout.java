@@ -223,7 +223,7 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
                     int elevSettingsPx = getResources().getDimensionPixelSize(R.dimen.btn_info_elev);
                     if(idBtnWithEvent == idBtnMahjongTraining) {
                         Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. mahjong training was clicked");
-                        btnSettingsWithEvent.setElevation(elevSettingsPx);
+                        btnWithEvent.setElevation(elevSettingsPx);
                         Intent intent = new Intent(getContext(), MahjongTrainingActivity.class);
                         getContext().startActivity(intent);
                     }

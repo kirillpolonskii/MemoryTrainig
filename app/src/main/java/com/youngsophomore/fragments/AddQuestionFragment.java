@@ -211,8 +211,6 @@ public class AddQuestionFragment extends Fragment
         super.onViewCreated(view, savedInstanceState);
         Log.d(DEBUG_TAG, "in onViewCreated() of AddQuestionFragment");
 
-
-
         answersAdapter = new AnswersAdapter(question.getAnswers(), this);
         RecyclerView rvAnswers = view.findViewById(R.id.rv_answers_collection);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -242,7 +240,7 @@ public class AddQuestionFragment extends Fragment
     }
     public void showDeleteAnswerDialog(int position){
         DialogFragment newFragment = new DeleteAnswerDialogFragment(position);
-        newFragment.show(getChildFragmentManager(), "CorrectAnswerDialogFragment");
+        newFragment.show(getChildFragmentManager(), "DeleteAnswerDialogFragment");
     }
 
     public Question getQuestion(){
