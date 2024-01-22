@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.youngsophomore.R;
 import com.youngsophomore.data.CollectionsStorage;
@@ -122,6 +124,7 @@ public class WordsSettingsActivity extends AppCompatActivity {
                                 sprWordsCollection.getSelectedItemPosition());
                         editor.putInt(getString(R.string.saved_word_show_time_key),
                                 pckrWordShowTime.getValue());
+
                         editor.apply();
                         onBackPressed();
                         return true;
@@ -191,8 +194,25 @@ public class WordsSettingsActivity extends AppCompatActivity {
                                 .findViewById(R.id.et_words_collection_title);
                         EditText etWordsCollection = addWordsCollectionFragment.getView()
                                 .findViewById(R.id.et_words_collection);
-                        CollectionsStorage.addWordsCollection(
-                                etWordsCollectionTitle.getText().toString(), etWordsCollection.getText().toString());
+
+                        String strWordsCollectionsTitles =
+                                sharedPreferences.getString(getString(R.string.words_collections_titles_key), "");
+                        String wordsCollectionTitle = etWordsCollectionTitle.getText().toString();
+                        if(!strWordsCollectionsTitles.contains(wordsCollectionTitle)){
+                            strWordsCollectionsTitles += "," + wordsCollectionTitle;
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString(getString(R.string.words_collections_titles_key),
+                                    strWordsCollectionsTitles);
+                            editor.putString(wordsCollectionTitle,
+                                    etWordsCollection.getText().toString());
+
+                            editor.apply();
+                        }
+                        else{
+                            Toast.makeText(getApplicationContext(), getString(R.string.msg_collection_title_not_unique),
+                                    Toast.LENGTH_LONG).show();
+                        }
+
 
                         /*String newCollection = etWordsCollection.getText().toString();
                         Log.d(DEBUG_TAG, newCollection);

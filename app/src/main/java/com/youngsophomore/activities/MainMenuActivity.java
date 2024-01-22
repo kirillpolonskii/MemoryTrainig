@@ -9,6 +9,7 @@ import androidx.core.view.MotionEventCompat;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.PixelFormat;
 import android.media.Image;
@@ -37,6 +38,7 @@ public class MainMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         Log.d(DEBUG_TAG, "IN onCreate()");
+        init(getApplicationContext());
 
         myMotionLayout = findViewById(R.id.motion_layout);
 
@@ -192,6 +194,26 @@ public class MainMenuActivity extends AppCompatActivity {
     public void onResume(){
         myMotionLayout.transitionToState(R.id.base_state);
         super.onResume();
+    }
+
+    private void init(Context context){
+        SharedPreferences sharedPreferences =
+                context.getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
+        boolean firstLaunch =
+                sharedPreferences.getBoolean(getString(R.string.first_launch_key), true);
+        if(!firstLaunch){
+            return;
+        }
+        // init for words settings
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(getString(R.string.first_launch_key), false);
+        String strWordsCollectionsTitles = "first collection";
+        editor.putString(getString(R.string.words_collections_titles_key),
+                strWordsCollectionsTitles);
+        String initWordsCollection = getString(R.string.init_words_collection);
+        editor.putString(strWordsCollectionsTitles, initWordsCollection);
+        editor.apply();
+        // init for phrase settings
     }
 
 

@@ -1,5 +1,8 @@
 <resources>
+    <!-- STRINGS FOR APP -->
     <string name="app_name">Memory Training</string>
+    <string name="msg_collection_title_not_unique">Название не уникально</string>
+    <string name="first_launch_key">FIRST_LAUNCH_KEY</string>
     <!-- STRINGS FOR BUTTONS -->
     <string name="btn_mahjong_training_ru">маджонг</string>
     <string name="btn_colors_training_ru">цвета</string>
@@ -12,7 +15,7 @@
     <string name="ru">РУ</string>
     <string name="statistics">statistics</string>
     <string name="settings">settings</string>
-
+    <!-- STRINGS FOR MAHJONG SETTINGS -->
     <string name="tbr_mahjong_settings_title">Настройки: маджонг</string>
     <string name="remember_time">Время на запоминание (с):</string>
     <string name="bones_amount">Количество костей:</string>
@@ -28,7 +31,7 @@
     <string name="saved_mahjong_remember_time_key">MAHJONG_REMEMBER_TIME</string>
     <string name="saved_mahjong_bones_amount_key">MAHJONG_BONES_AMOUNT</string>
     <string name="saved_mahjong_equal_bones_amount_key">MAHJONG_EQUAL_BONES_AMOUNT</string>
-
+    <!-- STRINGS FOR COLORS SETTINGS -->
     <string name="tbr_colors_settings_title">Настройки: цвета</string>
     <string name="colors_amount">Количество цветов в последовательности:</string>
     <string name="distinct_colors_amount">Количество различных цветов:</string>
@@ -44,7 +47,7 @@
     <string name="saved_distinct_colors_amount_key">DISTINCT_COLORS_AMOUNT</string>
     <string name="saved_max_repeat_colors_amount_key">MAX_REPEAT_COLORS_AMOUNT</string>
     <string name="saved_color_show_time_key">COLOR_SHOW_TIME</string>
-
+    <!-- STRINGS FOR SHAPES SETTINGS -->
     <string name="tbr_shapes_settings_title">Настройки: фигуры</string>
     <string name="shapes_amount">Количество фигур в последовательности:</string>
     <string name="distinct_shapes_amount">Количество различных фигур:</string>
@@ -60,16 +63,19 @@
     <string name="saved_distinct_shapes_amount_key">DISTINCT_SHAPES_AMOUNT</string>
     <string name="saved_max_repeat_shapes_amount_key">MAX_REPEAT_SHAPES_AMOUNT</string>
     <string name="saved_shape_show_time_key">SHAPE_SHOW_TIME</string>
-
+    <!-- STRINGS FOR WORDS SETTINGS -->
     <string name="tbr_words_settings_title">Настройки: слова</string>
     <string name="tbr_words_add_collection_title">Новая коллекция</string>
     <string name="words_collection">Коллекция слов:</string>
     <string name="word_show_time">Время показа слова (с):</string>
     <string name="et_words_collection_title_hint">Введите название коллекции</string>
     <string name="et_words_collection_hint">Введите коллекцию слов через пробел</string>
+    <string name="init_words_collection">Спасибо за использование приложения надеюсь вы найдёте его полезным</string>
+
     <string name="saved_words_collection_position_key">WORDS_COLLECTION_POSITION</string>
     <string name="saved_word_show_time_key">WORD_SHOW_TIME</string>
-
+    <string name="words_collections_titles_key">WORDS_COLLECTIONS_TITLES</string>
+    <!-- STRINGS FOR PHRASES SETTINGS -->
     <string name="tbr_phrases_settings_title">Настройки: фразы</string>
     <string name="tbr_phrases_add_collection_title">Новая коллекция</string>
     <string name="phrases_collection">Коллекция фраз:</string>
@@ -80,7 +86,7 @@
     <string name="new_phrase_key">NEW_PHRASE</string>
     <string name="saved_phrases_collection_position_key">PHRASES_COLLECTION_POSITION</string>
     <string name="saved_phrase_show_time_key">PHRASE_SHOW_TIME</string>
-
+    <!-- STRINGS FOR DETAILS SETTINGS -->
     <string name="tbr_details_settings_title">Настройки: детали</string>
     <string name="tbr_details_add_image_title">Новое изображение</string>
     <string name="images_collection">Изображение:</string>

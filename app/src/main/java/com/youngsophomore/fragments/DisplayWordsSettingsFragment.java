@@ -18,6 +18,9 @@ import android.widget.Spinner;
 import com.youngsophomore.R;
 import com.youngsophomore.data.CollectionsStorage;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class DisplayWordsSettingsFragment extends Fragment /*implements AdapterView.OnItemLongClickListener*/ {
 
     private static final String DEBUG_TAG = "Gestures";
@@ -42,8 +45,13 @@ public class DisplayWordsSettingsFragment extends Fragment /*implements AdapterV
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View fragment = inflater.inflate(R.layout.fragment_display_words_settings, container, false);
+
+        SharedPreferences sharedPreferences =
+                getContext().getSharedPreferences(getString(R.string.preference_file_key), android.content.Context.MODE_PRIVATE);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(fragment.getContext(),
-                R.layout.custom_spinner_item, CollectionsStorage.getWordsCollectionsTitles());
+                R.layout.custom_spinner_item,
+                CollectionsStorage.getWordsCollectionsTitles(sharedPreferences, getString(R.string.words_collections_titles_key)));
         adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
         Spinner sprWordsCollection = fragment.findViewById(R.id.spr_words_collection);
         sprWordsCollection.setAdapter(adapter);
@@ -56,8 +64,7 @@ public class DisplayWordsSettingsFragment extends Fragment /*implements AdapterV
             }
         });
 
-        SharedPreferences sharedPreferences =
-                getContext().getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+
         int wordsCollectionPosition = sharedPreferences.getInt(getString(R.string.saved_words_collection_position_key), 0);
         Log.d(DEBUG_TAG, String.valueOf(wordsCollectionPosition));
         int wordShowTime = sharedPreferences.getInt(getString(R.string.saved_word_show_time_key), 2);
