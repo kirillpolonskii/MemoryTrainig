@@ -194,19 +194,17 @@ public class WordsSettingsActivity extends AppCompatActivity {
                                 .findViewById(R.id.et_words_collection_title);
                         EditText etWordsCollection = addWordsCollectionFragment.getView()
                                 .findViewById(R.id.et_words_collection);
-
+                        // исправить логику проверки названия на уникальность
                         String strWordsCollectionsTitles =
                                 sharedPreferences.getString(getString(R.string.words_collections_titles_key), "");
                         String wordsCollectionTitle = etWordsCollectionTitle.getText().toString();
-                        if(!strWordsCollectionsTitles.contains(wordsCollectionTitle)){
-                            strWordsCollectionsTitles += "," + wordsCollectionTitle;
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putString(getString(R.string.words_collections_titles_key),
-                                    strWordsCollectionsTitles);
-                            editor.putString(wordsCollectionTitle,
-                                    etWordsCollection.getText().toString());
-
-                            editor.apply();
+                        if(PrepHelper.isCollectionTitleUnique(strWordsCollectionsTitles, wordsCollectionTitle)){
+                            CollectionsStorage.addWordsCollection(
+                                    wordsCollectionTitle,
+                                    etWordsCollection.getText().toString(),
+                                    strWordsCollectionsTitles,
+                                    sharedPreferences,
+                                    getString(R.string.words_collections_titles_key));
                         }
                         else{
                             Toast.makeText(getApplicationContext(), getString(R.string.msg_collection_title_not_unique),

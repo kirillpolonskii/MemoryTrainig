@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -20,6 +21,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.youngsophomore.R;
 import com.youngsophomore.adapters.PhrasesAdapter;
@@ -102,7 +104,6 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
 
 
         btnConfirmPhrase.setOnTouchListener(new View.OnTouchListener() {
-
             @Override
             public boolean onTouch(View view, MotionEvent event) {
                 int action = event.getAction();
@@ -119,7 +120,7 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
                         Log.d(DEBUG_TAG, "btnConfirmPhrase onTouch. Action was UP");
                         view.setElevation(elevPx);
                         PrepHelper.activateBtn(btnAddPhrase, elevPx);
-                        PrepHelper.activateBtn(btnConfirmPhrase, elevPx);
+                        PrepHelper.activateBtn(btnConfirmPhrasesCollection, elevPx);
                         PrepHelper.deactivateBtn(btnConfirmPhrase);
 
                         Fragment newPhraseFragment = fragmentManager.findFragmentByTag(ADD_PHRASE_FRAGMENT_TAG);
@@ -162,9 +163,26 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
                         for(CharSequence phraseCharS : newPhrasesCollectionCharS){
                             newPhrasesCollection.add(String.valueOf(phraseCharS));
                         }
-                        CollectionsStorage.addPhrasesCollection(
-                                etPhrasesCollectionTitle.getText().toString(), newPhrasesCollection);
-                        onBackPressed();
+                        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
+                        // исправить проверку на уникальность
+                        String newTitle = etPhrasesCollectionTitle.getText().toString();
+                        String strPhrasesCollectionsTitles =
+                                sharedPreferences.getString(getString(R.string.phrases_collections_titles_key), "");
+                        if(PrepHelper.isCollectionTitleUnique(strPhrasesCollectionsTitles, newTitle)){
+                            CollectionsStorage.addPhrasesCollection(
+                                    newTitle,
+                                    newPhrasesCollection,
+                                    getString(R.string.phrases_collections_titles_key),
+                                    sharedPreferences,
+                                    getApplicationContext()
+                            );
+                            onBackPressed();
+                        }
+                        else{
+                            Toast.makeText(getApplicationContext(),
+                                    getString(R.string.msg_collection_title_not_unique),
+                                    Toast.LENGTH_LONG).show();
+                        }
                         /*SharedPreferences.Editor editor = sharedPreferences.edit();*/
                         return true;
                     default:

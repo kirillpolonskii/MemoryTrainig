@@ -64,7 +64,6 @@ public class DisplayWordsSettingsFragment extends Fragment /*implements AdapterV
             }
         });
 
-
         int wordsCollectionPosition = sharedPreferences.getInt(getString(R.string.saved_words_collection_position_key), 0);
         Log.d(DEBUG_TAG, String.valueOf(wordsCollectionPosition));
         int wordShowTime = sharedPreferences.getInt(getString(R.string.saved_word_show_time_key), 2);

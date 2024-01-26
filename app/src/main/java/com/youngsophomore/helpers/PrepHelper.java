@@ -14,6 +14,29 @@ public class PrepHelper {
         btn.setElevation(0);
     }
 
+    public static boolean isCollectionTitleUnique(String strCollectionsTitles, String title){
+        if (!strCollectionsTitles.contains(title)){
+            return true;
+
+        }
+        else{
+            int titleInd = strCollectionsTitles.indexOf(title);
+            while (titleInd >= 0) {
+                // actions
+                if(strCollectionsTitles.charAt(titleInd - 1) == ',' &&
+                        strCollectionsTitles.charAt(titleInd + title.length()) == ','){
+                    return false;
+
+                }
+
+                titleInd = strCollectionsTitles.indexOf(title, titleInd + 1);
+            }
+            return true;
+
+        }
+
+    }
+
     public class Mahjong{
         public static int sgBtnGroupBonesPosToAmount(int selectedPosition){
             switch(selectedPosition){

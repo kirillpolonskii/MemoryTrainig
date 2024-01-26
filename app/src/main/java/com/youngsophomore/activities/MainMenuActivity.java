@@ -28,6 +28,8 @@ import com.addisonelliott.segmentedbutton.SegmentedButtonGroup;
 import com.youngsophomore.R;
 import com.youngsophomore.viewgroups.MyMotionLayout;
 
+import java.io.File;
+
 public class MainMenuActivity extends AppCompatActivity {
 
     private static final String DEBUG_TAG = "Gestures";
@@ -207,13 +209,36 @@ public class MainMenuActivity extends AppCompatActivity {
         // init for words settings
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(getString(R.string.first_launch_key), false);
-        String strWordsCollectionsTitles = "first collection";
+        String strWordsCollectionsTitles = ",first collection,";
         editor.putString(getString(R.string.words_collections_titles_key),
                 strWordsCollectionsTitles);
         String initWordsCollection = getString(R.string.init_words_collection);
         editor.putString(strWordsCollectionsTitles, initWordsCollection);
-        editor.apply();
+        //editor.apply();
         // init for phrase settings
+        String strPhrasesCollectionsTitles = ",first collection,";
+        editor.putString(getString(R.string.phrases_collections_titles_key),
+                strPhrasesCollectionsTitles);
+        String initPhrasesCollection = getString(R.string.init_phrases_collection);
+        editor.putString(strWordsCollectionsTitles, initPhrasesCollection);
+        editor.apply();
+
+        // make all necessary directories
+        File phrasesDir = new File(getExternalFilesDir(null).getAbsolutePath() + "/phrases");
+        if (!phrasesDir.exists() && phrasesDir.mkdir()) {
+            Log.d(DEBUG_TAG, "in MainMenuActivity: " + phrasesDir + " created");
+        }
+        else{
+            Log.d(DEBUG_TAG, "in MainMenuActivity: " + phrasesDir + "existed or was NOT created");
+        }
+        File detailsDir = new File(getExternalFilesDir(null).getAbsolutePath() + "/details");
+        if (!detailsDir.exists() && detailsDir.mkdir()) {
+            Log.d(DEBUG_TAG, "in MainMenuActivity: " + detailsDir + " created");
+        }
+        else{
+            Log.d(DEBUG_TAG, "in MainMenuActivity: " + detailsDir + "existed or was NOT created");
+        }
+
     }
 
 
