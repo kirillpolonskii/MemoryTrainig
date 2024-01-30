@@ -1,14 +1,10 @@
 package com.youngsophomore.activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentResultListener;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
@@ -18,17 +14,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.youngsophomore.R;
-import com.youngsophomore.adapters.PhrasesAdapter;
 import com.youngsophomore.data.CollectionsStorage;
 import com.youngsophomore.fragments.AddPhraseFragment;
-import com.youngsophomore.fragments.AddWordsCollectionFragment;
-import com.youngsophomore.fragments.DisplayWordsSettingsFragment;
 import com.youngsophomore.fragments.InfoDialogFragment;
 import com.youngsophomore.fragments.NewPhrasesListFragment;
 import com.youngsophomore.helpers.PrepHelper;
@@ -169,7 +161,7 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
                         String strPhrasesCollectionsTitles =
                                 sharedPreferences.getString(getString(R.string.phrases_collections_titles_key), "");
                         if(PrepHelper.isCollectionTitleUnique(strPhrasesCollectionsTitles, newTitle)){
-                            CollectionsStorage.addPhrasesCollection(
+                            CollectionsStorage.savePhrasesCollection(
                                     newTitle,
                                     newPhrasesCollection,
                                     getString(R.string.phrases_collections_titles_key),

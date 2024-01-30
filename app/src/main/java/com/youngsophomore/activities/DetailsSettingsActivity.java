@@ -23,8 +23,13 @@ import com.youngsophomore.R;
 import com.youngsophomore.data.CollectionsStorage;
 import com.youngsophomore.fragments.InfoDialogFragment;
 
+import java.util.ArrayList;
+
 public class DetailsSettingsActivity extends AppCompatActivity {
     private static final String DEBUG_TAG = "Gestures";
+    ArrayList<String> questionsCollectionsTitles;
+    SharedPreferences sharedPreferences;
+    ArrayAdapter<String> adapter;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -36,13 +41,14 @@ public class DetailsSettingsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        SharedPreferences sharedPreferences =
+        sharedPreferences =
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         int imagesCollectionPosition = sharedPreferences.getInt(getString(R.string.saved_images_collection_position_key), 0);
         int imageShowTime = sharedPreferences.getInt(getString(R.string.saved_image_show_time_key), 2);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                R.layout.custom_spinner_item, CollectionsStorage.getQuestionsCollectionsTitles());
+        questionsCollectionsTitles = CollectionsStorage.getCollectionsTitles(sharedPreferences,
+                getString(R.string.questions_collections_titles_key));
+        adapter = new ArrayAdapter<>(this,
+                R.layout.custom_spinner_item, questionsCollectionsTitles);
         adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
         Spinner sprImagesCollection = findViewById(R.id.spr_image);
         sprImagesCollection.setAdapter(adapter);
@@ -142,6 +148,45 @@ public class DetailsSettingsActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        Log.d(DEBUG_TAG, "in DetailsSettingsActivity: onResume() called");
+        questionsCollectionsTitles.clear();
+        questionsCollectionsTitles.addAll(CollectionsStorage.getCollectionsTitles(sharedPreferences,
+                getString(R.string.questions_collections_titles_key)));
+
+        adapter.notifyDataSetChanged();
+
+        /*try {
+            File file = new File(getExternalFilesDir(null).getAbsolutePath() + "/phrases/" + "seccoll.txt");
+
+            FileInputStream fis = new FileInputStream(file);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader br = new BufferedReader(isr);
+
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+                sb.append("\n");
+            }
+
+            String text = sb.toString();
+            Log.d(DEBUG_TAG, "in PhrasesSettingsActivity: text = " + text);
+            br.close();
+            isr.close();
+            fis.close();
+
+        }
+        catch (FileNotFoundException e) {
+            Log.d(DEBUG_TAG, "File not found: " + e.toString());
+        } catch (IOException e) {
+            Log.d(DEBUG_TAG, "Can not read file: " + e.toString());
+        }*/
+
     }
 
     @Override

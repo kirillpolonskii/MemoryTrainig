@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,8 +14,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.NumberPicker;
@@ -29,10 +26,6 @@ import com.youngsophomore.fragments.AddWordsCollectionFragment;
 import com.youngsophomore.fragments.DisplayWordsSettingsFragment;
 import com.youngsophomore.fragments.InfoDialogFragment;
 import com.youngsophomore.helpers.PrepHelper;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class WordsSettingsActivity extends AppCompatActivity {
     private final String DISPLAY_SETTINGS_FRAGMENT_TAG = "display_words_settings_fragment";
@@ -199,7 +192,7 @@ public class WordsSettingsActivity extends AppCompatActivity {
                                 sharedPreferences.getString(getString(R.string.words_collections_titles_key), "");
                         String wordsCollectionTitle = etWordsCollectionTitle.getText().toString();
                         if(PrepHelper.isCollectionTitleUnique(strWordsCollectionsTitles, wordsCollectionTitle)){
-                            CollectionsStorage.addWordsCollection(
+                            CollectionsStorage.saveWordsCollection(
                                     wordsCollectionTitle,
                                     etWordsCollection.getText().toString(),
                                     strWordsCollectionsTitles,

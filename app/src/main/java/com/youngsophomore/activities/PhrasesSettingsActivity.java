@@ -51,7 +51,7 @@ public class PhrasesSettingsActivity extends AppCompatActivity {
 
         sharedPreferences =
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-        phrasesCollectionsTitles = CollectionsStorage.getPhrasesCollectionsTitles(
+        phrasesCollectionsTitles = CollectionsStorage.getCollectionsTitles(
                 sharedPreferences, getString(R.string.phrases_collections_titles_key));
         adapter = new ArrayAdapter<>(this,
                 R.layout.custom_spinner_item, phrasesCollectionsTitles
@@ -166,12 +166,12 @@ public class PhrasesSettingsActivity extends AppCompatActivity {
         super.onResume();
         Log.d(DEBUG_TAG, "in PhrasesSettingsActivity: onResume() called");
         phrasesCollectionsTitles.clear();
-        phrasesCollectionsTitles.addAll(CollectionsStorage.getPhrasesCollectionsTitles(
+        phrasesCollectionsTitles.addAll(CollectionsStorage.getCollectionsTitles(
                         sharedPreferences, getString(R.string.phrases_collections_titles_key)));
 
         adapter.notifyDataSetChanged();
 
-        try {
+        /*try {
             File file = new File(getExternalFilesDir(null).getAbsolutePath() + "/phrases/" + "seccoll.txt");
 
             FileInputStream fis = new FileInputStream(file);
@@ -196,7 +196,7 @@ public class PhrasesSettingsActivity extends AppCompatActivity {
             Log.d(DEBUG_TAG, "File not found: " + e.toString());
         } catch (IOException e) {
             Log.d(DEBUG_TAG, "Can not read file: " + e.toString());
-        }
+        }*/
 
     }
 

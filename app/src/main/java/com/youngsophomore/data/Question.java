@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Question implements Parcelable {
     private String questionText;
-    private ArrayList<String> answers;
+    private ArrayList<String> answers; // last char in answer: '+' or '-'
     private String answersInOneString;
     private boolean isSingleAnswer;
 
@@ -48,12 +48,18 @@ public class Question implements Parcelable {
     public ArrayList<String> getAnswers() {
         return answers;
     }
-    public String getAnswersInOneString() {
-        return answersInOneString;
+    public String getAnswersInOneString(boolean forListDisplay) {
+        if(forListDisplay){
+            return answersInOneString.replace('|', '\n');
+        }
+        else{
+            return answersInOneString;
+        }
+
     }
     public void putAnswersInOneString(){
         for(int i = 0; i < answers.size() - 1; ++i){
-            answersInOneString += answers.get(i) + "\n";
+            answersInOneString += answers.get(i) + "|";
         }
         answersInOneString += answers.get(answers.size() - 1);
     }

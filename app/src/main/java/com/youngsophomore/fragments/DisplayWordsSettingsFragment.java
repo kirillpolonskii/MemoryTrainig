@@ -51,7 +51,7 @@ public class DisplayWordsSettingsFragment extends Fragment /*implements AdapterV
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(fragment.getContext(),
                 R.layout.custom_spinner_item,
-                CollectionsStorage.getWordsCollectionsTitles(sharedPreferences, getString(R.string.words_collections_titles_key)));
+                CollectionsStorage.getCollectionsTitles(sharedPreferences, getString(R.string.words_collections_titles_key)));
         adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
         Spinner sprWordsCollection = fragment.findViewById(R.id.spr_words_collection);
         sprWordsCollection.setAdapter(adapter);

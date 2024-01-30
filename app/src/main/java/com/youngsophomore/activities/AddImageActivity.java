@@ -5,12 +5,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,20 +18,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.youngsophomore.R;
 import com.youngsophomore.data.CollectionsStorage;
 import com.youngsophomore.data.Question;
-import com.youngsophomore.fragments.AddPhraseFragment;
 import com.youngsophomore.fragments.AddQuestionFragment;
-import com.youngsophomore.fragments.CorrectAnswerDialogFragment;
 import com.youngsophomore.fragments.InfoDialogFragment;
 import com.youngsophomore.fragments.NewImageNameDialogFragment;
-import com.youngsophomore.fragments.NewPhrasesListFragment;
 import com.youngsophomore.fragments.NewQuestionsListFragment;
 import com.youngsophomore.helpers.PrepHelper;
 
@@ -48,6 +44,7 @@ public class AddImageActivity extends AppCompatActivity implements
     public final int NEW_IMAGE_REQUEST_CODE = 20;
     TextView tvNewImageName;
     int tvNewImageNameId;
+    SharedPreferences sharedPreferences;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -59,6 +56,8 @@ public class AddImageActivity extends AppCompatActivity implements
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        sharedPreferences = getSharedPreferences(
+                getString(R.string.preference_file_key), MODE_PRIVATE);
 
         Bundle bundle = new Bundle();
         newQuestions = new ArrayList<>();
@@ -110,7 +109,6 @@ public class AddImageActivity extends AppCompatActivity implements
                 }
             }
         });
-
         btnConfirmQuestion.setOnTouchListener(new View.OnTouchListener() {
             // return to the NewQuestionsListFragment
             @Override
@@ -175,10 +173,13 @@ public class AddImageActivity extends AppCompatActivity implements
                         Log.d(DEBUG_TAG, "btnConfirmQuestionsCollection onTouch. Action was UP");
                         view.setElevation(elevPx);
 
+                        // на этом этапе название уже точно уникально
+                        //SharedPreferences.Editor editor = sharedPreferences.edit();
 
-                        CollectionsStorage.addQuestionsCollections(newQuestionsCollectionTitle, imageUri, newQuestions);
+                        CollectionsStorage.saveQuestionsCollections(newQuestionsCollectionTitle, imageUri,
+                                newQuestions, getString(R.string.questions_collections_titles_key),
+                                sharedPreferences, getApplicationContext());
                         onBackPressed();
-                        /*SharedPreferences.Editor editor = sharedPreferences.edit();*/
                         return true;
                     default:
                         return false;
@@ -262,37 +263,42 @@ public class AddImageActivity extends AppCompatActivity implements
 
     @Override
     public void onNewImageNamePosClick(DialogFragment dialog, String newImageName) {
-        newQuestionsCollectionTitle = newImageName;
-        tvNewImageName = new TextView(AddImageActivity.this, null, 0, R.style.SettingsTextViewStyle);
-        tvNewImageNameId = View.generateViewId();
-        tvNewImageName.setId(tvNewImageNameId);
-        tvNewImageName.setText(newQuestionsCollectionTitle);
-        ConstraintLayout.LayoutParams tvNewImageNameParams = new ConstraintLayout.LayoutParams(
-                ConstraintLayout.LayoutParams.WRAP_CONTENT,
-                ConstraintLayout.LayoutParams.WRAP_CONTENT
-        );
-        tvNewImageName.setLayoutParams(tvNewImageNameParams);
+        String strQuestionsCollectionsTitles =
+                sharedPreferences.getString(getString(R.string.questions_collections_titles_key), "");
+        if(PrepHelper.isCollectionTitleUnique(strQuestionsCollectionsTitles, newImageName)){
+            newQuestionsCollectionTitle = newImageName;
+            tvNewImageName = new TextView(AddImageActivity.this, null, 0, R.style.SettingsTextViewStyle);
+            tvNewImageNameId = View.generateViewId();
+            tvNewImageName.setId(tvNewImageNameId);
+            tvNewImageName.setText(newQuestionsCollectionTitle);
+            ConstraintLayout.LayoutParams tvNewImageNameParams = new ConstraintLayout.LayoutParams(
+                    ConstraintLayout.LayoutParams.WRAP_CONTENT,
+                    ConstraintLayout.LayoutParams.WRAP_CONTENT
+            );
+            tvNewImageName.setLayoutParams(tvNewImageNameParams);
 
-        ConstraintLayout clAddImage = findViewById(R.id.cl_add_image);
-        clAddImage.removeView(clAddImage.findViewById(R.id.btn_new_image));
+            ConstraintLayout clAddImage = findViewById(R.id.cl_add_image);
+            clAddImage.removeView(clAddImage.findViewById(R.id.btn_new_image));
 
-        //((ViewGroup) view.getParent()).removeView(etNewQuestion);
 
-        //etNewAnswer.setActivated(true);
-        //etNewAnswer.setImportantForAutofill(View.IMPORTANT_FOR_AUTOFILL_NO);
+            clAddImage.addView(tvNewImageName);
+            ConstraintSet constraintSet = new ConstraintSet();
+            constraintSet.clone(clAddImage);
+            constraintSet.connect(tvNewImageNameId, ConstraintSet.TOP,
+                    R.id.tv_new_image, ConstraintSet.TOP);
+            constraintSet.connect(tvNewImageNameId, ConstraintSet.BOTTOM,
+                    R.id.tv_new_image, ConstraintSet.BOTTOM);
+            constraintSet.connect(tvNewImageNameId, ConstraintSet.START,
+                    R.id.tv_new_image, ConstraintSet.END);
+            //constraintSet.constrainHeight(etNewAnswerId, ConstraintSet.MATCH_CONSTRAINT_PERCENT);
+            //constraintSet.constrainDefaultHeight(etNewAnswerId, ConstraintSet.MATCH_CONSTRAINT_PERCENT);
+            constraintSet.applyTo(clAddImage);
+        }
+        else{
+            Toast.makeText(getApplicationContext(), getString(R.string.msg_collection_title_not_unique),
+                    Toast.LENGTH_LONG).show();
+        }
 
-        clAddImage.addView(tvNewImageName);
-        ConstraintSet constraintSet = new ConstraintSet();
-        constraintSet.clone(clAddImage);
-        constraintSet.connect(tvNewImageNameId, ConstraintSet.TOP,
-                R.id.tv_new_image, ConstraintSet.TOP);
-        constraintSet.connect(tvNewImageNameId, ConstraintSet.BOTTOM,
-                R.id.tv_new_image, ConstraintSet.BOTTOM);
-        constraintSet.connect(tvNewImageNameId, ConstraintSet.START,
-                R.id.tv_new_image, ConstraintSet.END);
-        //constraintSet.constrainHeight(etNewAnswerId, ConstraintSet.MATCH_CONSTRAINT_PERCENT);
-        //constraintSet.constrainDefaultHeight(etNewAnswerId, ConstraintSet.MATCH_CONSTRAINT_PERCENT);
-        constraintSet.applyTo(clAddImage);
         
 
     }

@@ -26,9 +26,15 @@ import android.widget.Toast;
 import com.addisonelliott.segmentedbutton.SegmentedButton;
 import com.addisonelliott.segmentedbutton.SegmentedButtonGroup;
 import com.youngsophomore.R;
+import com.youngsophomore.data.CollectionsStorage;
+import com.youngsophomore.data.Question;
 import com.youngsophomore.viewgroups.MyMotionLayout;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 
 public class MainMenuActivity extends AppCompatActivity {
 
@@ -214,16 +220,18 @@ public class MainMenuActivity extends AppCompatActivity {
                 strWordsCollectionsTitles);
         String initWordsCollection = getString(R.string.init_words_collection);
         editor.putString(strWordsCollectionsTitles, initWordsCollection);
-        //editor.apply();
         // init for phrase settings
-        String strPhrasesCollectionsTitles = ",first collection,";
+        String phrasesCollectionTitle = "first collection";
+        String strPhrasesCollectionsTitles = "," + phrasesCollectionTitle + ",";
         editor.putString(getString(R.string.phrases_collections_titles_key),
                 strPhrasesCollectionsTitles);
-        String initPhrasesCollection = getString(R.string.init_phrases_collection);
-        editor.putString(strWordsCollectionsTitles, initPhrasesCollection);
-        editor.apply();
 
-        // make all necessary directories
+        String questionsCollectionTitle = "first collection";
+        String strQuestionsCollectionsTitles = "," + questionsCollectionTitle + ",";
+        editor.putString(getString(R.string.questions_collections_titles_key),
+                strQuestionsCollectionsTitles);
+        editor.apply();
+        // make necessary directories
         File phrasesDir = new File(getExternalFilesDir(null).getAbsolutePath() + "/phrases");
         if (!phrasesDir.exists() && phrasesDir.mkdir()) {
             Log.d(DEBUG_TAG, "in MainMenuActivity: " + phrasesDir + " created");
@@ -231,12 +239,110 @@ public class MainMenuActivity extends AppCompatActivity {
         else{
             Log.d(DEBUG_TAG, "in MainMenuActivity: " + phrasesDir + "existed or was NOT created");
         }
+
+        try {
+            String fileName = "/" + phrasesCollectionTitle + ".txt";
+            File outFile = new File(phrasesDir, fileName);
+            if (!outFile.exists() && outFile.createNewFile()) {
+                Log.d(DEBUG_TAG, "in MainMenuActivity: " + outFile.getAbsolutePath() +
+                        " did NOT exist and was created");
+            }
+            else{
+                Log.d(DEBUG_TAG, "in MainMenuActivity: " + outFile.getAbsolutePath() +
+                        " existed or was NOT created");
+            }
+            FileOutputStream fos = new FileOutputStream(outFile);
+            OutputStreamWriter osw = new OutputStreamWriter(fos);
+            Log.d(DEBUG_TAG, "in CollectionStorage: fileName = " + outFile);
+            ArrayList<String> phrasesCollection = new ArrayList<>();
+            phrasesCollection.add("Спасибо за использование приложения");
+            phrasesCollection.add("надеюсь, вы найдёте его полезным");
+            for(String phrase : phrasesCollection){
+                osw.write(phrase);
+                osw.write("|");
+            }
+            osw.flush();
+            osw.close();
+            fos.close();
+        }
+        catch (IOException e) {
+            Log.d(DEBUG_TAG, "in CollectionStorage: File write failed: " + e.toString());
+        }
+
+        // init for details settings
+        // make all necessary directories
         File detailsDir = new File(getExternalFilesDir(null).getAbsolutePath() + "/details");
         if (!detailsDir.exists() && detailsDir.mkdir()) {
             Log.d(DEBUG_TAG, "in MainMenuActivity: " + detailsDir + " created");
         }
         else{
             Log.d(DEBUG_TAG, "in MainMenuActivity: " + detailsDir + "existed or was NOT created");
+        }
+        ArrayList<Question> questionCollection = new ArrayList<>();
+        Question question1 = new Question();
+        question1.setQuestionText("Текст первого вопроса?");
+        ArrayList<String> answers1 = new ArrayList<>();
+        answers1.add("Ответ11 +");
+        answers1.add("Ответ12 -");
+        answers1.add("Ответ13 -");
+        question1.setAnswers(answers1);
+        question1.setSingleAnswer(true);
+        question1.putAnswersInOneString();
+        questionCollection.add(question1);
+        Question question2 = new Question();
+        question2.setQuestionText("Текст первого вопроса?");
+        ArrayList<String> answers2 = new ArrayList<>();
+        answers2.add("Ответ21 +");
+        answers2.add("Ответ22 +");
+        answers2.add("Ответ23 -");
+        question2.setAnswers(answers2);
+        question2.setSingleAnswer(false);
+        question2.putAnswersInOneString();
+        questionCollection.add(question2);
+        try {
+            File questionsDir = new File(getExternalFilesDir(null).getAbsolutePath()
+                    + "/details" + "/" + questionsCollectionTitle);
+            //File phrasesDir = new File(context.getExternalFilesDir(null).getAbsolutePath() + "/phrases");
+            if (!questionsDir.exists() && questionsDir.mkdir()) {
+                Log.d(DEBUG_TAG, "in MainMenuActivity: " + questionsDir + " created");
+            }
+            Log.d(DEBUG_TAG, "in MainMenuActivity: questionsDir = " + questionsDir);
+            for(int i = 0; i < questionCollection.size(); ++i){
+                String questionNum = "question";
+                if(i < 10){
+                    questionNum += "00" + String.valueOf(i);
+                }
+                else if(i < 100){
+                    questionNum += "0" + String.valueOf(i);
+                }
+                else{
+                    questionNum += String.valueOf(i);
+                }
+                String fileName = "/" + questionNum + ".txt";
+                File outFile = new File(questionsDir, fileName);
+                if (!outFile.exists() && outFile.createNewFile()) {
+                    Log.d(DEBUG_TAG, "in MainMenuActivity: " + outFile.getAbsolutePath() +
+                            " did NOT exist and was created");
+                }
+                else{
+                    Log.d(DEBUG_TAG, "in MainMenuActivity: " + outFile.getAbsolutePath() +
+                            " existed or was NOT created");
+                }
+                FileOutputStream fos = new FileOutputStream(outFile);
+                OutputStreamWriter osw = new OutputStreamWriter(fos);
+                Log.d(DEBUG_TAG, "in MainMenuActivity: fileName = " + outFile);
+                osw.write(questionCollection.get(i).getQuestionText());
+                osw.write("\n");
+                osw.write(questionCollection.get(i).getAnswersInOneString(false));
+                osw.flush();
+                osw.close();
+                fos.close();
+            }
+
+
+        }
+        catch (IOException e) {
+            Log.d(DEBUG_TAG, "in MainMenuActivity: File write failed: " + e.toString());
         }
 
     }

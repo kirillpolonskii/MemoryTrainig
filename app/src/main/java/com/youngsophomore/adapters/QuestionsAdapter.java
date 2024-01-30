@@ -75,7 +75,7 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.View
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         viewHolder.getTVQuestionText().setText(localQuestions.get(position).getQuestionText());
-        viewHolder.getTVAnswers().setText(localQuestions.get(position).getAnswersInOneString());
+        viewHolder.getTVAnswers().setText(localQuestions.get(position).getAnswersInOneString(true));
     }
 
     @Override
