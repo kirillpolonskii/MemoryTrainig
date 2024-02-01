@@ -3,6 +3,9 @@
     <string name="app_name">Memory Training</string>
     <string name="msg_collection_title_not_unique">Название не уникально</string>
     <string name="first_launch_key">FIRST_LAUNCH_KEY</string>
+    <string name="delete_collection_dialog_title">Удаление коллекции</string>
+    <string name="delete_collection_dialog_message">Вы действительно хотите удалить выбранную коллекцию?</string>
+    <string name="msg_forbid_delete_collection">Осталась только 1 коллекция</string>
     <!-- STRINGS FOR BUTTONS -->
     <string name="btn_mahjong_training_ru">маджонг</string>
     <string name="btn_colors_training_ru">цвета</string>
@@ -132,6 +135,7 @@
 
     <string name="tv_add_words_collection">Добавить коллекцию слов</string>
     <string name="tv_confirm_words_collection">Сохранить коллекцию слов</string>
+    <string name="tv_long_click">Долгое нажатие на выбранную коллекцию - удаление коллекции</string>
 
     <string name="tv_add_phrases_collection">Добавить коллекцию фраз</string>
 
@@ -147,6 +151,7 @@
     <string name="tv_confirm_questions_collection">Подтвердить коллекцию вопросов</string>
     <string name="tv_add_answer">Добавить ответ</string>
     <string name="tv_save_answer">Сохранить ответ</string>
+
 
 
 </resources>

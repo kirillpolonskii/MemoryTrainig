@@ -18,18 +18,22 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.youngsophomore.R;
 import com.youngsophomore.data.CollectionsStorage;
+import com.youngsophomore.fragments.DeleteCollectionDialogFragment;
 import com.youngsophomore.fragments.InfoDialogFragment;
 
 import java.util.ArrayList;
 
-public class DetailsSettingsActivity extends AppCompatActivity {
+public class DetailsSettingsActivity extends AppCompatActivity
+        implements DeleteCollectionDialogFragment.DeleteCollectionDialogListener{
     private static final String DEBUG_TAG = "Gestures";
     ArrayList<String> questionsCollectionsTitles;
     SharedPreferences sharedPreferences;
     ArrayAdapter<String> adapter;
+    Spinner sprImagesCollection;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -50,9 +54,23 @@ public class DetailsSettingsActivity extends AppCompatActivity {
         adapter = new ArrayAdapter<>(this,
                 R.layout.custom_spinner_item, questionsCollectionsTitles);
         adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
-        Spinner sprImagesCollection = findViewById(R.id.spr_image);
+        sprImagesCollection = findViewById(R.id.spr_image);
         sprImagesCollection.setAdapter(adapter);
         sprImagesCollection.setSelection(imagesCollectionPosition);
+        sprImagesCollection.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Log.d(DEBUG_TAG, "In DetailsSettingsActivity: Long click on spinner itself");
+                if(adapter.getCount() > 1){
+                    showDeleteCollectionDialog();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), getString(R.string.msg_forbid_delete_collection),
+                            Toast.LENGTH_LONG).show();
+                }
+                return true;
+            }
+        });
 
         NumberPicker pckrImageShowTime = findViewById(R.id.pckr_image_show_time);
         pckrImageShowTime.setMinValue(1);
@@ -207,11 +225,33 @@ public class DetailsSettingsActivity extends AppCompatActivity {
         DialogFragment newFragment = new InfoDialogFragment(layoutResource);
         newFragment.show(getSupportFragmentManager(), "InfoDialogFragment");
     }
+    public void showDeleteCollectionDialog(){
+        DialogFragment newFragment = new DeleteCollectionDialogFragment();
+        newFragment.show(getSupportFragmentManager(), "DeleteCollectionDialogFragment");
+    }
 
 
     @Override
     public boolean onSupportNavigateUp(){
         onBackPressed();
         return true;
+    }
+
+    @Override
+    public void onDeleteCollectionPosClick(DialogFragment dialog) {
+        Log.d(DEBUG_TAG, "In DetailsSettingsActivity: Pos button clicked, slctd= " +
+                sprImagesCollection.getSelectedItem());
+        CollectionsStorage.deleteQuestionsCollection((String) sprImagesCollection.getSelectedItem(),
+                getString(R.string.questions_collections_titles_key),
+                getString(R.string.saved_images_collection_position_key),
+                sharedPreferences, getApplicationContext());
+        adapter.remove((String) sprImagesCollection.getSelectedItem());
+        adapter.notifyDataSetChanged();
+        sprImagesCollection.setSelection(0);
+    }
+
+    @Override
+    public void onDeleteCollectionNegClick(DialogFragment dialog) {
+
     }
 }

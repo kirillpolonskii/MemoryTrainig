@@ -103,6 +103,17 @@
         style="@style/SettingsTextViewStyle"
 
         />
+    <TextView
+        android:id="@+id/tv_delete_collection_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_add_phrases_collection_info"
+        app:layout_constraintStart_toStartOf="parent"
+
+        android:text="@string/tv_long_click"
+        style="@style/SettingsTextViewStyle"
+
+        />
 
 
 

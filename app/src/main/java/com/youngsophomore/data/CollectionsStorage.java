@@ -44,6 +44,14 @@ public class CollectionsStorage {
 //        imageNamesForUri = new ArrayMap<>();
 //    }
 
+public static ArrayList<String> getCollectionsTitles(SharedPreferences sharedPreferences, String key){
+    // get Set<String> from shared preferences
+    String strWordsCollectionsTitles = sharedPreferences.getString(key, "");
+    String[] splittedWordsCollectionsTitles = strWordsCollectionsTitles.split(",");
+    ArrayList<String> newCollectionArray = new ArrayList<>(Arrays.asList(splittedWordsCollectionsTitles));
+    newCollectionArray.remove(0);
+    return newCollectionArray;
+}
     public static void saveWordsCollection(
             String title,
             String newCollection,
@@ -56,19 +64,25 @@ public class CollectionsStorage {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(wordsCollectionsTitlesKey, strWordsCollectionsTitles);
         editor.putString(title, newCollection);
+
         editor.apply();
     }
 
-    public static ArrayList<String> getCollectionsTitles(SharedPreferences sharedPreferences, String key){
-        // get Set<String> from shared preferences
-        String strWordsCollectionsTitles = sharedPreferences.getString(key, "");
-        String[] splittedWordsCollectionsTitles = strWordsCollectionsTitles.split(",");
-        ArrayList<String> newCollectionArray = new ArrayList<>(Arrays.asList(splittedWordsCollectionsTitles));
-        newCollectionArray.remove(0);
-        return newCollectionArray;
-    }
+    public static void deleteWordsCollection(String title,
+                                             String wordsCollectionsTitlesKey,
+                                             String savedWordsCollectionPositionKey,
+                                             SharedPreferences sharedPreferences){
+        // delete title from strWordsCollectionsTitles in SharedPreferences
+        String strWordsCollectionsTitles = sharedPreferences.getString(wordsCollectionsTitlesKey, "");
+        strWordsCollectionsTitles = strWordsCollectionsTitles.replace(title + ",", "");
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(wordsCollectionsTitlesKey, strWordsCollectionsTitles);
+        // delete words collection
+        editor.remove(title);
+        editor.putInt(savedWordsCollectionPositionKey, 0);
+        editor.apply();
 
-    // тут будет метод удаления названия из строки с названиями коллекций
+    }
 
     public static String getWordsCollectionTitle(int position){
         // get collection from shared preferences and get title
@@ -117,6 +131,35 @@ public class CollectionsStorage {
         }
     }
 
+    public static void deletePhrasesCollection(String title,
+                                               String phrasesCollectionsTitlesKey,
+                                               String savedPhrasesCollectionPositionKey,
+                                               SharedPreferences sharedPreferences,
+                                               Context context){
+        // delete title from strPhrasesCollectionsTitles in SharedPreferences
+        String strPhrasesCollectionsTitles = sharedPreferences.getString(phrasesCollectionsTitlesKey, "");
+        strPhrasesCollectionsTitles = strPhrasesCollectionsTitles.replace(title + ",", "");
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(phrasesCollectionsTitlesKey, strPhrasesCollectionsTitles);
+        editor.putInt(savedPhrasesCollectionPositionKey, 0);
+        editor.apply();
+        try {
+            File filePath = new File(context.getExternalFilesDir(null).getAbsolutePath() + "/phrases");
+            Log.d(DEBUG_TAG, "in CollectionStorage: filePath = " + filePath);
+            String fileName = "/" + title + ".txt";
+            File deleteFile = new File(filePath, fileName);
+            if(deleteFile.delete()){
+                Log.d(DEBUG_TAG, "in CollectionStorage: deleted file successfully = ");
+            }
+            else{
+                Log.d(DEBUG_TAG, "in CollectionStorage: deleted file NOT successfully = ");
+            }
+        }
+        catch (NullPointerException e) {
+            Log.d(DEBUG_TAG, "in CollectionStorage: File is null: " + e.toString());
+        }
+    }
+
     public static String getPhrasesCollectionTitle(int position){
         // get collection of titles from shared preferences and get the title
         return phrasesCollectionsTitles.get(position);
@@ -131,7 +174,6 @@ public class CollectionsStorage {
         // write uri in title/imageUri or in SharedPreferences
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(title, imageUri.toString());
-
         // add title to collection in shared preferences
         String strQuestionsCollectionsTitles =
                 sharedPreferences.getString(questionsCollectionsTitlesKey, "");
@@ -139,8 +181,6 @@ public class CollectionsStorage {
         editor.putString(questionsCollectionsTitlesKey, strQuestionsCollectionsTitles);
         editor.apply();
         // write answers to questionNNN in title/questionNNN.txt
-        // TODO: поменять логику на прохождение по коллекции и запись вопросов.
-        //  Но сначала надо проверить, что вообще лежит в этой коллекции
         try {
             File questionsDir = new File(context.getExternalFilesDir(null).getAbsolutePath()
                     + "/details" + "/" + title);
@@ -188,5 +228,26 @@ public class CollectionsStorage {
         }
     }
 
+    public static void deleteQuestionsCollection(String title,
+                                                 String questionsCollectionsTitleKey,
+                                                 String savedQuestionsCollectionPositionKey,
+                                                 SharedPreferences sharedPreferences,
+                                                 Context context){
+        String strQuestionsCollectionsTitles = sharedPreferences.getString(questionsCollectionsTitleKey, "");
+        strQuestionsCollectionsTitles = strQuestionsCollectionsTitles.replace(title + ",", "");
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(questionsCollectionsTitleKey, strQuestionsCollectionsTitles);
+        editor.putInt(savedQuestionsCollectionPositionKey, 0);
+        editor.apply();
+        File questionsDir = new File(context.getExternalFilesDir(null).getAbsolutePath()
+                + "/details" + "/" + title);
+        //File phrasesDir = new File(context.getExternalFilesDir(null).getAbsolutePath() + "/phrases");
+        if (questionsDir.isDirectory())
+            for (File child : questionsDir.listFiles())
+                child.delete();
+
+        questionsDir.delete();
+        Log.d(DEBUG_TAG, "in CollectionStorage: questionsDir = " + questionsDir);
+    }
 
 }
