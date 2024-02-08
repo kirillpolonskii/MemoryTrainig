@@ -93,3 +93,5 @@ CollectionStorage как "надстройку", которая оборачив
 
 # 08.02.24
 Проблема: на экранах меньшего размера правая часть интерфейса выходит за границы
+
+Решение: добавить в TextView атрибут app:layout_constrainedWidth="true" в связке с android:layout_width="wrap_content"
