@@ -15,10 +15,9 @@
 
     <TextView
         android:id="@+id/tv_shapes_amount"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent="0.6"
+        app:layout_constrainedWidth="true"
         app:layout_constraintTop_toTopOf="@id/pckr_shapes_amount"
         app:layout_constraintBottom_toBottomOf="@id/pckr_shapes_amount"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,15 +40,15 @@
         android:textColor="?attr/colorPrimary"
         android:colorControlNormal="?attr/colorPrimary"
         android:layout_marginStart="15dp"
+        android:layout_marginEnd="@dimen/settings_large_margin"
 
         />
 
     <TextView
         android:id="@+id/tv_distinct_shapes_amount"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent="0.6"
+        app:layout_constrainedWidth="true"
         app:layout_constraintTop_toTopOf="@id/pckr_distinct_shapes_amount"
         app:layout_constraintBottom_toBottomOf="@id/pckr_distinct_shapes_amount"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,15 +70,15 @@
         android:theme="@style/NumberPickerTheme"
         android:textColor="?attr/colorPrimary"
         android:colorControlNormal="?attr/colorPrimary"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="@dimen/settings_small_margin"
+        android:layout_marginEnd="@dimen/settings_large_margin"
 
         />
     <TextView
         android:id="@+id/tv_max_repeat_shapes_amount"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent="0.6"
+        app:layout_constrainedWidth="true"
         app:layout_constraintTop_toTopOf="@id/sgbtn_max_repeat_shapes_amount"
         app:layout_constraintBottom_toBottomOf="@id/sgbtn_max_repeat_shapes_amount"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +97,8 @@
         app:layout_constraintStart_toEndOf="@id/tv_max_repeat_shapes_amount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/pckr_distinct_shapes_amount"
-        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="@dimen/settings_small_margin"
         android:elevation="@dimen/sgbtn_bones_elev"
         style="@style/SegmentedButtonGroupStyle"
         tools:ignore="TouchTargetSizeCheck">
@@ -149,6 +149,7 @@
         android:id="@+id/tv_shape_show_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constrainedWidth="true"
         app:layout_constraintTop_toTopOf="@id/pckr_shape_show_time"
         app:layout_constraintBottom_toBottomOf="@id/pckr_shape_show_time"
         app:layout_constraintStart_toStartOf="parent"
@@ -170,8 +171,8 @@
         android:theme="@style/NumberPickerTheme"
         android:textColor="?attr/colorPrimary"
         android:colorControlNormal="?attr/colorPrimary"
-        android:layout_marginStart="15dp"
-
+        android:layout_marginStart="@dimen/settings_small_margin"
+        android:layout_marginEnd="@dimen/settings_large_margin"
         />
 
     <ImageButton

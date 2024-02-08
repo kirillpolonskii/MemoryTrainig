@@ -15,18 +15,18 @@
 
     <TextView
         android:id="@+id/tv_colors_amount"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent="0.6"
+        app:layout_constrainedWidth="true"
         app:layout_constraintTop_toTopOf="@id/pckr_colors_amount"
         app:layout_constraintBottom_toBottomOf="@id/pckr_colors_amount"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/pckr_colors_amount"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintHorizontal_bias="0.0"
         android:text="@string/colors_amount"
         style="@style/SettingsTextViewStyle"
+
         />
 
     <NumberPicker
@@ -36,24 +36,26 @@
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintStart_toEndOf="@id/tv_colors_amount"
         app:layout_constraintEnd_toEndOf="parent"
-
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintHorizontal_bias="0.0"
         android:theme="@style/NumberPickerTheme"
         android:textColor="?attr/colorPrimary"
         android:colorControlNormal="?attr/colorPrimary"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="@dimen/settings_small_margin"
+        android:layout_marginEnd="@dimen/settings_large_margin"
 
         />
 
     <TextView
         android:id="@+id/tv_distinct_colors_amount"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent="0.6"
+        app:layout_constrainedWidth="true"
         app:layout_constraintTop_toTopOf="@id/pckr_distinct_colors_amount"
         app:layout_constraintBottom_toBottomOf="@id/pckr_distinct_colors_amount"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/pckr_distinct_colors_amount"
+
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintHorizontal_bias="0"
         android:text="@string/distinct_colors_amount"
@@ -71,15 +73,15 @@
         android:theme="@style/NumberPickerTheme"
         android:textColor="?attr/colorPrimary"
         android:colorControlNormal="?attr/colorPrimary"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="@dimen/settings_small_margin"
+        android:layout_marginEnd="@dimen/settings_large_margin"
 
         />
     <TextView
         android:id="@+id/tv_max_repeat_colors_amount"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent="0.6"
+        app:layout_constrainedWidth="true"
         app:layout_constraintTop_toTopOf="@id/sgbtn_max_repeat_colors_amount"
         app:layout_constraintBottom_toBottomOf="@id/sgbtn_max_repeat_colors_amount"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,18 +100,21 @@
         app:layout_constraintStart_toEndOf="@id/tv_max_repeat_colors_amount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/pckr_distinct_colors_amount"
-        android:layout_marginEnd="15dp"
+        android:layout_marginStart="@dimen/settings_small_margin"
+        android:layout_marginEnd="@dimen/settings_small_margin"
         android:elevation="@dimen/sgbtn_bones_elev"
         style="@style/SegmentedButtonGroupStyle"
         tools:ignore="TouchTargetSizeCheck">
+
         <com.addisonelliott.segmentedbutton.SegmentedButton
+            style="@style/SegmentedButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/info"
             android:padding="8dp"
             app:text="@string/max_repeat_colors_amount_0"
-            style="@style/SegmentedButtonStyle" />
+            tools:ignore="DuplicateSpeakableTextCheck" />
         <com.addisonelliott.segmentedbutton.SegmentedButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -149,6 +154,7 @@
         android:id="@+id/tv_color_show_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constrainedWidth="true"
         app:layout_constraintTop_toTopOf="@id/pckr_color_show_time"
         app:layout_constraintBottom_toBottomOf="@id/pckr_color_show_time"
         app:layout_constraintStart_toStartOf="parent"
@@ -170,7 +176,8 @@
         android:theme="@style/NumberPickerTheme"
         android:textColor="?attr/colorPrimary"
         android:colorControlNormal="?attr/colorPrimary"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="@dimen/settings_small_margin"
+        android:layout_marginEnd="@dimen/settings_large_margin"
 
         />
 
