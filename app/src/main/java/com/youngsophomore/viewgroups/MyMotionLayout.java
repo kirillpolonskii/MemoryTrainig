@@ -57,8 +57,8 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
 
     private boolean viewWasMoved;
     private int idBtnWithEvent = 0;
-    Button btnWithEvent;
-    ImageButton btnSettingsWithEvent;
+    Button btnWithEvent = null;
+    ImageButton btnSettingsWithEvent = null;
 
     public MyMotionLayout(@NonNull Context context) {
         super(context);
@@ -212,79 +212,84 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
             case (MotionEvent.ACTION_MOVE):
                 Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. Action was MOVE");
                 viewWasMoved = true;
-                if(!eventBtnCorrespondsWithState(btnWithEvent, myMotionLayout.getCurrentState()) ||
-                        myMotionLayout.getCurrentState() != -1){ // попробовать здесь &&
+                if(btnWithEvent != null && (!eventBtnCorrespondsWithState(btnWithEvent, myMotionLayout.getCurrentState()) ||
+                        myMotionLayout.getCurrentState() != -1)){ // попробовать здесь &&
                     myMotionLayout.transitionToState(R.id.base_state);
                 }
                 return super.onTouchEvent(motionEvent);
             case (MotionEvent.ACTION_UP):
                 Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. Action was UP");
-                if(!viewWasMoved){
-                    int elevSettingsPx = getResources().getDimensionPixelSize(R.dimen.btn_info_elev);
-                    if(idBtnWithEvent == idBtnMahjongTraining) {
-                        Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. mahjong training was clicked");
-                        btnWithEvent.setElevation(elevSettingsPx);
+                int elevTrainingPx = getResources().getDimensionPixelSize(R.dimen.btn_training_elev);
+                int elevSettingsPx = getResources().getDimensionPixelSize(R.dimen.btn_info_elev);
+                if(btnWithEvent != null && idBtnWithEvent == idBtnMahjongTraining) {
+                    Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. mahjong training was touched");
+                    //btnWithEvent.setElevation(elevSettingsPx);
+                    btnWithEvent.setElevation(elevTrainingPx);
+                    if(!viewWasMoved){
                         Intent intent = new Intent(getContext(), MahjongTrainingActivity.class);
                         getContext().startActivity(intent);
                     }
-                    if(idBtnWithEvent == R.id.btn_colors_training) {
-                        Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. colors training was clicked");
-                    }
-                    if(idBtnWithEvent == R.id.btn_shapes_training) {
-                        Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. shapes training was clicked");
-                    }
-                    if(idBtnWithEvent == R.id.btn_words_training) {
-                        Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. words training was clicked");
-                    }
-                    if(idBtnWithEvent == R.id.btn_phrases_training) {
-                        Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. phrases training was clicked");
-                    }
-                    if(idBtnWithEvent == R.id.btn_details_training) {
-                        Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. details training was clicked");
-                    }
-
-                    if(idBtnWithEvent == R.id.btn_mahjong_settings) {
-                        Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. mahjong settings was clicked");
-                        btnSettingsWithEvent.setElevation(elevSettingsPx);
-                        Intent intent = new Intent(getContext(), MahjongSettingsActivity.class);
-                        getContext().startActivity(intent);
-                    }
-                    if(idBtnWithEvent == R.id.btn_colors_settings) {
-                        Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. colors settings was clicked");
-                        btnSettingsWithEvent.setElevation(elevSettingsPx);
-                        Intent intent = new Intent(getContext(), ColorsSettingsActivity.class);
-                        getContext().startActivity(intent);
-                    }
-                    if(idBtnWithEvent == R.id.btn_shapes_settings) {
-                        Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. shapes settings was clicked");
-                        btnSettingsWithEvent.setElevation(elevSettingsPx);
-                        Intent intent = new Intent(getContext(), ShapesSettingsActivity.class);
-                        getContext().startActivity(intent);
-                    }
-                    if(idBtnWithEvent == R.id.btn_words_settings) {
-                        Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. words settings was clicked");
-                        btnSettingsWithEvent.setElevation(elevSettingsPx);
-                        Intent intent = new Intent(getContext(), WordsSettingsActivity.class);
-                        getContext().startActivity(intent);
-                    }
-                    if(idBtnWithEvent == R.id.btn_phrases_settings) {
-                        Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. phrases settings was clicked");
-                        btnSettingsWithEvent.setElevation(elevSettingsPx);
-                        Intent intent = new Intent(getContext(), PhrasesSettingsActivity.class);
-                        getContext().startActivity(intent);
-                    }
-                    if(idBtnWithEvent == R.id.btn_details_settings) {
-                        Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. details settings was clicked");
-                        btnSettingsWithEvent.setElevation(elevSettingsPx);
-                        Intent intent = new Intent(getContext(), DetailsSettingsActivity.class);
-                        getContext().startActivity(intent);
-                    }
-
                 }
-                viewWasMoved = false;
-                int elevTrainingPx = getResources().getDimensionPixelSize(R.dimen.btn_training_elev);
-                btnWithEvent.setElevation(elevTrainingPx);
+                if(btnWithEvent != null && idBtnWithEvent == R.id.btn_colors_training) {
+                    Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. colors training was touched");
+                    btnWithEvent.setElevation(elevTrainingPx);
+                }
+                if(btnWithEvent != null && idBtnWithEvent == R.id.btn_shapes_training) {
+                    Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. shapes training was touched");
+                    btnWithEvent.setElevation(elevTrainingPx);
+                }
+                if(btnWithEvent != null && idBtnWithEvent == R.id.btn_words_training) {
+                    Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. words training was touched");
+                    btnWithEvent.setElevation(elevTrainingPx);
+                }
+                if(btnWithEvent != null && idBtnWithEvent == R.id.btn_phrases_training) {
+                    Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. phrases training was touched");
+                    btnWithEvent.setElevation(elevTrainingPx);
+                }
+                if(btnWithEvent != null && idBtnWithEvent == R.id.btn_details_training) {
+                    Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. details training was touched");
+                    btnWithEvent.setElevation(elevTrainingPx);
+                }
 
+                if(idBtnWithEvent == R.id.btn_mahjong_settings) {
+                    Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. mahjong settings was clicked");
+                    btnSettingsWithEvent.setElevation(elevSettingsPx);
+                    Intent intent = new Intent(getContext(), MahjongSettingsActivity.class);
+                    getContext().startActivity(intent);
+                }
+                if(idBtnWithEvent == R.id.btn_colors_settings) {
+                    Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. colors settings was clicked");
+                    btnSettingsWithEvent.setElevation(elevSettingsPx);
+                    Intent intent = new Intent(getContext(), ColorsSettingsActivity.class);
+                    getContext().startActivity(intent);
+                }
+                if(idBtnWithEvent == R.id.btn_shapes_settings) {
+                    Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. shapes settings was clicked");
+                    btnSettingsWithEvent.setElevation(elevSettingsPx);
+                    Intent intent = new Intent(getContext(), ShapesSettingsActivity.class);
+                    getContext().startActivity(intent);
+                }
+                if(idBtnWithEvent == R.id.btn_words_settings) {
+                    Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. words settings was clicked");
+                    btnSettingsWithEvent.setElevation(elevSettingsPx);
+                    Intent intent = new Intent(getContext(), WordsSettingsActivity.class);
+                    getContext().startActivity(intent);
+                }
+                if(idBtnWithEvent == R.id.btn_phrases_settings) {
+                    Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. phrases settings was clicked");
+                    btnSettingsWithEvent.setElevation(elevSettingsPx);
+                    Intent intent = new Intent(getContext(), PhrasesSettingsActivity.class);
+                    getContext().startActivity(intent);
+                }
+                if(idBtnWithEvent == R.id.btn_details_settings) {
+                    Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. details settings was clicked");
+                    btnSettingsWithEvent.setElevation(elevSettingsPx);
+                    Intent intent = new Intent(getContext(), DetailsSettingsActivity.class);
+                    getContext().startActivity(intent);
+                }
+                btnWithEvent = null;
+                idBtnWithEvent = 0;
+                viewWasMoved = false;
                 return super.onTouchEvent(motionEvent);
             case (MotionEvent.ACTION_CANCEL):
                 Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. Action was CANCEL");

@@ -41,7 +41,8 @@
         android:theme="@style/NumberPickerTheme"
         android:textColor="?attr/colorPrimary"
         android:colorControlNormal="?attr/colorPrimary"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="@dimen/settings_small_margin"
+        android:layout_marginEnd="@dimen/settings_large_margin"
 
         />
 

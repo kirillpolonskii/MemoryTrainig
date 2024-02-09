@@ -95,3 +95,7 @@ CollectionStorage как "надстройку", которая оборачив
 Проблема: на экранах меньшего размера правая часть интерфейса выходит за границы
 
 Решение: добавить в TextView атрибут app:layout_constrainedWidth="true" в связке с android:layout_width="wrap_content"
+
+Проблема: на Xiaomi Redmi Note 7 не влезают все настройки и текст наслаивается друг на друга
+
+Решение: поменять ограничения на TextView и NumberPicker
