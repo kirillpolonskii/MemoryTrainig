@@ -5,7 +5,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MahjongTrainingActivity">
+    tools:context=".activities.MahjongTrainingActivity"
+    android:background="@color/white_blue">
+    <!--        app:layout_constrainedWidth="true"
+        app:layout_constrainedHeight="true"-->
+    <ImageButton
+        android:id="@+id/tile1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:background="@drawable/tile_back"
+        android:contentDescription="@string/info"
+        />
+<!--    android:background="@drawable/tile_back"-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
