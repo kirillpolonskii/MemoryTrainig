@@ -9,6 +9,9 @@ import android.util.Log;
 
 import com.youngsophomore.R;
 import com.youngsophomore.helpers.PrepHelper;
+import com.youngsophomore.helpers.TrainHelper;
+
+import java.util.ArrayList;
 
 public class MahjongTrainingActivity extends AppCompatActivity {
     private static final String DEBUG_TAG = "Gestures";
@@ -30,7 +33,7 @@ public class MahjongTrainingActivity extends AppCompatActivity {
         * Показ диалогового окна или смена фрагмента с результатами тренировки
         *
         * */
-
+        // Загрузка данных из сохранённых настроек
         SharedPreferences sharedPreferences =
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         int mahjongRememberTime = sharedPreferences.getInt(getString(R.string.saved_mahjong_remember_time_key), 2);
@@ -41,5 +44,11 @@ public class MahjongTrainingActivity extends AppCompatActivity {
         Log.d(DEBUG_TAG, "saved mahjongRememberTime = " + mahjongRememberTime +
                 ", mahjongBonesAmount = " + mahjongBonesAmount +
                 ", mahjongEqualBonesAmount = " + mahjongEqualBonesAmount);
+        // Формирование матрицы (или массива) костей с загруженными параметрами
+        ArrayList<Integer> tiles = TrainHelper.Mahjong.generateTiles(mahjongBonesAmount, mahjongEqualBonesAmount);
+        Log.d(DEBUG_TAG, tiles.toString());
+        // Заполнение GridLayout из массива
     }
+
+    public void fillLayoutWithTiles(){}
 }

@@ -15,4 +15,6 @@
     <dimen name="settings_medium_margin">30dp</dimen>
     <dimen name="settings_large_margin">50dp</dimen>
 
+    <dimen name="mahjong_tile_margin">9dp</dimen>
+
 </resources>
