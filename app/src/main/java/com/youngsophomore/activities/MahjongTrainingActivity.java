@@ -1,6 +1,7 @@
 package com.youngsophomore.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.youngsophomore.R;
+import com.youngsophomore.fragments.StopwatchFragment;
 import com.youngsophomore.helpers.PrepHelper;
 import com.youngsophomore.helpers.TrainHelper;
 
@@ -15,11 +17,12 @@ import java.util.ArrayList;
 
 public class MahjongTrainingActivity extends AppCompatActivity {
     private static final String DEBUG_TAG = "Gestures";
+    private static final String STOPWATCH_FRAGMENT_TAG = "stopwatch_fragment_tag";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mahjong_training);
+        setContentView(R.layout.activity_mahjong_training_24);
         /* Действия
         * ~~Загрузка данных из сохранённых настроек~~
         * Формирование массива костей
@@ -48,6 +51,13 @@ public class MahjongTrainingActivity extends AppCompatActivity {
         ArrayList<Integer> tiles = TrainHelper.Mahjong.generateTiles(mahjongBonesAmount, mahjongEqualBonesAmount);
         Log.d(DEBUG_TAG, tiles.toString());
         // Заполнение GridLayout из массива
+
+        Bundle bundle = new Bundle();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .setReorderingAllowed(true)
+                .add(R.id.frgt_view, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
+                .commit();
     }
 
     public void fillLayoutWithTiles(){}
