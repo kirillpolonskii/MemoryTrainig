@@ -24,7 +24,7 @@ public class TrainHelper {
                 }
                 Log.d(DEBUG_TAG, "tileNum = " + tileNum);
                 usedTiles.add(tileNum);
-                if (i < mahjongBonesAmount / mahjongEqualBonesAmount / 2){
+                if (i < (mahjongBonesAmount / mahjongEqualBonesAmount) * 10 / 15){
                     Log.d(DEBUG_TAG, "in if branch");
                     int filledPositions = 0;
                     while(filledPositions < mahjongEqualBonesAmount){

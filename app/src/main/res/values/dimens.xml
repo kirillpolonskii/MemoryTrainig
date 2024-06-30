@@ -17,7 +17,14 @@
     <dimen name="settings_xxl_margin">60dp</dimen>
     <dimen name="settings_xxxl_margin">70dp</dimen>
     <dimen name="settings_xxxxl_margin">80dp</dimen>
-    <dimen name="m_training_vertical_margin">110dp</dimen>
+
+    <dimen name="stopwatch_top_margin">10dp</dimen>
+    <dimen name="m_training_small_horiz_margin">15dp</dimen>
+    <dimen name="m_training_big_horiz_margin">200dp</dimen>
+    <dimen name="m_training_horiz_middle_margin">20dp</dimen>
+    <dimen name="m_training_vert_middle_margin">30dp</dimen>
+    <dimen name="m_training_small_vertical_margin">60dp</dimen>
+    <dimen name="m_training_big_vertical_margin">140dp</dimen>
 
     <dimen name="mahjong_tile_margin">9dp</dimen>
 
