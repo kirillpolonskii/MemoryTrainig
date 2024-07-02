@@ -6,6 +6,7 @@ import androidx.fragment.app.DialogFragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,35 +38,35 @@ public class MahjongSettingsActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences =
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         int mahjongRememberTime = sharedPreferences.getInt(getString(R.string.saved_mahjong_remember_time_key), 2);
-        int mahjongBonesAmount = sharedPreferences.getInt(getString(R.string.saved_mahjong_bones_amount_key), 0);
-        int mahjongEqualBonesAmount = sharedPreferences.getInt(getString(R.string.saved_mahjong_equal_bones_amount_key), 0);
+        int mahjongTilesAmount = sharedPreferences.getInt(getString(R.string.saved_mahjong_tiles_amount_key), 0);
+        int mahjongEqualTilesAmount = sharedPreferences.getInt(getString(R.string.saved_mahjong_equal_tiles_amount_key), 0);
         NumberPicker numberPicker = findViewById(R.id.number_picker);
         numberPicker.setMinValue(1);
         numberPicker.setMaxValue(10);
         numberPicker.setValue(mahjongRememberTime);
 
-        SegmentedButtonGroup sgBtnGroupBones = findViewById(R.id.sgbtn_bones_amount);
-        sgBtnGroupBones.setPosition(mahjongBonesAmount, false);
-        SegmentedButton sgBtnBonesAmount12 = sgBtnGroupBones.getButton(0);
+        SegmentedButtonGroup sgBtnGroupTiles = findViewById(R.id.sgbtn_tiles_amount);
+        sgBtnGroupTiles.setPosition(mahjongTilesAmount, false);
+        SegmentedButton sgBtnTilesAmount12 = sgBtnGroupTiles.getButton(0);
 
-        sgBtnBonesAmount12.setOnTouchListener(new View.OnTouchListener() {
+        sgBtnTilesAmount12.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 int action = motionEvent.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "sgBtnBonesAmount12 onTouch. Action was DOWN");
-                        sgBtnGroupBones.setElevation(0);
+                        Log.d(DEBUG_TAG, "sgBtnTilesAmount12 onTouch. Action was DOWN");
+                        sgBtnGroupTiles.setElevation(0);
                         //sgBtnGroup.onTouchEvent(motionEvent);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "sgBtnBonesAmount12 onTouch. Action was MOVE");
+                        Log.d(DEBUG_TAG, "sgBtnTilesAmount12 onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_bones_elev);
-                        Log.d(DEBUG_TAG, "sgBtnBonesAmount12 onTouch. Action was UP");
+                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_tiles_elev);
+                        Log.d(DEBUG_TAG, "sgBtnTilesAmount12 onTouch. Action was UP");
                         //sgBtnGroup.onTouchEvent(motionEvent);
-                        sgBtnGroupBones.setElevation(elevPx);
+                        sgBtnGroupTiles.setElevation(elevPx);
 
                         return true;
                     default:
@@ -73,33 +74,33 @@ public class MahjongSettingsActivity extends AppCompatActivity {
                 }
             }
         });
-        SegmentedButton sgBtnBonesAmount24 = sgBtnGroupBones.getButton(1);
-        sgBtnBonesAmount24.setOnTouchListener(new View.OnTouchListener() {
+        SegmentedButton sgBtnTilesAmount24 = sgBtnGroupTiles.getButton(1);
+        sgBtnTilesAmount24.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 int action = motionEvent.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "sgBtnBonesAmount24 onTouch. Action was DOWN");
-                        sgBtnGroupBones.setElevation(0);
+                        Log.d(DEBUG_TAG, "sgBtnTilesAmount24 onTouch. Action was DOWN");
+                        sgBtnGroupTiles.setElevation(0);
                         //sgBtnGroup.onTouchEvent(motionEvent);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "sgBtnBonesAmount24 onTouch. Action was MOVE");
+                        Log.d(DEBUG_TAG, "sgBtnTilesAmount24 onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_bones_elev);
-                        Log.d(DEBUG_TAG, "sgBtnBonesAmount24 onTouch. Action was UP. open statistics" +
+                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_tiles_elev);
+                        Log.d(DEBUG_TAG, "sgBtnTilesAmount24 onTouch. Action was UP. open statistics" +
                                 ", R.dimen.sgbtn_elev = " + R.dimen.sgbtn_elev +
                                 ", elev = " + elevPx);
-                        sgBtnGroupBones.setElevation(elevPx);
+                        sgBtnGroupTiles.setElevation(elevPx);
 
                         return true;
                     case (MotionEvent.ACTION_CANCEL):
-                        Log.d(DEBUG_TAG, "sgBtnBonesAmount24 onTouch. Action was CANCEL");
+                        Log.d(DEBUG_TAG, "sgBtnTilesAmount24 onTouch. Action was CANCEL");
                         return true;
                     case (MotionEvent.ACTION_OUTSIDE):
-                        Log.d(DEBUG_TAG, "sgBtnBonesAmount24 onTouch. Movement occurred outside bounds " +
+                        Log.d(DEBUG_TAG, "sgBtnTilesAmount24 onTouch. Movement occurred outside bounds " +
                                 "of current screen element");
                         return true;
                     default:
@@ -108,90 +109,90 @@ public class MahjongSettingsActivity extends AppCompatActivity {
             }
         });
 
-        SegmentedButtonGroup sgBtnGroupEqualBones = findViewById(R.id.sgbtn_equal_bones_amount);
-        sgBtnGroupEqualBones.setPosition(mahjongEqualBonesAmount, false);
-        SegmentedButton sgBtnEqualBonesAmount2 = sgBtnGroupEqualBones.getButton(0);
-        sgBtnEqualBonesAmount2.setOnTouchListener(new View.OnTouchListener() {
+        SegmentedButtonGroup sgBtnGroupEqualTiles = findViewById(R.id.sgbtn_equal_tiles_amount);
+        sgBtnGroupEqualTiles.setPosition(mahjongEqualTilesAmount, false);
+        SegmentedButton sgBtnEqualTilesAmount2 = sgBtnGroupEqualTiles.getButton(0);
+        sgBtnEqualTilesAmount2.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 int action = motionEvent.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "sgBtnEqualBonesAmount2 onTouch. Action was DOWN");
-                        sgBtnGroupEqualBones.setElevation(0);
+                        Log.d(DEBUG_TAG, "sgBtnEqualTilesAmount2 onTouch. Action was DOWN");
+                        sgBtnGroupEqualTiles.setElevation(0);
                         //sgBtnGroup.onTouchEvent(motionEvent);
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_bones_elev);
-                        Log.d(DEBUG_TAG, "sgBtnEqualBonesAmount2 onTouch. Action was UP");
+                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_tiles_elev);
+                        Log.d(DEBUG_TAG, "sgBtnEqualTilesAmount2 onTouch. Action was UP");
                         //sgBtnGroup.onTouchEvent(motionEvent);
-                        sgBtnGroupEqualBones.setElevation(elevPx);
+                        sgBtnGroupEqualTiles.setElevation(elevPx);
                         return true;
                     default:
                         return false;
                 }
             }
         });
-        SegmentedButton sgBtnEqualBonesAmount3 = sgBtnGroupEqualBones.getButton(1);
-        sgBtnEqualBonesAmount3.setOnTouchListener(new View.OnTouchListener() {
+        SegmentedButton sgBtnEqualTilesAmount3 = sgBtnGroupEqualTiles.getButton(1);
+        sgBtnEqualTilesAmount3.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 int action = motionEvent.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "sgBtnEqualBonesAmount3 onTouch. Action was DOWN");
-                        sgBtnGroupEqualBones.setElevation(0);
+                        Log.d(DEBUG_TAG, "sgBtnEqualTilesAmount3 onTouch. Action was DOWN");
+                        sgBtnGroupEqualTiles.setElevation(0);
                         //sgBtnGroup.onTouchEvent(motionEvent);
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_bones_elev);
-                        Log.d(DEBUG_TAG, "sgBtnEqualBonesAmount3 onTouch. Action was UP");
+                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_tiles_elev);
+                        Log.d(DEBUG_TAG, "sgBtnEqualTilesAmount3 onTouch. Action was UP");
                         //sgBtnGroup.onTouchEvent(motionEvent);
-                        sgBtnGroupEqualBones.setElevation(elevPx);
+                        sgBtnGroupEqualTiles.setElevation(elevPx);
                         return true;
                     default:
                         return false;
                 }
             }
         });
-        SegmentedButton sgBtnEqualBonesAmount4 = sgBtnGroupEqualBones.getButton(2);
-        sgBtnEqualBonesAmount4.setOnTouchListener(new View.OnTouchListener() {
+        SegmentedButton sgBtnEqualTilesAmount4 = sgBtnGroupEqualTiles.getButton(2);
+        sgBtnEqualTilesAmount4.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 int action = motionEvent.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "sgBtnEqualBonesAmount4 onTouch. Action was DOWN");
-                        sgBtnGroupEqualBones.setElevation(0);
+                        Log.d(DEBUG_TAG, "sgBtnEqualTilesAmount4 onTouch. Action was DOWN");
+                        sgBtnGroupEqualTiles.setElevation(0);
                         //sgBtnGroup.onTouchEvent(motionEvent);
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_bones_elev);
-                        Log.d(DEBUG_TAG, "sgBtnEqualBonesAmount4 onTouch. Action was UP");
+                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_tiles_elev);
+                        Log.d(DEBUG_TAG, "sgBtnEqualTilesAmount4 onTouch. Action was UP");
                         //sgBtnGroup.onTouchEvent(motionEvent);
-                        sgBtnGroupEqualBones.setElevation(elevPx);
+                        sgBtnGroupEqualTiles.setElevation(elevPx);
                         return true;
                     default:
                         return false;
                 }
             }
         });
-        SegmentedButton sgBtnEqualBonesAmount6 = sgBtnGroupEqualBones.getButton(3);
-        sgBtnEqualBonesAmount6.setOnTouchListener(new View.OnTouchListener() {
+        SegmentedButton sgBtnEqualTilesAmount6 = sgBtnGroupEqualTiles.getButton(3);
+        sgBtnEqualTilesAmount6.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 int action = motionEvent.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "sgBtnEqualBonesAmount6 onTouch. Action was DOWN");
-                        sgBtnGroupEqualBones.setElevation(0);
+                        Log.d(DEBUG_TAG, "sgBtnEqualTilesAmount6 onTouch. Action was DOWN");
+                        sgBtnGroupEqualTiles.setElevation(0);
                         //sgBtnGroup.onTouchEvent(motionEvent);
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_bones_elev);
-                        Log.d(DEBUG_TAG, "sgBtnEqualBonesAmount6 onTouch. Action was UP");
+                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_tiles_elev);
+                        Log.d(DEBUG_TAG, "sgBtnEqualTilesAmount6 onTouch. Action was UP");
                         //sgBtnGroup.onTouchEvent(motionEvent);
-                        sgBtnGroupEqualBones.setElevation(elevPx);
+                        sgBtnGroupEqualTiles.setElevation(elevPx);
                         return true;
                     default:
                         return false;
@@ -219,10 +220,10 @@ public class MahjongSettingsActivity extends AppCompatActivity {
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt(getString(R.string.saved_mahjong_remember_time_key),
                                 numberPicker.getValue());
-                        editor.putInt(getString(R.string.saved_mahjong_bones_amount_key),
-                                sgBtnGroupBones.getPosition());
-                        editor.putInt(getString(R.string.saved_mahjong_equal_bones_amount_key),
-                                sgBtnGroupEqualBones.getPosition());
+                        editor.putInt(getString(R.string.saved_mahjong_tiles_amount_key),
+                                sgBtnGroupTiles.getPosition());
+                        editor.putInt(getString(R.string.saved_mahjong_equal_tiles_amount_key),
+                                sgBtnGroupEqualTiles.getPosition());
                         editor.apply();
                         onBackPressed();
                         return true;
@@ -240,7 +241,6 @@ public class MahjongSettingsActivity extends AppCompatActivity {
             }
 
         });
-
         ImageButton btnSavePlaySettings = findViewById(R.id.btn_save_and_play);
         btnSavePlaySettings.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -260,7 +260,16 @@ public class MahjongSettingsActivity extends AppCompatActivity {
                                 ", R.dimen.btn_info_elev = " + R.dimen.btn_info_elev +
                                 ", elev = " + elevPx);
                         view.setElevation(elevPx);
-                        onBackPressed();
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putInt(getString(R.string.saved_mahjong_remember_time_key),
+                                numberPicker.getValue());
+                        editor.putInt(getString(R.string.saved_mahjong_tiles_amount_key),
+                                sgBtnGroupTiles.getPosition());
+                        editor.putInt(getString(R.string.saved_mahjong_equal_tiles_amount_key),
+                                sgBtnGroupEqualTiles.getPosition());
+                        editor.apply();
+                        Intent intent = new Intent(getApplicationContext(), MahjongTrainingActivity.class);
+                        startActivity(intent);
                         return true;
                     case (MotionEvent.ACTION_CANCEL):
                         Log.d(DEBUG_TAG, "btnSavePlaySettings onTouch. Action was CANCEL");

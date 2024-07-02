@@ -56,151 +56,15 @@ public class ColorsSettingsActivity extends AppCompatActivity {
         pckrColorShowTime.setMinValue(1);
         pckrColorShowTime.setMaxValue(6);
 
-        SegmentedButtonGroup sgBtnGroupMaxRepeat = findViewById(R.id.sgbtn_max_repeat_colors_amount);
-
         SharedPreferences sharedPreferences =
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         int colorsAmount = sharedPreferences.getInt(getString(R.string.saved_colors_amount_key), 4);
         int distinctColorsAmount = sharedPreferences.getInt(getString(R.string.saved_distinct_colors_amount_key), 2);
-        int maxRepeatColorsAmount = sharedPreferences.getInt(getString(R.string.saved_max_repeat_colors_amount_key), 1);
         int colorShowTime = sharedPreferences.getInt(getString(R.string.saved_color_show_time_key), 2);
 
         pckrColorsAmount.setValue(colorsAmount);
         pckrDistinctColorsAmount.setValue(distinctColorsAmount);
-        sgBtnGroupMaxRepeat.setPosition(maxRepeatColorsAmount, false);
         pckrColorShowTime.setValue(colorShowTime);
-
-        SegmentedButton sgBtnMaxRepeat0 = sgBtnGroupMaxRepeat.getButton(0);
-        sgBtnMaxRepeat0.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                int action = motionEvent.getAction();
-                switch(action) {
-                    case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "sgBtnMaxRepeat0 onTouch. Action was DOWN");
-                        sgBtnGroupMaxRepeat.setElevation(0);
-                        //sgBtnGroup.onTouchEvent(motionEvent);
-                        return true;
-                    case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "sgBtnMaxRepeat0 onTouch. Action was MOVE");
-                        return true;
-                    case (MotionEvent.ACTION_UP):
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_bones_elev);
-                        Log.d(DEBUG_TAG, "sgBtnMaxRepeat0 onTouch. Action was UP");
-                        //sgBtnGroup.onTouchEvent(motionEvent);
-                        sgBtnGroupMaxRepeat.setElevation(elevPx);
-
-                        return true;
-                    default:
-                        return false;
-                }
-            }
-        });
-        SegmentedButton sgBtnMaxRepeat1 = sgBtnGroupMaxRepeat.getButton(1);
-        sgBtnMaxRepeat1.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                int action = motionEvent.getAction();
-                switch(action) {
-                    case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "sgBtnMaxRepeat1 onTouch. Action was DOWN");
-                        sgBtnGroupMaxRepeat.setElevation(0);
-                        //sgBtnGroup.onTouchEvent(motionEvent);
-                        return true;
-                    case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "sgBtnMaxRepeat1 onTouch. Action was MOVE");
-                        return true;
-                    case (MotionEvent.ACTION_UP):
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_bones_elev);
-                        Log.d(DEBUG_TAG, "sgBtnMaxRepeat1 onTouch. Action was UP");
-                        //sgBtnGroup.onTouchEvent(motionEvent);
-                        sgBtnGroupMaxRepeat.setElevation(elevPx);
-
-                        return true;
-                    default:
-                        return false;
-                }
-            }
-        });
-        SegmentedButton sgBtnMaxRepeat2 = sgBtnGroupMaxRepeat.getButton(2);
-        sgBtnMaxRepeat2.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                int action = motionEvent.getAction();
-                switch(action) {
-                    case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "sgBtnMaxRepeat2 onTouch. Action was DOWN");
-                        sgBtnGroupMaxRepeat.setElevation(0);
-                        //sgBtnGroup.onTouchEvent(motionEvent);
-                        return true;
-                    case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "sgBtnMaxRepeat2 onTouch. Action was MOVE");
-                        return true;
-                    case (MotionEvent.ACTION_UP):
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_bones_elev);
-                        Log.d(DEBUG_TAG, "sgBtnMaxRepeat2 onTouch. Action was UP");
-                        //sgBtnGroup.onTouchEvent(motionEvent);
-                        sgBtnGroupMaxRepeat.setElevation(elevPx);
-
-                        return true;
-                    default:
-                        return false;
-                }
-            }
-        });
-        SegmentedButton sgBtnMaxRepeat3 = sgBtnGroupMaxRepeat.getButton(3);
-        sgBtnMaxRepeat3.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                int action = motionEvent.getAction();
-                switch(action) {
-                    case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "sgBtnMaxRepeat3 onTouch. Action was DOWN");
-                        sgBtnGroupMaxRepeat.setElevation(0);
-                        //sgBtnGroup.onTouchEvent(motionEvent);
-                        return true;
-                    case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "sgBtnMaxRepeat3 onTouch. Action was MOVE");
-                        return true;
-                    case (MotionEvent.ACTION_UP):
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_bones_elev);
-                        Log.d(DEBUG_TAG, "sgBtnMaxRepeat3 onTouch. Action was UP");
-                        //sgBtnGroup.onTouchEvent(motionEvent);
-                        sgBtnGroupMaxRepeat.setElevation(elevPx);
-
-                        return true;
-                    default:
-                        return false;
-                }
-            }
-        });
-        SegmentedButton sgBtnMaxRepeat4 = sgBtnGroupMaxRepeat.getButton(4);
-        sgBtnMaxRepeat4.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                int action = motionEvent.getAction();
-                switch(action) {
-                    case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "sgBtnMaxRepeat4 onTouch. Action was DOWN");
-                        sgBtnGroupMaxRepeat.setElevation(0);
-                        //sgBtnGroup.onTouchEvent(motionEvent);
-                        return true;
-                    case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "sgBtnMaxRepeat4 onTouch. Action was MOVE");
-                        return true;
-                    case (MotionEvent.ACTION_UP):
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_bones_elev);
-                        Log.d(DEBUG_TAG, "sgBtnMaxRepeat4 onTouch. Action was UP");
-                        //sgBtnGroup.onTouchEvent(motionEvent);
-                        sgBtnGroupMaxRepeat.setElevation(elevPx);
-
-                        return true;
-                    default:
-                        return false;
-                }
-            }
-        });
-
 
         ImageButton btnSaveSettings = findViewById(R.id.btn_save);
         btnSaveSettings.setOnTouchListener(new View.OnTouchListener() {
@@ -224,8 +88,6 @@ public class ColorsSettingsActivity extends AppCompatActivity {
                                 pckrColorsAmount.getValue());
                         editor.putInt(getString(R.string.saved_distinct_colors_amount_key),
                                 pckrDistinctColorsAmount.getValue());
-                        editor.putInt(getString(R.string.saved_max_repeat_colors_amount_key),
-                                sgBtnGroupMaxRepeat.getPosition());
                         editor.putInt(getString(R.string.saved_color_show_time_key),
                                 pckrColorShowTime.getValue());
                         editor.apply();

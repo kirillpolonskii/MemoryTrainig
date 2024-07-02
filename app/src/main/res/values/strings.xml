@@ -21,19 +21,19 @@
     <!-- STRINGS FOR MAHJONG SETTINGS -->
     <string name="tbr_mahjong_settings_title">Настройки: маджонг</string>
     <string name="remember_time">Время на запоминание (с):</string>
-    <string name="bones_amount">Количество костей:</string>
-    <string name="equal_bones_amount">Количество одинаковых костей:</string>
-    <string name="bones_amount_12">12</string>
-    <string name="bones_amount_24">24</string>
-    <string name="equal_bones_amount_2">2</string>
-    <string name="equal_bones_amount_3">3</string>
-    <string name="equal_bones_amount_4">4</string>
-    <string name="equal_bones_amount_6">6</string>
+    <string name="tiles_amount">Количество костей:</string>
+    <string name="equal_tiles_amount">Количество одинаковых костей:</string>
+    <string name="tiles_amount_12">12</string>
+    <string name="tiles_amount_24">24</string>
+    <string name="equal_tiles_amount_2">2</string>
+    <string name="equal_tiles_amount_3">3</string>
+    <string name="equal_tiles_amount_4">4</string>
+    <string name="equal_tiles_amount_6">6</string>
 
     <string name="preference_file_key">com.youngsophomore.PREFERENCE_FILE_KEY</string>
     <string name="saved_mahjong_remember_time_key">MAHJONG_REMEMBER_TIME</string>
-    <string name="saved_mahjong_bones_amount_key">MAHJONG_BONES_AMOUNT</string>
-    <string name="saved_mahjong_equal_bones_amount_key">MAHJONG_EQUAL_BONES_AMOUNT</string>
+    <string name="saved_mahjong_tiles_amount_key">MAHJONG_BONES_AMOUNT</string>
+    <string name="saved_mahjong_equal_tiles_amount_key">MAHJONG_EQUAL_BONES_AMOUNT</string>
     <!-- STRINGS FOR COLORS SETTINGS -->
     <string name="tbr_colors_settings_title">Настройки: цвета</string>
     <string name="colors_amount">Количество цветов в последовательности:</string>
@@ -151,8 +151,12 @@
     <string name="tv_confirm_questions_collection">Подтвердить коллекцию вопросов</string>
     <string name="tv_add_answer">Добавить ответ</string>
     <string name="tv_save_answer">Сохранить ответ</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="m_training_small_top_gl">0.1</string>
+    <string name="m_training_big_top_gl">0.3</string>
+    <string name="m_training_small_bottom_gl">0.96</string>
+    <string name="m_training_big_bottom_gl">0.93</string>
+    <string name="m_training_small_left_gl">0.05</string>
 
 
 </resources>

@@ -38,7 +38,7 @@ public class PrepHelper {
     }
 
     public class Mahjong{
-        public static int sgBtnGroupBonesPosToAmount(int selectedPosition){
+        public static int sgBtnGroupTilesPosToAmount(int selectedPosition){
             switch(selectedPosition){
                 case 0:
                     return 12;
@@ -48,7 +48,7 @@ public class PrepHelper {
                     return 12;
             }
         }
-        public static int sgBtnGroupEqualBonesPosToAmount(int selectedPosition){
+        public static int sgBtnGroupEqualTilesPosToAmount(int selectedPosition){
             switch(selectedPosition){
                 case 0:
                     return 2;

@@ -85,7 +85,7 @@ public class ShapesSettingsActivity extends AppCompatActivity {
                         Log.d(DEBUG_TAG, "sgBtnMaxRepeat0 onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_bones_elev);
+                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_tiles_elev);
                         Log.d(DEBUG_TAG, "sgBtnMaxRepeat0 onTouch. Action was UP");
                         //sgBtnGroup.onTouchEvent(motionEvent);
                         sgBtnGroupMaxRepeat.setElevation(elevPx);
@@ -111,7 +111,7 @@ public class ShapesSettingsActivity extends AppCompatActivity {
                         Log.d(DEBUG_TAG, "sgBtnMaxRepeat1 onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_bones_elev);
+                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_tiles_elev);
                         Log.d(DEBUG_TAG, "sgBtnMaxRepeat1 onTouch. Action was UP");
                         //sgBtnGroup.onTouchEvent(motionEvent);
                         sgBtnGroupMaxRepeat.setElevation(elevPx);
@@ -137,7 +137,7 @@ public class ShapesSettingsActivity extends AppCompatActivity {
                         Log.d(DEBUG_TAG, "sgBtnMaxRepeat2 onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_bones_elev);
+                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_tiles_elev);
                         Log.d(DEBUG_TAG, "sgBtnMaxRepeat2 onTouch. Action was UP");
                         //sgBtnGroup.onTouchEvent(motionEvent);
                         sgBtnGroupMaxRepeat.setElevation(elevPx);
@@ -163,7 +163,7 @@ public class ShapesSettingsActivity extends AppCompatActivity {
                         Log.d(DEBUG_TAG, "sgBtnMaxRepeat3 onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_bones_elev);
+                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_tiles_elev);
                         Log.d(DEBUG_TAG, "sgBtnMaxRepeat3 onTouch. Action was UP");
                         //sgBtnGroup.onTouchEvent(motionEvent);
                         sgBtnGroupMaxRepeat.setElevation(elevPx);
@@ -189,7 +189,7 @@ public class ShapesSettingsActivity extends AppCompatActivity {
                         Log.d(DEBUG_TAG, "sgBtnMaxRepeat4 onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_bones_elev);
+                        int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_tiles_elev);
                         Log.d(DEBUG_TAG, "sgBtnMaxRepeat4 onTouch. Action was UP");
                         //sgBtnGroup.onTouchEvent(motionEvent);
                         sgBtnGroupMaxRepeat.setElevation(elevPx);

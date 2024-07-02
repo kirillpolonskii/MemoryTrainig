@@ -2,6 +2,7 @@ package com.youngsophomore.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.Guideline;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentManager;
 
@@ -29,9 +30,9 @@ import java.util.Locale;
 public class MahjongTrainingActivity extends AppCompatActivity {
     private static final String DEBUG_TAG = "Gestures";
     private static final String STOPWATCH_FRAGMENT_TAG = "stopwatch_fragment_tag";
-    private boolean isFirstFlipped, isSecondFlipped;
     private ArrayList<ImageButton> flippedTiles;
     private ArrayList<Integer> flippedTilesNum;
+    private int removedTilesCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +43,12 @@ public class MahjongTrainingActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences =
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         int mahjongRememberTime = sharedPreferences.getInt(getString(R.string.saved_mahjong_remember_time_key), 2);
-        int mahjongBonesAmount = PrepHelper.Mahjong.sgBtnGroupBonesPosToAmount(
-                sharedPreferences.getInt(getString(R.string.saved_mahjong_bones_amount_key), 0));
-        int mahjongEqualBonesAmount = PrepHelper.Mahjong.sgBtnGroupEqualBonesPosToAmount(
-                sharedPreferences.getInt(getString(R.string.saved_mahjong_equal_bones_amount_key), 0));
+        int mahjongTilesAmount = PrepHelper.Mahjong.sgBtnGroupTilesPosToAmount(
+                sharedPreferences.getInt(getString(R.string.saved_mahjong_tiles_amount_key), 0));
+        int mahjongEqualTilesAmount = PrepHelper.Mahjong.sgBtnGroupEqualTilesPosToAmount(
+                sharedPreferences.getInt(getString(R.string.saved_mahjong_equal_tiles_amount_key), 0));
         TextView tv_countdown = findViewById(R.id.tv_countdown);
-        CountDownTimer countDownTimer = new CountDownTimer(3000 + 100, 1000) {
+        CountDownTimer countDownTimer = new CountDownTimer(3000 + 200, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 Log.d(DEBUG_TAG, "onTick: millisUntilFinished = " + millisUntilFinished);
@@ -56,7 +57,7 @@ public class MahjongTrainingActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                if(mahjongBonesAmount == 12){
+                if(mahjongTilesAmount == 12){
                     setContentView(R.layout.activity_mahjong_training_12);
                 }
                 else{
@@ -65,28 +66,29 @@ public class MahjongTrainingActivity extends AppCompatActivity {
                 /* Действия
                  * ~~Загрузка данных из сохранённых настроек~~
                  * ~~Формирование массива костей~~
-                 * Установка margin у секундомера и дна constraintlayout в зависимости от количества костей
+                 * ~~Установка margin у секундомера и дна constraintlayout в зависимости от количества костей~~
                  * ~~Показ секундомера~~
                  * ~~Заполнение background у костей~~
                  * ~~Показ всех костей mahjongRememberTime секунд~~
                  * ~~Запуск секундомера~~
-                 * Обработка нажатий на кости и анимация
+                 * ~~Обработка нажатий на кости~~
                  * ~~Обработка паузы/возобновления~~
-                 * Анимация исчезновения костей
                  * Показ диалогового окна или смена фрагмента с результатами тренировки
                  *
                  * */
                 Log.d(DEBUG_TAG, "saved mahjongRememberTime = " + mahjongRememberTime +
-                        ", mahjongBonesAmount = " + mahjongBonesAmount +
-                        ", mahjongEqualBonesAmount = " + mahjongEqualBonesAmount);
+                        ", mahjongTilesAmount = " + mahjongTilesAmount +
+                        ", mahjongEqualTilesAmount = " + mahjongEqualTilesAmount);
                 // Формирование матрицы (или массива) костей с загруженными параметрами
-                ArrayList<Integer> tilesNum = TrainHelper.Mahjong.generateTiles(mahjongBonesAmount, mahjongEqualBonesAmount);
+                ArrayList<Integer> tilesNum = TrainHelper.Mahjong.generateTiles(mahjongTilesAmount, mahjongEqualTilesAmount);
                 Log.d(DEBUG_TAG, tilesNum.toString());
                 // Заполнение массива кнопок-костей из массива номеров костей, а также массива background
-                ConstraintLayout constraintLayout = findViewById(R.id.mahjong_cnstrnt_layout);
-                setIndents(mahjongBonesAmount, constraintLayout);
-                //ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) constraintLayout.getLayoutParams();
-                //constraintLayout.setPadding();
+                ConstraintLayout constraintLayout = findViewById(R.id.mahjong_cnstrnt_layout_chld);
+                Guideline guidelineTop = findViewById(R.id.guideline_top);
+                Guideline guidelineBottom = findViewById(R.id.guideline_bottom);
+                Guideline guidelineLeft = findViewById(R.id.guideline_left);
+                Guideline guidelineRight = findViewById(R.id.guideline_right);
+                setGuidelines(mahjongTilesAmount, guidelineTop, guidelineBottom, guidelineLeft, guidelineRight);
                 ArrayList<ImageButton> btnTiles = new ArrayList<>();
                 for(int i = 0; i < constraintLayout.getChildCount(); ++i){
                     btnTiles.add((ImageButton) constraintLayout.getChildAt(i));
@@ -96,7 +98,7 @@ public class MahjongTrainingActivity extends AppCompatActivity {
                     btnTiles.get(i).setImageResource(btnBackgroundResources.get(i));
                 }
                 // Запуск ещё одного таймера длительностью mahjongRememberTime
-                CountDownTimer showCountdownTimer = new CountDownTimer(mahjongRememberTime * 1000 + 100, 1000) {
+                CountDownTimer showCountdownTimer = new CountDownTimer(mahjongRememberTime * 1000 + 200, 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {}
                     @Override
@@ -124,7 +126,7 @@ public class MahjongTrainingActivity extends AppCompatActivity {
                                     v.setClickable(false);
                                     int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_info_elev);
                                     v.setElevation(elevPx);
-                                    if (flippedTiles.size() < mahjongEqualBonesAmount - 1){
+                                    if (flippedTiles.size() < mahjongEqualTilesAmount - 1){
                                         flippedTiles.add((ImageButton) v);
                                         flippedTilesNum.add(tilesNum.get(finalI));
                                     }
@@ -134,23 +136,37 @@ public class MahjongTrainingActivity extends AppCompatActivity {
                                         }
                                         flippedTiles.add((ImageButton) v);
                                         flippedTilesNum.add(tilesNum.get(finalI));
-                                        if(isAllTilesEqual()){
-                                            // Hide two chosen tiles
-                                            Log.d(DEBUG_TAG, "YOU CHOSE CORRECT!!!");
-                                        }
-                                        else{
-                                            // Set background of two chosen tiles to tile_back
-                                            Log.d(DEBUG_TAG, "YOU CHOSE WRONG!!!");
-                                        }
                                         new Handler().postDelayed(new Runnable() {
                                             @Override
                                             public void run() {
-                                                for(ImageButton flippedBtnTile : flippedTiles){
-                                                    flippedBtnTile.setImageResource(R.drawable.tile_back);
-                                                    flippedBtnTile.setElevation(0);
+                                                if(isAllTilesEqual()){
+                                                    // Hide mahjongEqualTilesAmount chosen tiles
+                                                    Log.d(DEBUG_TAG, "YOU CHOSE CORRECT!!!");
+                                                    for(ImageButton flippedBtnTile : flippedTiles){
+                                                        flippedBtnTile.setClickable(false);
+                                                        flippedBtnTile.setVisibility(View.INVISIBLE);
+                                                        ++removedTilesCount;
+                                                    }
+                                                    if (removedTilesCount == mahjongTilesAmount){
+                                                        // TODO: Here launch dialog with results
+                                                        Log.d(DEBUG_TAG, "ALL TILES REMOVED");
+                                                    }
+
+                                                }
+                                                else{
+                                                    // TODO: Here add 1 to mistake count
+                                                    Log.d(DEBUG_TAG, "YOU CHOSE WRONG!!!");
+                                                    for(ImageButton flippedBtnTile : flippedTiles){
+                                                        flippedBtnTile.setImageResource(R.drawable.tile_back);
+                                                        flippedBtnTile.setElevation(0);
+
+                                                    }
+                                                    Log.d(DEBUG_TAG, "btnTiles.size = " + btnTiles.size());
                                                 }
                                                 flippedTiles.clear();
                                                 flippedTilesNum.clear();
+
+                                                // Set background of mahjongEqualTilesAmount chosen tiles to tile_back
                                                 for (ImageButton btnTile : btnTiles){
                                                     btnTile.setClickable(true);
                                                 }
@@ -248,46 +264,61 @@ public class MahjongTrainingActivity extends AppCompatActivity {
         return correctAnswer;
     }
 
-    private void setIndents(int mahjongBonesAmount, ConstraintLayout constraintLayout){
+    private void setGuidelines(int mahjongTilesAmount,
+                               Guideline guidelineTop, Guideline guidelineBottom,
+                               Guideline guidelineLeft, Guideline guidelineRight){
         int width = getResources().getDisplayMetrics().widthPixels;
         int height = getResources().getDisplayMetrics().heightPixels;
         Log.d(DEBUG_TAG, "displayResolution = " + width + "x" + height);
-        int horizontalIndent = 0, verticalIndent = 0;
-        boolean isTablet = (width > height);
-        if(isTablet){
-            Log.d(DEBUG_TAG, "IT'S A TABLET");
-            // Set big horiz and small vert indents
-            horizontalIndent = getResources().getDimensionPixelSize(R.dimen.m_training_big_horiz_margin);
-            verticalIndent = getResources().getDimensionPixelSize(R.dimen.m_training_small_vertical_margin);
-        }
-        else{
-            if (width <= 900){ // For small phones
-                Log.d(DEBUG_TAG, "IT'S A SMALL PHONE");
-                if(mahjongBonesAmount == 12){
-                    // Set small horiz and big vert indents
-                    horizontalIndent = getResources().getDimensionPixelSize(R.dimen.m_training_small_horiz_margin);
-                    verticalIndent = getResources().getDimensionPixelSize(R.dimen.m_training_small_vertical_margin);
-                }
-                else{
-                    // Set small horiz and small vert indents
-                    horizontalIndent = getResources().getDimensionPixelSize(R.dimen.m_training_small_horiz_margin);
-                    verticalIndent = getResources().getDimensionPixelSize(R.dimen.m_training_small_vertical_margin);
-                }
+        if (width <= 900){ // For small phones
+            Log.d(DEBUG_TAG, "IT'S A SMALL PHONE");
+            if(mahjongTilesAmount == 12){
+                // Set big vert and small horiz indents
+                guidelineTop.setGuidelinePercent(
+                        Float.parseFloat(getResources().getString(R.string.m_training_big_top_gl)));
+                guidelineBottom.setGuidelinePercent(
+                        1.0f - Float.parseFloat(getResources().getString(R.string.m_training_big_top_gl)));
+                guidelineLeft.setGuidelinePercent(
+                        Float.parseFloat(getResources().getString(R.string.m_training_small_left_gl)));
+                guidelineRight.setGuidelinePercent(
+                        1.0f - Float.parseFloat(getResources().getString(R.string.m_training_small_left_gl)));
             }
-            else{ // For big phones
-                Log.d(DEBUG_TAG, "IT'S A BIG PHONE");
-                if(mahjongBonesAmount == 12){
-                    // Set small horiz and big vert indents
-                    horizontalIndent = getResources().getDimensionPixelSize(R.dimen.m_training_small_horiz_margin);
-                    verticalIndent = getResources().getDimensionPixelSize(R.dimen.m_training_big_vertical_margin);
-                }
-                else{
-                    // Set small horiz and small vert indents
-                    horizontalIndent = getResources().getDimensionPixelSize(R.dimen.m_training_small_horiz_margin);
-                    verticalIndent = getResources().getDimensionPixelSize(R.dimen.m_training_small_vertical_margin);
-                }
+            else{
+                // Set small vert and small horiz indents
+                guidelineTop.setGuidelinePercent(
+                        Float.parseFloat(getResources().getString(R.string.m_training_small_top_gl)));
+                guidelineBottom.setGuidelinePercent(
+                        Float.parseFloat(getResources().getString(R.string.m_training_small_bottom_gl)));
+                guidelineLeft.setGuidelinePercent(
+                        Float.parseFloat(getResources().getString(R.string.m_training_small_left_gl)));
+                guidelineRight.setGuidelinePercent(
+                        1.0f - Float.parseFloat(getResources().getString(R.string.m_training_small_left_gl)));
             }
         }
-        constraintLayout.setPaddingRelative(horizontalIndent, verticalIndent, horizontalIndent, verticalIndent);
+        else{ // For big phones
+            Log.d(DEBUG_TAG, "IT'S A BIG PHONE");
+            if(mahjongTilesAmount == 12){
+                // Set big vert and small horiz indents
+                guidelineTop.setGuidelinePercent(
+                        Float.parseFloat(getResources().getString(R.string.m_training_big_top_gl)));
+                guidelineBottom.setGuidelinePercent(
+                        1.0f - Float.parseFloat(getResources().getString(R.string.m_training_big_top_gl)));
+                guidelineLeft.setGuidelinePercent(
+                        Float.parseFloat(getResources().getString(R.string.m_training_small_left_gl)));
+                guidelineRight.setGuidelinePercent(
+                        1.0f - Float.parseFloat(getResources().getString(R.string.m_training_small_left_gl)));
+            }
+            else{
+                // Set small vert and small horiz indents
+                guidelineTop.setGuidelinePercent(
+                        Float.parseFloat(getResources().getString(R.string.m_training_small_top_gl)));
+                guidelineBottom.setGuidelinePercent(
+                        Float.parseFloat(getResources().getString(R.string.m_training_big_bottom_gl)));
+                guidelineLeft.setGuidelinePercent(
+                        Float.parseFloat(getResources().getString(R.string.m_training_small_left_gl)));
+                guidelineRight.setGuidelinePercent(
+                        1.0f - Float.parseFloat(getResources().getString(R.string.m_training_small_left_gl)));
+            }
+        }
     }
 }

@@ -47,29 +47,29 @@
         />
 
     <TextView
-        android:id="@+id/tv_bones_amount"
+        android:id="@+id/tv_tiles_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constrainedWidth="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/sgbtn_bones_amount"
-        app:layout_constraintTop_toTopOf="@id/sgbtn_bones_amount"
-        app:layout_constraintBottom_toBottomOf="@id/sgbtn_bones_amount"
+        app:layout_constraintEnd_toStartOf="@id/sgbtn_tiles_amount"
+        app:layout_constraintTop_toTopOf="@id/sgbtn_tiles_amount"
+        app:layout_constraintBottom_toBottomOf="@id/sgbtn_tiles_amount"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintHorizontal_bias="0"
-        android:text="@string/bones_amount"
+        android:text="@string/tiles_amount"
         style="@style/SettingsTextViewStyle"
         />
 
     <com.addisonelliott.segmentedbutton.SegmentedButtonGroup
-        android:id="@+id/sgbtn_bones_amount"
+        android:id="@+id/sgbtn_tiles_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/tv_bones_amount"
+        app:layout_constraintStart_toEndOf="@id/tv_tiles_amount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/number_picker"
         android:layout_marginStart="@dimen/settings_small_margin"
-        android:elevation="@dimen/sgbtn_bones_elev"
+        android:elevation="@dimen/sgbtn_tiles_elev"
         style="@style/SegmentedButtonGroupStyle"
         tools:ignore="TouchTargetSizeCheck"
 
@@ -80,7 +80,7 @@
             android:layout_weight="1"
             android:contentDescription="@string/info"
             android:padding="8dp"
-            app:text="@string/bones_amount_12"
+            app:text="@string/tiles_amount_12"
             style="@style/SegmentedButtonStyle"
 
             />
@@ -93,39 +93,39 @@
             android:fontFamily="sans-serif-black"
             android:padding="8dp"
             app:selectedTextColor="@color/white"
-            app:text="@string/bones_amount_24"
+            app:text="@string/tiles_amount_24"
             app:textColor="?attr/colorPrimary"
             app:textSize="@dimen/switch_lang_text_size" />
     </com.addisonelliott.segmentedbutton.SegmentedButtonGroup>
 
     <TextView
-        android:id="@+id/tv_equal_bones_amount"
+        android:id="@+id/tv_equal_tiles_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constrainedWidth="true"
-        app:layout_constraintTop_toTopOf="@id/sgbtn_equal_bones_amount"
-        app:layout_constraintBottom_toBottomOf="@id/sgbtn_equal_bones_amount"
+        app:layout_constraintTop_toTopOf="@id/sgbtn_equal_tiles_amount"
+        app:layout_constraintBottom_toBottomOf="@id/sgbtn_equal_tiles_amount"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/sgbtn_equal_bones_amount"
+        app:layout_constraintEnd_toStartOf="@id/sgbtn_equal_tiles_amount"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintHorizontal_bias="0"
         android:layout_marginEnd="5dp"
-        android:text="@string/equal_bones_amount"
+        android:text="@string/equal_tiles_amount"
         style="@style/SettingsTextViewStyle"
         />
 
     <com.addisonelliott.segmentedbutton.SegmentedButtonGroup
-        android:id="@+id/sgbtn_equal_bones_amount"
+        android:id="@+id/sgbtn_equal_tiles_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/tv_equal_bones_amount"
+        app:layout_constraintStart_toEndOf="@id/tv_equal_tiles_amount"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sgbtn_bones_amount"
+        app:layout_constraintTop_toBottomOf="@id/sgbtn_tiles_amount"
         android:layout_marginStart="@dimen/settings_small_margin"
         android:layout_marginEnd="@dimen/settings_medium_margin"
         android:layout_marginTop="30dp"
         android:background="@color/light_blue"
-        android:elevation="@dimen/sgbtn_bones_elev"
+        android:elevation="@dimen/sgbtn_tiles_elev"
         style="@style/SegmentedButtonGroupStyle"
         tools:ignore="TouchTargetSizeCheck">
         <com.addisonelliott.segmentedbutton.SegmentedButton
@@ -134,7 +134,7 @@
             android:layout_weight="1"
             android:contentDescription="@string/info"
             android:padding="8dp"
-            app:text="@string/equal_bones_amount_2"
+            app:text="@string/equal_tiles_amount_2"
             style="@style/SegmentedButtonStyle" />
         <com.addisonelliott.segmentedbutton.SegmentedButton
             android:layout_width="match_parent"
@@ -144,7 +144,7 @@
             android:fontFamily="sans-serif-black"
             android:padding="8dp"
             app:selectedTextColor="@color/white"
-            app:text="@string/equal_bones_amount_3"
+            app:text="@string/equal_tiles_amount_3"
             app:textColor="?attr/colorPrimary"
             app:textSize="@dimen/switch_lang_text_size" />
         <com.addisonelliott.segmentedbutton.SegmentedButton
@@ -155,7 +155,7 @@
             android:fontFamily="sans-serif-black"
             android:padding="8dp"
             app:selectedTextColor="@color/white"
-            app:text="@string/equal_bones_amount_4"
+            app:text="@string/equal_tiles_amount_4"
             app:textColor="?attr/colorPrimary"
             app:textSize="@dimen/switch_lang_text_size" />
         <!--android:layout_weight="1"-->
@@ -167,7 +167,7 @@
             android:fontFamily="sans-serif-black"
             android:padding="8dp"
             app:selectedTextColor="@color/white"
-            app:text="@string/equal_bones_amount_6"
+            app:text="@string/equal_tiles_amount_6"
             app:textColor="?attr/colorPrimary"
             app:textSize="@dimen/switch_lang_text_size" />
     </com.addisonelliott.segmentedbutton.SegmentedButtonGroup>
@@ -179,7 +179,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btn_save_and_play"
-        app:layout_constraintTop_toBottomOf="@id/sgbtn_equal_bones_amount"
+        app:layout_constraintTop_toBottomOf="@id/sgbtn_equal_tiles_amount"
         android:background="@drawable/btn_save_bg"
         android:contentDescription="@string/info"
         android:elevation="@dimen/btn_stats_elev"
@@ -192,7 +192,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sgbtn_equal_bones_amount"
+        app:layout_constraintTop_toBottomOf="@id/sgbtn_equal_tiles_amount"
         app:layout_constraintStart_toEndOf="@id/btn_save"
         app:layout_constraintEnd_toEndOf="parent"
 

@@ -117,7 +117,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/tv_max_repeat_shapes_amount"
             android:layout_marginStart="@dimen/settings_small_margin"
             android:layout_marginEnd="@dimen/settings_small_margin"
-            android:elevation="@dimen/sgbtn_bones_elev"
+            android:elevation="@dimen/sgbtn_tiles_elev"
             style="@style/SegmentedButtonGroupStyle"
             tools:ignore="TouchTargetSizeCheck">
             <com.addisonelliott.segmentedbutton.SegmentedButton

@@ -5,7 +5,7 @@
     <dimen name="btn_info_elev">19dp</dimen>
     <dimen name="btn_training_elev">15dp</dimen>
     <dimen name="sgbtn_elev">5dp</dimen>
-    <dimen name="sgbtn_bones_elev">7dp</dimen>
+    <dimen name="sgbtn_tiles_elev">7dp</dimen>
 
     <dimen name="btn_stats_elev">8dp</dimen>
     <dimen name="switch_lang_text_size">23sp</dimen>
@@ -20,10 +20,11 @@
 
     <dimen name="stopwatch_top_margin">10dp</dimen>
     <dimen name="m_training_small_horiz_margin">15dp</dimen>
-    <dimen name="m_training_big_horiz_margin">200dp</dimen>
+    <dimen name="m_training_big_horiz_margin">240dp</dimen>
     <dimen name="m_training_horiz_middle_margin">20dp</dimen>
-    <dimen name="m_training_vert_middle_margin">30dp</dimen>
-    <dimen name="m_training_small_vertical_margin">60dp</dimen>
+    <dimen name="m_training_vert_middle_margin_12">30dp</dimen>
+    <dimen name="m_training_vert_middle_margin_24">20dp</dimen>
+    <dimen name="m_training_small_vertical_margin">30dp</dimen>
     <dimen name="m_training_big_vertical_margin">140dp</dimen>
 
     <dimen name="mahjong_tile_margin">9dp</dimen>
