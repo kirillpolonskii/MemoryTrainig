@@ -57,10 +57,10 @@ public class TrainHelper {
         public static ArrayList<Integer> generatePalette(int distinctColorsAmount){
             ArrayList<Integer> palette = new ArrayList<>();
             for(int i = 0; i < distinctColorsAmount; ++i){
-                int colorInd = ThreadLocalRandom.current().nextInt(1, 15 + 1);
+                int colorInd = ThreadLocalRandom.current().nextInt(1, 14 + 1);
                 int colorRes = indToColor(colorInd);
                 while (palette.contains(colorRes)){
-                    colorInd = ThreadLocalRandom.current().nextInt(1, 15 + 1);
+                    colorInd = ThreadLocalRandom.current().nextInt(1, 14 + 1);
                     colorRes = indToColor(colorInd);
                 }
                 palette.add(colorRes);
@@ -108,8 +108,6 @@ public class TrainHelper {
                     return R.color.c_training_color_13;
                 case (14):
                     return R.color.c_training_color_14;
-                case (15):
-                    return R.color.c_training_color_15;
                 default:
                     return R.color.white;
             }

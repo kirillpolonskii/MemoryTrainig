@@ -43,11 +43,11 @@ public class ColorsSettingsActivity extends AppCompatActivity {
         pckrColorsAmount.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                if(newVal < 16){
+                if(newVal <= 14){
                     pckrDistinctColorsAmount.setMaxValue(newVal);
                 }
                 else{
-                    pckrDistinctColorsAmount.setMaxValue(15);
+                    pckrDistinctColorsAmount.setMaxValue(14);
                 }
             }
         });
@@ -58,7 +58,7 @@ public class ColorsSettingsActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences =
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-        int colorsAmount = sharedPreferences.getInt(getString(R.string.saved_colors_amount_key), 4);
+        int colorsAmount = sharedPreferences.getInt(getString(R.string.saved_colors_amount_key), 6);
         int distinctColorsAmount = sharedPreferences.getInt(getString(R.string.saved_distinct_colors_amount_key), 2);
         int colorShowTime = sharedPreferences.getInt(getString(R.string.saved_color_show_time_key), 2);
 

@@ -11,7 +11,7 @@
     <color name="light_blue">#DCE5FF</color>
     <color name="blue">#2B66FF</color>
 
-    <color name="c_training_color_1">#FFFFFF</color>
+    <color name="c_training_color_1">#7D7D7D</color>
     <color name="c_training_color_2">#000000</color>
     <color name="c_training_color_3">#FF0000</color>
     <color name="c_training_color_4">#FFA305</color>
@@ -25,6 +25,6 @@
     <color name="c_training_color_12">#4F05FF</color>
     <color name="c_training_color_13">#B005FF</color>
     <color name="c_training_color_14">#FF05F1</color>
-    <color name="c_training_color_15">#7D7D7D</color>
+    <color name="seq_training_wrong_choice">#FFD8E5</color>
 
 </resources>
