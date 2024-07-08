@@ -17,6 +17,7 @@ import androidx.constraintlayout.motion.widget.MotionLayout;
 import com.addisonelliott.segmentedbutton.SegmentedButtonGroup;
 import com.youngsophomore.R;
 import com.youngsophomore.activities.ColorsSettingsActivity;
+import com.youngsophomore.activities.ColorsTrainingActivity;
 import com.youngsophomore.activities.DetailsSettingsActivity;
 import com.youngsophomore.activities.MahjongSettingsActivity;
 import com.youngsophomore.activities.MahjongTrainingActivity;
@@ -233,6 +234,10 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
                 if(btnWithEvent != null && idBtnWithEvent == R.id.btn_colors_training) {
                     Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. colors training was touched");
                     btnWithEvent.setElevation(elevTrainingPx);
+                    if(!viewWasMoved){
+                        Intent intent = new Intent(getContext(), ColorsTrainingActivity.class);
+                        getContext().startActivity(intent);
+                    }
                 }
                 if(btnWithEvent != null && idBtnWithEvent == R.id.btn_shapes_training) {
                     Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. shapes training was touched");

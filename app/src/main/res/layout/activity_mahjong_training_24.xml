@@ -9,7 +9,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white_blue"
-
+    tools:context=".activities.MahjongTrainingActivity"
     android:clipChildren="false"
     android:clipToPadding="false"
     >
@@ -35,7 +35,7 @@
         app:layout_constraintBottom_toTopOf="@id/guideline_bottom"
         app:layout_constraintStart_toEndOf="@id/guideline_left"
         app:layout_constraintEnd_toStartOf="@id/guideline_right"
-        tools:context=".activities.MahjongTrainingActivity"
+
         android:background="@color/white_blue"
         
         android:clipChildren="false"

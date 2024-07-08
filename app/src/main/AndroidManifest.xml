@@ -9,13 +9,14 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.MemoryTraining"
-        tools:targetApi="31"
-        android:screenOrientation="portrait"
         tools:ignore="DiscouragedApi,LockedOrientationActivity"
-        >
-
+        tools:targetApi="31">
+        <activity
+            android:name=".activities.ColorsTrainingActivity"
+            android:exported="false" />
         <activity
             android:name=".activities.AddImageActivity"
             android:exported="false" />

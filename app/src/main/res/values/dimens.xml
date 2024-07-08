@@ -26,7 +26,9 @@
     <dimen name="m_training_vert_middle_margin_24">20dp</dimen>
     <dimen name="m_training_small_vertical_margin">30dp</dimen>
     <dimen name="m_training_big_vertical_margin">140dp</dimen>
-
     <dimen name="mahjong_tile_margin">9dp</dimen>
+
+    <dimen name="c_training_seq_margin">1dp</dimen>
+    <dimen name="c_training_pal_margin">6dp</dimen>
 
 </resources>

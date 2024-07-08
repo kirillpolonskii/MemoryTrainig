@@ -8,6 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white_blue"
+    tools:context=".activities.MahjongTrainingActivity"
 
     android:clipChildren="false"
     android:clipToPadding="false"
@@ -33,7 +34,6 @@
         app:layout_constraintBottom_toTopOf="@id/guideline_bottom"
         app:layout_constraintStart_toEndOf="@id/guideline_left"
         app:layout_constraintEnd_toStartOf="@id/guideline_right"
-        tools:context=".activities.MahjongTrainingActivity"
 
         android:clipChildren="false"
         android:clipToPadding="false"
@@ -49,7 +49,6 @@
             app:layout_constraintEnd_toStartOf="@id/btn_tile_pos2"
 
             app:layout_constraintHorizontal_chainStyle="spread"
-            
             app:layout_constraintVertical_chainStyle="spread"
             app:layout_constraintVertical_weight="1"
             android:background="@drawable/btn_tile_bg"

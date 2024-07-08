@@ -10,4 +10,21 @@
     <color name="white_blue">#EDF3FF</color>
     <color name="light_blue">#DCE5FF</color>
     <color name="blue">#2B66FF</color>
+
+    <color name="c_training_color_1">#FFFFFF</color>
+    <color name="c_training_color_2">#000000</color>
+    <color name="c_training_color_3">#FF0000</color>
+    <color name="c_training_color_4">#FFA305</color>
+    <color name="c_training_color_5">#FFEB05</color>
+    <color name="c_training_color_6">#CFFF05</color>
+    <color name="c_training_color_7">#20FF05</color>
+    <color name="c_training_color_8">#14FFC3</color>
+    <color name="c_training_color_9">#18A7B5</color>
+    <color name="c_training_color_10">#057AFF</color>
+    <color name="c_training_color_11">#0537FF</color>
+    <color name="c_training_color_12">#4F05FF</color>
+    <color name="c_training_color_13">#B005FF</color>
+    <color name="c_training_color_14">#FF05F1</color>
+    <color name="c_training_color_15">#7D7D7D</color>
+
 </resources>

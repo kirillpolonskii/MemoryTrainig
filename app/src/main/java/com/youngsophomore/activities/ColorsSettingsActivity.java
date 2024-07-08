@@ -36,10 +36,10 @@ public class ColorsSettingsActivity extends AppCompatActivity {
 
         NumberPicker pckrColorsAmount = findViewById(R.id.pckr_colors_amount);
         NumberPicker pckrDistinctColorsAmount = findViewById(R.id.pckr_distinct_colors_amount);
-        pckrColorsAmount.setMinValue(4);
-        pckrColorsAmount.setMaxValue(25);
+        pckrColorsAmount.setMinValue(6);
+        pckrColorsAmount.setMaxValue(24);
         pckrDistinctColorsAmount.setMinValue(2);
-        pckrDistinctColorsAmount.setMaxValue(4);
+        pckrDistinctColorsAmount.setMaxValue(6);
         pckrColorsAmount.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
