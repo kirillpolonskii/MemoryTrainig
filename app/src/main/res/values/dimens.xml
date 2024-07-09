@@ -29,6 +29,9 @@
     <dimen name="mahjong_tile_margin">9dp</dimen>
 
     <dimen name="c_training_seq_margin">1dp</dimen>
-    <dimen name="c_training_pal_margin">6dp</dimen>
+    <dimen name="c_training_set_margin">6dp</dimen>
+
+    <dimen name="s_training_seq_margin">3dp</dimen>
+    <dimen name="s_training_set_margin">6dp</dimen>
 
 </resources>

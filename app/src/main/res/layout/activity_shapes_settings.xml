@@ -91,77 +91,6 @@
             android:layout_marginEnd="@dimen/settings_large_margin"
 
             />
-        <TextView
-            android:id="@+id/tv_max_repeat_shapes_amount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constrainedWidth="true"
-            app:layout_constraintTop_toBottomOf="@+id/pckr_distinct_shapes_amount"
-            app:layout_constraintBottom_toTopOf="@+id/pckr_shape_show_time"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/sgbtn_max_repeat_shapes_amount"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintHorizontal_bias="0"
-
-            android:text="@string/max_repeat_shapes_amount"
-            style="@style/SettingsTextViewStyle"
-            />
-
-        <com.addisonelliott.segmentedbutton.SegmentedButtonGroup
-            android:id="@+id/sgbtn_max_repeat_shapes_amount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/tv_max_repeat_shapes_amount"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_max_repeat_shapes_amount"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_max_repeat_shapes_amount"
-            android:layout_marginStart="@dimen/settings_small_margin"
-            android:layout_marginEnd="@dimen/settings_small_margin"
-            android:elevation="@dimen/sgbtn_tiles_elev"
-            style="@style/SegmentedButtonGroupStyle"
-            tools:ignore="TouchTargetSizeCheck">
-            <com.addisonelliott.segmentedbutton.SegmentedButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:contentDescription="@string/info"
-                android:padding="8dp"
-                app:text="@string/max_repeat_shapes_amount_0"
-                style="@style/SegmentedButtonStyle" />
-            <com.addisonelliott.segmentedbutton.SegmentedButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:contentDescription="@string/info"
-                android:padding="8dp"
-                app:text="@string/max_repeat_shapes_amount_1"
-                style="@style/SegmentedButtonStyle" />
-            <com.addisonelliott.segmentedbutton.SegmentedButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:contentDescription="@string/info"
-                android:padding="8dp"
-                app:text="@string/max_repeat_shapes_amount_2"
-                style="@style/SegmentedButtonStyle"/>
-            <com.addisonelliott.segmentedbutton.SegmentedButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:contentDescription="@string/info"
-                android:padding="8dp"
-                app:text="@string/max_repeat_shapes_amount_3"
-                style="@style/SegmentedButtonStyle" />
-            <!--android:layout_weight="1"-->
-            <com.addisonelliott.segmentedbutton.SegmentedButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:contentDescription="@string/info"
-                android:padding="8dp"
-                app:text="@string/max_repeat_shapes_amount_4"
-                style="@style/SegmentedButtonStyle"/>
-        </com.addisonelliott.segmentedbutton.SegmentedButtonGroup>
 
         <TextView
             android:id="@+id/tv_shape_show_time"
@@ -182,7 +111,7 @@
             android:id="@+id/pckr_shape_show_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tv_max_repeat_shapes_amount"
+            app:layout_constraintTop_toBottomOf="@id/pckr_distinct_shapes_amount"
             app:layout_constraintStart_toEndOf="@id/tv_shape_show_time"
             app:layout_constraintEnd_toEndOf="parent"
 

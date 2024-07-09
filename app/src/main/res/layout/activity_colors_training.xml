@@ -403,12 +403,12 @@
         app:cardCornerRadius="15dp"
         app:cardElevation="8dp"
 
-        android:layout_margin="@dimen/c_training_pal_margin">
+        android:layout_margin="@dimen/c_training_set_margin">
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:background="@drawable/btn_color_pal_bg"
+            android:background="@drawable/btn_color_set_bg"
             android:backgroundTintMode="add"
             android:backgroundTint="@color/purple_200"
             android:contentDescription="@string/info"
@@ -428,12 +428,12 @@
         app:cardCornerRadius="15dp"
         app:cardElevation="8dp"
 
-        android:layout_margin="@dimen/c_training_pal_margin">
+        android:layout_margin="@dimen/c_training_set_margin">
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:background="@drawable/btn_color_pal_bg"
+            android:background="@drawable/btn_color_set_bg"
             android:backgroundTint="@color/purple_200"
             android:backgroundTintMode="add"
             android:contentDescription="@string/info"
@@ -453,12 +453,12 @@
 
         app:cardCornerRadius="15dp"
         app:cardElevation="8dp"
-        android:layout_margin="@dimen/c_training_pal_margin">
+        android:layout_margin="@dimen/c_training_set_margin">
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:background="@drawable/btn_color_pal_bg"
+            android:background="@drawable/btn_color_set_bg"
             android:backgroundTintMode="add"
             android:backgroundTint="@color/purple_200"
             android:contentDescription="@string/info"
@@ -478,12 +478,12 @@
 
         app:cardCornerRadius="15dp"
         app:cardElevation="8dp"
-        android:layout_margin="@dimen/c_training_pal_margin">
+        android:layout_margin="@dimen/c_training_set_margin">
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:background="@drawable/btn_color_pal_bg"
+            android:background="@drawable/btn_color_set_bg"
             android:backgroundTintMode="add"
             android:backgroundTint="@color/purple_200"
             android:contentDescription="@string/info"
@@ -503,12 +503,12 @@
 
         app:cardCornerRadius="15dp"
         app:cardElevation="8dp"
-        android:layout_margin="@dimen/c_training_pal_margin">
+        android:layout_margin="@dimen/c_training_set_margin">
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:background="@drawable/btn_color_pal_bg"
+            android:background="@drawable/btn_color_set_bg"
             android:backgroundTintMode="add"
             android:backgroundTint="@color/purple_200"
             android:contentDescription="@string/info"
@@ -527,12 +527,12 @@
 
         app:cardCornerRadius="15dp"
         app:cardElevation="8dp"
-        android:layout_margin="@dimen/c_training_pal_margin">
+        android:layout_margin="@dimen/c_training_set_margin">
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:background="@drawable/btn_color_pal_bg"
+            android:background="@drawable/btn_color_set_bg"
             android:backgroundTintMode="add"
             android:backgroundTint="@color/purple_200"
             android:contentDescription="@string/info"
@@ -551,12 +551,12 @@
 
         app:cardCornerRadius="15dp"
         app:cardElevation="8dp"
-        android:layout_margin="@dimen/c_training_pal_margin">
+        android:layout_margin="@dimen/c_training_set_margin">
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:background="@drawable/btn_color_pal_bg"
+            android:background="@drawable/btn_color_set_bg"
             android:backgroundTintMode="add"
             android:backgroundTint="@color/purple_200"
             android:contentDescription="@string/info"
@@ -575,12 +575,12 @@
 
         app:cardCornerRadius="15dp"
         app:cardElevation="8dp"
-        android:layout_margin="@dimen/c_training_pal_margin">
+        android:layout_margin="@dimen/c_training_set_margin">
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:background="@drawable/btn_color_pal_bg"
+            android:background="@drawable/btn_color_set_bg"
             android:backgroundTintMode="add"
             android:backgroundTint="@color/purple_200"
             android:contentDescription="@string/info"
@@ -599,12 +599,12 @@
 
         app:cardCornerRadius="15dp"
         app:cardElevation="8dp"
-        android:layout_margin="@dimen/c_training_pal_margin">
+        android:layout_margin="@dimen/c_training_set_margin">
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:background="@drawable/btn_color_pal_bg"
+            android:background="@drawable/btn_color_set_bg"
             android:backgroundTintMode="add"
             android:backgroundTint="@color/purple_200"
             android:contentDescription="@string/info"
@@ -623,12 +623,12 @@
 
         app:cardCornerRadius="15dp"
         app:cardElevation="8dp"
-        android:layout_margin="@dimen/c_training_pal_margin">
+        android:layout_margin="@dimen/c_training_set_margin">
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:background="@drawable/btn_color_pal_bg"
+            android:background="@drawable/btn_color_set_bg"
             android:backgroundTintMode="add"
             android:backgroundTint="@color/purple_200"
             android:contentDescription="@string/info"
@@ -648,12 +648,12 @@
 
         app:cardCornerRadius="15dp"
         app:cardElevation="8dp"
-        android:layout_margin="@dimen/c_training_pal_margin">
+        android:layout_margin="@dimen/c_training_set_margin">
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:background="@drawable/btn_color_pal_bg"
+            android:background="@drawable/btn_color_set_bg"
             android:backgroundTintMode="add"
             android:backgroundTint="@color/purple_200"
             android:contentDescription="@string/info"
@@ -673,12 +673,12 @@
 
         app:cardCornerRadius="15dp"
         app:cardElevation="8dp"
-        android:layout_margin="@dimen/c_training_pal_margin">
+        android:layout_margin="@dimen/c_training_set_margin">
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:background="@drawable/btn_color_pal_bg"
+            android:background="@drawable/btn_color_set_bg"
             android:backgroundTintMode="add"
             android:backgroundTint="@color/purple_200"
             android:contentDescription="@string/info"
@@ -698,12 +698,12 @@
 
         app:cardCornerRadius="15dp"
         app:cardElevation="8dp"
-        android:layout_margin="@dimen/c_training_pal_margin">
+        android:layout_margin="@dimen/c_training_set_margin">
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:background="@drawable/btn_color_pal_bg"
+            android:background="@drawable/btn_color_set_bg"
             android:backgroundTintMode="add"
             android:backgroundTint="@color/purple_200"
             android:contentDescription="@string/info"
@@ -723,13 +723,13 @@
 
         app:cardCornerRadius="15dp"
         app:cardElevation="8dp"
-        android:layout_margin="@dimen/c_training_pal_margin"
+        android:layout_margin="@dimen/c_training_set_margin"
         >
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:background="@drawable/btn_color_pal_bg"
+            android:background="@drawable/btn_color_set_bg"
             android:backgroundTintMode="add"
             android:backgroundTint="@color/purple_200"
             android:contentDescription="@string/info"
@@ -749,14 +749,14 @@
 
         app:cardCornerRadius="15dp"
         app:cardElevation="8dp"
-        android:layout_margin="@dimen/c_training_pal_margin"
+        android:layout_margin="@dimen/c_training_set_margin"
 
         >
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:background="@drawable/btn_color_pal_bg"
+            android:background="@drawable/btn_color_set_bg"
             android:backgroundTintMode="add"
             android:backgroundTint="@color/purple_200"
             android:contentDescription="@string/info"

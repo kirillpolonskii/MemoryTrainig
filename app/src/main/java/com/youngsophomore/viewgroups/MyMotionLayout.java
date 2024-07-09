@@ -23,6 +23,7 @@ import com.youngsophomore.activities.MahjongSettingsActivity;
 import com.youngsophomore.activities.MahjongTrainingActivity;
 import com.youngsophomore.activities.PhrasesSettingsActivity;
 import com.youngsophomore.activities.ShapesSettingsActivity;
+import com.youngsophomore.activities.ShapesTrainingActivity;
 import com.youngsophomore.activities.WordsSettingsActivity;
 
 public class MyMotionLayout extends MotionLayout implements MotionLayout.TransitionListener {
@@ -242,6 +243,10 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
                 if(btnWithEvent != null && idBtnWithEvent == R.id.btn_shapes_training) {
                     Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. shapes training was touched");
                     btnWithEvent.setElevation(elevTrainingPx);
+                    if(!viewWasMoved){
+                        Intent intent = new Intent(getContext(), ShapesTrainingActivity.class);
+                        getContext().startActivity(intent);
+                    }
                 }
                 if(btnWithEvent != null && idBtnWithEvent == R.id.btn_words_training) {
                     Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. words training was touched");

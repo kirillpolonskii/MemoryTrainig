@@ -64,12 +64,12 @@
   + ~~Сделать 2 layout-файла для 12 и 24 костей~~
   + ~~Добавить фрагмент с секундомером~~
   + ~~Изменить layout под использование GuideLine~~
-+ [active]Сделать ColorsTrainingActivity
++ Сделать ColorsTrainingActivity
   + ~~Сделать layout с кнопками с белыми краями и тенью~~
   + ~~Добавить на layout подготовки ImageView, цвет которого будет меняться~~
-+ Сделать ShapesTrainingActivity
-  + Сделать ShapesPrepFragment
-  + Сделать ShapesTrainingFragment
++ [active]Сделать ShapesTrainingActivity
+  + ~~Добавить ресурсы фигур~~
+  + [active]Продублировать layout тренировки цветов
 + Сделать WordsTrainingActivity
   + Сделать WordsPrepFragment
   + Сделать WordsTrainingFragment
@@ -161,9 +161,12 @@
   + ~~Написать логику заполнения пустых view нужными цветами при правильном выборе~~
   + ~~Исправить ошибку при сохранении других значений количества разных цветов~~
   + Написать логику сбора статистики и отображения диалогового окна с результатами
-+ Сделать ShapesTrainingActivity
-  + Сделать ShapesPrepFragment
-  + Сделать ShapesTrainingFragment
++ [active]Сделать ShapesTrainingActivity
+  + ~~Написать логику формирования массива последовательности и фигур~~
+  + ~~Продублировать логику таймера на подготовку~~
+  + ~~Продублировать логику показа последовательности фигур~~
+  + ~~Продублировать логику заполнения пустых view нужными фигурами при правильном выборе~~
+  + Написать логику сбора статистики и отображения диалогового окна с результатами
 + Сделать WordsTrainingActivity
   + Сделать WordsPrepFragment
   + Сделать WordsTrainingFragment

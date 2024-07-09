@@ -6,6 +6,7 @@ import androidx.fragment.app.DialogFragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -84,6 +85,40 @@ public class ColorsSettingsActivity extends AppCompatActivity {
                     case (MotionEvent.ACTION_OUTSIDE):
                         Log.d(DEBUG_TAG, "btnSave onTouch. Movement occurred outside bounds " +
                                 "of current screen element");
+                        return true;
+                    default:
+                        return false;
+                }
+
+            }
+
+        });
+        ImageButton btnSavePlaySettings = findViewById(R.id.btn_save_and_play);
+        btnSavePlaySettings.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                int action = event.getAction();
+                switch(action) {
+                    case (MotionEvent.ACTION_DOWN):
+                        Log.d(DEBUG_TAG, "btnSavePlaySettings onTouch. Action was DOWN");
+                        view.setElevation(0);
+                        return true;
+                    case (MotionEvent.ACTION_UP):
+                        int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
+                        Log.d(DEBUG_TAG, "btnSavePlaySettings onTouch. Action was UP. open info" +
+                                ", R.dimen.btn_info_elev = " + R.dimen.btn_info_elev +
+                                ", elev = " + elevPx);
+                        view.setElevation(elevPx);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putInt(getString(R.string.saved_colors_amount_key),
+                                pckrColorsAmount.getValue());
+                        editor.putInt(getString(R.string.saved_distinct_colors_amount_key),
+                                pckrDistinctColorsAmount.getValue());
+                        editor.putInt(getString(R.string.saved_color_show_time_key),
+                                pckrColorShowTime.getValue());
+                        editor.apply();
+                        Intent intent = new Intent(getApplicationContext(), ColorsTrainingActivity.class);
+                        startActivity(intent);
                         return true;
                     default:
                         return false;

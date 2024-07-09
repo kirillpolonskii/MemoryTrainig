@@ -115,4 +115,55 @@ public class TrainHelper {
             }
         }
     }
+
+    public class Shapes{
+        public static ArrayList<Integer> generateShapesSet(int distinctShapesAmount){
+            ArrayList<Integer> shapesSet = new ArrayList<>();
+            for(int i = 0; i < distinctShapesAmount; ++i){
+                int shapeInd = ThreadLocalRandom.current().nextInt(1, 9 + 1);
+                int shapeRes = indToShape(shapeInd);
+                while (shapesSet.contains(shapeRes)){
+                    shapeInd = ThreadLocalRandom.current().nextInt(1, 9 + 1);
+                    shapeRes = indToShape(shapeInd);
+                }
+                shapesSet.add(shapeRes);
+            }
+            return shapesSet;
+        }
+
+        public static ArrayList<Integer> generateShapesSequence(int shapesAmount, ArrayList<Integer> shapesSet){
+            ArrayList<Integer> shapesSeq = new ArrayList<>();
+            for(int i = 0; i < shapesAmount; ++i){
+                int colorInd = ThreadLocalRandom.current().nextInt(0, shapesSet.size());
+                shapesSeq.add(shapesSet.get(colorInd));
+            }
+            Log.d(DEBUG_TAG, shapesSet.toString());
+            return shapesSet;
+        }
+
+        private static int indToShape(int index){
+            switch (index){
+                case (1):
+                    return R.drawable.shape_1;
+                case (2):
+                    return R.drawable.shape_2;
+                case (3):
+                    return R.drawable.shape_3;
+                case (4):
+                    return R.drawable.shape_4;
+                case (5):
+                    return R.drawable.shape_5;
+                case (6):
+                    return R.drawable.shape_6;
+                case (7):
+                    return R.drawable.shape_7;
+                case (8):
+                    return R.drawable.shape_8;
+                case (9):
+                    return R.drawable.shape_9;
+                default:
+                    return R.drawable.shape_1;
+            }
+        }
+    }
 }
