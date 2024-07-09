@@ -179,7 +179,7 @@ public class ColorsTrainingActivity extends AppCompatActivity {
                                                                 getResources().getColor(R.color.white_blue)
                                                         );
                                                     }
-                                                }, 80);
+                                                }, 60);
                                                 // Add 1 to mistakes amount
                                             }
                                             if(curColorSeqInd == colorsAmount){

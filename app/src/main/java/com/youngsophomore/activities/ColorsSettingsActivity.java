@@ -34,33 +34,21 @@ public class ColorsSettingsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        NumberPicker pckrColorsAmount = findViewById(R.id.pckr_colors_amount);
-        NumberPicker pckrDistinctColorsAmount = findViewById(R.id.pckr_distinct_colors_amount);
-        pckrColorsAmount.setMinValue(6);
-        pckrColorsAmount.setMaxValue(24);
-        pckrDistinctColorsAmount.setMinValue(2);
-        pckrDistinctColorsAmount.setMaxValue(6);
-        pckrColorsAmount.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                if(newVal <= 14){
-                    pckrDistinctColorsAmount.setMaxValue(newVal);
-                }
-                else{
-                    pckrDistinctColorsAmount.setMaxValue(14);
-                }
-            }
-        });
-
-        NumberPicker pckrColorShowTime = findViewById(R.id.pckr_color_show_time);
-        pckrColorShowTime.setMinValue(1);
-        pckrColorShowTime.setMaxValue(6);
-
         SharedPreferences sharedPreferences =
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         int colorsAmount = sharedPreferences.getInt(getString(R.string.saved_colors_amount_key), 6);
         int distinctColorsAmount = sharedPreferences.getInt(getString(R.string.saved_distinct_colors_amount_key), 2);
         int colorShowTime = sharedPreferences.getInt(getString(R.string.saved_color_show_time_key), 2);
+
+        NumberPicker pckrColorsAmount = findViewById(R.id.pckr_colors_amount);
+        NumberPicker pckrDistinctColorsAmount = findViewById(R.id.pckr_distinct_colors_amount);
+        NumberPicker pckrColorShowTime = findViewById(R.id.pckr_color_show_time);
+        pckrColorsAmount.setMinValue(6);
+        pckrColorsAmount.setMaxValue(24);
+        pckrDistinctColorsAmount.setMinValue(2);
+        pckrDistinctColorsAmount.setMaxValue(15);
+        pckrColorShowTime.setMinValue(1);
+        pckrColorShowTime.setMaxValue(6);
 
         pckrColorsAmount.setValue(colorsAmount);
         pckrDistinctColorsAmount.setValue(distinctColorsAmount);
@@ -75,9 +63,6 @@ public class ColorsSettingsActivity extends AppCompatActivity {
                     case (MotionEvent.ACTION_DOWN):
                         Log.d(DEBUG_TAG, "btnSave onTouch. Action was DOWN");
                         view.setElevation(0);
-                        return true;
-                    case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnSave onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
