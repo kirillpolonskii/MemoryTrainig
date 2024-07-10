@@ -74,11 +74,11 @@ public class ColorsTrainingActivity extends AppCompatActivity {
                 ivCurColor.setBackgroundColor(getResources().getColor(colorSeq.get(curColorShowInd)));
                 //++curColorShowInd;
 
-                ConstraintLayout.LayoutParams tvNewImageNameParams = new ConstraintLayout.LayoutParams(
+                ConstraintLayout.LayoutParams ivCurColorParams = new ConstraintLayout.LayoutParams(
                         0,
                         0
                 );
-                ivCurColor.setLayoutParams(tvNewImageNameParams);
+                ivCurColor.setLayoutParams(ivCurColorParams);
                 constraintLayout.addView(ivCurColor);
                 ConstraintSet constraintSet = new ConstraintSet();
                 constraintSet.clone(constraintLayout);

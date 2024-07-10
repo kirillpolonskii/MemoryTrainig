@@ -134,11 +134,11 @@ public class TrainHelper {
         public static ArrayList<Integer> generateShapesSequence(int shapesAmount, ArrayList<Integer> shapesSet){
             ArrayList<Integer> shapesSeq = new ArrayList<>();
             for(int i = 0; i < shapesAmount; ++i){
-                int colorInd = ThreadLocalRandom.current().nextInt(0, shapesSet.size());
-                shapesSeq.add(shapesSet.get(colorInd));
+                int shapeInd = ThreadLocalRandom.current().nextInt(0, shapesSet.size());
+                shapesSeq.add(shapesSet.get(shapeInd));
             }
             Log.d(DEBUG_TAG, shapesSet.toString());
-            return shapesSet;
+            return shapesSeq;
         }
 
         private static int indToShape(int index){

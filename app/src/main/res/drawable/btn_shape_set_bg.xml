@@ -7,7 +7,9 @@
     <!--Border width and color-->
     <stroke
         android:width="5dp"
-        android:color="#ffffff" />
+        android:color="#ffffff"
+
+        />
     <solid android:color="@color/light_blue"/>
 
 </shape>

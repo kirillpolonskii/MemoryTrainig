@@ -67,13 +67,15 @@ public class ShapesTrainingActivity extends AppCompatActivity {
                 ImageView ivCurShape = new ImageView(getApplicationContext());
                 ivCurShape.setId(View.generateViewId());
                 ivCurShape.setBackgroundResource(shapesSeq.get(curShapeShowInd));
-                //++curShapeShowInd;
 
-                ConstraintLayout.LayoutParams tvNewImageNameParams = new ConstraintLayout.LayoutParams(
+                ConstraintLayout.LayoutParams ivCurShapeParams = new ConstraintLayout.LayoutParams(
                         0,
                         0
                 );
-                ivCurShape.setLayoutParams(tvNewImageNameParams);
+                ivCurShapeParams.setMarginStart(20);
+                ivCurShapeParams.setMarginEnd(20);
+                ivCurShape.setLayoutParams(ivCurShapeParams);
+
                 constraintLayout.addView(ivCurShape);
                 ConstraintSet constraintSet = new ConstraintSet();
                 constraintSet.clone(constraintLayout);
@@ -98,7 +100,7 @@ public class ShapesTrainingActivity extends AppCompatActivity {
                             ivCurShape.setBackgroundResource(shapesSeq.get(curShapeShowInd));
                             ++curShapeShowInd;
                             tvCurShapeNum.setText(String.valueOf(curShapeShowInd));
-                            Log.d(DEBUG_TAG, "curShapeShowInd = " + curShapeShowInd);
+                            // Log.d(DEBUG_TAG, "curShapeShowInd = " + curShapeShowInd);
                         }
                     }
 
@@ -124,12 +126,12 @@ public class ShapesTrainingActivity extends AppCompatActivity {
                                 ivShapesSeq.add((ImageView) clShapes.getChildAt(i));
                             }
                             else {
-                                ImageButton btnCurShapeSet = (ImageButton) clShapes.getChildAt(i);
+                                ImageButton btnCurShape = (ImageButton) clShapes.getChildAt(i);
                                 if(i - 25 < distinctShapesAmount){
-                                    btnShapesSet.add(btnCurShapeSet);
+                                    btnShapesSet.add(btnCurShape);
                                 }
                                 else{
-                                    btnCurShapeSet.setVisibility(View.GONE);
+                                    btnCurShape.setVisibility(View.GONE);
                                 }
 
                             }
@@ -138,6 +140,7 @@ public class ShapesTrainingActivity extends AppCompatActivity {
                             iv.setVisibility(View.INVISIBLE);
                         }
                         for (int i = 0; i < btnShapesSet.size(); ++i){
+                            Log.d(DEBUG_TAG, "i = " + i + "btnShapesSet.size() = " + btnShapesSet.size());
                             btnShapesSet.get(i).setImageResource(shapesSet.get(i));
                             int finalI = i;
                             btnShapesSet.get(i).setOnTouchListener(new View.OnTouchListener() {

@@ -18,7 +18,7 @@
     <dimen name="settings_xxxl_margin">70dp</dimen>
     <dimen name="settings_xxxxl_margin">80dp</dimen>
 
-    <dimen name="stopwatch_top_margin">10dp</dimen>
+    <dimen name="stopwatch_top_margin">12dp</dimen>
     <dimen name="m_training_small_horiz_margin">15dp</dimen>
     <dimen name="m_training_big_horiz_margin">240dp</dimen>
     <dimen name="m_training_horiz_middle_margin">20dp</dimen>
@@ -31,7 +31,8 @@
     <dimen name="c_training_seq_margin">1dp</dimen>
     <dimen name="c_training_set_margin">6dp</dimen>
 
-    <dimen name="s_training_seq_margin">3dp</dimen>
+    <dimen name="s_training_seq_margin">2dp</dimen>
     <dimen name="s_training_set_margin">6dp</dimen>
+    <dimen name="s_training_set_padding">9dp</dimen>
 
 </resources>

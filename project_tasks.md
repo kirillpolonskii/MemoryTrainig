@@ -69,7 +69,7 @@
   + ~~Добавить на layout подготовки ImageView, цвет которого будет меняться~~
 + [active]Сделать ShapesTrainingActivity
   + ~~Добавить ресурсы фигур~~
-  + [active]Продублировать layout тренировки цветов
+  + ~~Продублировать layout тренировки цветов~~
 + Сделать WordsTrainingActivity
   + Сделать WordsPrepFragment
   + Сделать WordsTrainingFragment
