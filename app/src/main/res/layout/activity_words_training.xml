@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cst_lt_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.WordsTrainingActivity"
+    android:background="@color/white_blue"
+
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    >
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/frgt_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guideline_top_seq"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0"
+
+        android:layout_marginTop="@dimen/stopwatch_top_margin"
+        />
+
+    <TextView
+        android:id="@+id/tv_words_seq"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/guideline_top_seq"
+        app:layout_constraintBottom_toTopOf="@id/guideline_bottom_seq"
+        app:layout_constraintStart_toEndOf="@id/guideline_left"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+
+        android:scrollbars="vertical"
+        style="@style/SettingsTextViewStyle"
+        android:text="fnoishr"
+        />
+    <HorizontalScrollView
+        android:id="@+id/hscrv_words_pal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/guideline_top_pal"
+        app:layout_constraintBottom_toTopOf="@id/guideline_bottom_pal"
+        app:layout_constraintStart_toEndOf="@id/guideline_left"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cst_lt_words_pal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            >
+            <Button
+                android:id="@+id/btn_word_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/guideline_raw1_pal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btn_word_2"
+
+                android:layout_margin="5dp"
+                android:text="rgge5geth"
+                android:theme="@style/WordsPalBtnStyle"
+                android:background="@drawable/btn_save_bg"
+                android:elevation="@dimen/btn_stats_elev"
+
+                />
+            <Button
+                android:id="@+id/btn_word_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/guideline_raw1_pal"
+                app:layout_constraintStart_toEndOf="@id/btn_word_1"
+                app:layout_constraintEnd_toStartOf="@id/btn_word_3"
+
+                android:layout_margin="5dp"
+                android:text="rggeth"
+                android:theme="@style/WordsPalBtnStyle"
+                android:background="@drawable/btn_save_bg"
+                android:elevation="@dimen/btn_stats_elev"
+                />
+            <Button
+                android:id="@+id/btn_word_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/guideline_raw1_pal"
+                app:layout_constraintStart_toEndOf="@id/btn_word_2"
+
+                android:layout_margin="5dp"
+                android:text="rgge5h"
+                android:theme="@style/WordsPalBtnStyle"
+                android:background="@drawable/btn_save_bg"
+                />
+            <Button
+                android:id="@+id/btn_word_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintTop_toBottomOf="@id/guideline_raw1_pal"
+                app:layout_constraintBottom_toTopOf="@id/guideline_raw2_pal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btn_word_5"
+
+                android:layout_margin="5dp"
+                android:text="rth"
+                android:theme="@style/WordsPalBtnStyle"
+                android:background="@drawable/btn_save_bg"
+                android:elevation="@dimen/btn_stats_elev"
+                />
+            <Button
+                android:id="@+id/btn_word_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/guideline_raw1_pal"
+                app:layout_constraintBottom_toTopOf="@id/guideline_raw2_pal"
+                app:layout_constraintStart_toEndOf="@id/btn_word_4"
+                app:layout_constraintEnd_toStartOf="@id/btn_word_6"
+
+                android:layout_margin="5dp"
+                android:text="rgge5geth"
+                android:theme="@style/WordsPalBtnStyle"
+                android:background="@drawable/btn_save_bg"
+                android:elevation="@dimen/btn_stats_elev"
+                />
+            <Button
+                android:id="@+id/btn_word_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/guideline_raw1_pal"
+                app:layout_constraintBottom_toTopOf="@id/guideline_raw2_pal"
+                app:layout_constraintStart_toEndOf="@id/btn_word_5"
+
+                android:layout_margin="5dp"
+                android:text="rgge5geth"
+                android:theme="@style/WordsPalBtnStyle"
+                android:background="@drawable/btn_save_bg"
+                android:elevation="@dimen/btn_stats_elev"
+                />
+            <Button
+                android:id="@+id/btn_word_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintTop_toBottomOf="@id/guideline_raw2_pal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btn_word_8"
+
+                android:layout_margin="5dp"
+                android:text="rgge5geth"
+                android:theme="@style/WordsPalBtnStyle"
+                android:background="@drawable/btn_save_bg"
+                android:elevation="@dimen/btn_stats_elev"
+                />
+            <Button
+                android:id="@+id/btn_word_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/guideline_raw2_pal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btn_word_7"
+                app:layout_constraintEnd_toStartOf="@id/btn_word_9"
+
+                android:layout_margin="5dp"
+                android:text="rgge5geh"
+                android:theme="@style/WordsPalBtnStyle"
+                android:background="@drawable/btn_save_bg"
+                android:elevation="@dimen/btn_stats_elev"
+                />
+            <Button
+                android:id="@+id/btn_word_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/guideline_raw2_pal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btn_word_8"
+
+                android:layout_margin="5dp"
+                android:text="rgge5geth"
+                android:theme="@style/WordsPalBtnStyle"
+                android:background="@drawable/btn_save_bg"
+                android:elevation="@dimen/btn_stats_elev"
+                />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_raw1_pal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.33" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_raw2_pal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.66" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </HorizontalScrollView>
+
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_top_seq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_bottom_seq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.66" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_top_pal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.68" />
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_bottom_pal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.98" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

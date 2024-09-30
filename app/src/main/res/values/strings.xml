@@ -73,7 +73,7 @@
     <string name="word_show_time">Время показа слова (с):</string>
     <string name="et_words_collection_title_hint">Введите название коллекции</string>
     <string name="et_words_collection_hint">Введите коллекцию слов через пробел</string>
-    <string name="init_words_collection">Спасибо за использование приложения надеюсь вы найдёте его полезным</string>
+    <string name="init_words_collection">Спасибо за использование приложения, надеюсь вы найдёте его полезным</string>
 
     <string name="saved_words_collection_position_key">WORDS_COLLECTION_POSITION</string>
     <string name="saved_word_show_time_key">WORD_SHOW_TIME</string>

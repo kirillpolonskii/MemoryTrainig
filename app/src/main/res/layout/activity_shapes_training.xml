@@ -585,6 +585,7 @@
         android:background="@drawable/btn_shape_set_bg"
         android:contentDescription="@string/info"
         android:elevation="@dimen/btn_stats_elev"
+
         />
     <ImageButton
         android:id="@+id/btn_shape_pos7"

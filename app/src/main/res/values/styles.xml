@@ -32,6 +32,11 @@
         <item name="textSize">@dimen/switch_lang_text_size</item>
     </style>
 
+    <style name="WordsPalBtnStyle" parent="ThemeOverlay.AppCompat">
+        <item name="colorPrimary">@color/white_blue</item>
+        <item name="colorOnPrimary">@color/blue</item>
+    </style>
+
     <style name="SettingsTextViewStyle">
         <item name="android:textColor">?attr/colorPrimary</item>
         <item name="android:textSize">@dimen/settings_text_size</item>

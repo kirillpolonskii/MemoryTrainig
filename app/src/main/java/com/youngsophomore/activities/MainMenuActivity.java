@@ -215,11 +215,12 @@ public class MainMenuActivity extends AppCompatActivity {
         // init for words settings
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(getString(R.string.first_launch_key), false);
-        String strWordsCollectionsTitles = ",first collection,";
+        String wordsCollectionTitle = "first collection";
+        String strWordsCollectionsTitles = "," + wordsCollectionTitle + ",";
         editor.putString(getString(R.string.words_collections_titles_key),
                 strWordsCollectionsTitles);
         String initWordsCollection = getString(R.string.init_words_collection);
-        editor.putString(strWordsCollectionsTitles, initWordsCollection);
+        editor.putString(wordsCollectionTitle, initWordsCollection);
         // init for phrase settings
         String phrasesCollectionTitle = "first collection";
         String strPhrasesCollectionsTitles = "," + phrasesCollectionTitle + ",";

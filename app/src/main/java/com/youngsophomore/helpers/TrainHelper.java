@@ -6,12 +6,26 @@ import android.util.Log;
 import com.youngsophomore.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 import java.util.TreeSet;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class TrainHelper {
     private static final String DEBUG_TAG = "Gestures";
+    private static ArrayList<Integer> getRandomIndicesPerm(int start, int end){ // exclusive
+        ArrayList<Integer> randPerm = new ArrayList<>();
+        for(int i = 0; i <= end - start; ++i){
+            int curInd = ThreadLocalRandom.current().nextInt(start, end);
+            while (randPerm.contains(curInd)){
+                curInd = ThreadLocalRandom.current().nextInt(start, end);
+            }
+            randPerm.add(curInd);
+        }
+        return randPerm;
+    }
 
     public class Mahjong {
         public static ArrayList<Integer> generateTiles(int mahjongBonesAmount, int mahjongEqualBonesAmount) {
@@ -164,6 +178,42 @@ public class TrainHelper {
                 default:
                     return R.drawable.shape_1;
             }
+        }
+    }
+
+    public class Words{
+        public static final int INIT_PAL_SIZE = 9;
+        public static ArrayList<String> generateWordsPalette(
+                ArrayList<String> wordsCollection,
+                int curWordPos,
+                int curPaletteSize){
+            ArrayList<String> palette = new ArrayList<>();
+            for (int i = 0; i < curPaletteSize; ++i){
+                palette.add("");
+            }
+            if(curWordPos + curPaletteSize < wordsCollection.size()){
+                int corrWordInd = ThreadLocalRandom.current().nextInt(0, curPaletteSize);
+                palette.set(corrWordInd, wordsCollection.get(curWordPos));
+                for (int i = 0; i < curPaletteSize; ++i){
+                    if (i == corrWordInd) continue;
+                    int curWordInd = ThreadLocalRandom.current().nextInt(curWordPos, wordsCollection.size());
+                    while (palette.contains(wordsCollection.get(curWordInd))){
+                        curWordInd = ThreadLocalRandom.current().nextInt(curWordPos, wordsCollection.size());
+                    }
+                    palette.set(i, wordsCollection.get(curWordInd));
+                }
+            }
+            else{
+
+                ArrayList<Integer> randIndPerm = new ArrayList<>();
+                for (int i = 0; i < curPaletteSize; ++i) randIndPerm.add(curWordPos + i);
+                Collections.shuffle(randIndPerm);
+                for(int i = 0; i < curPaletteSize; ++i){
+                    palette.set(i, wordsCollection.get(randIndPerm.get(i)));
+                }
+            }
+
+            return palette;
         }
     }
 }

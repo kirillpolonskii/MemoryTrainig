@@ -25,6 +25,7 @@ import com.youngsophomore.activities.PhrasesSettingsActivity;
 import com.youngsophomore.activities.ShapesSettingsActivity;
 import com.youngsophomore.activities.ShapesTrainingActivity;
 import com.youngsophomore.activities.WordsSettingsActivity;
+import com.youngsophomore.activities.WordsTrainingActivity;
 
 public class MyMotionLayout extends MotionLayout implements MotionLayout.TransitionListener {
     private static final String DEBUG_TAG = "Gestures";
@@ -251,6 +252,10 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
                 if(btnWithEvent != null && idBtnWithEvent == R.id.btn_words_training) {
                     Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. words training was touched");
                     btnWithEvent.setElevation(elevTrainingPx);
+                    if(!viewWasMoved){
+                        Intent intent = new Intent(getContext(), WordsTrainingActivity.class);
+                        getContext().startActivity(intent);
+                    }
                 }
                 if(btnWithEvent != null && idBtnWithEvent == R.id.btn_phrases_training) {
                     Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. phrases training was touched");
