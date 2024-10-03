@@ -37,6 +37,7 @@
         android:scrollbars="vertical"
         style="@style/SettingsTextViewStyle"
         android:text="fnoishr"
+
         />
     <HorizontalScrollView
         android:id="@+id/hscrv_words_pal"
@@ -46,12 +47,15 @@
         app:layout_constraintBottom_toTopOf="@id/guideline_bottom_pal"
         app:layout_constraintStart_toEndOf="@id/guideline_left"
         app:layout_constraintEnd_toStartOf="@id/guideline_right"
-
+        android:clipChildren="false"
+        android:clipToPadding="false"
         >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cst_lt_words_pal"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             >
             <Button
                 android:id="@+id/btn_word_1"

@@ -29,7 +29,10 @@
         style="@style/SettingsTextViewStyle"
         android:textSize="120sp"
 
-        android:text="erge"
+        android:text="использование"
+
         />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

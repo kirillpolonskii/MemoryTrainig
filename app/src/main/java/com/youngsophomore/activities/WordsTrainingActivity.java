@@ -7,7 +7,9 @@ import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -75,6 +77,8 @@ public class WordsTrainingActivity extends AppCompatActivity {
                 ArrayList<String> wordsCollection = new ArrayList<>(Arrays.asList(splittedWordsCollection));
                 Log.d(DEBUG_TAG, wordsCollection.toString());
                 if (wordsCollection.size() < curPaletteSize) curPaletteSize = wordsCollection.size();
+                tvCountdown.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                        getResources().getDimension(R.dimen.w_training_seq_text_size));
                 CountDownTimer pretrainSequenceTimer = new CountDownTimer(
                         wordsCollection.size() * wordShowTime * 1000 + 200, wordShowTime * 1000) {
                     @Override
@@ -97,6 +101,7 @@ public class WordsTrainingActivity extends AppCompatActivity {
                         ConstraintLayout clParent = findViewById(R.id.cst_lt_parent);
                         ConstraintLayout clWordsPal = findViewById(R.id.cst_lt_words_pal);
                         TextView tvWordsSeq = findViewById(R.id.tv_words_seq);
+                        tvWordsSeq.setMovementMethod(new ScrollingMovementMethod());
                         String curStrWordsCollection = "";
                         tvWordsSeq.setText(curStrWordsCollection);
                         // Запуск секундомера
@@ -121,13 +126,17 @@ public class WordsTrainingActivity extends AppCompatActivity {
                                 @Override
                                 public boolean onTouch(View view, MotionEvent event) {
                                     int action = event.getAction();
+                                    int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                                     switch(action) {
                                         case (MotionEvent.ACTION_DOWN):
                                             Log.d(DEBUG_TAG, "cvWordPal.get(i) onTouch. Action was DOWN");
                                             btnWordPal.get(finalI).setElevation(0);
                                             return true;
+                                        case (MotionEvent.ACTION_MOVE):
+                                            Log.d(DEBUG_TAG, "btnWordPal.get(i) onTouch. Action was MOVE");
+                                            btnWordPal.get(finalI).setElevation(elevPx);
+                                            return false;
                                         case (MotionEvent.ACTION_UP):
-                                            int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                                             Log.d(DEBUG_TAG, "btnWordPal.get(i) onTouch. Action was UP");
                                             btnWordPal.get(finalI).setElevation(elevPx);
                                             if(btnWordPal.get(finalI).getText() == wordsCollection.get(curWordSeqInd)){
