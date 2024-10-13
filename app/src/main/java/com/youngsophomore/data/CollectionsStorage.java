@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class CollectionsStorage {
     private static final String DEBUG_TAG = "Gestures";
@@ -160,9 +161,42 @@ public static ArrayList<String> getCollectionsTitles(SharedPreferences sharedPre
         }
     }
 
-    public static String getPhrasesCollectionTitle(int position){
-        // get collection of titles from shared preferences and get the title
-        return phrasesCollectionsTitles.get(position);
+    public static ArrayList<String> getPhrasesCollection(
+            String title,
+            SharedPreferences sharedPreferences,
+            String pathName){
+        ArrayList<String> phrasesCollection = new ArrayList<>();
+        try {
+            // File filePath = new File(context.getExternalFilesDir(null).getAbsolutePath() + "/phrases");
+            File filePath = new File(pathName);
+            Log.d(DEBUG_TAG, "in CollectionStorage: filePath = " + filePath);
+            String fileName = "/" + title + ".txt";
+            File inFile = new File(filePath, fileName);
+            if (!inFile.exists()) {
+                Log.d(DEBUG_TAG, "in CollectionStorage: " + inFile.getAbsolutePath() +
+                        " don't exist");
+            }
+            else{
+                Log.d(DEBUG_TAG, "in CollectionStorage: " + inFile.getAbsolutePath() +
+                        " existed");
+            }
+            // FileOutputStream fos = new FileOutputStream(inFile);
+            // OutputStreamWriter osw = new OutputStreamWriter(fos);
+            Log.d(DEBUG_TAG, "in CollectionStorage: fileName = " + inFile);
+            Scanner scanner = new Scanner(inFile);
+            scanner.useDelimiter("\\|");
+            while (scanner.hasNext()){
+                phrasesCollection.add(scanner.next());
+            }
+
+            // osw.flush();
+            // osw.close();
+            // fos.close();
+        }
+        catch (IOException e) {
+            Log.d(DEBUG_TAG, "in CollectionStorage: File write failed: " + e.toString());
+        }
+        return phrasesCollection;
     }
 
     public static void saveQuestionsCollections(String title, Uri imageUri,

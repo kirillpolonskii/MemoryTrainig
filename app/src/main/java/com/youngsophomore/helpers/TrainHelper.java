@@ -15,15 +15,12 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class TrainHelper {
     private static final String DEBUG_TAG = "Gestures";
-    private static ArrayList<Integer> getRandomIndicesPerm(int start, int end){ // exclusive
+    public static ArrayList<Integer> getRandomIndicesPerm(int start, int end){ // exclusive
         ArrayList<Integer> randPerm = new ArrayList<>();
-        for(int i = 0; i <= end - start; ++i){
-            int curInd = ThreadLocalRandom.current().nextInt(start, end);
-            while (randPerm.contains(curInd)){
-                curInd = ThreadLocalRandom.current().nextInt(start, end);
-            }
-            randPerm.add(curInd);
+        for(int i = 0; i < end - start; ++i){
+            randPerm.add(start + i);
         }
+        Collections.shuffle(randPerm);
         return randPerm;
     }
 
@@ -214,6 +211,16 @@ public class TrainHelper {
             }
 
             return palette;
+        }
+    }
+
+    public class Phrases{
+        public static ArrayList<String> generatePhrasesList(ArrayList<String> origCollection, ArrayList<Integer> permut){
+            ArrayList<String> phrases = new ArrayList<>();
+            for(int i = 0; i < origCollection.size(); ++i){
+                phrases.add(origCollection.get(permut.get(i)));
+            }
+            return phrases;
         }
     }
 }

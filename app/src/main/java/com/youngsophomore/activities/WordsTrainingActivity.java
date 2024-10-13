@@ -41,9 +41,7 @@ public class WordsTrainingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(DEBUG_TAG, "before setContentView(R.layout.pretrain_sequence_layout)");
         setContentView(R.layout.pretrain_sequence_layout);
-        Log.d(DEBUG_TAG, "after setContentView(R.layout.pretrain_sequence_layout)");
         SharedPreferences sharedPreferences =
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         int wordsCollectionPosition = sharedPreferences.getInt(getString(R.string.saved_words_collection_position_key), 0);;

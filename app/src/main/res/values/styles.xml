@@ -32,9 +32,10 @@
         <item name="textSize">@dimen/switch_lang_text_size</item>
     </style>
 
-    <style name="WordsPalBtnStyle" parent="ThemeOverlay.AppCompat">
-        <item name="colorPrimary">@color/white_blue</item>
+    <style name="WordsPalBtnStyle">
+        <item name="colorPrimary">@color/light_blue</item>
         <item name="colorOnPrimary">@color/blue</item>
+        <item name="textColor">@color/blue</item>
     </style>
 
     <style name="SettingsTextViewStyle">

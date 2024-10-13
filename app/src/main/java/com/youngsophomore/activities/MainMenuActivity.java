@@ -256,8 +256,10 @@ public class MainMenuActivity extends AppCompatActivity {
             OutputStreamWriter osw = new OutputStreamWriter(fos);
             Log.d(DEBUG_TAG, "in CollectionStorage: fileName = " + outFile);
             ArrayList<String> phrasesCollection = new ArrayList<>();
-            phrasesCollection.add("Спасибо за использование приложения");
-            phrasesCollection.add("надеюсь, вы найдёте его полезным");
+            phrasesCollection.add("Спасибо за");
+            phrasesCollection.add("использование приложения");
+            phrasesCollection.add("надеюсь, вы");
+            phrasesCollection.add("найдёте его полезным");
             for(String phrase : phrasesCollection){
                 osw.write(phrase);
                 osw.write("|");

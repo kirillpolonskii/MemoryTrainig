@@ -35,6 +35,6 @@
     <dimen name="s_training_set_margin">6dp</dimen>
     <dimen name="s_training_set_padding">9dp</dimen>
 
-    <dimen name="w_training_seq_text_size">55sp</dimen>
+    <dimen name="w_training_seq_text_size">35sp</dimen>
 
 </resources>

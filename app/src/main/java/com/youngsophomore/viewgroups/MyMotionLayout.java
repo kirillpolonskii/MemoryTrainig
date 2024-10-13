@@ -22,6 +22,7 @@ import com.youngsophomore.activities.DetailsSettingsActivity;
 import com.youngsophomore.activities.MahjongSettingsActivity;
 import com.youngsophomore.activities.MahjongTrainingActivity;
 import com.youngsophomore.activities.PhrasesSettingsActivity;
+import com.youngsophomore.activities.PhrasesTrainingActivity;
 import com.youngsophomore.activities.ShapesSettingsActivity;
 import com.youngsophomore.activities.ShapesTrainingActivity;
 import com.youngsophomore.activities.WordsSettingsActivity;
@@ -260,6 +261,10 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
                 if(btnWithEvent != null && idBtnWithEvent == R.id.btn_phrases_training) {
                     Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. phrases training was touched");
                     btnWithEvent.setElevation(elevTrainingPx);
+                    if(!viewWasMoved){
+                        Intent intent = new Intent(getContext(), PhrasesTrainingActivity.class);
+                        getContext().startActivity(intent);
+                    }
                 }
                 if(btnWithEvent != null && idBtnWithEvent == R.id.btn_details_training) {
                     Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. details training was touched");

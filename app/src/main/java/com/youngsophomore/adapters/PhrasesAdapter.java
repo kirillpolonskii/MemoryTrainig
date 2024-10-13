@@ -36,12 +36,7 @@ public class PhrasesAdapter extends RecyclerView.Adapter<PhrasesAdapter.ViewHold
         }
     }
 
-    /**
-     * Initialize the dataset of the Adapter
-     *
-     * @param dataSet String[] containing the data to populate views to be used
-     * by RecyclerView
-     */
+
     public PhrasesAdapter(ArrayList<String> dataSet) {
         Log.d(DEBUG_TAG, "In PhrasesAdapter()");
         localDataSet = dataSet;
