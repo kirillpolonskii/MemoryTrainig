@@ -43,7 +43,6 @@ public class PhrasesTrainingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.pretrain_sequence_layout);
         SharedPreferences sharedPreferences =
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
@@ -75,7 +74,6 @@ public class PhrasesTrainingActivity extends AppCompatActivity {
                 // String[] splittedPhrasesCollection = strPhrasesCollection.split(" ");
                 ArrayList<String> origPhrasesCollection = CollectionsStorage.getPhrasesCollection(
                         phrasesCollectionsTitles.get(phrasesCollectionPosition),
-                        sharedPreferences,
                         getApplicationContext().getExternalFilesDir(null).getAbsolutePath() + "/phrases"
                 );
                 ArrayList<Integer> indicesPerm = TrainHelper.getRandomIndicesPerm(0, origPhrasesCollection.size());

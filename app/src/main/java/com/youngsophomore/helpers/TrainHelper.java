@@ -4,12 +4,15 @@ import android.graphics.Color;
 import android.util.Log;
 
 import com.youngsophomore.R;
+import com.youngsophomore.data.Question;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 import java.util.TreeSet;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -22,6 +25,21 @@ public class TrainHelper {
         }
         Collections.shuffle(randPerm);
         return randPerm;
+    }
+    public static ArrayList<Integer> getRandomNumsInRange(int numbersAmount, int start, int end){ // exclusive
+        ArrayList<Integer> randNums = new ArrayList<>();
+        for (int i = 0; i < numbersAmount; ++i){
+            int curNum = ThreadLocalRandom.current().nextInt(start, end);
+            if (i == 0){
+                randNums.add(curNum);
+                continue;
+            }
+            while (randNums.contains(curNum)){
+                curNum = ThreadLocalRandom.current().nextInt(start, end);
+            }
+            randNums.add(curNum);
+        }
+        return randNums;
     }
 
     public class Mahjong {
@@ -221,6 +239,30 @@ public class TrainHelper {
                 phrases.add(origCollection.get(permut.get(i)));
             }
             return phrases;
+        }
+    }
+
+    public class Details{
+        public static ArrayList<Question> parseQuestionsFiles(ArrayList<File> questionsFiles){
+            ArrayList<Question> questions = new ArrayList<>();
+            for (int i = 0; i < questionsFiles.size(); ++i){
+                Log.d(DEBUG_TAG, "File " + questionsFiles.get(i));
+                try{
+                    Scanner scanner = new Scanner(questionsFiles.get(i));
+                    scanner.useDelimiter("\n");
+                    String curQuestionText = scanner.next();
+                    String curAnswersInOneStr = scanner.next();
+                    Question curQuestion = new Question(curQuestionText, curAnswersInOneStr);
+                    curQuestion.parseAnswersFromString();
+                    Log.d(DEBUG_TAG, curQuestion.getAnswers().toString());
+                    questions.add(curQuestion);
+                }
+                catch (Exception e){
+                    Log.d(DEBUG_TAG, "in TrainHelper: " + e.toString());
+                }
+
+            }
+            return questions;
         }
     }
 }

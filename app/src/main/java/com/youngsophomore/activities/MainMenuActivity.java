@@ -8,11 +8,13 @@ import androidx.core.view.GestureDetectorCompat;
 import androidx.core.view.MotionEventCompat;
 
 import android.annotation.SuppressLint;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.PixelFormat;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -231,6 +233,11 @@ public class MainMenuActivity extends AppCompatActivity {
         String strQuestionsCollectionsTitles = "," + questionsCollectionTitle + ",";
         editor.putString(getString(R.string.questions_collections_titles_key),
                 strQuestionsCollectionsTitles);
+        Uri detailsTestImageUri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
+                "://" + getResources().getResourcePackageName(R.drawable.details_test_img) +
+                '/' + getResources().getResourceTypeName(R.drawable.details_test_img) +
+                '/' + getResources().getResourceEntryName(R.drawable.details_test_img));
+        editor.putString(questionsCollectionTitle, detailsTestImageUri.toString());
         editor.apply();
         // make necessary directories
         File phrasesDir = new File(getExternalFilesDir(null).getAbsolutePath() + "/phrases");
@@ -293,7 +300,7 @@ public class MainMenuActivity extends AppCompatActivity {
         question1.putAnswersInOneString();
         questionCollection.add(question1);
         Question question2 = new Question();
-        question2.setQuestionText("Текст первого вопроса?");
+        question2.setQuestionText("Текст второго вопроса?");
         ArrayList<String> answers2 = new ArrayList<>();
         answers2.add("Ответ21 +");
         answers2.add("Ответ22 +");
@@ -313,10 +320,10 @@ public class MainMenuActivity extends AppCompatActivity {
             for(int i = 0; i < questionCollection.size(); ++i){
                 String questionNum = "question";
                 if(i < 10){
-                    questionNum += "00" + String.valueOf(i);
+                    questionNum += "00" + i;
                 }
                 else if(i < 100){
-                    questionNum += "0" + String.valueOf(i);
+                    questionNum += "0" + i;
                 }
                 else{
                     questionNum += String.valueOf(i);

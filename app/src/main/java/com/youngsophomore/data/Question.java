@@ -6,22 +6,26 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 
 public class Question implements Parcelable {
     private String questionText;
     private ArrayList<String> answers; // last char in answer: '+' or '-'
     private String answersInOneString;
     private boolean isSingleAnswer;
+    private HashSet<Integer> corrAnswersIndices;
 
     public Question(){
         this.answers = new ArrayList<>();
         answersInOneString = "";
     }
 
-    public Question(String questionText, ArrayList<String> answers, String answersInOneString){
+    public Question(String questionText, String answersInOneString){
         this.questionText = questionText;
-        this.answers = answers;
+        this.answers = new ArrayList<>();
         this.answersInOneString = answersInOneString;
+        this.corrAnswersIndices = new HashSet<>();
     }
 
     protected Question(Parcel in) {
@@ -57,11 +61,30 @@ public class Question implements Parcelable {
         }
 
     }
+    public HashSet<Integer> getCorrAnswersIndices(){
+        return corrAnswersIndices;
+    }
     public void putAnswersInOneString(){
         for(int i = 0; i < answers.size() - 1; ++i){
             answersInOneString += answers.get(i) + "|";
         }
         answersInOneString += answers.get(answers.size() - 1);
+    }
+    public void parseAnswersFromString(){
+        int corrAnswersNum = 0;
+        String[] answersSplitted = answersInOneString.split("\\|");
+        for(int i = 0; i < answersSplitted.length; ++i){
+            answers.add(answersSplitted[i]);
+            if (answersSplitted[i].charAt(answersSplitted[i].length() - 1) == '+')
+                ++corrAnswersNum;
+        }
+        if (corrAnswersNum == 1) isSingleAnswer = true;
+        Collections.shuffle(answers);
+        for(int i = 0; i < answers.size(); ++i){
+            if (answers.get(i).charAt(answers.get(i).length() - 1) == '+'){
+                corrAnswersIndices.add(i + 1);
+            }
+        }
     }
 
     public void setQuestionText(String questionText) {

@@ -163,7 +163,6 @@ public static ArrayList<String> getCollectionsTitles(SharedPreferences sharedPre
 
     public static ArrayList<String> getPhrasesCollection(
             String title,
-            SharedPreferences sharedPreferences,
             String pathName){
         ArrayList<String> phrasesCollection = new ArrayList<>();
         try {
