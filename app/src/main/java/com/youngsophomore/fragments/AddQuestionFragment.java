@@ -3,6 +3,7 @@ package com.youngsophomore.fragments;
 import android.annotation.SuppressLint;
 import android.content.res.ColorStateList;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -21,6 +22,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 
 import com.google.android.material.divider.MaterialDividerItemDecoration;
@@ -41,13 +43,12 @@ public class AddQuestionFragment extends Fragment
     //private ArrayList<String> answers;
     EditText etNewQuestion;
     EditText etNewAnswer;
-
     Question question;
     int etNewQuestionId;
     int etNewAnswerId;
     private boolean haveCorrectAnswer;
     AnswersAdapter answersAdapter;
-
+    Uri imageUri;
 
     public AddQuestionFragment() {
         Log.d(DEBUG_TAG, "in AddQuestionFragment() of AddQuestionFragment");
@@ -67,7 +68,7 @@ public class AddQuestionFragment extends Fragment
         super.onCreate(savedInstanceState);
         question = new Question();
         if (getArguments() != null) {
-            
+            imageUri = Uri.parse(getArguments().getString(getString(R.string.chosen_img_key)));
         }
     }
     @SuppressLint("ClickableViewAccessibility")
@@ -114,6 +115,7 @@ public class AddQuestionFragment extends Fragment
 
         ImageButton btnAddAnswer = view.findViewById(R.id.btn_add_answer);
         ImageButton btnConfirmAnswer = view.findViewById(R.id.btn_confirm_answer);
+
         btnAddAnswer.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -202,6 +204,7 @@ public class AddQuestionFragment extends Fragment
                 }
             }
         });
+
         // Inflate the layout for this fragment
         return view;
     }
