@@ -71,8 +71,8 @@
     <string name="tbr_words_add_collection_title">Новая коллекция</string>
     <string name="words_collection">Коллекция слов:</string>
     <string name="word_show_time">Время показа слова (с):</string>
-    <string name="et_words_collection_title_hint">Введите название коллекции</string>
-    <string name="et_words_collection_hint">Введите коллекцию слов через пробел</string>
+    <string name="et_words_collection_title_hint">Название коллекции</string>
+    <string name="et_words_collection_hint">Коллекция слов через пробел</string>
     <string name="init_words_collection">Спасибо за использование приложения, надеюсь вы найдёте его полезным</string>
 
     <string name="saved_words_collection_position_key">WORDS_COLLECTION_POSITION</string>

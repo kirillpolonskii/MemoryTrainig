@@ -20,6 +20,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +49,7 @@ public class AddImageActivity extends AppCompatActivity implements
     SharedPreferences sharedPreferences;
     ImageButton btnNewImage;
     FrameLayout frLtRemindImg;
+    ImageView ivRemindImg;
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +77,7 @@ public class AddImageActivity extends AppCompatActivity implements
         ImageButton btnConfirmQuestion = findViewById(R.id.btn_confirm_question);
         ImageButton btnConfirmQuestionsCollection = findViewById(R.id.btn_confirm_questions_collection);
         tvNewImage = findViewById(R.id.tv_new_image);
+        ivRemindImg = findViewById(R.id.iv_remind_img);
 
         PrepHelper.deactivateBtn(btnConfirmQuestion);
 
@@ -233,6 +236,7 @@ public class AddImageActivity extends AppCompatActivity implements
         if(requestCode == NEW_IMAGE_REQUEST_CODE && resultCode == Activity.RESULT_OK && intent != null){
             imageUri = intent.getData();
             Log.d(DEBUG_TAG, "Uri from file picker = " + imageUri);
+            ivRemindImg.setImageURI(imageUri);
         }
     }
 

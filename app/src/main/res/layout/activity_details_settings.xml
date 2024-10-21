@@ -30,10 +30,11 @@
 
     <Spinner
         android:id="@+id/spr_image"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintStart_toEndOf="@id/tv_image"
+        app:layout_constraintEnd_toEndOf="parent"
 
         android:layout_marginTop="15dp"
         android:backgroundTint="?attr/colorPrimary"
@@ -70,28 +71,15 @@
         />
 
     <ImageButton
-        android:id="@+id/btn_add_image"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn_save_details_settings"
-        app:layout_constraintTop_toBottomOf="@id/pckr_image_show_time"
-        android:background="@drawable/btn_save_bg"
-        android:contentDescription="@string/info"
-        android:elevation="@dimen/btn_stats_elev"
-        android:src="@drawable/outline_note_add_60"
-
-        />
-
-    <ImageButton
         android:id="@+id/btn_save_details_settings"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btn_add_image"
-        app:layout_constraintEnd_toStartOf="@id/btn_play_details_w_settings"
         app:layout_constraintTop_toBottomOf="@id/pckr_image_show_time"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_play_details_w_settings"
+
+
         android:background="@drawable/btn_save_bg"
         android:contentDescription="@string/info"
         android:elevation="@dimen/btn_stats_elev"
@@ -104,14 +92,29 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pckr_image_show_time"
         app:layout_constraintStart_toEndOf="@id/btn_save_details_settings"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_add_image"
+        app:layout_constraintTop_toBottomOf="@id/pckr_image_show_time"
 
         android:background="@drawable/btn_save_and_play_bg"
         android:contentDescription="@string/info"
         android:elevation="@dimen/btn_stats_elev"
         android:src="@drawable/round_play_arrow_60"
+
+        />
+    <ImageButton
+        android:id="@+id/btn_add_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pckr_image_show_time"
+        app:layout_constraintStart_toEndOf="@id/btn_play_details_w_settings"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:background="@drawable/btn_save_bg"
+        android:contentDescription="@string/info"
+        android:elevation="@dimen/btn_stats_elev"
+        android:src="@drawable/outline_note_add_60"
 
         />
 
