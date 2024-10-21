@@ -186,7 +186,7 @@
         android:src="@drawable/baseline_save_60"
 
         />
-
+    <!-- btn_save_and_play rename to btn_play_w_settings-->
     <ImageButton
         android:id="@+id/btn_save_and_play"
         android:layout_width="60dp"

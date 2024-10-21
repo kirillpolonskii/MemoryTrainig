@@ -159,7 +159,8 @@ public class DetailsSettingsActivity extends AppCompatActivity
                         editor.putInt(getString(R.string.saved_image_show_time_key),
                                 pckrImageShowTime.getValue());
                         editor.apply();
-                        onBackPressed();
+                        Intent intent = new Intent(getApplicationContext(), DetailsTrainingActivity.class);
+                        startActivity(intent);
                         return true;
                     default:
                         return false;

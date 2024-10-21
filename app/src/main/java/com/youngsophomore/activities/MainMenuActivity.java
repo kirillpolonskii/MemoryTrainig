@@ -35,6 +35,8 @@ import com.youngsophomore.viewgroups.MyMotionLayout;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
@@ -217,27 +219,22 @@ public class MainMenuActivity extends AppCompatActivity {
         // init for words settings
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(getString(R.string.first_launch_key), false);
-        String wordsCollectionTitle = "first collection";
+        String wordsCollectionTitle = "first words collection";
         String strWordsCollectionsTitles = "," + wordsCollectionTitle + ",";
         editor.putString(getString(R.string.words_collections_titles_key),
                 strWordsCollectionsTitles);
         String initWordsCollection = getString(R.string.init_words_collection);
         editor.putString(wordsCollectionTitle, initWordsCollection);
         // init for phrase settings
-        String phrasesCollectionTitle = "first collection";
+        String phrasesCollectionTitle = "first phrases collection";
         String strPhrasesCollectionsTitles = "," + phrasesCollectionTitle + ",";
         editor.putString(getString(R.string.phrases_collections_titles_key),
                 strPhrasesCollectionsTitles);
 
-        String questionsCollectionTitle = "first collection";
+        String questionsCollectionTitle = "first image";
         String strQuestionsCollectionsTitles = "," + questionsCollectionTitle + ",";
         editor.putString(getString(R.string.questions_collections_titles_key),
                 strQuestionsCollectionsTitles);
-        Uri detailsTestImageUri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
-                "://" + getResources().getResourcePackageName(R.drawable.details_test_img) +
-                '/' + getResources().getResourceTypeName(R.drawable.details_test_img) +
-                '/' + getResources().getResourceEntryName(R.drawable.details_test_img));
-        editor.putString(questionsCollectionTitle, detailsTestImageUri.toString());
         editor.apply();
         // make necessary directories
         File phrasesDir = new File(getExternalFilesDir(null).getAbsolutePath() + "/phrases");
@@ -349,7 +346,20 @@ public class MainMenuActivity extends AppCompatActivity {
                 fos.close();
             }
 
-
+            String imageName = "/details_test_image.png";
+            File testImage = new File(questionsDir, imageName);
+            InputStream inputStream = getResources().openRawResource(R.raw.details_test_img);
+            OutputStream out = new FileOutputStream(testImage);
+            byte buf[] = new byte[1024];
+            int len;
+            while((len=inputStream.read(buf))>0) {
+                out.write(buf, 0, len);
+            }
+            out.close();
+            inputStream.close();
+            Uri detailsTestImageUri = Uri.fromFile(testImage);
+            editor.putString(questionsCollectionTitle, detailsTestImageUri.toString());
+            editor.apply();
         }
         catch (IOException e) {
             Log.d(DEBUG_TAG, "in MainMenuActivity: File write failed: " + e.toString());

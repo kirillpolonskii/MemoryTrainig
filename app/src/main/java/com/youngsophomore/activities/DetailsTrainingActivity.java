@@ -62,13 +62,13 @@ public class DetailsTrainingActivity extends AppCompatActivity {
         // достать позицию названия коллекции и время показа картинки
         int questionsCollectionPosition = sharedPreferences.getInt(getString(R.string.saved_images_collection_position_key), 0);
         int imageShowTime = sharedPreferences.getInt(getString(R.string.saved_image_show_time_key), 2);
-        Log.d(DEBUG_TAG, "phrasesCollectionPosition and phraseShowTime = " +
+        Log.d(DEBUG_TAG, "questionsCollectionPosition and imageShowTime = " +
                 questionsCollectionPosition + " " +
                 imageShowTime);
         // get string with all titles from sharedpref
         // split it and get unique title
         ArrayList<String> questionsCollectionsTitles = CollectionsStorage.getCollectionsTitles(
-                sharedPreferences, getString(R.string.phrases_collections_titles_key)
+                sharedPreferences, getString(R.string.questions_collections_titles_key)
         );
         String questionsCollectionTitle = questionsCollectionsTitles.get(questionsCollectionPosition);
         // сгенерировать 10 рандомных чисел от 0 до размера коллекции, преобразовать их

@@ -93,8 +93,8 @@ public class ColorsSettingsActivity extends AppCompatActivity {
             }
 
         });
-        ImageButton btnSavePlaySettings = findViewById(R.id.btn_save_and_play);
-        btnSavePlaySettings.setOnTouchListener(new View.OnTouchListener() {
+        ImageButton btnPlayWSettings = findViewById(R.id.btn_save_and_play);
+        btnPlayWSettings.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
                 int action = event.getAction();

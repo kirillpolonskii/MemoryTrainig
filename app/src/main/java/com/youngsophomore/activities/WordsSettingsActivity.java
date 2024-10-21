@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,6 +32,8 @@ public class WordsSettingsActivity extends AppCompatActivity {
     private final String DISPLAY_SETTINGS_FRAGMENT_TAG = "display_words_settings_fragment";
     private final String ADD_COLLECTION_FRAGMENT_TAG = "add_collection_fragment";
     private static final String DEBUG_TAG = "Gestures";
+    Spinner sprWordsCollection;
+    NumberPicker pckrWordShowTime;
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,7 @@ public class WordsSettingsActivity extends AppCompatActivity {
                 .setReorderingAllowed(true)
                 .add(R.id.frgt_view, DisplayWordsSettingsFragment.class, null, DISPLAY_SETTINGS_FRAGMENT_TAG)
                 .commit();
+
 
         ImageButton btnAddWordsCollection = findViewById(R.id.btn_add_words_collection);
         ImageButton btnSaveWordsSettings = findViewById(R.id.btn_save_words_settings);
@@ -107,9 +111,9 @@ public class WordsSettingsActivity extends AppCompatActivity {
                         Log.d(DEBUG_TAG, "btnSaveWordsSettings onTouch. Action was UP");
                         view.setElevation(elevPx);
                         Fragment displayWordsCollectionsFragment = fragmentManager.findFragmentByTag(DISPLAY_SETTINGS_FRAGMENT_TAG);
-                        Spinner sprWordsCollection = displayWordsCollectionsFragment.getView()
+                        sprWordsCollection = displayWordsCollectionsFragment.getView()
                                 .findViewById(R.id.spr_words_collection);
-                        NumberPicker pckrWordShowTime = displayWordsCollectionsFragment.getView()
+                        pckrWordShowTime = displayWordsCollectionsFragment.getView()
                                 .findViewById(R.id.pckr_word_show_time);
 
                         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -143,16 +147,20 @@ public class WordsSettingsActivity extends AppCompatActivity {
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                         Log.d(DEBUG_TAG, "btnSaveWordsSettingsAndPlay onTouch. Action was UP");
                         view.setElevation(elevPx);
-                        /*SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putInt(getString(R.string.saved_shapes_amount_key),
-                                pckrShapesAmount.getValue());
-                        editor.putInt(getString(R.string.saved_distinct_shapes_amount_key),
-                                pckrDistinctShapesAmount.getValue());
-                        editor.putInt(getString(R.string.saved_max_repeat_shapes_amount_key),
-                                sgBtnGroupMaxRepeat.getPosition());
-                        editor.putInt(getString(R.string.saved_shape_show_time_key),
-                                pckrShapeShowTime.getValue());
-                        editor.apply();*/
+                        Fragment displayWordsCollectionsFragment = fragmentManager.findFragmentByTag(DISPLAY_SETTINGS_FRAGMENT_TAG);
+                        sprWordsCollection = displayWordsCollectionsFragment.getView()
+                                .findViewById(R.id.spr_words_collection);
+                        pckrWordShowTime = displayWordsCollectionsFragment.getView()
+                                .findViewById(R.id.pckr_word_show_time);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putInt(getString(R.string.saved_words_collection_position_key),
+                                sprWordsCollection.getSelectedItemPosition());
+                        editor.putInt(getString(R.string.saved_word_show_time_key),
+                                pckrWordShowTime.getValue());
+
+                        editor.apply();
+                        Intent intent = new Intent(getApplicationContext(), WordsTrainingActivity.class);
+                        startActivity(intent);
                         return true;
                     default:
                         return false;

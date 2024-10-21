@@ -169,7 +169,8 @@ public class PhrasesSettingsActivity extends AppCompatActivity
                         editor.putInt(getString(R.string.saved_phrase_show_time_key),
                                 pckrPhraseShowTime.getValue());
                         editor.apply();
-                        onBackPressed();
+                        Intent intent = new Intent(getApplicationContext(), PhrasesTrainingActivity.class);
+                        startActivity(intent);
                         return true;
                     default:
                         return false;

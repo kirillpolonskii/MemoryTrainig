@@ -241,8 +241,9 @@ public class MahjongSettingsActivity extends AppCompatActivity {
             }
 
         });
-        ImageButton btnSavePlaySettings = findViewById(R.id.btn_save_and_play);
-        btnSavePlaySettings.setOnTouchListener(new View.OnTouchListener() {
+
+        ImageButton btnPlayWSettings = findViewById(R.id.btn_save_and_play);
+        btnPlayWSettings.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
                 int action = event.getAction();
@@ -256,7 +257,7 @@ public class MahjongSettingsActivity extends AppCompatActivity {
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        Log.d(DEBUG_TAG, "btnSavePlaySettings onTouch. Action was UP. open info" +
+                        Log.d(DEBUG_TAG, "btnPlayWSettings onTouch. Action was UP. open info" +
                                 ", R.dimen.btn_info_elev = " + R.dimen.btn_info_elev +
                                 ", elev = " + elevPx);
                         view.setElevation(elevPx);
