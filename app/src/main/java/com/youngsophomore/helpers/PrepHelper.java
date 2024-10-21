@@ -17,12 +17,10 @@ public class PrepHelper {
     public static boolean isCollectionTitleUnique(String strCollectionsTitles, String title){
         if (!strCollectionsTitles.contains(title)){
             return true;
-
         }
         else{
             int titleInd = strCollectionsTitles.indexOf(title);
             while (titleInd >= 0) {
-                // actions
                 if(strCollectionsTitles.charAt(titleInd - 1) == ',' &&
                         strCollectionsTitles.charAt(titleInd + title.length()) == ','){
                     return false;

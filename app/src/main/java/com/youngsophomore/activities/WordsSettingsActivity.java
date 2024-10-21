@@ -183,46 +183,42 @@ public class WordsSettingsActivity extends AppCompatActivity {
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                         Log.d(DEBUG_TAG, "btnConfirmWordsCollection onTouch. Action was UP");
-                        //view.setElevation(elevPx);
-
-                        PrepHelper.activateBtn(btnAddWordsCollection, elevPx);
-                        PrepHelper.activateBtn(btnSaveWordsSettings, elevPx);
-                        PrepHelper.activateBtn(btnSaveWordsSettingsAndPlay, elevPx);
-                        PrepHelper.deactivateBtn(btnConfirmWordsCollection);
-
                         Fragment addWordsCollectionFragment = fragmentManager.findFragmentByTag(ADD_COLLECTION_FRAGMENT_TAG);
                         EditText etWordsCollectionTitle = addWordsCollectionFragment.getView()
                                 .findViewById(R.id.et_words_collection_title);
                         EditText etWordsCollection = addWordsCollectionFragment.getView()
                                 .findViewById(R.id.et_words_collection);
-                        // исправить логику проверки названия на уникальность
                         String strWordsCollectionsTitles =
                                 sharedPreferences.getString(getString(R.string.words_collections_titles_key), "");
                         String wordsCollectionTitle = etWordsCollectionTitle.getText().toString();
-                        if(PrepHelper.isCollectionTitleUnique(strWordsCollectionsTitles, wordsCollectionTitle)){
-                            CollectionsStorage.saveWordsCollection(
-                                    wordsCollectionTitle,
-                                    etWordsCollection.getText().toString(),
-                                    strWordsCollectionsTitles,
-                                    sharedPreferences,
-                                    getString(R.string.words_collections_titles_key));
+                        if (wordsCollectionTitle.equals("") || etWordsCollection.getText().toString().equals("")){
+                            onBackPressed();
+                            toolbar.setTitle(R.string.tbr_words_settings_title);
+                            PrepHelper.activateBtn(btnAddWordsCollection, elevPx);
+                            PrepHelper.activateBtn(btnSaveWordsSettings, elevPx);
+                            PrepHelper.activateBtn(btnSaveWordsSettingsAndPlay, elevPx);
+                            PrepHelper.deactivateBtn(btnConfirmWordsCollection);
                         }
                         else{
-                            Toast.makeText(getApplicationContext(), getString(R.string.msg_collection_title_not_unique),
-                                    Toast.LENGTH_LONG).show();
+                            if(PrepHelper.isCollectionTitleUnique(strWordsCollectionsTitles, wordsCollectionTitle)){
+                                CollectionsStorage.saveWordsCollection(
+                                        wordsCollectionTitle,
+                                        etWordsCollection.getText().toString(),
+                                        strWordsCollectionsTitles,
+                                        sharedPreferences,
+                                        getString(R.string.words_collections_titles_key));
+                                onBackPressed();
+                                toolbar.setTitle(R.string.tbr_words_settings_title);
+                                PrepHelper.activateBtn(btnAddWordsCollection, elevPx);
+                                PrepHelper.activateBtn(btnSaveWordsSettings, elevPx);
+                                PrepHelper.activateBtn(btnSaveWordsSettingsAndPlay, elevPx);
+                                PrepHelper.deactivateBtn(btnConfirmWordsCollection);
+                            }
+                            else{
+                                Toast.makeText(getApplicationContext(), getString(R.string.msg_collection_title_not_unique),
+                                        Toast.LENGTH_LONG).show();
+                            }
                         }
-
-
-                        /*String newCollection = etWordsCollection.getText().toString();
-                        Log.d(DEBUG_TAG, newCollection);
-                        String[] splittedNewCollection = newCollection.split(" ");
-                        for(String el : splittedNewCollection){
-                            Log.d(DEBUG_TAG, el + "|");
-                        }
-                        ArrayList<String> newCollectionArray = new ArrayList<>(Arrays.asList(splittedNewCollection));
-                        Log.d(DEBUG_TAG, newCollectionArray.toString());*/
-                        toolbar.setTitle(R.string.tbr_words_settings_title);
-                        onBackPressed();
                         return true;
                     default:
                         return false;

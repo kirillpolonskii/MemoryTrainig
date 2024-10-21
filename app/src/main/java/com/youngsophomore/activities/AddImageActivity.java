@@ -42,7 +42,7 @@ public class AddImageActivity extends AppCompatActivity implements
     private static final String DEBUG_TAG = "Gestures";
     private ArrayList<Question> newQuestions;
     String newQuestionsCollectionTitle;
-    Uri imageUri;
+    Uri imageUri = null;
     public final int NEW_IMAGE_REQUEST_CODE = 20;
     TextView tvNewImage;
     int tvNewImageNameId;
@@ -133,23 +133,18 @@ public class AddImageActivity extends AppCompatActivity implements
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                         Log.d(DEBUG_TAG, "btnConfirmQuestion onTouch. Action was UP");
                         view.setElevation(elevPx);
+
                         PrepHelper.activateBtn(btnAddQuestion, elevPx);
                         PrepHelper.activateBtn(btnConfirmQuestionsCollection, elevPx);
                         PrepHelper.deactivateBtn(btnConfirmQuestion);
-                        /*
-                        * Какие данные есть на фрагменте: текст вопроса, список ответов на него в
-                        * формате "<текст ответа> +/-".
-                        * Сперва нужно достать из фрагмента вопрос, который на уровне фрагмента
-                        * уже будет заполнен (текст вопроса, коллекция ответов, ответы в одной строке)
-                        * Для обновления коллекции на уровне активности нужно получить из фрагмента вопрос
-                        * в объекте Bundle.
-                        * */
 
                         AddQuestionFragment newQuestionFragment =
                                 (AddQuestionFragment) fragmentManager.findFragmentByTag(ADD_QUESTION_FRAGMENT_TAG);
                         Question newQuestion = newQuestionFragment.getQuestion();
-                        newQuestion.putAnswersInOneString();
-                        newQuestions.add(newQuestion);
+                        if(!newQuestion.getQuestionText().equals("")){
+                            newQuestion.putAnswersInOneString();
+                            newQuestions.add(newQuestion);
+                        }
                         bundle.putParcelableArrayList(getString(R.string.new_questions_collection_key), newQuestions);
                         fragmentManager.beginTransaction()
                                 .replace(R.id.frgt_view, NewQuestionsListFragment.class, bundle, NEW_QUESTIONS_FRAGMENT_TAG)
@@ -179,14 +174,14 @@ public class AddImageActivity extends AppCompatActivity implements
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                         Log.d(DEBUG_TAG, "btnConfirmQuestionsCollection onTouch. Action was UP");
                         view.setElevation(elevPx);
+                        if (imageUri != null && !newQuestions.isEmpty()){
+                            CollectionsStorage.saveQuestionsCollections(newQuestionsCollectionTitle, imageUri,
+                                    newQuestions, getString(R.string.questions_collections_titles_key),
+                                    sharedPreferences, getApplicationContext());
 
-                        // на этом этапе название уже точно уникально
-                        //SharedPreferences.Editor editor = sharedPreferences.edit();
-
-                        CollectionsStorage.saveQuestionsCollections(newQuestionsCollectionTitle, imageUri,
-                                newQuestions, getString(R.string.questions_collections_titles_key),
-                                sharedPreferences, getApplicationContext());
+                        }
                         onBackPressed();
+
                         return true;
                     default:
                         return false;

@@ -30,6 +30,7 @@ import com.youngsophomore.R;
 import com.youngsophomore.adapters.AnswersAdapter;
 import com.youngsophomore.adapters.QuestionsAdapter;
 import com.youngsophomore.data.Question;
+import com.youngsophomore.helpers.PrepHelper;
 import com.youngsophomore.interfaces.RecyclerViewClickListener;
 
 import java.util.ArrayList;
@@ -67,6 +68,7 @@ public class AddQuestionFragment extends Fragment
         Log.d(DEBUG_TAG, "in onCreate() of AddQuestionFragment");
         super.onCreate(savedInstanceState);
         question = new Question();
+        question.setQuestionText("");
         if (getArguments() != null) {
             imageUri = Uri.parse(getArguments().getString(getString(R.string.chosen_img_key)));
         }
@@ -115,7 +117,8 @@ public class AddQuestionFragment extends Fragment
 
         ImageButton btnAddAnswer = view.findViewById(R.id.btn_add_answer);
         ImageButton btnConfirmAnswer = view.findViewById(R.id.btn_confirm_answer);
-
+        int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
+        PrepHelper.deactivateBtn(btnConfirmAnswer);
         btnAddAnswer.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -129,9 +132,9 @@ public class AddQuestionFragment extends Fragment
                         Log.d(DEBUG_TAG, "btnAddAnswer onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                         Log.d(DEBUG_TAG, "btnAddAnswer onTouch. Action was UP");
-                        v.setElevation(elevPx);
+                        PrepHelper.deactivateBtn(btnAddAnswer);
+                        PrepHelper.activateBtn(btnConfirmAnswer, elevPx);
 
                         question.setQuestionText(etNewQuestion.getText().toString());
                         Log.d(DEBUG_TAG, "view.getChildCount() bef removeView = " +
@@ -175,10 +178,13 @@ public class AddQuestionFragment extends Fragment
                         Log.d(DEBUG_TAG, "btnConfirmAnswer onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        showCorrectAnswerDialog();
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
+                        if (!etNewAnswer.getText().toString().equals("")){
+                            showCorrectAnswerDialog();
+                        }
+                        PrepHelper.deactivateBtn(btnConfirmAnswer);
+                        PrepHelper.activateBtn(btnAddAnswer, elevPx);
                         Log.d(DEBUG_TAG, "btnConfirmAnswer onTouch. Action was UP");
-                        v.setElevation(elevPx);
+                        //v.setElevation(elevPx);
                         
                         Log.d(DEBUG_TAG, "view.getChildCount() bef removeView = " +
                                 ((ConstraintLayout) view).getChildCount());
@@ -194,8 +200,6 @@ public class AddQuestionFragment extends Fragment
                                 R.id.constr_layout_add_question, ConstraintSet.TOP);
                         constraintSet.connect(R.id.rv_answers_collection, ConstraintSet.TOP,
                                 R.id.et_new_question, ConstraintSet.BOTTOM);
-                        //constraintSet.constrainHeight(etNewAnswerId, ConstraintSet.MATCH_CONSTRAINT_PERCENT);
-                        //constraintSet.constrainDefaultHeight(etNewAnswerId, ConstraintSet.MATCH_CONSTRAINT_PERCENT);
                         constraintSet.constrainPercentHeight(R.id.et_new_question, 0.4f);
                         constraintSet.applyTo((ConstraintLayout) view);
                         return true;
@@ -268,11 +272,12 @@ public class AddQuestionFragment extends Fragment
                     getResources().getString(R.string.msg_dlg_too_many_correct_answers_message));
         }
         else{
-            // добавить вопрос в коллекцию и обновить RecyclerView
             String newAnswer = etNewAnswer.getText().toString() + " +";
-            question.addAnswerToCollection(newAnswer);
-            answersAdapter.notifyDataSetChanged();
-            haveCorrectAnswer = false;
+            if (!etNewAnswer.getText().toString().equals("")){
+                question.addAnswerToCollection(newAnswer);
+                answersAdapter.notifyDataSetChanged();
+                haveCorrectAnswer = false;
+            }
         }
         etNewAnswer.setText("");
         haveCorrectAnswer = true;

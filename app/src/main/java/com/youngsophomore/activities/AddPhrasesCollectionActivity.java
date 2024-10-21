@@ -117,7 +117,9 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
 
                         Fragment newPhraseFragment = fragmentManager.findFragmentByTag(ADD_PHRASE_FRAGMENT_TAG);
                         EditText etNewPhrase = newPhraseFragment.getView().findViewById(R.id.et_new_phrase);
-                        newPhrasesCollectionCharS.add(etNewPhrase.getText().toString());
+                        if (!etNewPhrase.getText().toString().equals("")){
+                            newPhrasesCollectionCharS.add(etNewPhrase.getText().toString());
+                        }
                         bundle.putCharSequenceArrayList(getString(R.string.new_phrases_collection_key), newPhrasesCollectionCharS);
                         fragmentManager.beginTransaction()
                                 .replace(R.id.frgt_view, NewPhrasesListFragment.class, bundle, NEW_PHRASES_LIST_FRAGMENT_TAG)
@@ -135,7 +137,6 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
         etPhrasesCollectionTitle = findViewById(R.id.et_phrases_collection_title);
 
         btnConfirmPhrasesCollection.setOnTouchListener(new View.OnTouchListener() {
-
             @Override
             public boolean onTouch(View view, MotionEvent event) {
                 int action = event.getAction();
@@ -156,26 +157,30 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
                             newPhrasesCollection.add(String.valueOf(phraseCharS));
                         }
                         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
-                        // исправить проверку на уникальность
                         String newTitle = etPhrasesCollectionTitle.getText().toString();
                         String strPhrasesCollectionsTitles =
                                 sharedPreferences.getString(getString(R.string.phrases_collections_titles_key), "");
-                        if(PrepHelper.isCollectionTitleUnique(strPhrasesCollectionsTitles, newTitle)){
-                            CollectionsStorage.savePhrasesCollection(
-                                    newTitle,
-                                    newPhrasesCollection,
-                                    getString(R.string.phrases_collections_titles_key),
-                                    sharedPreferences,
-                                    getApplicationContext()
-                            );
+                        if (newTitle.equals("") || newPhrasesCollectionCharS.size() < 2){
                             onBackPressed();
                         }
                         else{
-                            Toast.makeText(getApplicationContext(),
-                                    getString(R.string.msg_collection_title_not_unique),
-                                    Toast.LENGTH_LONG).show();
+                            if(PrepHelper.isCollectionTitleUnique(strPhrasesCollectionsTitles, newTitle)){
+                                CollectionsStorage.savePhrasesCollection(
+                                        newTitle,
+                                        newPhrasesCollection,
+                                        getString(R.string.phrases_collections_titles_key),
+                                        sharedPreferences,
+                                        getApplicationContext()
+                                );
+                                onBackPressed();
+                            }
+                            else{
+                                Toast.makeText(getApplicationContext(),
+                                        getString(R.string.msg_collection_title_not_unique),
+                                        Toast.LENGTH_LONG).show();
+                            }
                         }
-                        /*SharedPreferences.Editor editor = sharedPreferences.edit();*/
+
                         return true;
                     default:
                         return false;
