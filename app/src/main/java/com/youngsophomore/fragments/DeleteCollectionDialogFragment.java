@@ -51,7 +51,7 @@ public class DeleteCollectionDialogFragment extends DialogFragment {
         Log.d(DEBUG_TAG, "in onCreateDialog() of DeleteCollectionDialogFragment");
 
         // Use the Builder class for convenient dialog construction
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), android.R.style.Theme_Material_Light_Dialog_NoActionBar_MinWidth);
         builder.setTitle(R.string.delete_collection_dialog_title)
                 .setMessage(R.string.delete_collection_dialog_message)
                 .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {

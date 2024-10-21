@@ -33,6 +33,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/tv_choose_image_hyphen"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginEnd="3dp"
 
         android:text="@string/tv_choose_image"
         style="@style/SettingsTextViewStyle"
@@ -66,6 +68,8 @@
         app:layout_constraintTop_toBottomOf="@id/tv_choose_image_info"
         app:layout_constraintStart_toEndOf="@id/tv_add_question_hyphen"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginEnd="3dp"
 
         android:text="@string/tv_add_question"
         style="@style/SettingsTextViewStyle"
@@ -100,7 +104,9 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tv_add_question_info"
         app:layout_constraintStart_toEndOf="@id/tv_save_question_hyphen"
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginEnd="3dp"
         android:text="@string/tv_save_question"
         style="@style/SettingsTextViewStyle"
 
@@ -135,6 +141,8 @@
         app:layout_constraintTop_toBottomOf="@id/tv_save_question_info"
         app:layout_constraintStart_toEndOf="@id/tv_add_answer_hyphen"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginEnd="3dp"
 
         android:text="@string/tv_confirm_questions_collection"
         style="@style/SettingsTextViewStyle"
@@ -170,7 +178,9 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tv_confirm_questions_info"
         app:layout_constraintStart_toEndOf="@id/tv_add_answer_hyphen"
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginEnd="3dp"
         android:text="@string/tv_add_answer"
         style="@style/SettingsTextViewStyle"
 
@@ -202,7 +212,9 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tv_add_answer_info"
         app:layout_constraintStart_toEndOf="@id/tv_add_answer_hyphen"
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginEnd="3dp"
         android:text="@string/tv_save_answer"
         style="@style/SettingsTextViewStyle"
 
@@ -234,7 +246,9 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tv_save_answer_info"
         app:layout_constraintStart_toEndOf="@id/tv_remind_img_hyphen"
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginEnd="3dp"
         android:text="@string/tv_remind_image"
         style="@style/SettingsTextViewStyle"
 

@@ -28,11 +28,13 @@
         />
     <TextView
         android:id="@+id/tv_save_words_settings_info"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/tv_save_words_settings_hyphen"
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginEnd="3dp"
         android:text="@string/tv_save_settings"
         style="@style/SettingsTextViewStyle"
 
@@ -64,7 +66,9 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tv_save_words_settings_info"
         app:layout_constraintStart_toEndOf="@id/tv_save_words_settings_and_play_hyphen"
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginEnd="3dp"
         android:text="@string/tv_save_settings_and_play"
         style="@style/SettingsTextViewStyle"
 
@@ -98,7 +102,9 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tv_save_words_settings_and_play_info"
         app:layout_constraintStart_toEndOf="@id/tv_add_words_collection_hyphen"
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginEnd="3dp"
         android:text="@string/tv_add_words_collection"
         style="@style/SettingsTextViewStyle"
 
@@ -132,7 +138,9 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tv_add_words_collection_info"
         app:layout_constraintStart_toEndOf="@id/tv_confirm_words_collection_hyphen"
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginEnd="3dp"
         android:text="@string/tv_confirm_words_collection"
         style="@style/SettingsTextViewStyle"
 
@@ -143,7 +151,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tv_confirm_words_collection_info"
         app:layout_constraintStart_toStartOf="parent"
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"
         android:text="@string/tv_long_click"
         style="@style/SettingsTextViewStyle"
 
