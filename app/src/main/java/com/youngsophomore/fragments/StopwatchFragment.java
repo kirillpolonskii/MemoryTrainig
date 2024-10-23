@@ -159,6 +159,10 @@ public class StopwatchFragment extends Fragment {
     public int getDecisecond() {
         return decisecond;
     }
+
+    public void finishStopwatch(){
+        running = false;
+    }
 }
 
 

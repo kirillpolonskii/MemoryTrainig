@@ -308,8 +308,5 @@ public class AddImageActivity extends AppCompatActivity implements
             Toast.makeText(getApplicationContext(), getString(R.string.msg_collection_title_not_unique),
                     Toast.LENGTH_LONG).show();
         }
-
-        
-
     }
 }

@@ -3,6 +3,7 @@ package com.youngsophomore.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.Guideline;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentManager;
 
@@ -18,6 +19,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.youngsophomore.R;
+import com.youngsophomore.fragments.FinishDialogFragment;
+import com.youngsophomore.fragments.InfoDialogFragment;
 import com.youngsophomore.fragments.StopwatchFragment;
 import com.youngsophomore.helpers.PrepHelper;
 import com.youngsophomore.helpers.TrainHelper;
@@ -27,13 +30,15 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 @SuppressLint("MissingInflatedId")
-public class MahjongTrainingActivity extends AppCompatActivity {
+public class MahjongTrainingActivity extends AppCompatActivity implements
+        FinishDialogFragment.FinishDialogListener {
     private static final String DEBUG_TAG = "Gestures";
     private static final String STOPWATCH_FRAGMENT_TAG = "stopwatch_fragment_tag";
     private ArrayList<ImageButton> flippedTiles;
     private ArrayList<Integer> flippedTilesNum;
     private int removedTilesCount = 0;
-
+    private int mistakesAmount = 0;
+    private int trainingDurationSec = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -134,16 +139,23 @@ public class MahjongTrainingActivity extends AppCompatActivity {
                                                         ++removedTilesCount;
                                                     }
                                                     if (removedTilesCount == mahjongTilesAmount){
-                                                        // TODO: Here launch dialog with results
                                                         Log.d(DEBUG_TAG, "ALL TILES REMOVED");
-
-
+                                                        StopwatchFragment stopwatchFragment =
+                                                                (StopwatchFragment) fragmentManager.findFragmentByTag(STOPWATCH_FRAGMENT_TAG);
+                                                        trainingDurationSec = stopwatchFragment.getDecisecond() / 10;
+                                                        stopwatchFragment.finishStopwatch();
+                                                        DialogFragment finishFragment = new FinishDialogFragment(
+                                                                String.valueOf(trainingDurationSec) + " с.",
+                                                                getResources().getString(R.string.seq_train_mistakes_amount),
+                                                                String.valueOf(mistakesAmount)
+                                                        );
+                                                        finishFragment.show(getSupportFragmentManager(), "FinishDialogFragment");
                                                     }
 
                                                 }
                                                 else{
-                                                    // TODO: Here add 1 to mistake count
                                                     Log.d(DEBUG_TAG, "YOU CHOSE WRONG!!!");
+                                                    ++mistakesAmount;
                                                     for(ImageButton flippedBtnTile : flippedTiles){
                                                         flippedBtnTile.setImageResource(R.drawable.tile_back);
                                                         flippedBtnTile.setElevation(0);
@@ -308,5 +320,10 @@ public class MahjongTrainingActivity extends AppCompatActivity {
                         1.0f - Float.parseFloat(getResources().getString(R.string.m_training_small_left_gl)));
             }
         }
+    }
+
+    @Override
+    public void onFinishPosClick(DialogFragment dialog) {
+        onBackPressed();
     }
 }
