@@ -77,6 +77,7 @@ public class ColorsSettingsActivity extends AppCompatActivity {
                         editor.putInt(getString(R.string.saved_color_show_time_key),
                                 pckrColorShowTime.getValue());
                         editor.apply();
+
                         onBackPressed();
                         return true;
                     case (MotionEvent.ACTION_CANCEL):

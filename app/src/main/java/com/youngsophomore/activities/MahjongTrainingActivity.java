@@ -63,19 +63,6 @@ public class MahjongTrainingActivity extends AppCompatActivity {
                 else{
                     setContentView(R.layout.activity_mahjong_training_24);
                 }
-                /* Действия
-                 * ~~Загрузка данных из сохранённых настроек~~
-                 * ~~Формирование массива костей~~
-                 * ~~Установка margin у секундомера и дна constraintlayout в зависимости от количества костей~~
-                 * ~~Показ секундомера~~
-                 * ~~Заполнение background у костей~~
-                 * ~~Показ всех костей mahjongRememberTime секунд~~
-                 * ~~Запуск секундомера~~
-                 * ~~Обработка нажатий на кости~~
-                 * ~~Обработка паузы/возобновления~~
-                 * Показ диалогового окна или смена фрагмента с результатами тренировки
-                 *
-                 * */
                 Log.d(DEBUG_TAG, "saved mahjongRememberTime = " + mahjongRememberTime +
                         ", mahjongTilesAmount = " + mahjongTilesAmount +
                         ", mahjongEqualTilesAmount = " + mahjongEqualTilesAmount);
@@ -97,7 +84,6 @@ public class MahjongTrainingActivity extends AppCompatActivity {
                 for (int i = 0; i < btnBackgroundResources.size(); ++i){
                     btnTiles.get(i).setImageResource(btnBackgroundResources.get(i));
                 }
-                // Запуск ещё одного таймера длительностью mahjongRememberTime
                 CountDownTimer showCountdownTimer = new CountDownTimer(mahjongRememberTime * 1000 + 200, 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {}
@@ -150,6 +136,8 @@ public class MahjongTrainingActivity extends AppCompatActivity {
                                                     if (removedTilesCount == mahjongTilesAmount){
                                                         // TODO: Here launch dialog with results
                                                         Log.d(DEBUG_TAG, "ALL TILES REMOVED");
+
+
                                                     }
 
                                                 }

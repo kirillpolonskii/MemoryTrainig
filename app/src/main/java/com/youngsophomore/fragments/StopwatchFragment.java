@@ -155,6 +155,10 @@ public class StopwatchFragment extends Fragment {
             }
         });
     }
+
+    public int getDecisecond() {
+        return decisecond;
+    }
 }
 
 
