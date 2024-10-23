@@ -1,12 +1,11 @@
 package com.youngsophomore.adapters;
 
-import android.graphics.Color;
+import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,11 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.youngsophomore.R;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class PhrasesTrainingAdapter extends RecyclerView.Adapter<PhrasesTrainingAdapter.ViewHolder> {
     private static final String DEBUG_TAG = "Gestures";
-
+    public PhraseTrainingListener phraseTrainingListener;
     private ArrayList<String> localDataSet;
     public ArrayList<Integer> indicesPerm;
     int colorFocused, colorChosen;
@@ -27,6 +25,10 @@ public class PhrasesTrainingAdapter extends RecyclerView.Adapter<PhrasesTraining
     private int elAPos, elBPos;
     private boolean isElASelected = false;
     private float elevPx;
+    private int movesAmount;
+    public interface PhraseTrainingListener {
+        public void onFinishTraining(int movesAmount);
+    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final Button btnCurPhrase;
@@ -45,13 +47,14 @@ public class PhrasesTrainingAdapter extends RecyclerView.Adapter<PhrasesTraining
     }
 
     public PhrasesTrainingAdapter(ArrayList<String> dataSet, ArrayList<Integer> indicesPerm,
-                                  float elevPx, int colorFocused, int colorChosen) {
+                                  float elevPx, int colorFocused, int colorChosen, Context context) {
         Log.d(DEBUG_TAG, "In PhrasesAdapter()");
         localDataSet = dataSet;
         this.indicesPerm = indicesPerm;
         this.colorFocused = colorFocused;
         this.colorChosen = colorChosen;
         this.elevPx = 2 * elevPx;
+        this.phraseTrainingListener = (PhraseTrainingListener) context;
     }
 
     @NonNull
@@ -86,6 +89,7 @@ public class PhrasesTrainingAdapter extends RecyclerView.Adapter<PhrasesTraining
                     elAPos = holder.getAdapterPosition();
                 }
                 else if (elAPos != holder.getAdapterPosition()){
+                    ++movesAmount;
                     elBPos = holder.getAdapterPosition();
                     String temp = localDataSet.get(elAPos);
                     localDataSet.set(elAPos, localDataSet.get(elBPos));
@@ -104,7 +108,7 @@ public class PhrasesTrainingAdapter extends RecyclerView.Adapter<PhrasesTraining
                     notifyDataSetChanged();
                     if (phrasesInRightOrder()){
                         Log.d(DEBUG_TAG, "YOU ORDERED PHRASES CORRECTLY");
-                        // show finish dialog
+                        phraseTrainingListener.onFinishTraining(movesAmount);
                     }
                 }
             }

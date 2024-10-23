@@ -3,43 +3,36 @@ package com.youngsophomore.activities;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
-import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.youngsophomore.R;
-import com.youngsophomore.adapters.PhrasesAdapter;
 import com.youngsophomore.adapters.PhrasesTrainingAdapter;
 import com.youngsophomore.data.CollectionsStorage;
+import com.youngsophomore.fragments.FinishDialogFragment;
 import com.youngsophomore.fragments.StopwatchFragment;
 import com.youngsophomore.helpers.TrainHelper;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
-public class PhrasesTrainingActivity extends AppCompatActivity {
+public class PhrasesTrainingActivity extends AppCompatActivity implements
+        FinishDialogFragment.FinishDialogListener,
+        PhrasesTrainingAdapter.PhraseTrainingListener {
     private static final String DEBUG_TAG = "Gestures";
     private static final String STOPWATCH_FRAGMENT_TAG = "stopwatch_fragment_tag";
     int curPhraseShowInd = 0;
-    // int curPhraseSeqInd = 0;
+    FragmentManager fragmentManager;
+    private int movesAmount = 0;
+    private int trainingDurationSec = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +44,21 @@ public class PhrasesTrainingActivity extends AppCompatActivity {
         Log.d(DEBUG_TAG, "phrasesCollectionPosition and phraseShowTime = " +
                 phrasesCollectionPosition + " " +
                 phraseShowTime);
+        ArrayList<String> phrasesCollectionsTitles = CollectionsStorage.getCollectionsTitles(
+                sharedPreferences, getString(R.string.phrases_collections_titles_key)
+        );
+        ArrayList<String> origPhrasesCollection = CollectionsStorage.getPhrasesCollection(
+                phrasesCollectionsTitles.get(phrasesCollectionPosition),
+                getApplicationContext().getExternalFilesDir(null).getAbsolutePath() + "/phrases"
+        );
+        ArrayList<Integer> indicesPerm = TrainHelper.getRandomIndicesPerm(0, origPhrasesCollection.size());
+        ArrayList<String> phrasesCollection = TrainHelper.Phrases.generatePhrasesList(origPhrasesCollection, indicesPerm);
+        int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
+        PhrasesTrainingAdapter phrasesAdapter = new PhrasesTrainingAdapter(
+                phrasesCollection, indicesPerm, elevPx,
+                getResources().getColor(R.color.light_blue),
+                getResources().getColor(R.color.medium_blue),
+                this);
 
         TextView tvCountdown = findViewById(R.id.tv_countdown);
         TextView tvCurPhraseNum = findViewById(R.id.tv_cur_elem_num);
@@ -65,9 +73,7 @@ public class PhrasesTrainingActivity extends AppCompatActivity {
             public void onFinish() {
                 // get string with all titles from sharedpref
                 // split it and get unique title by the phrasesCollectionPosition
-                ArrayList<String> phrasesCollectionsTitles = CollectionsStorage.getCollectionsTitles(
-                        sharedPreferences, getString(R.string.phrases_collections_titles_key)
-                );
+
                 Log.d(DEBUG_TAG, phrasesCollectionsTitles.toString());
                 // get phrases collection from /phrases via title
 
@@ -97,11 +103,8 @@ public class PhrasesTrainingActivity extends AppCompatActivity {
                     @Override
                     public void onFinish() {
                         setContentView(R.layout.activity_phrases_training);
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        PhrasesTrainingAdapter phrasesAdapter = new PhrasesTrainingAdapter(
-                                phrasesCollection, indicesPerm, elevPx,
-                                getResources().getColor(R.color.light_blue),
-                                getResources().getColor(R.color.medium_blue));
+
+
                         RecyclerView rvPhrasesCollection = findViewById(R.id.rv_phrases_collection);
                         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
                         rvPhrasesCollection.setLayoutManager(layoutManager);
@@ -109,18 +112,36 @@ public class PhrasesTrainingActivity extends AppCompatActivity {
 
                         // Запуск секундомера
                         Bundle bundle = new Bundle();
-                        FragmentManager fragmentManager = getSupportFragmentManager();
+                        fragmentManager = getSupportFragmentManager();
                         fragmentManager.beginTransaction()
                                 .setReorderingAllowed(true)
                                 .add(R.id.frgt_view, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
                                 .commit();
-                        //Log.d(DEBUG_TAG, "clPhrases.getChildCount() = " + clPhrases.getChildCount());
-
-
                     }
                 }.start();
             }
         }.start();
 
     }
+
+    @Override
+    public void onFinishTraining(int movesAmount) {
+        this.movesAmount = movesAmount;
+        StopwatchFragment stopwatchFragment =
+                (StopwatchFragment) fragmentManager.findFragmentByTag(STOPWATCH_FRAGMENT_TAG);
+        trainingDurationSec = stopwatchFragment.getDecisecond() / 10;
+        stopwatchFragment.finishStopwatch();
+        DialogFragment finishFragment = new FinishDialogFragment(
+                trainingDurationSec + " с.",
+                getResources().getString(R.string.phr_train_moves_amount),
+                String.valueOf(movesAmount)
+        );
+        finishFragment.show(getSupportFragmentManager(), "FinishDialogFragment");
+    }
+
+    @Override
+    public void onFinishPosClick(DialogFragment dialog) {
+        onBackPressed();
+    }
+
 }

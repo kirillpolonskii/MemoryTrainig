@@ -27,18 +27,23 @@ import androidx.constraintlayout.widget.Guideline;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.youngsophomore.R;
+import com.youngsophomore.fragments.FinishDialogFragment;
 import com.youngsophomore.fragments.StopwatchFragment;
 import com.youngsophomore.helpers.TrainHelper;
 
 import java.util.ArrayList;
 
-public class ColorsTrainingActivity extends AppCompatActivity {
+public class ColorsTrainingActivity extends AppCompatActivity implements
+        FinishDialogFragment.FinishDialogListener {
     private static final String DEBUG_TAG = "Gestures";
     private static final String STOPWATCH_FRAGMENT_TAG = "stopwatch_fragment_tag";
     int curColorShowInd = 0, curColorSeqInd = 0;
+    private int mistakesAmount = 0;
+    private int trainingDurationSec = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -169,6 +174,7 @@ public class ColorsTrainingActivity extends AppCompatActivity {
                                             }
                                             else {
                                                 Log.d(DEBUG_TAG, "YOU CHOSE WRONG COLOR");
+                                                ++mistakesAmount;
                                                 clColors.setBackgroundColor(
                                                         getResources().getColor(R.color.seq_training_wrong_choice
                                                 ));
@@ -184,6 +190,16 @@ public class ColorsTrainingActivity extends AppCompatActivity {
                                             }
                                             if(curColorSeqInd == colorsAmount){
                                                 Log.d(DEBUG_TAG, "ALL COLORS CHOSEN CORRECT");
+                                                StopwatchFragment stopwatchFragment =
+                                                        (StopwatchFragment) fragmentManager.findFragmentByTag(STOPWATCH_FRAGMENT_TAG);
+                                                trainingDurationSec = stopwatchFragment.getDecisecond() / 10;
+                                                stopwatchFragment.finishStopwatch();
+                                                DialogFragment finishFragment = new FinishDialogFragment(
+                                                        trainingDurationSec + " с.",
+                                                        getResources().getString(R.string.seq_train_mistakes_amount),
+                                                        String.valueOf(mistakesAmount)
+                                                );
+                                                finishFragment.show(getSupportFragmentManager(), "FinishDialogFragment");
                                             }
                                             return true;
                                         default:
@@ -200,5 +216,10 @@ public class ColorsTrainingActivity extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    public void onFinishPosClick(DialogFragment dialog) {
+        onBackPressed();
     }
 }

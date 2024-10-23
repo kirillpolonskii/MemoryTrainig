@@ -24,6 +24,7 @@ import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,6 +33,7 @@ import com.youngsophomore.R;
 import com.youngsophomore.adapters.PhrasesTrainingAdapter;
 import com.youngsophomore.data.CollectionsStorage;
 import com.youngsophomore.data.Question;
+import com.youngsophomore.fragments.FinishDialogFragment;
 import com.youngsophomore.fragments.StopwatchFragment;
 import com.youngsophomore.helpers.TrainHelper;
 
@@ -42,7 +44,8 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class DetailsTrainingActivity extends AppCompatActivity {
+public class DetailsTrainingActivity extends AppCompatActivity implements
+        FinishDialogFragment.FinishDialogListener {
     private static final String DEBUG_TAG = "Gestures";
     private static final String STOPWATCH_FRAGMENT_TAG = "stopwatch_fragment_tag";
     int curQuestionInd = 0;
@@ -53,6 +56,10 @@ public class DetailsTrainingActivity extends AppCompatActivity {
     ArrayList<CheckBox> ckBxMultAnswers;
     private final int ANSWERS_NUM = 8;
     HashSet<Integer> corrAnswersIndices;
+    private int singleMistakesAmount = 0;
+    private int multipMistakesAmount = 0;
+    private int trainingDurationSec = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -303,10 +310,26 @@ public class DetailsTrainingActivity extends AppCompatActivity {
                                     }
                                     else {
                                         Log.d(DEBUG_TAG, "ALL QUESTIONS ARE ANSWERED");
+                                        StopwatchFragment stopwatchFragment =
+                                                (StopwatchFragment) fragmentManager.findFragmentByTag(STOPWATCH_FRAGMENT_TAG);
+                                        trainingDurationSec = stopwatchFragment.getDecisecond() / 10;
+                                        stopwatchFragment.finishStopwatch();
+                                        DialogFragment finishFragment = new FinishDialogFragment(
+                                                trainingDurationSec + " с.",
+                                                getResources().getString(R.string.det_train_mistakes_amount),
+                                                singleMistakesAmount + " / " + multipMistakesAmount
+                                        );
+                                        finishFragment.show(getSupportFragmentManager(), "FinishDialogFragment");
                                     }
                                 }
                                 else{
                                     Log.d(DEBUG_TAG, "YOU CHOSE WRONG ANSWERS");
+                                    if (questionsCollection.get(curQuestionInd).isSingleAnswer()){
+                                        ++singleMistakesAmount;
+                                    }
+                                    else{
+                                        ++multipMistakesAmount;
+                                    }
                                     cstLtParent.setBackgroundColor(
                                             getResources().getColor(R.color.seq_training_wrong_choice
                                             ));
@@ -373,4 +396,8 @@ public class DetailsTrainingActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onFinishPosClick(DialogFragment dialog) {
+        onBackPressed();
+    }
 }

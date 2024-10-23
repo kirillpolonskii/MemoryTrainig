@@ -145,7 +145,7 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
                                                         trainingDurationSec = stopwatchFragment.getDecisecond() / 10;
                                                         stopwatchFragment.finishStopwatch();
                                                         DialogFragment finishFragment = new FinishDialogFragment(
-                                                                String.valueOf(trainingDurationSec) + " с.",
+                                                                trainingDurationSec + " с.",
                                                                 getResources().getString(R.string.seq_train_mistakes_amount),
                                                                 String.valueOf(mistakesAmount)
                                                         );
