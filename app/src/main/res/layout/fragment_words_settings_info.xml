@@ -6,32 +6,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
-        android:id="@+id/iv_save_words_settings"
+        android:id="@+id/iv_save_wrd_settings"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        app:layout_constraintTop_toTopOf="@id/tv_save_words_settings_info"
-        app:layout_constraintBottom_toBottomOf="@id/tv_save_words_settings_info"
+        app:layout_constraintTop_toTopOf="@id/tv_save_wrd_settings_info"
+        app:layout_constraintBottom_toBottomOf="@id/tv_save_wrd_settings_info"
         app:layout_constraintStart_toStartOf="parent"
 
         android:src="@drawable/baseline_save_24"
         android:contentDescription="@string/tv_save_settings" />
     <TextView
-        android:id="@+id/tv_save_words_settings_hyphen"
+        android:id="@+id/tv_save_wrd_settings_hyphen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/tv_save_words_settings_info"
-        app:layout_constraintBottom_toBottomOf="@id/tv_save_words_settings_info"
-        app:layout_constraintStart_toEndOf="@id/iv_save_words_settings"
+        app:layout_constraintTop_toTopOf="@id/tv_save_wrd_settings_info"
+        app:layout_constraintBottom_toBottomOf="@id/tv_save_wrd_settings_info"
+        app:layout_constraintStart_toEndOf="@id/iv_save_wrd_settings"
 
         android:text="@string/hyphen"
         style="@style/SettingsTextViewStyle"
         />
     <TextView
-        android:id="@+id/tv_save_words_settings_info"
+        android:id="@+id/tv_save_wrd_settings_info"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tv_save_words_settings_hyphen"
+        app:layout_constraintStart_toEndOf="@id/tv_save_wrd_settings_hyphen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         android:layout_marginEnd="3dp"
@@ -40,32 +40,32 @@
 
         />
     <ImageView
-        android:id="@+id/iv_save_words_settings_and_play"
+        android:id="@+id/iv_play_w_settings_wrd"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        app:layout_constraintTop_toTopOf="@id/tv_save_words_settings_and_play_info"
-        app:layout_constraintBottom_toBottomOf="@id/tv_save_words_settings_and_play_info"
+        app:layout_constraintTop_toTopOf="@id/tv_play_w_settings_wrd_info"
+        app:layout_constraintBottom_toBottomOf="@id/tv_play_w_settings_wrd_info"
         app:layout_constraintStart_toStartOf="parent"
 
         android:src="@drawable/round_play_arrow_24"
         />
     <TextView
-        android:id="@+id/tv_save_words_settings_and_play_hyphen"
+        android:id="@+id/tv_play_w_settings_wrd_hyphen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/tv_save_words_settings_and_play_info"
-        app:layout_constraintBottom_toBottomOf="@id/tv_save_words_settings_and_play_info"
-        app:layout_constraintStart_toEndOf="@id/iv_save_words_settings_and_play"
+        app:layout_constraintTop_toTopOf="@id/tv_play_w_settings_wrd_info"
+        app:layout_constraintBottom_toBottomOf="@id/tv_play_w_settings_wrd_info"
+        app:layout_constraintStart_toEndOf="@id/iv_play_w_settings_wrd"
 
         android:text="@string/hyphen"
         style="@style/SettingsTextViewStyle"
         />
     <TextView
-        android:id="@+id/tv_save_words_settings_and_play_info"
+        android:id="@+id/tv_play_w_settings_wrd_info"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_save_words_settings_info"
-        app:layout_constraintStart_toEndOf="@id/tv_save_words_settings_and_play_hyphen"
+        app:layout_constraintTop_toBottomOf="@id/tv_save_wrd_settings_info"
+        app:layout_constraintStart_toEndOf="@id/tv_play_w_settings_wrd_hyphen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         android:layout_marginEnd="3dp"
@@ -76,32 +76,32 @@
 
 
     <ImageView
-        android:id="@+id/iv_add_words_collection"
+        android:id="@+id/iv_add_wrd_collection"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        app:layout_constraintTop_toTopOf="@id/tv_add_words_collection_info"
-        app:layout_constraintBottom_toBottomOf="@id/tv_add_words_collection_info"
+        app:layout_constraintTop_toTopOf="@id/tv_add_wrd_collection_info"
+        app:layout_constraintBottom_toBottomOf="@id/tv_add_wrd_collection_info"
         app:layout_constraintStart_toStartOf="parent"
 
         android:src="@drawable/outline_note_add_24"
         />
     <TextView
-        android:id="@+id/tv_add_words_collection_hyphen"
+        android:id="@+id/tv_add_wrd_collection_hyphen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/tv_add_words_collection_info"
-        app:layout_constraintBottom_toBottomOf="@id/tv_add_words_collection_info"
-        app:layout_constraintStart_toEndOf="@id/iv_add_words_collection"
+        app:layout_constraintTop_toTopOf="@id/tv_add_wrd_collection_info"
+        app:layout_constraintBottom_toBottomOf="@id/tv_add_wrd_collection_info"
+        app:layout_constraintStart_toEndOf="@id/iv_add_wrd_collection"
 
         android:text="@string/hyphen"
         style="@style/SettingsTextViewStyle"
         />
     <TextView
-        android:id="@+id/tv_add_words_collection_info"
+        android:id="@+id/tv_add_wrd_collection_info"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_save_words_settings_and_play_info"
-        app:layout_constraintStart_toEndOf="@id/tv_add_words_collection_hyphen"
+        app:layout_constraintTop_toBottomOf="@id/tv_play_w_settings_wrd_info"
+        app:layout_constraintStart_toEndOf="@id/tv_add_wrd_collection_hyphen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         android:layout_marginEnd="3dp"
@@ -112,32 +112,32 @@
 
 
     <ImageView
-        android:id="@+id/iv_confirm_words_collection"
+        android:id="@+id/iv_confirm_wrd_collection"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        app:layout_constraintTop_toTopOf="@id/tv_confirm_words_collection_info"
-        app:layout_constraintBottom_toBottomOf="@id/tv_confirm_words_collection_info"
+        app:layout_constraintTop_toTopOf="@id/tv_confirm_wrd_collection_info"
+        app:layout_constraintBottom_toBottomOf="@id/tv_confirm_wrd_collection_info"
         app:layout_constraintStart_toStartOf="parent"
 
         android:src="@drawable/outline_library_add_check_24"
         />
     <TextView
-        android:id="@+id/tv_confirm_words_collection_hyphen"
+        android:id="@+id/tv_confirm_wrd_collection_hyphen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/tv_confirm_words_collection_info"
-        app:layout_constraintBottom_toBottomOf="@id/tv_confirm_words_collection_info"
-        app:layout_constraintStart_toEndOf="@id/iv_confirm_words_collection"
+        app:layout_constraintTop_toTopOf="@id/tv_confirm_wrd_collection_info"
+        app:layout_constraintBottom_toBottomOf="@id/tv_confirm_wrd_collection_info"
+        app:layout_constraintStart_toEndOf="@id/iv_confirm_wrd_collection"
 
         android:text="@string/hyphen"
         style="@style/SettingsTextViewStyle"
         />
     <TextView
-        android:id="@+id/tv_confirm_words_collection_info"
+        android:id="@+id/tv_confirm_wrd_collection_info"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_add_words_collection_info"
-        app:layout_constraintStart_toEndOf="@id/tv_confirm_words_collection_hyphen"
+        app:layout_constraintTop_toBottomOf="@id/tv_add_wrd_collection_info"
+        app:layout_constraintStart_toEndOf="@id/tv_confirm_wrd_collection_hyphen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         android:layout_marginEnd="3dp"
@@ -149,7 +149,7 @@
         android:id="@+id/tv_long_click_info"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_confirm_words_collection_info"
+        app:layout_constraintTop_toBottomOf="@id/tv_confirm_wrd_collection_info"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"

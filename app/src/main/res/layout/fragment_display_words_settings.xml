@@ -9,7 +9,7 @@
     tools:context=".fragments.DisplayWordsSettingsFragment">
 
     <TextView
-        android:id="@+id/tv_words_collection"
+        android:id="@+id/tv_wrd_collection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constrainedWidth="true"
@@ -27,12 +27,12 @@
         />
 
     <Spinner
-        android:id="@+id/spr_words_collection"
+        android:id="@+id/spr_wrd_collection"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/tv_words_collection"
-        app:layout_constraintBottom_toBottomOf="@id/tv_words_collection"
-        app:layout_constraintStart_toEndOf="@id/tv_words_collection"
+        app:layout_constraintTop_toTopOf="@id/tv_wrd_collection"
+        app:layout_constraintBottom_toBottomOf="@id/tv_wrd_collection"
+        app:layout_constraintStart_toEndOf="@id/tv_wrd_collection"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         android:layout_marginEnd="2dp"
@@ -40,14 +40,14 @@
         />
 
     <TextView
-        android:id="@+id/tv_word_show_time"
+        android:id="@+id/tv_wrd_show_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constrainedWidth="true"
-        app:layout_constraintTop_toTopOf="@id/pckr_word_show_time"
-        app:layout_constraintBottom_toBottomOf="@id/pckr_word_show_time"
+        app:layout_constraintTop_toTopOf="@id/num_pck_wrd_show_time"
+        app:layout_constraintBottom_toBottomOf="@id/num_pck_wrd_show_time"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/pckr_word_show_time"
+        app:layout_constraintEnd_toStartOf="@id/num_pck_wrd_show_time"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintHorizontal_bias="0"
         android:text="@string/word_show_time"
@@ -55,11 +55,11 @@
         />
 
     <NumberPicker
-        android:id="@+id/pckr_word_show_time"
+        android:id="@+id/num_pck_wrd_show_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/spr_words_collection"
-        app:layout_constraintStart_toEndOf="@id/tv_word_show_time"
+        app:layout_constraintTop_toBottomOf="@id/spr_wrd_collection"
+        app:layout_constraintStart_toEndOf="@id/tv_wrd_show_time"
         app:layout_constraintEnd_toEndOf="parent"
 
         android:theme="@style/NumberPickerTheme"

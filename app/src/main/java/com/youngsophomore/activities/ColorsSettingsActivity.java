@@ -17,8 +17,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.NumberPicker;
 
-import com.addisonelliott.segmentedbutton.SegmentedButton;
-import com.addisonelliott.segmentedbutton.SegmentedButtonGroup;
 import com.youngsophomore.R;
 import com.youngsophomore.fragments.InfoDialogFragment;
 
@@ -41,21 +39,21 @@ public class ColorsSettingsActivity extends AppCompatActivity {
         int distinctColorsAmount = sharedPreferences.getInt(getString(R.string.saved_distinct_colors_amount_key), 2);
         int colorShowTime = sharedPreferences.getInt(getString(R.string.saved_color_show_time_key), 2);
 
-        NumberPicker pckrColorsAmount = findViewById(R.id.pckr_colors_amount);
-        NumberPicker pckrDistinctColorsAmount = findViewById(R.id.pckr_distinct_colors_amount);
-        NumberPicker pckrColorShowTime = findViewById(R.id.pckr_color_show_time);
+        NumberPicker pckrColorsAmount = findViewById(R.id.num_pck_clr_amount);
+        NumberPicker pckrDistinctColorsAmount = findViewById(R.id.num_pck_distinct_clr_amount);
+        NumberPicker pckrColorShowTime = findViewById(R.id.num_pck_clr_show_time);
         pckrColorsAmount.setMinValue(6);
         pckrColorsAmount.setMaxValue(24);
         pckrDistinctColorsAmount.setMinValue(2);
         pckrDistinctColorsAmount.setMaxValue(15);
         pckrColorShowTime.setMinValue(1);
         pckrColorShowTime.setMaxValue(6);
-
         pckrColorsAmount.setValue(colorsAmount);
         pckrDistinctColorsAmount.setValue(distinctColorsAmount);
         pckrColorShowTime.setValue(colorShowTime);
 
-        ImageButton btnSaveSettings = findViewById(R.id.btn_save);
+        ImageButton btnSaveSettings = findViewById(R.id.btn_save_settings_clr);
+        ImageButton btnPlayWSettings = findViewById(R.id.btn_play_w_settings_clr);
         btnSaveSettings.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
@@ -94,7 +92,7 @@ public class ColorsSettingsActivity extends AppCompatActivity {
             }
 
         });
-        ImageButton btnPlayWSettings = findViewById(R.id.btn_save_and_play);
+
         btnPlayWSettings.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {

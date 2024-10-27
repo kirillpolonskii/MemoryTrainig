@@ -3,7 +3,6 @@ package com.youngsophomore.activities;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -16,13 +15,8 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
-import androidx.core.content.res.ResourcesCompat;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -67,7 +61,7 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
                 ArrayList<Integer> shapesSet = TrainHelper.Shapes.generateShapesSet(distinctShapesAmount);
                 ArrayList<Integer> shapesSeq = TrainHelper.Shapes.generateShapesSequence(shapesAmount, shapesSet);
 
-                ConstraintLayout constraintLayout = findViewById(R.id.cnstrnt_lyt_pretrain);
+                ConstraintLayout constraintLayout = findViewById(R.id.cst_lt_pretrain);
                 constraintLayout.removeView(findViewById(R.id.tv_countdown));
                 ImageView ivCurShape = new ImageView(getApplicationContext());
                 ivCurShape.setId(View.generateViewId());
@@ -96,7 +90,6 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
                 constraintSet.applyTo(constraintLayout);
 
                 TextView tvCurShapeNum = findViewById(R.id.tv_cur_elem_num);
-
                 CountDownTimer pretrainSequenceTimer = new CountDownTimer(
                         shapesAmount * shapeShowTime * 1000 + 200, shapeShowTime * 1000) {
                     @Override
@@ -113,13 +106,13 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
                     @Override
                     public void onFinish() {
                         setContentView(R.layout.activity_shapes_training);
-                        ConstraintLayout clShapes = findViewById(R.id.cnstrnt_lyt_shapes);
+                        ConstraintLayout clShapes = findViewById(R.id.cst_lt_parent_shp);
                         // Запуск секундомера
                         Bundle bundle = new Bundle();
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         fragmentManager.beginTransaction()
                                 .setReorderingAllowed(true)
-                                .add(R.id.frgt_view, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
+                                .add(R.id.frt_cnt_v_shp, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
                                 .commit();
                         Log.d(DEBUG_TAG, "clShapes.getChildCount() = " + clShapes.getChildCount());
                         // Make all ImageView background white_blue

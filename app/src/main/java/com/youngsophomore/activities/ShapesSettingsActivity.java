@@ -17,8 +17,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.NumberPicker;
 
-import com.addisonelliott.segmentedbutton.SegmentedButton;
-import com.addisonelliott.segmentedbutton.SegmentedButtonGroup;
 import com.youngsophomore.R;
 import com.youngsophomore.fragments.InfoDialogFragment;
 
@@ -41,9 +39,9 @@ public class ShapesSettingsActivity extends AppCompatActivity {
         int distinctShapesAmount = sharedPreferences.getInt(getString(R.string.saved_distinct_shapes_amount_key), 2);
         int shapeShowTime = sharedPreferences.getInt(getString(R.string.saved_shape_show_time_key), 2);
 
-        NumberPicker pckrShapesAmount = findViewById(R.id.pckr_shapes_amount);
-        NumberPicker pckrDistinctShapesAmount = findViewById(R.id.pckr_distinct_shapes_amount);
-        NumberPicker pckrShapeShowTime = findViewById(R.id.pckr_shape_show_time);
+        NumberPicker pckrShapesAmount = findViewById(R.id.num_pck_shp_amount);
+        NumberPicker pckrDistinctShapesAmount = findViewById(R.id.num_pck_distinct_shp_amount);
+        NumberPicker pckrShapeShowTime = findViewById(R.id.num_pck_shape_show_time);
         pckrShapesAmount.setMinValue(4);
         pckrShapesAmount.setMaxValue(24);
         pckrDistinctShapesAmount.setMinValue(2);
@@ -55,7 +53,8 @@ public class ShapesSettingsActivity extends AppCompatActivity {
         pckrDistinctShapesAmount.setValue(distinctShapesAmount);
         pckrShapeShowTime.setValue(shapeShowTime);
 
-        ImageButton btnSaveSettings = findViewById(R.id.btn_save);
+        ImageButton btnSaveSettings = findViewById(R.id.btn_save_settings_shp);
+        ImageButton btnPlayWSettings = findViewById(R.id.btn_play_w_settings_shp);
         btnSaveSettings.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
@@ -86,7 +85,7 @@ public class ShapesSettingsActivity extends AppCompatActivity {
             }
 
         });
-        ImageButton btnPlayWSettings = findViewById(R.id.btn_save_and_play);
+
         btnPlayWSettings.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {

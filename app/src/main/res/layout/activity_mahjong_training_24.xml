@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mahjong_cnstrnt_layout_par"
+    android:id="@+id/cst_lt_parent_mhj"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -15,7 +15,7 @@
     >
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/frgt_view"
+        android:id="@+id/frt_cnt_v_tiles"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -28,7 +28,7 @@
         />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/mahjong_cnstrnt_layout_chld"
+        android:id="@+id/cst_lt_chld_mhj"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/guideline_top"
@@ -43,13 +43,13 @@
         >
 
         <ImageButton
-            android:id="@+id/btn_tile_pos1"
+            android:id="@+id/btn_tile_pos_1"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos5"
+            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos2"
+            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_2"
 
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintVertical_chainStyle="spread"
@@ -61,32 +61,13 @@
 
             />
         <ImageButton
-            android:id="@+id/btn_tile_pos2"
+            android:id="@+id/btn_tile_pos_2"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos6"
-            app:layout_constraintStart_toEndOf="@id/btn_tile_pos1"
-            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos3"
-
-            app:layout_constraintHorizontal_chainStyle="spread"
-            app:layout_constraintVertical_chainStyle="spread"
-            app:layout_constraintVertical_weight="1"
-            android:background="@drawable/btn_tile_bg"
-            android:scaleType="fitXY"
-            android:src="@drawable/tile_back"
-            android:contentDescription="@string/info"
-
-            android:layout_marginStart="@dimen/m_training_small_horiz_margin"
-            />
-        <ImageButton
-            android:id="@+id/btn_tile_pos3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos7"
-            app:layout_constraintStart_toEndOf="@id/btn_tile_pos2"
-            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos4"
+            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_6"
+            app:layout_constraintStart_toEndOf="@id/btn_tile_pos_1"
+            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_3"
 
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintVertical_chainStyle="spread"
@@ -99,12 +80,31 @@
             android:layout_marginStart="@dimen/m_training_small_horiz_margin"
             />
         <ImageButton
-            android:id="@+id/btn_tile_pos4"
+            android:id="@+id/btn_tile_pos_3"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos8"
-            app:layout_constraintStart_toEndOf="@id/btn_tile_pos3"
+            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_7"
+            app:layout_constraintStart_toEndOf="@id/btn_tile_pos_2"
+            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_4"
+
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintVertical_chainStyle="spread"
+            app:layout_constraintVertical_weight="1"
+            android:background="@drawable/btn_tile_bg"
+            android:scaleType="fitXY"
+            android:src="@drawable/tile_back"
+            android:contentDescription="@string/info"
+
+            android:layout_marginStart="@dimen/m_training_small_horiz_margin"
+            />
+        <ImageButton
+            android:id="@+id/btn_tile_pos_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_8"
+            app:layout_constraintStart_toEndOf="@id/btn_tile_pos_3"
             app:layout_constraintEnd_toEndOf="parent"
 
             app:layout_constraintHorizontal_chainStyle="spread"
@@ -119,13 +119,13 @@
             
             />
         <ImageButton
-            android:id="@+id/btn_tile_pos5"
+            android:id="@+id/btn_tile_pos_5"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos1"
-            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos9"
+            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos_1"
+            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_9"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos6"
+            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_6"
 
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintVertical_chainStyle="spread"
@@ -138,33 +138,13 @@
             android:layout_marginVertical="@dimen/m_training_vert_middle_margin_24"
             />
         <ImageButton
-            android:id="@+id/btn_tile_pos6"
+            android:id="@+id/btn_tile_pos_6"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos2"
-            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos10"
-            app:layout_constraintStart_toEndOf="@id/btn_tile_pos5"
-            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos7"
-
-            app:layout_constraintHorizontal_chainStyle="spread"
-            app:layout_constraintVertical_chainStyle="spread"
-            app:layout_constraintVertical_weight="1"
-            android:background="@drawable/btn_tile_bg"
-            android:scaleType="fitXY"
-            android:src="@drawable/tile_back"
-            android:contentDescription="@string/info"
-
-            android:layout_marginStart="@dimen/m_training_small_horiz_margin"
-            android:layout_marginVertical="@dimen/m_training_vert_middle_margin_24"
-            />
-        <ImageButton
-            android:id="@+id/btn_tile_pos7"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos3"
-            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos11"
-            app:layout_constraintStart_toEndOf="@id/btn_tile_pos6"
-            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos8"
+            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos_2"
+            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_10"
+            app:layout_constraintStart_toEndOf="@id/btn_tile_pos_5"
+            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_7"
 
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintVertical_chainStyle="spread"
@@ -178,12 +158,32 @@
             android:layout_marginVertical="@dimen/m_training_vert_middle_margin_24"
             />
         <ImageButton
-            android:id="@+id/btn_tile_pos8"
+            android:id="@+id/btn_tile_pos_7"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos4"
-            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos12"
-            app:layout_constraintStart_toEndOf="@id/btn_tile_pos7"
+            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos_3"
+            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_11"
+            app:layout_constraintStart_toEndOf="@id/btn_tile_pos_6"
+            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_8"
+
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintVertical_chainStyle="spread"
+            app:layout_constraintVertical_weight="1"
+            android:background="@drawable/btn_tile_bg"
+            android:scaleType="fitXY"
+            android:src="@drawable/tile_back"
+            android:contentDescription="@string/info"
+
+            android:layout_marginStart="@dimen/m_training_small_horiz_margin"
+            android:layout_marginVertical="@dimen/m_training_vert_middle_margin_24"
+            />
+        <ImageButton
+            android:id="@+id/btn_tile_pos_8"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos_4"
+            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_12"
+            app:layout_constraintStart_toEndOf="@id/btn_tile_pos_7"
             app:layout_constraintEnd_toEndOf="parent"
 
             app:layout_constraintHorizontal_chainStyle="spread"
@@ -198,13 +198,13 @@
             android:layout_marginVertical="@dimen/m_training_vert_middle_margin_24"
             />
         <ImageButton
-            android:id="@+id/btn_tile_pos9"
+            android:id="@+id/btn_tile_pos_9"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos5"
-            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos13"
+            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos_5"
+            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_13"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos10"
+            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_10"
 
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintVertical_chainStyle="spread"
@@ -217,13 +217,13 @@
             
             />
         <ImageButton
-            android:id="@+id/btn_tile_pos10"
+            android:id="@+id/btn_tile_pos_10"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos6"
-            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos14"
-            app:layout_constraintStart_toEndOf="@id/btn_tile_pos9"
-            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos11"
+            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos_6"
+            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_14"
+            app:layout_constraintStart_toEndOf="@id/btn_tile_pos_9"
+            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_11"
 
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintVertical_chainStyle="spread"
@@ -236,13 +236,13 @@
             android:layout_marginStart="@dimen/m_training_small_horiz_margin"
             />
         <ImageButton
-            android:id="@+id/btn_tile_pos11"
+            android:id="@+id/btn_tile_pos_11"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos7"
-            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos15"
-            app:layout_constraintStart_toEndOf="@id/btn_tile_pos10"
-            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos12"
+            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos_7"
+            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_15"
+            app:layout_constraintStart_toEndOf="@id/btn_tile_pos_10"
+            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_12"
 
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintVertical_chainStyle="spread"
@@ -255,12 +255,12 @@
             android:layout_marginStart="@dimen/m_training_small_horiz_margin"
             />
         <ImageButton
-            android:id="@+id/btn_tile_pos12"
+            android:id="@+id/btn_tile_pos_12"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos8"
-            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos16"
-            app:layout_constraintStart_toEndOf="@id/btn_tile_pos11"
+            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos_8"
+            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_16"
+            app:layout_constraintStart_toEndOf="@id/btn_tile_pos_11"
             app:layout_constraintEnd_toEndOf="parent"
 
             app:layout_constraintHorizontal_chainStyle="spread"
@@ -274,13 +274,13 @@
             android:layout_marginStart="@dimen/m_training_small_horiz_margin"
             />
         <ImageButton
-            android:id="@+id/btn_tile_pos13"
+            android:id="@+id/btn_tile_pos_13"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos9"
-            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos17"
+            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos_9"
+            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_17"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos14"
+            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_14"
 
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintVertical_chainStyle="spread"
@@ -293,33 +293,13 @@
             android:layout_marginVertical="@dimen/m_training_vert_middle_margin_24"
             />
         <ImageButton
-            android:id="@+id/btn_tile_pos14"
+            android:id="@+id/btn_tile_pos_14"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos10"
-            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos18"
-            app:layout_constraintStart_toEndOf="@id/btn_tile_pos13"
-            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos15"
-
-            app:layout_constraintHorizontal_chainStyle="spread"
-            app:layout_constraintVertical_chainStyle="spread"
-            app:layout_constraintVertical_weight="1"
-            android:background="@drawable/btn_tile_bg"
-            android:scaleType="fitXY"
-            android:src="@drawable/tile_back"
-            android:contentDescription="@string/info"
-
-            android:layout_marginStart="@dimen/m_training_small_horiz_margin"
-            android:layout_marginVertical="@dimen/m_training_vert_middle_margin_24"
-            />
-        <ImageButton
-            android:id="@+id/btn_tile_pos15"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos11"
-            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos19"
-            app:layout_constraintStart_toEndOf="@id/btn_tile_pos14"
-            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos16"
+            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos_10"
+            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_18"
+            app:layout_constraintStart_toEndOf="@id/btn_tile_pos_13"
+            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_15"
 
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintVertical_chainStyle="spread"
@@ -333,12 +313,32 @@
             android:layout_marginVertical="@dimen/m_training_vert_middle_margin_24"
             />
         <ImageButton
-            android:id="@+id/btn_tile_pos16"
+            android:id="@+id/btn_tile_pos_15"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos12"
-            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos20"
-            app:layout_constraintStart_toEndOf="@id/btn_tile_pos15"
+            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos_11"
+            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_19"
+            app:layout_constraintStart_toEndOf="@id/btn_tile_pos_14"
+            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_16"
+
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintVertical_chainStyle="spread"
+            app:layout_constraintVertical_weight="1"
+            android:background="@drawable/btn_tile_bg"
+            android:scaleType="fitXY"
+            android:src="@drawable/tile_back"
+            android:contentDescription="@string/info"
+
+            android:layout_marginStart="@dimen/m_training_small_horiz_margin"
+            android:layout_marginVertical="@dimen/m_training_vert_middle_margin_24"
+            />
+        <ImageButton
+            android:id="@+id/btn_tile_pos_16"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos_12"
+            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_20"
+            app:layout_constraintStart_toEndOf="@id/btn_tile_pos_15"
             app:layout_constraintEnd_toEndOf="parent"
 
             app:layout_constraintHorizontal_chainStyle="spread"
@@ -353,13 +353,13 @@
             android:layout_marginVertical="@dimen/m_training_vert_middle_margin_24"
             />
         <ImageButton
-            android:id="@+id/btn_tile_pos17"
+            android:id="@+id/btn_tile_pos_17"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos13"
-            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos21"
+            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos_13"
+            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_21"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos18"
+            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_18"
 
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintVertical_chainStyle="spread"
@@ -371,13 +371,13 @@
             
             />
         <ImageButton
-            android:id="@+id/btn_tile_pos18"
+            android:id="@+id/btn_tile_pos_18"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos14"
-            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos22"
-            app:layout_constraintStart_toEndOf="@id/btn_tile_pos17"
-            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos19"
+            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos_14"
+            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_22"
+            app:layout_constraintStart_toEndOf="@id/btn_tile_pos_17"
+            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_19"
 
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintVertical_chainStyle="spread"
@@ -390,13 +390,13 @@
             android:layout_marginStart="@dimen/m_training_small_horiz_margin"
             />
         <ImageButton
-            android:id="@+id/btn_tile_pos19"
+            android:id="@+id/btn_tile_pos_19"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos15"
-            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos23"
-            app:layout_constraintStart_toEndOf="@id/btn_tile_pos18"
-            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos20"
+            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos_15"
+            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_23"
+            app:layout_constraintStart_toEndOf="@id/btn_tile_pos_18"
+            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_20"
 
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintVertical_chainStyle="spread"
@@ -410,12 +410,12 @@
 
             />
         <ImageButton
-            android:id="@+id/btn_tile_pos20"
+            android:id="@+id/btn_tile_pos_20"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos16"
-            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos24"
-            app:layout_constraintStart_toEndOf="@id/btn_tile_pos19"
+            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos_16"
+            app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_24"
+            app:layout_constraintStart_toEndOf="@id/btn_tile_pos_19"
             app:layout_constraintEnd_toEndOf="parent"
 
             app:layout_constraintHorizontal_chainStyle="spread"
@@ -431,13 +431,13 @@
 
             />
         <ImageButton
-            android:id="@+id/btn_tile_pos21"
+            android:id="@+id/btn_tile_pos_21"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos17"
+            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos_17"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos22"
+            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_22"
 
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintVertical_chainStyle="spread"
@@ -450,33 +450,13 @@
             android:layout_marginTop="@dimen/m_training_vert_middle_margin_24"
             />
         <ImageButton
-            android:id="@+id/btn_tile_pos22"
+            android:id="@+id/btn_tile_pos_22"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos18"
+            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos_18"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btn_tile_pos21"
-            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos23"
-
-            app:layout_constraintHorizontal_chainStyle="spread"
-            app:layout_constraintVertical_chainStyle="spread"
-            app:layout_constraintVertical_weight="1"
-            android:background="@drawable/btn_tile_bg"
-            android:scaleType="fitXY"
-            android:src="@drawable/tile_back"
-            android:contentDescription="@string/info"
-
-            android:layout_marginStart="@dimen/m_training_small_horiz_margin"
-            android:layout_marginTop="@dimen/m_training_vert_middle_margin_24"
-            />
-        <ImageButton
-            android:id="@+id/btn_tile_pos23"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos19"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btn_tile_pos22"
-            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos24"
+            app:layout_constraintStart_toEndOf="@id/btn_tile_pos_21"
+            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_23"
 
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintVertical_chainStyle="spread"
@@ -490,12 +470,32 @@
             android:layout_marginTop="@dimen/m_training_vert_middle_margin_24"
             />
         <ImageButton
-            android:id="@+id/btn_tile_pos24"
+            android:id="@+id/btn_tile_pos_23"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos20"
+            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos_19"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btn_tile_pos23"
+            app:layout_constraintStart_toEndOf="@id/btn_tile_pos_22"
+            app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_24"
+
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintVertical_chainStyle="spread"
+            app:layout_constraintVertical_weight="1"
+            android:background="@drawable/btn_tile_bg"
+            android:scaleType="fitXY"
+            android:src="@drawable/tile_back"
+            android:contentDescription="@string/info"
+
+            android:layout_marginStart="@dimen/m_training_small_horiz_margin"
+            android:layout_marginTop="@dimen/m_training_vert_middle_margin_24"
+            />
+        <ImageButton
+            android:id="@+id/btn_tile_pos_24"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/btn_tile_pos_20"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_tile_pos_23"
             app:layout_constraintEnd_toEndOf="parent"
 
             app:layout_constraintHorizontal_chainStyle="spread"

@@ -54,7 +54,7 @@ implements DeleteCollectionDialogFragment.DeleteCollectionDialogListener{
                 R.layout.custom_spinner_item,
                 CollectionsStorage.getCollectionsTitles(sharedPreferences, getString(R.string.words_collections_titles_key)));
         adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
-        sprWordsCollection = fragment.findViewById(R.id.spr_words_collection);
+        sprWordsCollection = fragment.findViewById(R.id.spr_wrd_collection);
         sprWordsCollection.setAdapter(adapter);
         //sprWordsCollection.setLongClickable(true);
         sprWordsCollection.setOnLongClickListener(new View.OnLongClickListener() {
@@ -78,7 +78,7 @@ implements DeleteCollectionDialogFragment.DeleteCollectionDialogListener{
 
         sprWordsCollection.setSelection(wordsCollectionPosition);
 
-        NumberPicker pckrWordShowTime = fragment.findViewById(R.id.pckr_word_show_time);
+        NumberPicker pckrWordShowTime = fragment.findViewById(R.id.num_pck_wrd_show_time);
         pckrWordShowTime.setMinValue(1);
         pckrWordShowTime.setMaxValue(6);
         pckrWordShowTime.setValue(wordShowTime);

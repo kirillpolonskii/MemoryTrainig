@@ -5,32 +5,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
-        android:id="@+id/iv_save_mahjong_settings"
+        android:id="@+id/iv_save_mhj_settings"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        app:layout_constraintTop_toTopOf="@id/tv_save_mahjong_settings_info"
-        app:layout_constraintBottom_toBottomOf="@id/tv_save_mahjong_settings_info"
+        app:layout_constraintTop_toTopOf="@id/tv_save_mhj_settings_info"
+        app:layout_constraintBottom_toBottomOf="@id/tv_save_mhj_settings_info"
         app:layout_constraintStart_toStartOf="parent"
 
         android:src="@drawable/baseline_save_24"
         />
     <TextView
-        android:id="@+id/tv_save_mahjong_settings_hyphen"
+        android:id="@+id/tv_save_mhj_settings_hyphen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/tv_save_mahjong_settings_info"
-        app:layout_constraintBottom_toBottomOf="@id/tv_save_mahjong_settings_info"
-        app:layout_constraintStart_toEndOf="@id/iv_save_mahjong_settings"
+        app:layout_constraintTop_toTopOf="@id/tv_save_mhj_settings_info"
+        app:layout_constraintBottom_toBottomOf="@id/tv_save_mhj_settings_info"
+        app:layout_constraintStart_toEndOf="@id/iv_save_mhj_settings"
 
         android:text="@string/hyphen"
         style="@style/SettingsTextViewStyle"
         />
     <TextView
-        android:id="@+id/tv_save_mahjong_settings_info"
+        android:id="@+id/tv_save_mhj_settings_info"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tv_save_mahjong_settings_hyphen"
+        app:layout_constraintStart_toEndOf="@id/tv_save_mhj_settings_hyphen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
 
@@ -40,32 +40,32 @@
 
         />
     <ImageView
-        android:id="@+id/iv_save_mahjong_settings_and_play"
+        android:id="@+id/iv_play_w_settings_mhj"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        app:layout_constraintTop_toTopOf="@id/tv_save_mahjong_settings_and_play_info"
-        app:layout_constraintBottom_toBottomOf="@id/tv_save_mahjong_settings_and_play_info"
+        app:layout_constraintTop_toTopOf="@id/iv_play_w_settings_info_mhj"
+        app:layout_constraintBottom_toBottomOf="@id/iv_play_w_settings_info_mhj"
         app:layout_constraintStart_toStartOf="parent"
 
         android:src="@drawable/round_play_arrow_24"
         />
     <TextView
-        android:id="@+id/tv_save_mahjong_settings_and_play_hyphen"
+        android:id="@+id/tv_save_mhj_settings_and_play_hyphen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/tv_save_mahjong_settings_and_play_info"
-        app:layout_constraintBottom_toBottomOf="@id/tv_save_mahjong_settings_and_play_info"
-        app:layout_constraintStart_toEndOf="@id/iv_save_mahjong_settings"
+        app:layout_constraintTop_toTopOf="@id/iv_play_w_settings_info_mhj"
+        app:layout_constraintBottom_toBottomOf="@id/iv_play_w_settings_info_mhj"
+        app:layout_constraintStart_toEndOf="@id/iv_save_mhj_settings"
 
         android:text="@string/hyphen"
         style="@style/SettingsTextViewStyle"
         />
     <TextView
-        android:id="@+id/tv_save_mahjong_settings_and_play_info"
+        android:id="@+id/iv_play_w_settings_info_mhj"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_save_mahjong_settings_info"
-        app:layout_constraintStart_toEndOf="@id/tv_save_mahjong_settings_and_play_hyphen"
+        app:layout_constraintTop_toBottomOf="@id/tv_save_mhj_settings_info"
+        app:layout_constraintStart_toEndOf="@id/tv_save_mhj_settings_and_play_hyphen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         android:layout_marginEnd="3dp"

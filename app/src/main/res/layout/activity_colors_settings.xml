@@ -16,30 +16,30 @@
         />
 
     <ScrollView
-        android:id="@+id/scroll_view"
+        android:id="@+id/scr_v_settings_clr"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintBottom_toTopOf="@+id/btn_save"
+        app:layout_constraintBottom_toTopOf="@+id/btn_save_settings_clr"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 
         >
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cnstrnt_layout_nested"
+            android:id="@+id/cst_lt_chld_settings_clr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
 
             <TextView
-                android:id="@+id/tv_colors_amount"
+                android:id="@+id/tv_clr_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constrainedWidth="true"
-                app:layout_constraintTop_toTopOf="@id/pckr_colors_amount"
-                app:layout_constraintBottom_toBottomOf="@id/pckr_colors_amount"
+                app:layout_constraintTop_toTopOf="@id/num_pck_clr_amount"
+                app:layout_constraintBottom_toBottomOf="@id/num_pck_clr_amount"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/pckr_colors_amount"
+                app:layout_constraintEnd_toStartOf="@id/num_pck_clr_amount"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintHorizontal_bias="0.0"
                 android:text="@string/colors_amount"
@@ -48,11 +48,11 @@
                 />
 
             <NumberPicker
-                android:id="@+id/pckr_colors_amount"
+                android:id="@+id/num_pck_clr_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_colors_amount"
+                app:layout_constraintStart_toEndOf="@id/tv_clr_amount"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -65,14 +65,14 @@
                 />
 
             <TextView
-                android:id="@+id/tv_distinct_colors_amount"
+                android:id="@+id/tv_distinct_clr_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constrainedWidth="true"
-                app:layout_constraintTop_toTopOf="@id/pckr_distinct_colors_amount"
-                app:layout_constraintBottom_toBottomOf="@id/pckr_distinct_colors_amount"
+                app:layout_constraintTop_toTopOf="@id/num_pck_distinct_clr_amount"
+                app:layout_constraintBottom_toBottomOf="@id/num_pck_distinct_clr_amount"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/pckr_distinct_colors_amount"
+                app:layout_constraintEnd_toStartOf="@id/num_pck_distinct_clr_amount"
 
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintHorizontal_bias="0"
@@ -81,11 +81,11 @@
                 />
 
             <NumberPicker
-                android:id="@+id/pckr_distinct_colors_amount"
+                android:id="@+id/num_pck_distinct_clr_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/pckr_colors_amount"
-                app:layout_constraintStart_toEndOf="@id/tv_distinct_colors_amount"
+                app:layout_constraintTop_toBottomOf="@id/num_pck_clr_amount"
+                app:layout_constraintStart_toEndOf="@id/tv_distinct_clr_amount"
                 app:layout_constraintEnd_toEndOf="parent"
 
                 android:theme="@style/NumberPickerTheme"
@@ -97,14 +97,14 @@
                 />
 
             <TextView
-                android:id="@+id/tv_color_show_time"
+                android:id="@+id/tv_clr_show_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constrainedWidth="true"
-                app:layout_constraintTop_toTopOf="@id/pckr_color_show_time"
-                app:layout_constraintBottom_toBottomOf="@id/pckr_color_show_time"
+                app:layout_constraintTop_toTopOf="@id/num_pck_clr_show_time"
+                app:layout_constraintBottom_toBottomOf="@id/num_pck_clr_show_time"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/pckr_color_show_time"
+                app:layout_constraintEnd_toStartOf="@id/num_pck_clr_show_time"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintHorizontal_bias="0"
                 android:text="@string/color_show_time"
@@ -112,11 +112,11 @@
                 />
 
             <NumberPicker
-                android:id="@+id/pckr_color_show_time"
+                android:id="@+id/num_pck_clr_show_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/pckr_distinct_colors_amount"
-                app:layout_constraintStart_toEndOf="@id/tv_color_show_time"
+                app:layout_constraintTop_toBottomOf="@id/num_pck_distinct_clr_amount"
+                app:layout_constraintStart_toEndOf="@id/tv_clr_show_time"
                 app:layout_constraintEnd_toEndOf="parent"
 
                 android:theme="@style/NumberPickerTheme"
@@ -131,13 +131,13 @@
 
 
     <ImageButton
-        android:id="@+id/btn_save"
+        android:id="@+id/btn_save_settings_clr"
         android:layout_width="60dp"
         android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn_save_and_play"
-        app:layout_constraintTop_toBottomOf="@id/scroll_view"
+        app:layout_constraintEnd_toStartOf="@id/btn_play_w_settings_clr"
+        app:layout_constraintTop_toBottomOf="@id/scr_v_settings_clr"
         android:background="@drawable/btn_save_bg"
         android:contentDescription="@string/info"
         android:elevation="@dimen/btn_stats_elev"
@@ -148,12 +148,12 @@
         />
 
     <ImageButton
-        android:id="@+id/btn_save_and_play"
+        android:id="@+id/btn_play_w_settings_clr"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        app:layout_constraintBottom_toBottomOf="@id/btn_save"
-        app:layout_constraintTop_toTopOf="@id/btn_save"
-        app:layout_constraintStart_toEndOf="@id/btn_save"
+        app:layout_constraintBottom_toBottomOf="@id/btn_save_settings_clr"
+        app:layout_constraintTop_toTopOf="@id/btn_save_settings_clr"
+        app:layout_constraintStart_toEndOf="@id/btn_save_settings_clr"
         app:layout_constraintEnd_toEndOf="parent"
 
         android:background="@drawable/btn_save_and_play_bg"

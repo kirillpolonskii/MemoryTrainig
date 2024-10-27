@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.Guideline;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentManager;
 
 import android.annotation.SuppressLint;
@@ -20,14 +19,11 @@ import android.widget.TextView;
 
 import com.youngsophomore.R;
 import com.youngsophomore.fragments.FinishDialogFragment;
-import com.youngsophomore.fragments.InfoDialogFragment;
 import com.youngsophomore.fragments.StopwatchFragment;
 import com.youngsophomore.helpers.PrepHelper;
 import com.youngsophomore.helpers.TrainHelper;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Locale;
 
 @SuppressLint("MissingInflatedId")
 public class MahjongTrainingActivity extends AppCompatActivity implements
@@ -47,40 +43,40 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
         // Загрузка данных из сохранённых настроек
         SharedPreferences sharedPreferences =
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-        int mahjongRememberTime = sharedPreferences.getInt(getString(R.string.saved_mahjong_remember_time_key), 2);
-        int mahjongTilesAmount = PrepHelper.Mahjong.sgBtnGroupTilesPosToAmount(
+        int mhjShowTime = sharedPreferences.getInt(getString(R.string.saved_mahjong_remember_time_key), 2);
+        int mhjTilesAmount = PrepHelper.Mahjong.sgBtnGroupTilesPosToAmount(
                 sharedPreferences.getInt(getString(R.string.saved_mahjong_tiles_amount_key), 0));
-        int mahjongEqualTilesAmount = PrepHelper.Mahjong.sgBtnGroupEqualTilesPosToAmount(
+        int mhjEqualTilesAmount = PrepHelper.Mahjong.sgBtnGroupEqualTilesPosToAmount(
                 sharedPreferences.getInt(getString(R.string.saved_mahjong_equal_tiles_amount_key), 0));
-        TextView tv_countdown = findViewById(R.id.tv_countdown);
+        TextView tvCountdown = findViewById(R.id.tv_countdown);
         CountDownTimer countDownTimer = new CountDownTimer(3000 + 200, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 Log.d(DEBUG_TAG, "onTick: millisUntilFinished = " + millisUntilFinished);
-                tv_countdown.setText(String.valueOf(millisUntilFinished / 1000));
+                tvCountdown.setText(String.valueOf(millisUntilFinished / 1000));
             }
 
             @Override
             public void onFinish() {
-                if(mahjongTilesAmount == 12){
+                if(mhjTilesAmount == 12){
                     setContentView(R.layout.activity_mahjong_training_12);
                 }
                 else{
                     setContentView(R.layout.activity_mahjong_training_24);
                 }
-                Log.d(DEBUG_TAG, "saved mahjongRememberTime = " + mahjongRememberTime +
-                        ", mahjongTilesAmount = " + mahjongTilesAmount +
-                        ", mahjongEqualTilesAmount = " + mahjongEqualTilesAmount);
+                Log.d(DEBUG_TAG, "saved mhjShowTime = " + mhjShowTime +
+                        ", mhjTilesAmount = " + mhjTilesAmount +
+                        ", mhjEqualTilesAmount = " + mhjEqualTilesAmount);
                 // Формирование матрицы (или массива) костей с загруженными параметрами
-                ArrayList<Integer> tilesNum = TrainHelper.Mahjong.generateTiles(mahjongTilesAmount, mahjongEqualTilesAmount);
+                ArrayList<Integer> tilesNum = TrainHelper.Mahjong.generateTiles(mhjTilesAmount, mhjEqualTilesAmount);
                 Log.d(DEBUG_TAG, tilesNum.toString());
                 // Заполнение массива кнопок-костей из массива номеров костей, а также массива background
-                ConstraintLayout constraintLayout = findViewById(R.id.mahjong_cnstrnt_layout_chld);
+                ConstraintLayout constraintLayout = findViewById(R.id.cst_lt_chld_mhj);
                 Guideline guidelineTop = findViewById(R.id.guideline_top);
                 Guideline guidelineBottom = findViewById(R.id.guideline_bottom);
                 Guideline guidelineLeft = findViewById(R.id.guideline_left);
                 Guideline guidelineRight = findViewById(R.id.guideline_right);
-                setGuidelines(mahjongTilesAmount, guidelineTop, guidelineBottom, guidelineLeft, guidelineRight);
+                setGuidelines(mhjTilesAmount, guidelineTop, guidelineBottom, guidelineLeft, guidelineRight);
                 ArrayList<ImageButton> btnTiles = new ArrayList<>();
                 for(int i = 0; i < constraintLayout.getChildCount(); ++i){
                     btnTiles.add((ImageButton) constraintLayout.getChildAt(i));
@@ -89,7 +85,7 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
                 for (int i = 0; i < btnBackgroundResources.size(); ++i){
                     btnTiles.get(i).setImageResource(btnBackgroundResources.get(i));
                 }
-                CountDownTimer showCountdownTimer = new CountDownTimer(mahjongRememberTime * 1000 + 200, 1000) {
+                CountDownTimer showCountdownTimer = new CountDownTimer(mhjShowTime * 1000 + 200, 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {}
                     @Override
@@ -99,7 +95,7 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         fragmentManager.beginTransaction()
                                 .setReorderingAllowed(true)
-                                .add(R.id.frgt_view, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
+                                .add(R.id.frt_cnt_v_tiles, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
                                 .commit();
                         // В таймере: смена background кнопок на tile_back
                         for (int i = 0; i < btnBackgroundResources.size(); ++i){
@@ -117,7 +113,7 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
                                     v.setClickable(false);
                                     int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_info_elev);
                                     v.setElevation(elevPx);
-                                    if (flippedTiles.size() < mahjongEqualTilesAmount - 1){
+                                    if (flippedTiles.size() < mhjEqualTilesAmount - 1){
                                         flippedTiles.add((ImageButton) v);
                                         flippedTilesNum.add(tilesNum.get(finalI));
                                     }
@@ -131,14 +127,14 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
                                             @Override
                                             public void run() {
                                                 if(isAllTilesEqual()){
-                                                    // Hide mahjongEqualTilesAmount chosen tiles
+                                                    // Hide mhjEqualTilesAmount chosen tiles
                                                     Log.d(DEBUG_TAG, "YOU CHOSE CORRECT!!!");
                                                     for(ImageButton flippedBtnTile : flippedTiles){
                                                         flippedBtnTile.setClickable(false);
                                                         flippedBtnTile.setVisibility(View.INVISIBLE);
                                                         ++removedTilesCount;
                                                     }
-                                                    if (removedTilesCount == mahjongTilesAmount){
+                                                    if (removedTilesCount == mhjTilesAmount){
                                                         Log.d(DEBUG_TAG, "ALL TILES REMOVED");
                                                         StopwatchFragment stopwatchFragment =
                                                                 (StopwatchFragment) fragmentManager.findFragmentByTag(STOPWATCH_FRAGMENT_TAG);
@@ -166,7 +162,7 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
                                                 flippedTiles.clear();
                                                 flippedTilesNum.clear();
 
-                                                // Set background of mahjongEqualTilesAmount chosen tiles to tile_back
+                                                // Set background of mhjEqualTilesAmount chosen tiles to tile_back
                                                 for (ImageButton btnTile : btnTiles){
                                                     btnTile.setClickable(true);
                                                 }
@@ -185,24 +181,6 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
         }.start();
 
 
-    }
-
-    public void fillLayoutWithTiles(){}
-
-    private void runPretrainCountdown(TextView tv_countdown) {
-
-        final Handler handler = new Handler();
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                tv_countdown.setText("3");
-                handler.postDelayed(this, 1000);
-                tv_countdown.setText("2");
-                handler.postDelayed(this, 1000);
-                tv_countdown.setText("1");
-                handler.postDelayed(this, 1000);
-            }
-        });
     }
 
     private ArrayList<Integer> tilesNumToBackgroundRes(ArrayList<Integer> tilesNum){

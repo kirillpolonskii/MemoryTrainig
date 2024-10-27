@@ -2,31 +2,21 @@ package com.youngsophomore.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
-import androidx.constraintlayout.widget.Guideline;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -72,13 +62,11 @@ public class ColorsTrainingActivity extends AppCompatActivity implements
                 ArrayList<Integer> palette = TrainHelper.Colors.generatePalette(distinctColorsAmount);
                 ArrayList<Integer> colorSeq = TrainHelper.Colors.generateColors(colorsAmount, palette);
 
-                ConstraintLayout constraintLayout = findViewById(R.id.cnstrnt_lyt_pretrain);
+                ConstraintLayout constraintLayout = findViewById(R.id.cst_lt_pretrain);
                 constraintLayout.removeView(findViewById(R.id.tv_countdown));
                 ImageView ivCurColor = new ImageView(getApplicationContext());
                 ivCurColor.setId(View.generateViewId());
                 ivCurColor.setBackgroundColor(getResources().getColor(colorSeq.get(curColorShowInd)));
-                //++curColorShowInd;
-
                 ConstraintLayout.LayoutParams ivCurColorParams = new ConstraintLayout.LayoutParams(
                         0,
                         0
@@ -99,7 +87,6 @@ public class ColorsTrainingActivity extends AppCompatActivity implements
                 constraintSet.applyTo(constraintLayout);
 
                 TextView tvCurColorNum = findViewById(R.id.tv_cur_elem_num);
-
                 CountDownTimer pretrainSequenceTimer = new CountDownTimer(
                         colorsAmount * colorShowTime * 1000 + 200, colorShowTime * 1000) {
                     @Override
@@ -116,25 +103,25 @@ public class ColorsTrainingActivity extends AppCompatActivity implements
                     @Override
                     public void onFinish() {
                         setContentView(R.layout.activity_colors_training);
-                        ConstraintLayout clColors = findViewById(R.id.cnstrnt_lyt_colors);
+                        ConstraintLayout cstLtClr = findViewById(R.id.cst_lt_clr);
                         // Запуск секундомера
                         Bundle bundle = new Bundle();
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         fragmentManager.beginTransaction()
                                 .setReorderingAllowed(true)
-                                .add(R.id.frgt_view, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
+                                .add(R.id.frt_cnt_v_clr, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
                                 .commit();
-                        Log.d(DEBUG_TAG, "clColors.getChildCount() = " + clColors.getChildCount());
+                        Log.d(DEBUG_TAG, "cstLtClr.getChildCount() = " + cstLtClr.getChildCount());
                         // Make all ImageView background white_blue
                         // Fill palette with right amount of colors
                         ArrayList<ImageView> ivColorSeq = new ArrayList<>();
                         ArrayList<CardView> cvColorPal = new ArrayList<>();
                         for(int i = 1; i < 40; ++i){
                             if(i <= 24){
-                                ivColorSeq.add((ImageView) clColors.getChildAt(i));
+                                ivColorSeq.add((ImageView) cstLtClr.getChildAt(i));
                             }
                             else {
-                                CardView cvCurColorPal = (CardView) clColors.getChildAt(i);
+                                CardView cvCurColorPal = (CardView) cstLtClr.getChildAt(i);
                                 if(i - 25 < distinctColorsAmount){
                                     cvColorPal.add(cvCurColorPal);
                                 }
@@ -175,13 +162,13 @@ public class ColorsTrainingActivity extends AppCompatActivity implements
                                             else {
                                                 Log.d(DEBUG_TAG, "YOU CHOSE WRONG COLOR");
                                                 ++mistakesAmount;
-                                                clColors.setBackgroundColor(
+                                                cstLtClr.setBackgroundColor(
                                                         getResources().getColor(R.color.seq_training_wrong_choice
                                                 ));
                                                 new Handler().postDelayed(new Runnable() {
                                                     @Override
                                                     public void run() {
-                                                        clColors.setBackgroundColor(
+                                                        cstLtClr.setBackgroundColor(
                                                                 getResources().getColor(R.color.white_blue)
                                                         );
                                                     }

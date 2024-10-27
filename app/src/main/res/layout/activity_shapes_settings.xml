@@ -15,11 +15,11 @@
         />
 
     <ScrollView
-        android:id="@+id/scroll_view"
+        android:id="@+id/scr_v_settings_shp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintBottom_toTopOf="@+id/btn_save"
+        app:layout_constraintBottom_toTopOf="@+id/btn_save_settings_shp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 
@@ -31,14 +31,14 @@
             >
 
         <TextView
-            android:id="@+id/tv_shapes_amount"
+            android:id="@+id/tv_shp_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constrainedWidth="true"
-            app:layout_constraintTop_toTopOf="@id/pckr_shapes_amount"
-            app:layout_constraintBottom_toBottomOf="@id/pckr_shapes_amount"
+            app:layout_constraintTop_toTopOf="@id/num_pck_shp_amount"
+            app:layout_constraintBottom_toBottomOf="@id/num_pck_shp_amount"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/pckr_shapes_amount"
+            app:layout_constraintEnd_toStartOf="@id/num_pck_shp_amount"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintHorizontal_bias="0"
             android:text="@string/shapes_amount"
@@ -46,11 +46,11 @@
             />
 
         <NumberPicker
-            android:id="@+id/pckr_shapes_amount"
+            android:id="@+id/num_pck_shp_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tv_shapes_amount"
+            app:layout_constraintStart_toEndOf="@id/tv_shp_amount"
             app:layout_constraintEnd_toEndOf="parent"
 
             android:theme="@style/NumberPickerTheme"
@@ -62,14 +62,14 @@
             />
 
         <TextView
-            android:id="@+id/tv_distinct_shapes_amount"
+            android:id="@+id/tv_distinct_shp_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constrainedWidth="true"
-            app:layout_constraintTop_toTopOf="@id/pckr_distinct_shapes_amount"
-            app:layout_constraintBottom_toBottomOf="@id/pckr_distinct_shapes_amount"
+            app:layout_constraintTop_toTopOf="@id/num_pck_distinct_shp_amount"
+            app:layout_constraintBottom_toBottomOf="@id/num_pck_distinct_shp_amount"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/pckr_distinct_shapes_amount"
+            app:layout_constraintEnd_toStartOf="@id/num_pck_distinct_shp_amount"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintHorizontal_bias="0"
             android:text="@string/distinct_shapes_amount"
@@ -77,11 +77,11 @@
             />
 
         <NumberPicker
-            android:id="@+id/pckr_distinct_shapes_amount"
+            android:id="@+id/num_pck_distinct_shp_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/pckr_shapes_amount"
-            app:layout_constraintStart_toEndOf="@id/tv_distinct_shapes_amount"
+            app:layout_constraintTop_toBottomOf="@id/num_pck_shp_amount"
+            app:layout_constraintStart_toEndOf="@id/tv_distinct_shp_amount"
             app:layout_constraintEnd_toEndOf="parent"
 
             android:theme="@style/NumberPickerTheme"
@@ -93,14 +93,14 @@
             />
 
         <TextView
-            android:id="@+id/tv_shape_show_time"
+            android:id="@+id/tv_shp_show_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constrainedWidth="true"
-            app:layout_constraintTop_toTopOf="@id/pckr_shape_show_time"
-            app:layout_constraintBottom_toBottomOf="@id/pckr_shape_show_time"
+            app:layout_constraintTop_toTopOf="@id/num_pck_shape_show_time"
+            app:layout_constraintBottom_toBottomOf="@id/num_pck_shape_show_time"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/pckr_shape_show_time"
+            app:layout_constraintEnd_toStartOf="@id/num_pck_shape_show_time"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintHorizontal_bias="0"
             android:text="@string/shape_show_time"
@@ -108,11 +108,11 @@
             />
 
         <NumberPicker
-            android:id="@+id/pckr_shape_show_time"
+            android:id="@+id/num_pck_shape_show_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/pckr_distinct_shapes_amount"
-            app:layout_constraintStart_toEndOf="@id/tv_shape_show_time"
+            app:layout_constraintTop_toBottomOf="@id/num_pck_distinct_shp_amount"
+            app:layout_constraintStart_toEndOf="@id/tv_shp_show_time"
             app:layout_constraintEnd_toEndOf="parent"
 
             android:theme="@style/NumberPickerTheme"
@@ -125,13 +125,13 @@
 
     </ScrollView>
     <ImageButton
-        android:id="@+id/btn_save"
+        android:id="@+id/btn_save_settings_shp"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        app:layout_constraintTop_toBottomOf="@id/scroll_view"
+        app:layout_constraintTop_toBottomOf="@id/scr_v_settings_shp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn_save_and_play"
+        app:layout_constraintEnd_toStartOf="@id/btn_play_w_settings_shp"
 
         android:layout_marginBottom="@dimen/settings_medium_margin"
         android:layout_marginTop="@dimen/settings_medium_margin"
@@ -143,12 +143,12 @@
         />
 
     <ImageButton
-        android:id="@+id/btn_save_and_play"
+        android:id="@+id/btn_play_w_settings_shp"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        app:layout_constraintBottom_toBottomOf="@id/btn_save"
-        app:layout_constraintTop_toTopOf="@id/btn_save"
-        app:layout_constraintStart_toEndOf="@id/btn_save"
+        app:layout_constraintBottom_toBottomOf="@id/btn_save_settings_shp"
+        app:layout_constraintTop_toTopOf="@id/btn_save_settings_shp"
+        app:layout_constraintStart_toEndOf="@id/btn_save_settings_shp"
         app:layout_constraintEnd_toEndOf="parent"
 
         android:background="@drawable/btn_save_and_play_bg"

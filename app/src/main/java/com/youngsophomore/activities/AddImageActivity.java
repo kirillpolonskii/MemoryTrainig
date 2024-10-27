@@ -2,8 +2,6 @@ package com.youngsophomore.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -70,7 +68,7 @@ public class AddImageActivity extends AppCompatActivity implements
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .setReorderingAllowed(true)
-                .add(R.id.frgt_view, NewQuestionsListFragment.class, bundle, NEW_QUESTIONS_FRAGMENT_TAG)
+                .add(R.id.frt_cnt_v_tiles, NewQuestionsListFragment.class, bundle, NEW_QUESTIONS_FRAGMENT_TAG)
                 .commit();
 
         ImageButton btnAddQuestion = findViewById(R.id.btn_add_question);
@@ -104,7 +102,7 @@ public class AddImageActivity extends AppCompatActivity implements
                         Bundle addQuestionFragmentBundle = new Bundle();
                         addQuestionFragmentBundle.putString(getString(R.string.chosen_img_key), imageUri.toString());
                         fragmentManager.beginTransaction()
-                                .replace(R.id.frgt_view, AddQuestionFragment.class, addQuestionFragmentBundle, ADD_QUESTION_FRAGMENT_TAG)
+                                .replace(R.id.frt_cnt_v_tiles, AddQuestionFragment.class, addQuestionFragmentBundle, ADD_QUESTION_FRAGMENT_TAG)
                                 .setReorderingAllowed(true)
                                 .addToBackStack("transaction_add_questions_collection_fragment")
                                 .commit();
@@ -147,7 +145,7 @@ public class AddImageActivity extends AppCompatActivity implements
                         }
                         bundle.putParcelableArrayList(getString(R.string.new_questions_collection_key), newQuestions);
                         fragmentManager.beginTransaction()
-                                .replace(R.id.frgt_view, NewQuestionsListFragment.class, bundle, NEW_QUESTIONS_FRAGMENT_TAG)
+                                .replace(R.id.frt_cnt_v_tiles, NewQuestionsListFragment.class, bundle, NEW_QUESTIONS_FRAGMENT_TAG)
                                 .setReorderingAllowed(true)
                                 .commit();
                         fragmentManager.popBackStack();

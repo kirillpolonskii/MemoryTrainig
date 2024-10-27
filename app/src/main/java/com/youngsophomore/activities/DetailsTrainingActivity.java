@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -17,20 +16,13 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.youngsophomore.R;
-import com.youngsophomore.adapters.PhrasesTrainingAdapter;
 import com.youngsophomore.data.CollectionsStorage;
 import com.youngsophomore.data.Question;
 import com.youngsophomore.fragments.FinishDialogFragment;
@@ -38,9 +30,6 @@ import com.youngsophomore.fragments.StopwatchFragment;
 import com.youngsophomore.helpers.TrainHelper;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -112,7 +101,7 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
                 Uri imageUri = Uri.parse(sharedPreferences.getString(questionsCollectionTitle, ""));
                 // Log.d(DEBUG_TAG, phrasesCollectionsTitles.toString());
                 // заменить textview на imageview и показать картинку
-                ConstraintLayout cntLytPretrain = findViewById(R.id.cnstrnt_lyt_pretrain);
+                ConstraintLayout cntLytPretrain = findViewById(R.id.cst_lt_pretrain);
                 cntLytPretrain.removeView(tvCountdown);
                 ImageView ivCollectionImage = new ImageView(getApplicationContext());
                 ivCollectionImage.setId(View.generateViewId());
@@ -289,7 +278,7 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         fragmentManager.beginTransaction()
                                 .setReorderingAllowed(true)
-                                .add(R.id.frgt_view, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
+                                .add(R.id.frt_cnt_v_tiles, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
                                 .commit();
                         // методом nextQuestion() заполнить textview текущим вопросом, сделать видимыми
                         // только нужные radiobutton или checkbox и заполнить их ответами

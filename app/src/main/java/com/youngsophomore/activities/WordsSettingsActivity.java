@@ -49,17 +49,15 @@ public class WordsSettingsActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .setReorderingAllowed(true)
-                .add(R.id.frgt_view, DisplayWordsSettingsFragment.class, null, DISPLAY_SETTINGS_FRAGMENT_TAG)
+                .add(R.id.frt_cnt_v_wrd, DisplayWordsSettingsFragment.class, null, DISPLAY_SETTINGS_FRAGMENT_TAG)
                 .commit();
 
-
-        ImageButton btnAddWordsCollection = findViewById(R.id.btn_add_words_collection);
-        ImageButton btnSaveWordsSettings = findViewById(R.id.btn_save_words_settings);
-        ImageButton btnSaveWordsSettingsAndPlay = findViewById(R.id.btn_save_words_settings_and_play);
-        ImageButton btnConfirmWordsCollection = findViewById(R.id.btn_confirm_words_collection);
+        ImageButton btnSaveSettings = findViewById(R.id.btn_save_wrd_settings);
+        ImageButton btnPlayWSettings = findViewById(R.id.btn_play_w_settings_wrd);
+        ImageButton btnAddWordsCollection = findViewById(R.id.btn_add_wrd_collection);
+        ImageButton btnConfirmWordsCollection = findViewById(R.id.btn_confirm_wrd_collection);
 
         PrepHelper.deactivateBtn(btnConfirmWordsCollection);
-
         btnAddWordsCollection.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
@@ -77,12 +75,12 @@ public class WordsSettingsActivity extends AppCompatActivity {
                         Log.d(DEBUG_TAG, "btnAddWordsCollection onTouch. Action was UP");
 
                         PrepHelper.deactivateBtn(btnAddWordsCollection);
-                        PrepHelper.deactivateBtn(btnSaveWordsSettings);
-                        PrepHelper.deactivateBtn(btnSaveWordsSettingsAndPlay);
+                        PrepHelper.deactivateBtn(btnSaveSettings);
+                        PrepHelper.deactivateBtn(btnPlayWSettings);
                         PrepHelper.activateBtn(btnConfirmWordsCollection, elevPx);
 
                         fragmentManager.beginTransaction()
-                                .replace(R.id.frgt_view, AddWordsCollectionFragment.class, null, ADD_COLLECTION_FRAGMENT_TAG)
+                                .replace(R.id.frt_cnt_v_wrd, AddWordsCollectionFragment.class, null, ADD_COLLECTION_FRAGMENT_TAG)
                                 .setReorderingAllowed(true)
                                 .addToBackStack("transaction_add_words_collection_fragment")
                                 .commit();
@@ -94,27 +92,27 @@ public class WordsSettingsActivity extends AppCompatActivity {
             }
         });
 
-        btnSaveWordsSettings.setOnTouchListener(new View.OnTouchListener() {
+        btnSaveSettings.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnSaveWordsSettings onTouch. Action was DOWN");
+                        Log.d(DEBUG_TAG, "btnSaveSettings onTouch. Action was DOWN");
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnSaveWordsSettings onTouch. Action was MOVE");
+                        Log.d(DEBUG_TAG, "btnSaveSettings onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        Log.d(DEBUG_TAG, "btnSaveWordsSettings onTouch. Action was UP");
+                        Log.d(DEBUG_TAG, "btnSaveSettings onTouch. Action was UP");
                         view.setElevation(elevPx);
                         Fragment displayWordsCollectionsFragment = fragmentManager.findFragmentByTag(DISPLAY_SETTINGS_FRAGMENT_TAG);
                         sprWordsCollection = displayWordsCollectionsFragment.getView()
-                                .findViewById(R.id.spr_words_collection);
+                                .findViewById(R.id.spr_wrd_collection);
                         pckrWordShowTime = displayWordsCollectionsFragment.getView()
-                                .findViewById(R.id.pckr_word_show_time);
+                                .findViewById(R.id.num_pck_wrd_show_time);
 
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt(getString(R.string.saved_words_collection_position_key),
@@ -131,27 +129,27 @@ public class WordsSettingsActivity extends AppCompatActivity {
             }
         });
 
-        btnSaveWordsSettingsAndPlay.setOnTouchListener(new View.OnTouchListener() {
+        btnPlayWSettings.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnSaveWordsSettingsAndPlay onTouch. Action was DOWN");
+                        Log.d(DEBUG_TAG, "btnPlayWSettings onTouch. Action was DOWN");
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnSaveWordsSettingsAndPlay onTouch. Action was MOVE");
+                        Log.d(DEBUG_TAG, "btnPlayWSettings onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        Log.d(DEBUG_TAG, "btnSaveWordsSettingsAndPlay onTouch. Action was UP");
+                        Log.d(DEBUG_TAG, "btnPlayWSettings onTouch. Action was UP");
                         view.setElevation(elevPx);
                         Fragment displayWordsCollectionsFragment = fragmentManager.findFragmentByTag(DISPLAY_SETTINGS_FRAGMENT_TAG);
                         sprWordsCollection = displayWordsCollectionsFragment.getView()
-                                .findViewById(R.id.spr_words_collection);
+                                .findViewById(R.id.spr_wrd_collection);
                         pckrWordShowTime = displayWordsCollectionsFragment.getView()
-                                .findViewById(R.id.pckr_word_show_time);
+                                .findViewById(R.id.num_pck_wrd_show_time);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt(getString(R.string.saved_words_collection_position_key),
                                 sprWordsCollection.getSelectedItemPosition());
@@ -185,9 +183,9 @@ public class WordsSettingsActivity extends AppCompatActivity {
                         Log.d(DEBUG_TAG, "btnConfirmWordsCollection onTouch. Action was UP");
                         Fragment addWordsCollectionFragment = fragmentManager.findFragmentByTag(ADD_COLLECTION_FRAGMENT_TAG);
                         EditText etWordsCollectionTitle = addWordsCollectionFragment.getView()
-                                .findViewById(R.id.et_words_collection_title);
+                                .findViewById(R.id.et_wrd_collection_title);
                         EditText etWordsCollection = addWordsCollectionFragment.getView()
-                                .findViewById(R.id.et_words_collection);
+                                .findViewById(R.id.et_wrd_collection);
                         String strWordsCollectionsTitles =
                                 sharedPreferences.getString(getString(R.string.words_collections_titles_key), "");
                         String wordsCollectionTitle = etWordsCollectionTitle.getText().toString();
@@ -195,8 +193,8 @@ public class WordsSettingsActivity extends AppCompatActivity {
                             onBackPressed();
                             toolbar.setTitle(R.string.tbr_words_settings_title);
                             PrepHelper.activateBtn(btnAddWordsCollection, elevPx);
-                            PrepHelper.activateBtn(btnSaveWordsSettings, elevPx);
-                            PrepHelper.activateBtn(btnSaveWordsSettingsAndPlay, elevPx);
+                            PrepHelper.activateBtn(btnSaveSettings, elevPx);
+                            PrepHelper.activateBtn(btnPlayWSettings, elevPx);
                             PrepHelper.deactivateBtn(btnConfirmWordsCollection);
                         }
                         else{
@@ -210,8 +208,8 @@ public class WordsSettingsActivity extends AppCompatActivity {
                                 onBackPressed();
                                 toolbar.setTitle(R.string.tbr_words_settings_title);
                                 PrepHelper.activateBtn(btnAddWordsCollection, elevPx);
-                                PrepHelper.activateBtn(btnSaveWordsSettings, elevPx);
-                                PrepHelper.activateBtn(btnSaveWordsSettingsAndPlay, elevPx);
+                                PrepHelper.activateBtn(btnSaveSettings, elevPx);
+                                PrepHelper.activateBtn(btnPlayWSettings, elevPx);
                                 PrepHelper.deactivateBtn(btnConfirmWordsCollection);
                             }
                             else{

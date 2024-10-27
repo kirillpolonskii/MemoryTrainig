@@ -12,7 +12,7 @@
         motion:motionInterpolator="linear"
         >
         <OnSwipe
-            motion:touchRegionId="@id/btn_mahjong_training"
+            motion:touchRegionId="@id/btn_mhj_training"
             motion:dragDirection="dragLeft"
             motion:dragScale="8"
             motion:onTouchUp="autoComplete"
@@ -25,7 +25,7 @@
         motion:motionInterpolator="linear"
         >
         <OnSwipe
-            motion:touchRegionId="@id/btn_colors_training"
+            motion:touchRegionId="@id/btn_clr_training"
             motion:dragDirection="dragLeft"
             motion:dragScale="8"
             motion:onTouchUp="autoComplete"
@@ -38,7 +38,7 @@
         motion:motionInterpolator="linear"
         >
         <OnSwipe
-            motion:touchRegionId="@id/btn_shapes_training"
+            motion:touchRegionId="@id/btn_shp_training"
             motion:dragDirection="dragLeft"
             motion:dragScale="8"
             motion:onTouchUp="autoComplete"
@@ -51,7 +51,7 @@
         motion:motionInterpolator="linear"
         >
         <OnSwipe
-            motion:touchRegionId="@id/btn_words_training"
+            motion:touchRegionId="@id/btn_wrd_training"
             motion:dragDirection="dragLeft"
             motion:dragScale="8"
             motion:onTouchUp="autoComplete"
@@ -64,7 +64,7 @@
         motion:motionInterpolator="linear"
         >
         <OnSwipe
-            motion:touchRegionId="@id/btn_phrases_training"
+            motion:touchRegionId="@id/btn_phr_training"
             motion:dragDirection="dragLeft"
             motion:dragScale="8"
             motion:onTouchUp="autoComplete"
@@ -77,7 +77,7 @@
         motion:motionInterpolator="linear"
         >
         <OnSwipe
-            motion:touchRegionId="@id/btn_details_training"
+            motion:touchRegionId="@id/btn_det_training"
             motion:dragDirection="dragLeft"
             motion:dragScale="8"
             motion:onTouchUp="autoComplete"
@@ -89,9 +89,9 @@
     -->
     <ConstraintSet android:id="@+id/base_state">
         <Constraint
-            android:id="@id/btn_mahjong_training"
+            android:id="@id/btn_mhj_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintBottom_toTopOf="@id/btn_colors_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_clr_training"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintTop_toTopOf="parent"
 
@@ -104,10 +104,10 @@
             />
 
         <Constraint
-            android:id="@id/btn_colors_training"
+            android:id="@id/btn_clr_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_mahjong_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_shapes_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_mhj_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_shp_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             motion:layout_constraintWidth_default="percent"
@@ -116,10 +116,10 @@
             />
 
         <Constraint
-            android:id="@id/btn_shapes_training"
+            android:id="@id/btn_shp_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_colors_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_words_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_clr_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_wrd_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             motion:layout_constraintWidth_default="percent"
@@ -127,10 +127,10 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_words_training"
+            android:id="@id/btn_wrd_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_shapes_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_phrases_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_shp_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_phr_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             motion:layout_constraintWidth_default="percent"
@@ -138,10 +138,10 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_phrases_training"
+            android:id="@id/btn_phr_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_words_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_details_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_wrd_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_det_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             motion:layout_constraintWidth_default="percent"
@@ -149,9 +149,9 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_details_training"
+            android:id="@id/btn_det_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_phrases_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_phr_training"
             motion:layout_constraintBottom_toBottomOf="@id/btn_stats"
             motion:layout_constraintEnd_toEndOf="parent"
 
@@ -162,10 +162,10 @@
     </ConstraintSet>
     <ConstraintSet android:id="@+id/mahjong_end">
         <Constraint
-            android:id="@id/btn_mahjong_training"
+            android:id="@id/btn_mhj_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintBottom_toTopOf="@id/btn_colors_training"
-            motion:layout_constraintEnd_toStartOf="@id/btn_mahjong_settings"
+            motion:layout_constraintBottom_toTopOf="@id/btn_clr_training"
+            motion:layout_constraintEnd_toStartOf="@id/btn_mhj_settings"
             motion:layout_constraintTop_toTopOf="parent"
 
             android:layout_marginEnd="8dp"
@@ -175,10 +175,10 @@
             motion:layout_constraintVertical_chainStyle="packed"
             />
         <Constraint
-            android:id="@id/btn_mahjong_settings"
+            android:id="@id/btn_mhj_settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            motion:layout_constraintTop_toTopOf="@id/btn_mahjong_training"
+            motion:layout_constraintTop_toTopOf="@id/btn_mhj_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             android:layout_marginEnd="8dp"
@@ -188,10 +188,10 @@
             android:src="@drawable/outline_settings_48"
             />
         <Constraint
-            android:id="@id/btn_colors_training"
+            android:id="@id/btn_clr_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_mahjong_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_shapes_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_mhj_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_shp_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             motion:layout_constraintWidth_default="percent"
@@ -199,10 +199,10 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_shapes_training"
+            android:id="@id/btn_shp_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_colors_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_words_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_clr_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_wrd_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             motion:layout_constraintWidth_default="percent"
@@ -210,10 +210,10 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_words_training"
+            android:id="@id/btn_wrd_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_shapes_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_phrases_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_shp_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_phr_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             motion:layout_constraintWidth_default="percent"
@@ -221,10 +221,10 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_phrases_training"
+            android:id="@id/btn_phr_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_words_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_details_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_wrd_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_det_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             motion:layout_constraintWidth_default="percent"
@@ -232,9 +232,9 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_details_training"
+            android:id="@id/btn_det_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_phrases_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_phr_training"
             motion:layout_constraintBottom_toBottomOf="@id/btn_stats"
             motion:layout_constraintEnd_toEndOf="parent"
 
@@ -246,11 +246,11 @@
 
     <ConstraintSet android:id="@+id/colors_end">
         <Constraint
-            android:id="@id/btn_colors_training"
+            android:id="@id/btn_clr_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_mahjong_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_shapes_training"
-            motion:layout_constraintEnd_toStartOf="@id/btn_colors_settings"
+            motion:layout_constraintTop_toBottomOf="@id/btn_mhj_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_shp_training"
+            motion:layout_constraintEnd_toStartOf="@id/btn_clr_settings"
 
             android:layout_marginEnd="8dp"
             motion:layout_constraintWidth_default="percent"
@@ -258,10 +258,10 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_colors_settings"
+            android:id="@id/btn_clr_settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            motion:layout_constraintTop_toTopOf="@id/btn_colors_training"
+            motion:layout_constraintTop_toTopOf="@id/btn_clr_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             android:layout_marginEnd="8dp"
@@ -271,9 +271,9 @@
             android:src="@drawable/outline_settings_48"
             />
         <Constraint
-            android:id="@id/btn_mahjong_training"
+            android:id="@id/btn_mhj_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintBottom_toTopOf="@id/btn_colors_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_clr_training"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintTop_toTopOf="parent"
 
@@ -285,10 +285,10 @@
 
             />
         <Constraint
-            android:id="@id/btn_shapes_training"
+            android:id="@id/btn_shp_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_colors_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_words_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_clr_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_wrd_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             motion:layout_constraintWidth_default="percent"
@@ -296,10 +296,10 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_words_training"
+            android:id="@id/btn_wrd_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_shapes_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_phrases_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_shp_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_phr_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             motion:layout_constraintWidth_default="percent"
@@ -307,10 +307,10 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_phrases_training"
+            android:id="@id/btn_phr_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_words_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_details_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_wrd_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_det_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             motion:layout_constraintWidth_default="percent"
@@ -318,9 +318,9 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_details_training"
+            android:id="@id/btn_det_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_phrases_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_phr_training"
             motion:layout_constraintBottom_toBottomOf="@id/btn_stats"
             motion:layout_constraintEnd_toEndOf="parent"
 
@@ -332,11 +332,11 @@
 
     <ConstraintSet android:id="@+id/shapes_end">
         <Constraint
-            android:id="@id/btn_shapes_training"
+            android:id="@id/btn_shp_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_colors_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_words_training"
-            motion:layout_constraintEnd_toStartOf="@id/btn_shapes_settings"
+            motion:layout_constraintTop_toBottomOf="@id/btn_clr_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_wrd_training"
+            motion:layout_constraintEnd_toStartOf="@id/btn_shp_settings"
 
             android:layout_marginEnd="8dp"
             motion:layout_constraintWidth_default="percent"
@@ -344,10 +344,10 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_shapes_settings"
+            android:id="@id/btn_shp_settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            motion:layout_constraintTop_toTopOf="@id/btn_shapes_training"
+            motion:layout_constraintTop_toTopOf="@id/btn_shp_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             android:layout_marginEnd="8dp"
@@ -357,9 +357,9 @@
             android:src="@drawable/outline_settings_48"
             />
         <Constraint
-            android:id="@id/btn_mahjong_training"
+            android:id="@id/btn_mhj_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintBottom_toTopOf="@id/btn_colors_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_clr_training"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintTop_toTopOf="parent"
 
@@ -371,10 +371,10 @@
 
             />
         <Constraint
-            android:id="@id/btn_colors_training"
+            android:id="@id/btn_clr_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_mahjong_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_shapes_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_mhj_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_shp_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             motion:layout_constraintWidth_default="percent"
@@ -382,10 +382,10 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_words_training"
+            android:id="@id/btn_wrd_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_shapes_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_phrases_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_shp_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_phr_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             motion:layout_constraintWidth_default="percent"
@@ -393,10 +393,10 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_phrases_training"
+            android:id="@id/btn_phr_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_words_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_details_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_wrd_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_det_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             motion:layout_constraintWidth_default="percent"
@@ -404,9 +404,9 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_details_training"
+            android:id="@id/btn_det_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_phrases_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_phr_training"
             motion:layout_constraintBottom_toBottomOf="@id/btn_stats"
             motion:layout_constraintEnd_toEndOf="parent"
 
@@ -418,11 +418,11 @@
 
     <ConstraintSet android:id="@+id/words_end">
         <Constraint
-            android:id="@id/btn_words_training"
+            android:id="@id/btn_wrd_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_shapes_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_phrases_training"
-            motion:layout_constraintEnd_toStartOf="@id/btn_words_settings"
+            motion:layout_constraintTop_toBottomOf="@id/btn_shp_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_phr_training"
+            motion:layout_constraintEnd_toStartOf="@id/btn_wrd_settings"
 
             android:layout_marginEnd="8dp"
             motion:layout_constraintWidth_default="percent"
@@ -430,10 +430,10 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_words_settings"
+            android:id="@id/btn_wrd_settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            motion:layout_constraintTop_toTopOf="@id/btn_words_training"
+            motion:layout_constraintTop_toTopOf="@id/btn_wrd_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             android:layout_marginEnd="8dp"
@@ -443,9 +443,9 @@
             android:src="@drawable/outline_settings_48"
             />
         <Constraint
-            android:id="@id/btn_mahjong_training"
+            android:id="@id/btn_mhj_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintBottom_toTopOf="@id/btn_colors_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_clr_training"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintTop_toTopOf="parent"
 
@@ -457,10 +457,10 @@
 
             />
         <Constraint
-            android:id="@id/btn_colors_training"
+            android:id="@id/btn_clr_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_mahjong_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_shapes_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_mhj_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_shp_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             motion:layout_constraintWidth_default="percent"
@@ -468,10 +468,10 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_shapes_training"
+            android:id="@id/btn_shp_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_colors_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_words_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_clr_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_wrd_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             motion:layout_constraintWidth_default="percent"
@@ -479,10 +479,10 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_phrases_training"
+            android:id="@id/btn_phr_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_words_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_details_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_wrd_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_det_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             motion:layout_constraintWidth_default="percent"
@@ -490,9 +490,9 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_details_training"
+            android:id="@id/btn_det_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_phrases_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_phr_training"
             motion:layout_constraintBottom_toBottomOf="@id/btn_stats"
             motion:layout_constraintEnd_toEndOf="parent"
 
@@ -504,11 +504,11 @@
 
     <ConstraintSet android:id="@+id/phrases_end">
         <Constraint
-            android:id="@id/btn_phrases_training"
+            android:id="@id/btn_phr_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_words_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_details_training"
-            motion:layout_constraintEnd_toStartOf="@id/btn_phrases_settings"
+            motion:layout_constraintTop_toBottomOf="@id/btn_wrd_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_det_training"
+            motion:layout_constraintEnd_toStartOf="@id/btn_phr_settings"
 
             android:layout_marginEnd="8dp"
             motion:layout_constraintWidth_default="percent"
@@ -516,10 +516,10 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_phrases_settings"
+            android:id="@id/btn_phr_settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            motion:layout_constraintTop_toTopOf="@id/btn_phrases_training"
+            motion:layout_constraintTop_toTopOf="@id/btn_phr_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             android:layout_marginEnd="8dp"
@@ -529,9 +529,9 @@
             android:src="@drawable/outline_settings_48"
             />
         <Constraint
-            android:id="@id/btn_mahjong_training"
+            android:id="@id/btn_mhj_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintBottom_toTopOf="@id/btn_colors_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_clr_training"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintTop_toTopOf="parent"
 
@@ -543,10 +543,10 @@
 
             />
         <Constraint
-            android:id="@id/btn_colors_training"
+            android:id="@id/btn_clr_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_mahjong_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_shapes_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_mhj_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_shp_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             motion:layout_constraintWidth_default="percent"
@@ -554,10 +554,10 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_shapes_training"
+            android:id="@id/btn_shp_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_colors_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_words_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_clr_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_wrd_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             motion:layout_constraintWidth_default="percent"
@@ -565,10 +565,10 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_words_training"
+            android:id="@id/btn_wrd_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_shapes_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_phrases_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_shp_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_phr_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             motion:layout_constraintWidth_default="percent"
@@ -576,9 +576,9 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_details_training"
+            android:id="@id/btn_det_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_phrases_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_phr_training"
             motion:layout_constraintBottom_toBottomOf="@id/btn_stats"
             motion:layout_constraintEnd_toEndOf="parent"
 
@@ -590,11 +590,11 @@
 
     <ConstraintSet android:id="@+id/details_end">
         <Constraint
-            android:id="@id/btn_details_training"
+            android:id="@id/btn_det_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_phrases_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_phr_training"
             motion:layout_constraintBottom_toBottomOf="@id/btn_stats"
-            motion:layout_constraintEnd_toStartOf="@id/btn_details_settings"
+            motion:layout_constraintEnd_toStartOf="@id/btn_det_settings"
 
             android:layout_marginEnd="8dp"
             motion:layout_constraintWidth_default="percent"
@@ -602,10 +602,10 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_details_settings"
+            android:id="@id/btn_det_settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            motion:layout_constraintTop_toTopOf="@id/btn_details_training"
+            motion:layout_constraintTop_toTopOf="@id/btn_det_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             android:layout_marginEnd="8dp"
@@ -615,9 +615,9 @@
             android:src="@drawable/outline_settings_48"
             />
         <Constraint
-            android:id="@id/btn_mahjong_training"
+            android:id="@id/btn_mhj_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintBottom_toTopOf="@id/btn_colors_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_clr_training"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintTop_toTopOf="parent"
 
@@ -629,10 +629,10 @@
 
             />
         <Constraint
-            android:id="@id/btn_colors_training"
+            android:id="@id/btn_clr_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_mahjong_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_shapes_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_mhj_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_shp_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             motion:layout_constraintWidth_default="percent"
@@ -640,10 +640,10 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_shapes_training"
+            android:id="@id/btn_shp_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_colors_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_words_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_clr_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_wrd_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             motion:layout_constraintWidth_default="percent"
@@ -651,10 +651,10 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_words_training"
+            android:id="@id/btn_wrd_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_shapes_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_phrases_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_shp_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_phr_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             motion:layout_constraintWidth_default="percent"
@@ -662,10 +662,10 @@
             motion:layout_constraintHeight="wrap_content"
             />
         <Constraint
-            android:id="@id/btn_phrases_training"
+            android:id="@id/btn_phr_training"
             style="@style/main_menu_btn"
-            motion:layout_constraintTop_toBottomOf="@id/btn_words_training"
-            motion:layout_constraintBottom_toTopOf="@id/btn_details_training"
+            motion:layout_constraintTop_toBottomOf="@id/btn_wrd_training"
+            motion:layout_constraintBottom_toTopOf="@id/btn_det_training"
             motion:layout_constraintEnd_toEndOf="parent"
 
             motion:layout_constraintWidth_default="percent"

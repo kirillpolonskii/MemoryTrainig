@@ -16,14 +16,14 @@
         />
 
     <TextView
-        android:id="@+id/tv_remember_time"
+        android:id="@+id/tv_show_time_mhj"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constrainedWidth="true"
-        app:layout_constraintTop_toTopOf="@id/number_picker"
-        app:layout_constraintBottom_toBottomOf="@id/number_picker"
+        app:layout_constraintTop_toTopOf="@id/num_pck_show_time_mhj"
+        app:layout_constraintBottom_toBottomOf="@id/num_pck_show_time_mhj"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/number_picker"
+        app:layout_constraintEnd_toStartOf="@id/num_pck_show_time_mhj"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintHorizontal_bias="0"
         android:text="@string/remember_time"
@@ -31,11 +31,11 @@
         />
 
     <NumberPicker
-        android:id="@+id/number_picker"
+        android:id="@+id/num_pck_show_time_mhj"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintStart_toEndOf="@id/tv_remember_time"
+        app:layout_constraintStart_toEndOf="@id/tv_show_time_mhj"
         app:layout_constraintEnd_toEndOf="parent"
 
         android:theme="@style/NumberPickerTheme"
@@ -52,9 +52,9 @@
         android:layout_height="wrap_content"
         app:layout_constrainedWidth="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/sgbtn_tiles_amount"
-        app:layout_constraintTop_toTopOf="@id/sgbtn_tiles_amount"
-        app:layout_constraintBottom_toBottomOf="@id/sgbtn_tiles_amount"
+        app:layout_constraintEnd_toStartOf="@id/sg_btn_gr_tiles_amount"
+        app:layout_constraintTop_toTopOf="@id/sg_btn_gr_tiles_amount"
+        app:layout_constraintBottom_toBottomOf="@id/sg_btn_gr_tiles_amount"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintHorizontal_bias="0"
         android:text="@string/tiles_amount"
@@ -62,12 +62,12 @@
         />
 
     <com.addisonelliott.segmentedbutton.SegmentedButtonGroup
-        android:id="@+id/sgbtn_tiles_amount"
+        android:id="@+id/sg_btn_gr_tiles_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/tv_tiles_amount"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/number_picker"
+        app:layout_constraintTop_toBottomOf="@id/num_pck_show_time_mhj"
         android:layout_marginStart="@dimen/settings_small_margin"
         android:elevation="@dimen/sgbtn_tiles_elev"
         style="@style/SegmentedButtonGroupStyle"
@@ -103,10 +103,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constrainedWidth="true"
-        app:layout_constraintTop_toTopOf="@id/sgbtn_equal_tiles_amount"
-        app:layout_constraintBottom_toBottomOf="@id/sgbtn_equal_tiles_amount"
+        app:layout_constraintTop_toTopOf="@id/sg_btn_gr_equal_tiles_amount"
+        app:layout_constraintBottom_toBottomOf="@id/sg_btn_gr_equal_tiles_amount"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/sgbtn_equal_tiles_amount"
+        app:layout_constraintEnd_toStartOf="@id/sg_btn_gr_equal_tiles_amount"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintHorizontal_bias="0"
         android:layout_marginEnd="5dp"
@@ -115,12 +115,12 @@
         />
 
     <com.addisonelliott.segmentedbutton.SegmentedButtonGroup
-        android:id="@+id/sgbtn_equal_tiles_amount"
+        android:id="@+id/sg_btn_gr_equal_tiles_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/tv_equal_tiles_amount"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sgbtn_tiles_amount"
+        app:layout_constraintTop_toBottomOf="@id/sg_btn_gr_tiles_amount"
         android:layout_marginStart="@dimen/settings_small_margin"
         android:layout_marginEnd="@dimen/settings_medium_margin"
         android:layout_marginTop="30dp"
@@ -173,13 +173,13 @@
     </com.addisonelliott.segmentedbutton.SegmentedButtonGroup>
 
     <ImageButton
-        android:id="@+id/btn_save"
+        android:id="@+id/btn_save_settings_mhj"
         android:layout_width="60dp"
         android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn_save_and_play"
-        app:layout_constraintTop_toBottomOf="@id/sgbtn_equal_tiles_amount"
+        app:layout_constraintEnd_toStartOf="@id/btn_play_w_settings_mhj"
+        app:layout_constraintTop_toBottomOf="@id/sg_btn_gr_equal_tiles_amount"
         android:background="@drawable/btn_save_bg"
         android:contentDescription="@string/info"
         android:elevation="@dimen/btn_stats_elev"
@@ -188,12 +188,12 @@
         />
     <!-- btn_save_and_play rename to btn_play_w_settings-->
     <ImageButton
-        android:id="@+id/btn_save_and_play"
+        android:id="@+id/btn_play_w_settings_mhj"
         android:layout_width="60dp"
         android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sgbtn_equal_tiles_amount"
-        app:layout_constraintStart_toEndOf="@id/btn_save"
+        app:layout_constraintTop_toBottomOf="@id/sg_btn_gr_equal_tiles_amount"
+        app:layout_constraintStart_toEndOf="@id/btn_save_settings_mhj"
         app:layout_constraintEnd_toEndOf="parent"
 
         android:background="@drawable/btn_save_and_play_bg"

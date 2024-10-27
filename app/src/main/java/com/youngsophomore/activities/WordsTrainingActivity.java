@@ -3,7 +3,6 @@ package com.youngsophomore.activities;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -13,17 +12,10 @@ import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -112,14 +104,17 @@ public class WordsTrainingActivity extends AppCompatActivity implements
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         fragmentManager.beginTransaction()
                                 .setReorderingAllowed(true)
-                                .add(R.id.frgt_view, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
+                                .add(R.id.frt_cnt_v_wrd, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
                                 .commit();
                         //Log.d(DEBUG_TAG, "clWords.getChildCount() = " + clWords.getChildCount());
                         // Fill palette with right amount of words
                         ArrayList<Button> btnWordPal = new ArrayList<>();
                         for(int i = 0; i < clWordsPal.getChildCount() - 2; ++i){
                             btnWordPal.add((Button) clWordsPal.getChildAt(i));
-                            btnWordPal.get(i).setText(curWordPalette.get(i));
+                            if (i < curPaletteSize)
+                                btnWordPal.get(i).setText(curWordPalette.get(i));
+                            else
+                                btnWordPal.get(i).setVisibility(View.GONE);
                             int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                             btnWordPal.get(i).setElevation(elevPx);
                         }

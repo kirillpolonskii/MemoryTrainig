@@ -60,7 +60,7 @@ public class PhrasesSettingsActivity extends AppCompatActivity
                 R.layout.custom_spinner_item, phrasesCollectionsTitles
                 );
         adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
-        sprPhrasesCollection = findViewById(R.id.spr_phrases_collection);
+        sprPhrasesCollection = findViewById(R.id.spr_phr_collection);
         sprPhrasesCollection.setAdapter(adapter);
         sprPhrasesCollection.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -82,14 +82,14 @@ public class PhrasesSettingsActivity extends AppCompatActivity
 
         sprPhrasesCollection.setSelection(phrasesCollectionPosition);
 
-        NumberPicker pckrPhraseShowTime = findViewById(R.id.pckr_phrase_show_time);
+        NumberPicker pckrPhraseShowTime = findViewById(R.id.num_pck_phr_show_time);
         pckrPhraseShowTime.setMinValue(1);
         pckrPhraseShowTime.setMaxValue(6);
         pckrPhraseShowTime.setValue(phraseShowTime);
 
-        ImageButton btnAddPhrasesCollection = findViewById(R.id.btn_add_phrases_collection);
-        ImageButton btnSavePhrasesSettings = findViewById(R.id.btn_save_phrases_settings);
-        ImageButton btnPlayPhrasesWSettings = findViewById(R.id.btn_play_phrases_w_settings);
+        ImageButton btnAddPhrasesCollection = findViewById(R.id.btn_add_phr_collection);
+        ImageButton btnSaveSettings = findViewById(R.id.btn_save_phr_settings);
+        ImageButton btnPlayWSettings = findViewById(R.id.btn_play_w_settings_phr);
 
         btnAddPhrasesCollection.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -116,21 +116,21 @@ public class PhrasesSettingsActivity extends AppCompatActivity
             }
         });
 
-        btnSavePhrasesSettings.setOnTouchListener(new View.OnTouchListener() {
+        btnSaveSettings.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnSavePhrasesSettings onTouch. Action was DOWN");
+                        Log.d(DEBUG_TAG, "btnSaveSettings onTouch. Action was DOWN");
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnSavePhrasesSettings onTouch. Action was MOVE");
+                        Log.d(DEBUG_TAG, "btnSaveSettings onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        Log.d(DEBUG_TAG, "btnSavePhrasesSettings onTouch. Action was UP");
+                        Log.d(DEBUG_TAG, "btnSaveSettings onTouch. Action was UP");
                         view.setElevation(elevPx);
 
                         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -147,21 +147,21 @@ public class PhrasesSettingsActivity extends AppCompatActivity
             }
         });
 
-        btnPlayPhrasesWSettings.setOnTouchListener(new View.OnTouchListener() {
+        btnPlayWSettings.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnSavePhrasesSettingsAndPlay onTouch. Action was DOWN");
+                        Log.d(DEBUG_TAG, "btnSaveSettingsAndPlay onTouch. Action was DOWN");
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnSavePhrasesSettingsAndPlay onTouch. Action was MOVE");
+                        Log.d(DEBUG_TAG, "btnSaveSettingsAndPlay onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        Log.d(DEBUG_TAG, "btnSavePhrasesSettingsAndPlay onTouch. Action was UP");
+                        Log.d(DEBUG_TAG, "btnSaveSettingsAndPlay onTouch. Action was UP");
                         view.setElevation(elevPx);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt(getString(R.string.saved_phrases_collection_position_key),

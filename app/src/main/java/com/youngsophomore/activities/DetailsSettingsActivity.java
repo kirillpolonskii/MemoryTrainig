@@ -72,14 +72,14 @@ public class DetailsSettingsActivity extends AppCompatActivity
             }
         });
 
-        NumberPicker pckrImageShowTime = findViewById(R.id.pckr_image_show_time);
+        NumberPicker pckrImageShowTime = findViewById(R.id.num_pck_image_show_time);
         pckrImageShowTime.setMinValue(1);
         pckrImageShowTime.setMaxValue(10);
         pckrImageShowTime.setValue(imageShowTime);
 
         ImageButton btnAddImage = findViewById(R.id.btn_add_image);
-        ImageButton btnSaveDetailsSettings = findViewById(R.id.btn_save_details_settings);
-        ImageButton btnPlayDetailsWSettings = findViewById(R.id.btn_play_details_w_settings);
+        ImageButton btnSaveDetailsSettings = findViewById(R.id.btn_save_settings_det);
+        ImageButton btnPlayDetailsWSettings = findViewById(R.id.btn_play_w_settings_det);
 
         btnAddImage.setOnTouchListener(new View.OnTouchListener() {
             @Override

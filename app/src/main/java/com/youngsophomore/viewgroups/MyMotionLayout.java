@@ -47,18 +47,18 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
     private ImageButton btnWordsSettings;
     private ImageButton btnPhrasesSettings;
     private ImageButton btnDetailsSettings;
-    private final int idBtnMahjongTraining = R.id.btn_mahjong_training;
-    private final int idBtnColorsTraining = R.id.btn_colors_training;
-    private final int idBtnShapesTraining = R.id.btn_shapes_training;
-    private final int idBtnWordsTraining = R.id.btn_words_training;
-    private final int idBtnPhrasesTraining = R.id.btn_phrases_training;
-    private final int idBtnDetailsTraining = R.id.btn_details_training;
-    private final int idBtnMahjongSettings = R.id.btn_mahjong_settings;
-    private final int idBtnColorsSettings = R.id.btn_colors_settings;
-    private final int idBtnShapesSettings = R.id.btn_shapes_settings;
-    private final int idBtnWordsSettings = R.id.btn_words_settings;
-    private final int idBtnPhrasesSettings = R.id.btn_phrases_settings;
-    private final int idBtnDetailsSettings = R.id.btn_details_settings;
+    private final int idBtnMahjongTraining = R.id.btn_mhj_training;
+    private final int idBtnColorsTraining = R.id.btn_clr_training;
+    private final int idBtnShapesTraining = R.id.btn_shp_training;
+    private final int idBtnWordsTraining = R.id.btn_wrd_training;
+    private final int idBtnPhrasesTraining = R.id.btn_phr_training;
+    private final int idBtnDetailsTraining = R.id.btn_det_training;
+    private final int idBtnMahjongSettings = R.id.btn_mhj_settings;
+    private final int idBtnColorsSettings = R.id.btn_clr_settings;
+    private final int idBtnShapesSettings = R.id.btn_shp_settings;
+    private final int idBtnWordsSettings = R.id.btn_wrd_settings;
+    private final int idBtnPhrasesSettings = R.id.btn_phr_settings;
+    private final int idBtnDetailsSettings = R.id.btn_det_settings;
 
     private boolean viewWasMoved;
     private int idBtnWithEvent = 0;
@@ -83,10 +83,10 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
     @Override
     public boolean onInterceptTouchEvent(MotionEvent motionEvent){
         int action = motionEvent.getAction();
-        btnInfo = findViewById(R.id.btn_info);
+        btnInfo = findViewById(R.id.btn_info_main_m);
         btnStats = findViewById(R.id.btn_stats);
-        segmentedButtonGroup = findViewById(R.id.sgbtn_enru);
-        btnMahjongSettings = findViewById(R.id.btn_mahjong_settings);
+        segmentedButtonGroup = findViewById(R.id.sg_btn_gr_switch_lang);
+        btnMahjongSettings = findViewById(R.id.btn_mhj_settings);
 
         switch (action) {
             case (MotionEvent.ACTION_DOWN):
@@ -133,20 +133,20 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
     @Override
     public boolean onTouchEvent(MotionEvent motionEvent){
         int action = motionEvent.getAction();
-        MyMotionLayout myMotionLayout = findViewById(R.id.motion_layout);
-        btnMahjongTraining = findViewById(R.id.btn_mahjong_training);
-        btnColorsTraining = findViewById(R.id.btn_colors_training);
-        btnShapesTraining = findViewById(R.id.btn_shapes_training);
-        btnWordsTraining = findViewById(R.id.btn_words_training);
-        btnPhrasesTraining = findViewById(R.id.btn_phrases_training);
-        btnDetailsTraining = findViewById(R.id.btn_details_training);
+        MyMotionLayout myMotionLayout = findViewById(R.id.mtn_lt_main_m);
+        btnMahjongTraining = findViewById(R.id.btn_mhj_training);
+        btnColorsTraining = findViewById(R.id.btn_clr_training);
+        btnShapesTraining = findViewById(R.id.btn_shp_training);
+        btnWordsTraining = findViewById(R.id.btn_wrd_training);
+        btnPhrasesTraining = findViewById(R.id.btn_phr_training);
+        btnDetailsTraining = findViewById(R.id.btn_det_training);
 
-        btnMahjongSettings = findViewById(R.id.btn_mahjong_settings);
-        btnColorsSettings = findViewById(R.id.btn_colors_settings);
-        btnShapesSettings = findViewById(R.id.btn_shapes_settings);
-        btnWordsSettings = findViewById(R.id.btn_words_settings);
-        btnPhrasesSettings = findViewById(R.id.btn_phrases_settings);
-        btnDetailsSettings = findViewById(R.id.btn_details_settings);
+        btnMahjongSettings = findViewById(R.id.btn_mhj_settings);
+        btnColorsSettings = findViewById(R.id.btn_clr_settings);
+        btnShapesSettings = findViewById(R.id.btn_shp_settings);
+        btnWordsSettings = findViewById(R.id.btn_wrd_settings);
+        btnPhrasesSettings = findViewById(R.id.btn_phr_settings);
+        btnDetailsSettings = findViewById(R.id.btn_det_settings);
 
         switch (action) {
             case (MotionEvent.ACTION_DOWN):
@@ -158,58 +158,58 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
                 }
                 if(touchEventInsideTargetView(btnColorsTraining, motionEvent)) {
                     btnWithEvent = btnColorsTraining;
-                    idBtnWithEvent = R.id.btn_colors_training;
+                    idBtnWithEvent = R.id.btn_clr_training;
                     btnWithEvent.setElevation(0);
                 }
                 if(touchEventInsideTargetView(btnShapesTraining, motionEvent)) {
                     btnWithEvent = btnShapesTraining;
-                    idBtnWithEvent = R.id.btn_shapes_training;
+                    idBtnWithEvent = R.id.btn_shp_training;
                     btnWithEvent.setElevation(0);
                 }
                 if(touchEventInsideTargetView(btnWordsTraining, motionEvent)) {
                     btnWithEvent = btnWordsTraining;
-                    idBtnWithEvent = R.id.btn_words_training;
+                    idBtnWithEvent = R.id.btn_wrd_training;
                     btnWithEvent.setElevation(0);
                 }
                 if(touchEventInsideTargetView(btnPhrasesTraining, motionEvent)) {
                     btnWithEvent = btnPhrasesTraining;
-                    idBtnWithEvent = R.id.btn_phrases_training;
+                    idBtnWithEvent = R.id.btn_phr_training;
                     btnWithEvent.setElevation(0);
                 }
                 if(touchEventInsideTargetView(btnDetailsTraining, motionEvent)) {
                     btnWithEvent = btnDetailsTraining;
-                    idBtnWithEvent = R.id.btn_details_training;
+                    idBtnWithEvent = R.id.btn_det_training;
                     btnWithEvent.setElevation(0);
                 }
 
                 if(touchEventInsideTargetView(btnMahjongSettings, motionEvent)) {
                     btnSettingsWithEvent = btnMahjongSettings;
-                    idBtnWithEvent = R.id.btn_mahjong_settings;
+                    idBtnWithEvent = R.id.btn_mhj_settings;
                     btnSettingsWithEvent.setElevation(0);
                 }
                 if(touchEventInsideTargetView(btnColorsSettings, motionEvent)) {
                     btnSettingsWithEvent = btnColorsSettings;
-                    idBtnWithEvent = R.id.btn_colors_settings;
+                    idBtnWithEvent = R.id.btn_clr_settings;
                     btnSettingsWithEvent.setElevation(0);
                 }
                 if(touchEventInsideTargetView(btnShapesSettings, motionEvent)) {
                     btnSettingsWithEvent = btnShapesSettings;
-                    idBtnWithEvent = R.id.btn_shapes_settings;
+                    idBtnWithEvent = R.id.btn_shp_settings;
                     btnSettingsWithEvent.setElevation(0);
                 }
                 if(touchEventInsideTargetView(btnWordsSettings, motionEvent)) {
                     btnSettingsWithEvent = btnWordsSettings;
-                    idBtnWithEvent = R.id.btn_words_settings;
+                    idBtnWithEvent = R.id.btn_wrd_settings;
                     btnSettingsWithEvent.setElevation(0);
                 }
                 if(touchEventInsideTargetView(btnPhrasesSettings, motionEvent)) {
                     btnSettingsWithEvent = btnPhrasesSettings;
-                    idBtnWithEvent = R.id.btn_phrases_settings;
+                    idBtnWithEvent = R.id.btn_phr_settings;
                     btnSettingsWithEvent.setElevation(0);
                 }
                 if(touchEventInsideTargetView(btnDetailsSettings, motionEvent)) {
                     btnSettingsWithEvent = btnDetailsSettings;
-                    idBtnWithEvent = R.id.btn_details_settings;
+                    idBtnWithEvent = R.id.btn_det_settings;
                     btnSettingsWithEvent.setElevation(0);
                 }
 
@@ -235,7 +235,7 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
                         getContext().startActivity(intent);
                     }
                 }
-                if(btnWithEvent != null && idBtnWithEvent == R.id.btn_colors_training) {
+                if(btnWithEvent != null && idBtnWithEvent == R.id.btn_clr_training) {
                     Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. colors training was touched");
                     btnWithEvent.setElevation(elevTrainingPx);
                     if(!viewWasMoved){
@@ -243,7 +243,7 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
                         getContext().startActivity(intent);
                     }
                 }
-                if(btnWithEvent != null && idBtnWithEvent == R.id.btn_shapes_training) {
+                if(btnWithEvent != null && idBtnWithEvent == R.id.btn_shp_training) {
                     Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. shapes training was touched");
                     btnWithEvent.setElevation(elevTrainingPx);
                     if(!viewWasMoved){
@@ -251,7 +251,7 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
                         getContext().startActivity(intent);
                     }
                 }
-                if(btnWithEvent != null && idBtnWithEvent == R.id.btn_words_training) {
+                if(btnWithEvent != null && idBtnWithEvent == R.id.btn_wrd_training) {
                     Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. words training was touched");
                     btnWithEvent.setElevation(elevTrainingPx);
                     if(!viewWasMoved){
@@ -259,7 +259,7 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
                         getContext().startActivity(intent);
                     }
                 }
-                if(btnWithEvent != null && idBtnWithEvent == R.id.btn_phrases_training) {
+                if(btnWithEvent != null && idBtnWithEvent == R.id.btn_phr_training) {
                     Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. phrases training was touched");
                     btnWithEvent.setElevation(elevTrainingPx);
                     if(!viewWasMoved){
@@ -267,7 +267,7 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
                         getContext().startActivity(intent);
                     }
                 }
-                if(btnWithEvent != null && idBtnWithEvent == R.id.btn_details_training) {
+                if(btnWithEvent != null && idBtnWithEvent == R.id.btn_det_training) {
                     Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. details training was touched");
                     btnWithEvent.setElevation(elevTrainingPx);
                     if(!viewWasMoved){
@@ -276,37 +276,37 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
                     }
                 }
 
-                if(idBtnWithEvent == R.id.btn_mahjong_settings) {
+                if(idBtnWithEvent == R.id.btn_mhj_settings) {
                     Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. mahjong settings was clicked");
                     btnSettingsWithEvent.setElevation(elevSettingsPx);
                     Intent intent = new Intent(getContext(), MahjongSettingsActivity.class);
                     getContext().startActivity(intent);
                 }
-                if(idBtnWithEvent == R.id.btn_colors_settings) {
+                if(idBtnWithEvent == R.id.btn_clr_settings) {
                     Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. colors settings was clicked");
                     btnSettingsWithEvent.setElevation(elevSettingsPx);
                     Intent intent = new Intent(getContext(), ColorsSettingsActivity.class);
                     getContext().startActivity(intent);
                 }
-                if(idBtnWithEvent == R.id.btn_shapes_settings) {
+                if(idBtnWithEvent == R.id.btn_shp_settings) {
                     Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. shapes settings was clicked");
                     btnSettingsWithEvent.setElevation(elevSettingsPx);
                     Intent intent = new Intent(getContext(), ShapesSettingsActivity.class);
                     getContext().startActivity(intent);
                 }
-                if(idBtnWithEvent == R.id.btn_words_settings) {
+                if(idBtnWithEvent == R.id.btn_wrd_settings) {
                     Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. words settings was clicked");
                     btnSettingsWithEvent.setElevation(elevSettingsPx);
                     Intent intent = new Intent(getContext(), WordsSettingsActivity.class);
                     getContext().startActivity(intent);
                 }
-                if(idBtnWithEvent == R.id.btn_phrases_settings) {
+                if(idBtnWithEvent == R.id.btn_phr_settings) {
                     Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. phrases settings was clicked");
                     btnSettingsWithEvent.setElevation(elevSettingsPx);
                     Intent intent = new Intent(getContext(), PhrasesSettingsActivity.class);
                     getContext().startActivity(intent);
                 }
-                if(idBtnWithEvent == R.id.btn_details_settings) {
+                if(idBtnWithEvent == R.id.btn_det_settings) {
                     Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. details settings was clicked");
                     btnSettingsWithEvent.setElevation(elevSettingsPx);
                     Intent intent = new Intent(getContext(), DetailsSettingsActivity.class);

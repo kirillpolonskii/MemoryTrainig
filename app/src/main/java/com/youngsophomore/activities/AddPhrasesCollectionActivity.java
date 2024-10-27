@@ -50,7 +50,7 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .setReorderingAllowed(true)
-                .add(R.id.frgt_view, NewPhrasesListFragment.class, bundle, NEW_PHRASES_LIST_FRAGMENT_TAG)
+                .add(R.id.frt_cnt_v_tiles, NewPhrasesListFragment.class, bundle, NEW_PHRASES_LIST_FRAGMENT_TAG)
                 .commit();
 
         ImageButton btnAddPhrase = findViewById(R.id.btn_add_phrase);
@@ -81,7 +81,7 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
                         PrepHelper.activateBtn(btnConfirmPhrase, elevPx);
 
                         fragmentManager.beginTransaction()
-                                .replace(R.id.frgt_view, AddPhraseFragment.class, null, ADD_PHRASE_FRAGMENT_TAG)
+                                .replace(R.id.frt_cnt_v_tiles, AddPhraseFragment.class, null, ADD_PHRASE_FRAGMENT_TAG)
                                 .setReorderingAllowed(true)
                                 .addToBackStack("transaction_add_words_collection_fragment")
                                 .commit();
@@ -122,7 +122,7 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
                         }
                         bundle.putCharSequenceArrayList(getString(R.string.new_phrases_collection_key), newPhrasesCollectionCharS);
                         fragmentManager.beginTransaction()
-                                .replace(R.id.frgt_view, NewPhrasesListFragment.class, bundle, NEW_PHRASES_LIST_FRAGMENT_TAG)
+                                .replace(R.id.frt_cnt_v_tiles, NewPhrasesListFragment.class, bundle, NEW_PHRASES_LIST_FRAGMENT_TAG)
                                 .setReorderingAllowed(true)
                                 .commit();
                         fragmentManager.popBackStack();
