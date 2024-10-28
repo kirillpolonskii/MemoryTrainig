@@ -8,6 +8,7 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.util.Pair;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,6 +22,8 @@ import androidx.fragment.app.FragmentManager;
 
 import com.youngsophomore.R;
 import com.youngsophomore.data.CollectionsStorage;
+import com.youngsophomore.data.StatParam;
+import com.youngsophomore.data.Training;
 import com.youngsophomore.fragments.FinishDialogFragment;
 import com.youngsophomore.fragments.StopwatchFragment;
 import com.youngsophomore.helpers.TrainHelper;
@@ -171,11 +174,24 @@ public class WordsTrainingActivity extends AppCompatActivity implements
                                                 // Add 1 to mistakes amount
                                             }
                                             if(curWordSeqInd == wordsCollection.size()){
-                                                Log.d(DEBUG_TAG, "ALL COLORS CHOSEN CORRECT");
+                                                Log.d(DEBUG_TAG, "ALL WORDS CHOSEN CORRECT");
                                                 StopwatchFragment stopwatchFragment =
                                                         (StopwatchFragment) fragmentManager.findFragmentByTag(STOPWATCH_FRAGMENT_TAG);
                                                 trainingDurationSec = stopwatchFragment.getDecisecond() / 10;
                                                 stopwatchFragment.finishStopwatch();
+                                                TrainHelper.updateStatParams(sharedPreferences,
+                                                        new Pair<>(
+                                                                TrainHelper.getStatParamKey(Training.WRD, StatParam.TOTNUMMOVES, ((wordsCollection.size() / 5) + 1) * 5, wordShowTime),
+                                                                mistakesAmount
+                                                        ),
+                                                        new Pair<>(
+                                                                TrainHelper.getStatParamKey(Training.WRD, StatParam.TOTNUMTIME, ((wordsCollection.size() / 5) + 1) * 5, wordShowTime),
+                                                                trainingDurationSec
+                                                        ),
+                                                        new Pair<>(
+                                                                TrainHelper.getStatParamKey(Training.WRD, StatParam.TOTNUMTRAINS, ((wordsCollection.size() / 5) + 1) * 5, wordShowTime),
+                                                                1
+                                                        ));
                                                 DialogFragment finishFragment = new FinishDialogFragment(
                                                         trainingDurationSec + " с.",
                                                         getResources().getString(R.string.seq_train_mistakes_amount),

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
+import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -21,6 +22,8 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.youngsophomore.R;
+import com.youngsophomore.data.StatParam;
+import com.youngsophomore.data.Training;
 import com.youngsophomore.fragments.FinishDialogFragment;
 import com.youngsophomore.fragments.StopwatchFragment;
 import com.youngsophomore.helpers.TrainHelper;
@@ -173,7 +176,6 @@ public class ColorsTrainingActivity extends AppCompatActivity implements
                                                         );
                                                     }
                                                 }, 60);
-                                                // Add 1 to mistakes amount
                                             }
                                             if(curColorSeqInd == colorsAmount){
                                                 Log.d(DEBUG_TAG, "ALL COLORS CHOSEN CORRECT");
@@ -181,6 +183,19 @@ public class ColorsTrainingActivity extends AppCompatActivity implements
                                                         (StopwatchFragment) fragmentManager.findFragmentByTag(STOPWATCH_FRAGMENT_TAG);
                                                 trainingDurationSec = stopwatchFragment.getDecisecond() / 10;
                                                 stopwatchFragment.finishStopwatch();
+                                                TrainHelper.updateStatParams(sharedPreferences,
+                                                        new Pair<>(
+                                                                TrainHelper.getStatParamKey(Training.CLR, StatParam.TOTNUMMOVES, colorsAmount, distinctColorsAmount, colorShowTime),
+                                                                mistakesAmount
+                                                        ),
+                                                        new Pair<>(
+                                                                TrainHelper.getStatParamKey(Training.CLR, StatParam.TOTNUMTIME, colorsAmount, distinctColorsAmount, colorShowTime),
+                                                                trainingDurationSec
+                                                        ),
+                                                        new Pair<>(
+                                                                TrainHelper.getStatParamKey(Training.CLR, StatParam.TOTNUMTRAINS, colorsAmount, distinctColorsAmount, colorShowTime),
+                                                                1
+                                                        ));
                                                 DialogFragment finishFragment = new FinishDialogFragment(
                                                         trainingDurationSec + " с.",
                                                         getResources().getString(R.string.seq_train_mistakes_amount),

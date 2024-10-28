@@ -165,5 +165,8 @@
     <string name="seq_train_mistakes_amount">Количество ошибок:</string>
     <string name="phr_train_moves_amount">Количество ходов:</string>
     <string name="det_train_mistakes_amount">Количество ошибок (один вариант / несколько вариантов ответа):</string>
+    <!--STRINGS FOR STATISTICS-->
+    <!-- MHJ-->
+
 
 </resources>

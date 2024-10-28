@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
+import android.util.Pair;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -25,6 +26,8 @@ import androidx.fragment.app.FragmentManager;
 import com.youngsophomore.R;
 import com.youngsophomore.data.CollectionsStorage;
 import com.youngsophomore.data.Question;
+import com.youngsophomore.data.StatParam;
+import com.youngsophomore.data.Training;
 import com.youngsophomore.fragments.FinishDialogFragment;
 import com.youngsophomore.fragments.StopwatchFragment;
 import com.youngsophomore.helpers.TrainHelper;
@@ -303,6 +306,23 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
                                                 (StopwatchFragment) fragmentManager.findFragmentByTag(STOPWATCH_FRAGMENT_TAG);
                                         trainingDurationSec = stopwatchFragment.getDecisecond() / 10;
                                         stopwatchFragment.finishStopwatch();
+                                        TrainHelper.updateStatParams(sharedPreferences,
+                                                new Pair<>(
+                                                        TrainHelper.getStatParamKey(Training.DET, StatParam.TOTNUMSINGANS, questionsCollectionTitle),
+                                                        singleMistakesAmount
+                                                ),
+                                                new Pair<>(
+                                                        TrainHelper.getStatParamKey(Training.DET, StatParam.TOTNUMMULTANS, questionsCollectionTitle),
+                                                        multipMistakesAmount
+                                                ),
+                                                new Pair<>(
+                                                        TrainHelper.getStatParamKey(Training.DET, StatParam.TOTNUMTIME, questionsCollectionTitle),
+                                                        trainingDurationSec
+                                                ),
+                                                new Pair<>(
+                                                        TrainHelper.getStatParamKey(Training.DET, StatParam.TOTNUMTRAINS, questionsCollectionTitle),
+                                                        1
+                                                ));
                                         DialogFragment finishFragment = new FinishDialogFragment(
                                                 trainingDurationSec + " с.",
                                                 getResources().getString(R.string.det_train_mistakes_amount),

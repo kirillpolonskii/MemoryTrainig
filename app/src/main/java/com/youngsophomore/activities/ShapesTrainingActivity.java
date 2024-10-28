@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
+import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
@@ -21,6 +22,8 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.youngsophomore.R;
+import com.youngsophomore.data.StatParam;
+import com.youngsophomore.data.Training;
 import com.youngsophomore.fragments.FinishDialogFragment;
 import com.youngsophomore.fragments.StopwatchFragment;
 import com.youngsophomore.helpers.TrainHelper;
@@ -184,6 +187,19 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
                                                         (StopwatchFragment) fragmentManager.findFragmentByTag(STOPWATCH_FRAGMENT_TAG);
                                                 trainingDurationSec = stopwatchFragment.getDecisecond() / 10;
                                                 stopwatchFragment.finishStopwatch();
+                                                TrainHelper.updateStatParams(sharedPreferences,
+                                                        new Pair<>(
+                                                                TrainHelper.getStatParamKey(Training.SHP, StatParam.TOTNUMMOVES, shapesAmount, distinctShapesAmount, shapeShowTime),
+                                                                mistakesAmount
+                                                        ),
+                                                        new Pair<>(
+                                                                TrainHelper.getStatParamKey(Training.SHP, StatParam.TOTNUMTIME, shapesAmount, distinctShapesAmount, shapeShowTime),
+                                                                trainingDurationSec
+                                                        ),
+                                                        new Pair<>(
+                                                                TrainHelper.getStatParamKey(Training.SHP, StatParam.TOTNUMTRAINS, shapesAmount, distinctShapesAmount, shapeShowTime),
+                                                                1
+                                                        ));
                                                 DialogFragment finishFragment = new FinishDialogFragment(
                                                         trainingDurationSec + " с.",
                                                         getResources().getString(R.string.seq_train_mistakes_amount),

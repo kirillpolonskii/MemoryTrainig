@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
+import android.util.Pair;
 import android.util.TypedValue;
 import android.widget.TextView;
 
@@ -18,6 +19,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.youngsophomore.R;
 import com.youngsophomore.adapters.PhrasesTrainingAdapter;
 import com.youngsophomore.data.CollectionsStorage;
+import com.youngsophomore.data.StatParam;
+import com.youngsophomore.data.Training;
 import com.youngsophomore.fragments.FinishDialogFragment;
 import com.youngsophomore.fragments.StopwatchFragment;
 import com.youngsophomore.helpers.TrainHelper;
@@ -29,6 +32,9 @@ public class PhrasesTrainingActivity extends AppCompatActivity implements
         PhrasesTrainingAdapter.PhraseTrainingListener {
     private static final String DEBUG_TAG = "Gestures";
     private static final String STOPWATCH_FRAGMENT_TAG = "stopwatch_fragment_tag";
+    SharedPreferences sharedPreferences;
+    int phraseShowTime;
+    ArrayList<String> phrasesCollection;
     int curPhraseShowInd = 0;
     FragmentManager fragmentManager;
     private int movesAmount = 0;
@@ -37,10 +43,10 @@ public class PhrasesTrainingActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pretrain_sequence_layout);
-        SharedPreferences sharedPreferences =
+        sharedPreferences =
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         int phrasesCollectionPosition = sharedPreferences.getInt(getString(R.string.saved_phrases_collection_position_key), 0);;
-        int phraseShowTime = sharedPreferences.getInt(getString(R.string.saved_phrase_show_time_key), 2);
+        phraseShowTime = sharedPreferences.getInt(getString(R.string.saved_phrase_show_time_key), 2);
         Log.d(DEBUG_TAG, "phrasesCollectionPosition and phraseShowTime = " +
                 phrasesCollectionPosition + " " +
                 phraseShowTime);
@@ -52,7 +58,7 @@ public class PhrasesTrainingActivity extends AppCompatActivity implements
                 getApplicationContext().getExternalFilesDir(null).getAbsolutePath() + "/phrases"
         );
         ArrayList<Integer> indicesPerm = TrainHelper.getRandomIndicesPerm(0, origPhrasesCollection.size());
-        ArrayList<String> phrasesCollection = TrainHelper.Phrases.generatePhrasesList(origPhrasesCollection, indicesPerm);
+        phrasesCollection = TrainHelper.Phrases.generatePhrasesList(origPhrasesCollection, indicesPerm);
         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
         PhrasesTrainingAdapter phrasesAdapter = new PhrasesTrainingAdapter(
                 phrasesCollection, indicesPerm, elevPx,
@@ -131,6 +137,19 @@ public class PhrasesTrainingActivity extends AppCompatActivity implements
                 (StopwatchFragment) fragmentManager.findFragmentByTag(STOPWATCH_FRAGMENT_TAG);
         trainingDurationSec = stopwatchFragment.getDecisecond() / 10;
         stopwatchFragment.finishStopwatch();
+        TrainHelper.updateStatParams(sharedPreferences,
+                new Pair<>(
+                        TrainHelper.getStatParamKey(Training.PHR, StatParam.TOTNUMMOVES, ((phrasesCollection.size() / 3) + 1) * 3, phraseShowTime),
+                        movesAmount
+                ),
+                new Pair<>(
+                        TrainHelper.getStatParamKey(Training.PHR, StatParam.TOTNUMTIME, ((phrasesCollection.size() / 3) + 1) * 3, phraseShowTime),
+                        trainingDurationSec
+                ),
+                new Pair<>(
+                        TrainHelper.getStatParamKey(Training.PHR, StatParam.TOTNUMTRAINS, ((phrasesCollection.size() / 3) + 1) * 3, phraseShowTime),
+                        1
+                ));
         DialogFragment finishFragment = new FinishDialogFragment(
                 trainingDurationSec + " с.",
                 getResources().getString(R.string.phr_train_moves_amount),

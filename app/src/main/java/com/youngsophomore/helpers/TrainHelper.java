@@ -1,10 +1,14 @@
 package com.youngsophomore.helpers;
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.util.Log;
+import android.util.Pair;
 
 import com.youngsophomore.R;
 import com.youngsophomore.data.Question;
+import com.youngsophomore.data.StatParam;
+import com.youngsophomore.data.Training;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -40,6 +44,28 @@ public class TrainHelper {
             randNums.add(curNum);
         }
         return randNums;
+    }
+
+    public static String getStatParamKey(Training training, StatParam statParam, int... definingParams){
+        String key = training.name() + "_" + statParam.name();
+        for (int i = 0; i < definingParams.length; ++i){
+            key += "_" + definingParams[i];
+        }
+        return key;
+    }
+
+    public static String getStatParamKey(Training training, StatParam statParam, String definingParam){
+        return training.name() + "_" + statParam.name() + "_" + definingParam;
+    }
+
+    public static void updateStatParams(SharedPreferences sharedPreferences,
+                                        Pair<String, Integer>... paramsKV){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        for(int i = 0; i < paramsKV.length; ++i){
+            int oldVal = sharedPreferences.getInt(paramsKV[i].first, 0);
+            editor.putInt(paramsKV[i].first, oldVal + paramsKV[i].second);
+        }
+        editor.apply();
     }
 
     public class Mahjong {

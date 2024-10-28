@@ -13,11 +13,14 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
+import android.util.Pair;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.youngsophomore.R;
+import com.youngsophomore.data.StatParam;
+import com.youngsophomore.data.Training;
 import com.youngsophomore.fragments.FinishDialogFragment;
 import com.youngsophomore.fragments.StopwatchFragment;
 import com.youngsophomore.helpers.PrepHelper;
@@ -140,6 +143,20 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
                                                                 (StopwatchFragment) fragmentManager.findFragmentByTag(STOPWATCH_FRAGMENT_TAG);
                                                         trainingDurationSec = stopwatchFragment.getDecisecond() / 10;
                                                         stopwatchFragment.finishStopwatch();
+                                                        TrainHelper.updateStatParams(sharedPreferences,
+                                                                new Pair<>(
+                                                                        TrainHelper.getStatParamKey(Training.MHJ, StatParam.TOTNUMMOVES, mhjTilesAmount, mhjEqualTilesAmount, mhjShowTime),
+                                                                        mistakesAmount
+                                                                ),
+                                                                new Pair<>(
+                                                                        TrainHelper.getStatParamKey(Training.MHJ, StatParam.TOTNUMTIME, mhjTilesAmount, mhjEqualTilesAmount, mhjShowTime),
+                                                                        trainingDurationSec
+                                                                ),
+                                                                new Pair<>(
+                                                                        TrainHelper.getStatParamKey(Training.MHJ, StatParam.TOTNUMTRAINS, mhjTilesAmount, mhjEqualTilesAmount, mhjShowTime),
+                                                                        1
+                                                                ));
+
                                                         DialogFragment finishFragment = new FinishDialogFragment(
                                                                 trainingDurationSec + " с.",
                                                                 getResources().getString(R.string.seq_train_mistakes_amount),

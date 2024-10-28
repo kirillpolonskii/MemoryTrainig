@@ -15,36 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
-    <TextView
-        android:id="@+id/tv_show_time_mhj"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constrainedWidth="true"
-        app:layout_constraintTop_toTopOf="@id/num_pck_show_time_mhj"
-        app:layout_constraintBottom_toBottomOf="@id/num_pck_show_time_mhj"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/num_pck_show_time_mhj"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintHorizontal_bias="0"
-        android:text="@string/remember_time"
-        style="@style/SettingsTextViewStyle"
-        />
 
-    <NumberPicker
-        android:id="@+id/num_pck_show_time_mhj"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintStart_toEndOf="@id/tv_show_time_mhj"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        android:theme="@style/NumberPickerTheme"
-        android:textColor="?attr/colorPrimary"
-        android:colorControlNormal="?attr/colorPrimary"
-        android:layout_marginStart="@dimen/settings_small_margin"
-        android:layout_marginEnd="@dimen/settings_large_margin"
-
-        />
 
     <TextView
         android:id="@+id/tv_tiles_amount"
@@ -65,10 +36,13 @@
         android:id="@+id/sg_btn_gr_tiles_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintStart_toEndOf="@id/tv_tiles_amount"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/num_pck_show_time_mhj"
+
+
         android:layout_marginStart="@dimen/settings_small_margin"
+        android:layout_marginTop="@dimen/settings_small_margin"
         android:elevation="@dimen/sgbtn_tiles_elev"
         style="@style/SegmentedButtonGroupStyle"
         tools:ignore="TouchTargetSizeCheck"
@@ -171,6 +145,37 @@
             app:textColor="?attr/colorPrimary"
             app:textSize="@dimen/switch_lang_text_size" />
     </com.addisonelliott.segmentedbutton.SegmentedButtonGroup>
+
+    <TextView
+        android:id="@+id/tv_show_time_mhj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintTop_toTopOf="@id/num_pck_show_time_mhj"
+        app:layout_constraintBottom_toBottomOf="@id/num_pck_show_time_mhj"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/num_pck_show_time_mhj"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintHorizontal_bias="0"
+        android:text="@string/remember_time"
+        style="@style/SettingsTextViewStyle"
+        />
+
+    <NumberPicker
+        android:id="@+id/num_pck_show_time_mhj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/sg_btn_gr_equal_tiles_amount"
+        app:layout_constraintStart_toEndOf="@id/tv_show_time_mhj"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:theme="@style/NumberPickerTheme"
+        android:textColor="?attr/colorPrimary"
+        android:colorControlNormal="?attr/colorPrimary"
+        android:layout_marginStart="@dimen/settings_small_margin"
+        android:layout_marginEnd="@dimen/settings_large_margin"
+
+        />
 
     <ImageButton
         android:id="@+id/btn_save_settings_mhj"
