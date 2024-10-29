@@ -167,6 +167,15 @@
     <string name="det_train_mistakes_amount">Количество ошибок (один вариант / несколько вариантов ответа):</string>
     <!--STRINGS FOR STATISTICS-->
     <!-- MHJ-->
+    <string name="tv_subtitle_time">Среднее время тренировки</string>
+    <string name="tv_subtitle_tiles">Для количества костей</string>
+    <string name="tv_subtitle_eq_tiles">Для количества одинаковых костей</string>
+    <string name="tv_subtitle_colors">Для количества цветов</string>
+    <string name="tv_subtitle_dist_colors">Для количества различных цветов</string>
+    <string name="tv_subtitle_shapes">Для количества фигур</string>
+    <string name="tv_subtitle_dist_shapes">Для количества различных фигур</string>
+    <string name="tv_subtitle_time_wrd_phr">Для различных размеров коллекций</string>
+    <string name="tv_subtitle_time_det">Для различных коллекций</string>
 
 
 </resources>

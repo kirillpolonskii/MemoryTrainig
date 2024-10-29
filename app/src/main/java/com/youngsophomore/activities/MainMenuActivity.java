@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -62,13 +63,8 @@ public class MainMenuActivity extends AppCompatActivity {
                                 ", R.dimen.btn_stats_elev = " + R.dimen.btn_stats_elev +
                                 ", elev = " + elevPx);
                         view.setElevation(elevPx);
-                        return true;
-                    case (MotionEvent.ACTION_CANCEL):
-                        Log.d(DEBUG_TAG, "btnStats onTouch. Action was CANCEL");
-                        return true;
-                    case (MotionEvent.ACTION_OUTSIDE):
-                        Log.d(DEBUG_TAG, "btnStats onTouch. Movement occurred outside bounds " +
-                                "of current screen element");
+                        Intent intent = new Intent(getApplicationContext(), StatisticsActivity.class);
+                        startActivity(intent);
                         return true;
                     default:
                         return false;
