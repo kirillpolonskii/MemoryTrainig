@@ -22,6 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 
+        android:layout_marginBottom="15dp"
         >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cst_lt_chld_stat"
@@ -45,23 +46,25 @@
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/bc_time_to_moves_mhj_tiles"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 app:layout_constraintTop_toBottomOf="@id/tv_title_mhj_stat"
                 app:layout_constraintBottom_toTopOf="@id/bc_time_to_moves_mhj_eq_tiles"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintVertical_bias="0"
+                app:layout_constraintHeight_percent="0.07"
 
                 />
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/bc_time_to_moves_mhj_eq_tiles"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 app:layout_constraintTop_toBottomOf="@id/bc_time_to_moves_mhj_tiles"
                 app:layout_constraintBottom_toTopOf="@id/tv_subtitle_time_mhj"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintVertical_bias="0"
+                app:layout_constraintHeight_percent="0.07"
                 />
             <TextView
                 android:id="@+id/tv_subtitle_time_mhj"
@@ -100,7 +103,7 @@
                 app:layout_constraintEnd_toStartOf="@id/tv_av_time_tiles_24"
                 app:layout_constraintVertical_bias="0"
 
-                android:text="12:"
+                android:text="12: "
                 style="@style/SettingsTextViewStyle"
                 />
             <TextView
@@ -113,7 +116,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintVertical_bias="0"
 
-                android:text="24:"
+                android:text="24: "
                 style="@style/SettingsTextViewStyle"
                 />
             <TextView
@@ -135,12 +138,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/tv_subtitle_eq_tiles_mhj"
-                app:layout_constraintBottom_toTopOf="@id/tv_title_clr_stat"
+                app:layout_constraintBottom_toTopOf="@id/tv_av_time_eq_tiles_4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/tv_av_time_eq_tiles_3"
                 app:layout_constraintVertical_bias="0"
 
-                android:text="2:"
+                android:text="2: "
                 style="@style/SettingsTextViewStyle"
                 />
             <TextView
@@ -148,47 +151,48 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/tv_subtitle_eq_tiles_mhj"
-                app:layout_constraintBottom_toTopOf="@id/tv_title_clr_stat"
+                app:layout_constraintBottom_toTopOf="@id/tv_av_time_eq_tiles_6"
                 app:layout_constraintStart_toEndOf="@id/tv_av_time_eq_tiles_2"
-                app:layout_constraintEnd_toStartOf="@id/tv_av_time_eq_tiles_4"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintVertical_bias="0"
 
-                android:text="3:"
+                android:text="3: "
                 style="@style/SettingsTextViewStyle"
                 />
             <TextView
                 android:id="@+id/tv_av_time_eq_tiles_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tv_subtitle_eq_tiles_mhj"
+                app:layout_constraintTop_toBottomOf="@id/tv_av_time_eq_tiles_2"
                 app:layout_constraintBottom_toTopOf="@id/tv_title_clr_stat"
-                app:layout_constraintStart_toEndOf="@id/tv_av_time_eq_tiles_3"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/tv_av_time_eq_tiles_6"
                 app:layout_constraintVertical_bias="0"
 
-                android:text="4:"
+                android:text="4: "
                 style="@style/SettingsTextViewStyle"
                 />
             <TextView
                 android:id="@+id/tv_av_time_eq_tiles_6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tv_subtitle_eq_tiles_mhj"
+                app:layout_constraintTop_toBottomOf="@id/tv_av_time_eq_tiles_3"
                 app:layout_constraintBottom_toTopOf="@id/tv_title_clr_stat"
                 app:layout_constraintStart_toEndOf="@id/tv_av_time_eq_tiles_4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintVertical_bias="0"
 
-                android:text="6:"
+                android:text="6: "
                 style="@style/SettingsTextViewStyle"
                 />
+
 
 
             <TextView
                 android:id="@+id/tv_title_clr_stat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tv_av_time_eq_tiles_2"
+                app:layout_constraintTop_toBottomOf="@id/tv_av_time_eq_tiles_6"
                 app:layout_constraintBottom_toTopOf="@id/tv_title_shp_stat"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -201,23 +205,25 @@
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/bc_colors_to_moves"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 app:layout_constraintTop_toBottomOf="@id/tv_title_clr_stat"
                 app:layout_constraintBottom_toTopOf="@id/bc_dist_colors_to_moves"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintVertical_bias="0"
+                app:layout_constraintHeight_percent="0.07"
 
                 />
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/bc_dist_colors_to_moves"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 app:layout_constraintTop_toBottomOf="@id/bc_colors_to_moves"
                 app:layout_constraintBottom_toTopOf="@id/tv_subtitle_time_clr"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintVertical_bias="0"
+                app:layout_constraintHeight_percent="0.07"
                 />
             <TextView
                 android:id="@+id/tv_subtitle_time_clr"
@@ -253,8 +259,13 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_subtitle_colors"
                 app:layout_constraintBottom_toTopOf="@id/tv_subtitle_dist_colors"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/tv_av_time_colors"
+                app:layout_constraintEnd_toStartOf="@id/guideline_center"
+                app:layout_constraintHorizontal_bias="1"
 
+                android:layout_marginEnd="@dimen/stat_num_pck_tv_margin"
+                android:theme="@style/NumberPickerTheme"
+                android:textColor="?attr/colorPrimary"
+                android:colorControlNormal="?attr/colorPrimary"
                 />
             <TextView
                 android:id="@+id/tv_av_time_colors"
@@ -262,9 +273,11 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="@id/num_pck_colors_stat"
                 app:layout_constraintBottom_toBottomOf="@id/num_pck_colors_stat"
-                app:layout_constraintStart_toEndOf="@id/num_pck_colors_stat"
+                app:layout_constraintStart_toEndOf="@id/guideline_center"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
 
+                android:layout_marginStart="@dimen/stat_num_pck_tv_margin"
                 android:text="15 с."
                 style="@style/SettingsTextViewStyle"
                 />
@@ -289,8 +302,13 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_subtitle_dist_colors"
                 app:layout_constraintBottom_toTopOf="@id/tv_title_shp_stat"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/tv_av_time_colors"
+                app:layout_constraintEnd_toStartOf="@id/guideline_center"
+                app:layout_constraintHorizontal_bias="1"
 
+                android:layout_marginEnd="@dimen/stat_num_pck_tv_margin"
+                android:theme="@style/NumberPickerTheme"
+                android:textColor="?attr/colorPrimary"
+                android:colorControlNormal="?attr/colorPrimary"
                 />
             <TextView
                 android:id="@+id/tv_av_time_dist_colors"
@@ -298,9 +316,11 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="@id/num_pck_dist_colors"
                 app:layout_constraintBottom_toBottomOf="@id/num_pck_dist_colors"
-                app:layout_constraintStart_toEndOf="@id/num_pck_dist_colors"
+                app:layout_constraintStart_toEndOf="@id/guideline_center"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
 
+                android:layout_marginStart="@dimen/stat_num_pck_tv_margin"
                 android:text="15 с."
                 style="@style/SettingsTextViewStyle"
                 />
@@ -324,23 +344,25 @@
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/bc_shapes_to_moves"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 app:layout_constraintTop_toBottomOf="@id/tv_title_shp_stat"
                 app:layout_constraintBottom_toTopOf="@id/bc_dist_shapes_to_moves"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintVertical_bias="0"
+                app:layout_constraintHeight_percent="0.07"
 
                 />
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/bc_dist_shapes_to_moves"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 app:layout_constraintTop_toBottomOf="@id/bc_shapes_to_moves"
                 app:layout_constraintBottom_toTopOf="@id/tv_subtitle_time_shp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintVertical_bias="0"
+                app:layout_constraintHeight_percent="0.07"
                 />
             <TextView
                 android:id="@+id/tv_subtitle_time_shp"
@@ -376,8 +398,13 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_subtitle_shapes"
                 app:layout_constraintBottom_toTopOf="@id/tv_subtitle_dist_shapes"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/tv_av_time_colors"
+                app:layout_constraintEnd_toStartOf="@id/guideline_center"
+                app:layout_constraintHorizontal_bias="1"
 
+                android:layout_marginEnd="@dimen/stat_num_pck_tv_margin"
+                android:theme="@style/NumberPickerTheme"
+                android:textColor="?attr/colorPrimary"
+                android:colorControlNormal="?attr/colorPrimary"
                 />
             <TextView
                 android:id="@+id/tv_av_time_shapes"
@@ -385,9 +412,11 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="@id/num_pck_shapes_stat"
                 app:layout_constraintBottom_toBottomOf="@id/num_pck_shapes_stat"
-                app:layout_constraintStart_toEndOf="@id/num_pck_shapes_stat"
+                app:layout_constraintStart_toEndOf="@id/guideline_center"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
 
+                android:layout_marginStart="@dimen/stat_num_pck_tv_margin"
                 android:text="15 с."
                 style="@style/SettingsTextViewStyle"
                 />
@@ -402,6 +431,7 @@
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintVertical_bias="0"
 
+
                 android:text="@string/tv_subtitle_dist_shapes"
                 style="@style/SettingsTextViewStyle"
                 />
@@ -412,8 +442,13 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_subtitle_dist_shapes"
                 app:layout_constraintBottom_toTopOf="@id/tv_title_wrd_stat"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/tv_av_time_colors"
+                app:layout_constraintEnd_toStartOf="@id/guideline_center"
+                app:layout_constraintHorizontal_bias="1"
 
+                android:layout_marginEnd="@dimen/stat_num_pck_tv_margin"
+                android:theme="@style/NumberPickerTheme"
+                android:textColor="?attr/colorPrimary"
+                android:colorControlNormal="?attr/colorPrimary"
                 />
             <TextView
                 android:id="@+id/tv_av_time_dist_shapes"
@@ -421,9 +456,11 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="@id/num_pck_dist_shapes"
                 app:layout_constraintBottom_toBottomOf="@id/num_pck_dist_shapes"
-                app:layout_constraintStart_toEndOf="@id/num_pck_dist_shapes"
+                app:layout_constraintStart_toEndOf="@id/guideline_center"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
 
+                android:layout_marginStart="@dimen/stat_num_pck_tv_margin"
                 android:text="15 с."
                 style="@style/SettingsTextViewStyle"
                 />
@@ -437,7 +474,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/num_pck_dist_shapes"
-                app:layout_constraintBottom_toTopOf="@id/bc_size_to_moves_wrd"
+                app:layout_constraintBottom_toTopOf="@id/tv_subtitle_time_wrd"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintVertical_bias="0"
@@ -446,64 +483,80 @@
                 android:textAllCaps="true"
                 style="@style/SettingsTextViewStyle"
                 />
-            <com.github.mikephil.charting.charts.BarChart
-                android:id="@+id/bc_size_to_moves_wrd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tv_title_wrd_stat"
-                app:layout_constraintBottom_toTopOf="@id/tv_subtitle_time_wrd"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintVertical_bias="0"
-
-                />
             <TextView
                 android:id="@+id/tv_subtitle_time_wrd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/bc_size_to_moves_wrd"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_wrd_stat"
                 app:layout_constraintBottom_toTopOf="@id/tv_subtitle_sizes"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintVertical_bias="0"
 
-                android:text="@string/tv_subtitle_time"
+                android:text="@string/tv_subtitle_time_wrd_phr"
                 style="@style/SettingsTextViewStyle"
+                android:gravity="center"
                 />
             <TextView
                 android:id="@+id/tv_subtitle_sizes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/tv_subtitle_time_wrd"
-                app:layout_constraintBottom_toTopOf="@id/num_pck_size_wrd"
+                app:layout_constraintBottom_toTopOf="@id/num_pck_stat_size_wrd"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintVertical_bias="0"
 
-                android:text="@string/tv_subtitle_time_wrd_phr"
+                android:text="@string/tv_subtitle_time_wrd"
                 style="@style/SettingsTextViewStyle"
                 />
             <NumberPicker
-                android:id="@+id/num_pck_size_wrd"
+                android:id="@+id/num_pck_stat_size_wrd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/tv_subtitle_sizes"
                 app:layout_constraintBottom_toTopOf="@id/tv_title_phr_stat"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/num_pck_stat_show_time_wrd"
+                android:theme="@style/NumberPickerTheme"
+                android:textColor="?attr/colorPrimary"
+                android:colorControlNormal="?attr/colorPrimary"
+                />
+            <NumberPicker
+                android:id="@+id/num_pck_stat_show_time_wrd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_subtitle_sizes"
+                app:layout_constraintBottom_toTopOf="@id/tv_title_phr_stat"
+                app:layout_constraintStart_toEndOf="@id/num_pck_stat_size_wrd"
                 app:layout_constraintEnd_toStartOf="@id/tv_av_time_colors"
-
+                android:theme="@style/NumberPickerTheme"
+                android:textColor="?attr/colorPrimary"
+                android:colorControlNormal="?attr/colorPrimary"
                 />
             <TextView
                 android:id="@+id/tv_av_time_wrd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="@id/num_pck_size_wrd"
-                app:layout_constraintBottom_toBottomOf="@id/num_pck_size_wrd"
-                app:layout_constraintStart_toEndOf="@id/num_pck_size_wrd"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/num_pck_stat_size_wrd"
+                app:layout_constraintBottom_toBottomOf="@id/num_pck_stat_size_wrd"
+                app:layout_constraintStart_toEndOf="@id/num_pck_stat_show_time_wrd"
+                app:layout_constraintEnd_toStartOf="@id/tv_av_moves_wrd"
 
                 android:text="15 с."
+                style="@style/SettingsTextViewStyle"
+                />
+            <TextView
+                android:id="@+id/tv_av_moves_wrd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/num_pck_stat_size_wrd"
+                app:layout_constraintBottom_toBottomOf="@id/num_pck_stat_size_wrd"
+                app:layout_constraintStart_toEndOf="@id/tv_av_time_wrd"
+                app:layout_constraintEnd_toEndOf="parent"
+
+
                 style="@style/SettingsTextViewStyle"
                 />
 
@@ -516,8 +569,8 @@
                 android:id="@+id/tv_title_phr_stat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/num_pck_size_wrd"
-                app:layout_constraintBottom_toTopOf="@id/bc_size_to_moves_phr"
+                app:layout_constraintTop_toBottomOf="@id/num_pck_stat_size_wrd"
+                app:layout_constraintBottom_toTopOf="@id/tv_subtitle_time_phr"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintVertical_bias="0"
@@ -526,64 +579,81 @@
                 android:textAllCaps="true"
                 style="@style/SettingsTextViewStyle"
                 />
-            <com.github.mikephil.charting.charts.BarChart
-                android:id="@+id/bc_size_to_moves_phr"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tv_title_phr_stat"
-                app:layout_constraintBottom_toTopOf="@id/tv_subtitle_time_phr"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintVertical_bias="0"
 
-                />
             <TextView
                 android:id="@+id/tv_subtitle_time_phr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/bc_size_to_moves_phr"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_phr_stat"
                 app:layout_constraintBottom_toTopOf="@id/tv_subtitle_time_sizes"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintVertical_bias="0"
 
-                android:text="@string/tv_subtitle_time"
+                android:text="@string/tv_subtitle_time_wrd_phr"
                 style="@style/SettingsTextViewStyle"
+                android:gravity="center"
                 />
             <TextView
                 android:id="@+id/tv_subtitle_time_sizes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/tv_subtitle_time_phr"
-                app:layout_constraintBottom_toTopOf="@id/num_pck_size_phr"
+                app:layout_constraintBottom_toTopOf="@id/num_pck_stat_size_phr"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintVertical_bias="0"
 
-                android:text="@string/tv_subtitle_time_wrd_phr"
+                android:text="@string/tv_subtitle_time_phr"
                 style="@style/SettingsTextViewStyle"
                 />
             <NumberPicker
-                android:id="@+id/num_pck_size_phr"
+                android:id="@+id/num_pck_stat_size_phr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/tv_subtitle_time_sizes"
                 app:layout_constraintBottom_toTopOf="@id/tv_title_det_stat"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/num_pck_stat_show_time_phr"
+                android:theme="@style/NumberPickerTheme"
+                android:textColor="?attr/colorPrimary"
+                android:colorControlNormal="?attr/colorPrimary"
+                />
+            <NumberPicker
+                android:id="@+id/num_pck_stat_show_time_phr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_subtitle_time_sizes"
+                app:layout_constraintBottom_toTopOf="@id/tv_title_det_stat"
+                app:layout_constraintStart_toEndOf="@id/num_pck_stat_size_phr"
                 app:layout_constraintEnd_toStartOf="@id/tv_av_time_colors"
-
+                android:theme="@style/NumberPickerTheme"
+                android:textColor="?attr/colorPrimary"
+                android:colorControlNormal="?attr/colorPrimary"
                 />
             <TextView
                 android:id="@+id/tv_av_time_phr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="@id/num_pck_size_phr"
-                app:layout_constraintBottom_toBottomOf="@id/num_pck_size_phr"
-                app:layout_constraintStart_toEndOf="@id/num_pck_size_phr"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/num_pck_stat_size_phr"
+                app:layout_constraintBottom_toBottomOf="@id/num_pck_stat_size_phr"
+                app:layout_constraintStart_toEndOf="@id/num_pck_stat_show_time_phr"
+                app:layout_constraintEnd_toStartOf="@id/tv_av_moves_phr"
 
                 android:text="15 с."
+                style="@style/SettingsTextViewStyle"
+                />
+            <TextView
+                android:id="@+id/tv_av_moves_phr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/num_pck_stat_size_phr"
+                app:layout_constraintBottom_toBottomOf="@id/num_pck_stat_size_phr"
+                app:layout_constraintStart_toEndOf="@id/tv_av_time_phr"
+                app:layout_constraintEnd_toEndOf="parent"
+
+
                 style="@style/SettingsTextViewStyle"
                 />
 
@@ -594,8 +664,8 @@
                 android:id="@+id/tv_title_det_stat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/num_pck_size_phr"
-                app:layout_constraintBottom_toTopOf="@id/bc_collect_to_moves"
+                app:layout_constraintTop_toBottomOf="@id/num_pck_stat_size_phr"
+                app:layout_constraintBottom_toTopOf="@id/tv_subtitle_time_det"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintVertical_bias="0"
@@ -604,28 +674,18 @@
                 android:textAllCaps="true"
                 style="@style/SettingsTextViewStyle"
                 />
-            <com.github.mikephil.charting.charts.BarChart
-                android:id="@+id/bc_collect_to_moves"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tv_title_det_stat"
-                app:layout_constraintBottom_toTopOf="@id/tv_subtitle_time_det"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintVertical_bias="0"
 
-                />
             <TextView
                 android:id="@+id/tv_subtitle_time_det"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/bc_collect_to_moves"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_det_stat"
                 app:layout_constraintBottom_toTopOf="@id/tv_subtitle_time_collect"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintVertical_bias="0"
 
-                android:text="@string/tv_subtitle_time"
+                android:text="@string/tv_subtitle_time_det"
                 style="@style/SettingsTextViewStyle"
                 />
             <TextView
@@ -639,18 +699,25 @@
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintVertical_bias="0"
 
-                android:text="@string/tv_subtitle_time_det"
+                android:text="@string/tv_subtitle_time_collect"
                 style="@style/SettingsTextViewStyle"
                 />
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_collect_time"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/tv_subtitle_time_collect"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

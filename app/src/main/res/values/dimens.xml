@@ -37,4 +37,6 @@
 
     <dimen name="w_training_seq_text_size">35sp</dimen>
 
+    <dimen name="stat_num_pck_tv_margin">20dp</dimen>
+
 </resources>

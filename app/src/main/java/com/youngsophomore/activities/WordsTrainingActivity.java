@@ -181,15 +181,15 @@ public class WordsTrainingActivity extends AppCompatActivity implements
                                                 stopwatchFragment.finishStopwatch();
                                                 TrainHelper.updateStatParams(sharedPreferences,
                                                         new Pair<>(
-                                                                TrainHelper.getStatParamKey(Training.WRD, StatParam.TOTNUMMOVES, ((wordsCollection.size() / 5) + 1) * 5, wordShowTime),
+                                                                TrainHelper.getStatParamKey(Training.WRD, StatParam.TOTNUMMOVES, wordsCollection.size(), wordShowTime),
                                                                 mistakesAmount
                                                         ),
                                                         new Pair<>(
-                                                                TrainHelper.getStatParamKey(Training.WRD, StatParam.TOTNUMTIME, ((wordsCollection.size() / 5) + 1) * 5, wordShowTime),
+                                                                TrainHelper.getStatParamKey(Training.WRD, StatParam.TOTNUMTIME, wordsCollection.size(), wordShowTime),
                                                                 trainingDurationSec
                                                         ),
                                                         new Pair<>(
-                                                                TrainHelper.getStatParamKey(Training.WRD, StatParam.TOTNUMTRAINS, ((wordsCollection.size() / 5) + 1) * 5, wordShowTime),
+                                                                TrainHelper.getStatParamKey(Training.WRD, StatParam.TOTNUMTRAINS, wordsCollection.size(), wordShowTime),
                                                                 1
                                                         ));
                                                 DialogFragment finishFragment = new FinishDialogFragment(

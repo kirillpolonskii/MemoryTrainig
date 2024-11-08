@@ -139,15 +139,15 @@ public class PhrasesTrainingActivity extends AppCompatActivity implements
         stopwatchFragment.finishStopwatch();
         TrainHelper.updateStatParams(sharedPreferences,
                 new Pair<>(
-                        TrainHelper.getStatParamKey(Training.PHR, StatParam.TOTNUMMOVES, ((phrasesCollection.size() / 3) + 1) * 3, phraseShowTime),
+                        TrainHelper.getStatParamKey(Training.PHR, StatParam.TOTNUMMOVES, phrasesCollection.size(), phraseShowTime),
                         movesAmount
                 ),
                 new Pair<>(
-                        TrainHelper.getStatParamKey(Training.PHR, StatParam.TOTNUMTIME, ((phrasesCollection.size() / 3) + 1) * 3, phraseShowTime),
+                        TrainHelper.getStatParamKey(Training.PHR, StatParam.TOTNUMTIME, phrasesCollection.size(), phraseShowTime),
                         trainingDurationSec
                 ),
                 new Pair<>(
-                        TrainHelper.getStatParamKey(Training.PHR, StatParam.TOTNUMTRAINS, ((phrasesCollection.size() / 3) + 1) * 3, phraseShowTime),
+                        TrainHelper.getStatParamKey(Training.PHR, StatParam.TOTNUMTRAINS, phrasesCollection.size(), phraseShowTime),
                         1
                 ));
         DialogFragment finishFragment = new FinishDialogFragment(

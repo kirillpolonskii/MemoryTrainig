@@ -166,7 +166,6 @@
     <string name="phr_train_moves_amount">Количество ходов:</string>
     <string name="det_train_mistakes_amount">Количество ошибок (один вариант / несколько вариантов ответа):</string>
     <!--STRINGS FOR STATISTICS-->
-    <!-- MHJ-->
     <string name="tv_subtitle_time">Среднее время тренировки</string>
     <string name="tv_subtitle_tiles">Для количества костей</string>
     <string name="tv_subtitle_eq_tiles">Для количества одинаковых костей</string>
@@ -174,8 +173,31 @@
     <string name="tv_subtitle_dist_colors">Для количества различных цветов</string>
     <string name="tv_subtitle_shapes">Для количества фигур</string>
     <string name="tv_subtitle_dist_shapes">Для количества различных фигур</string>
-    <string name="tv_subtitle_time_wrd_phr">Для различных размеров коллекций</string>
-    <string name="tv_subtitle_time_det">Для различных коллекций</string>
+    <string name="tv_subtitle_time_wrd_phr">Среднее время тренировки и количество ошибок</string>
+    <string name="tv_subtitle_time_wrd">Для различных размеров коллекций и времени показа слова</string>
+    <string name="tv_subtitle_time_phr">Для различных размеров коллекций и времени показа фразы</string>
+    <string name="tv_subtitle_time_det">Среднее время тренировки и количество ошибок (один / несколько вариантов ответов)</string>
+    <string name="tv_subtitle_time_collect">Для различных коллекций</string>
+    <string name="sec">с.</string>
+    <string name="bc_time_to_moves_desc_mhj">Среднее количество ошибок в зависимости от времени запоминания</string>
+    <string name="bc_amount_to_moves_desc_clr">Среднее количество ошибок в зависимости от количества цветов</string>
+    <string name="bc_dist_amount_to_moves_desc_clr">Среднее количество ошибок в зависимости от количества различных цветов</string>
+    <string name="bc_amount_to_moves_desc_shp">Среднее количество ошибок в зависимости от количества фигур</string>
+    <string name="bc_dist_amount_to_moves_desc_shp">Среднее количество ошибок в зависимости от количества различных фигур</string>
 
+    <!-- MHJ-->
+    <string name="lbl_stat_tiles_12">12 костей</string>
+    <string name="lbl_stat_tiles_24">24 кости</string>
+    <string name="lbl_stat_eq_tiles_2">2 один. кости</string>
+    <string name="lbl_stat_eq_tiles_3">3 один. кости</string>
+    <string name="lbl_stat_eq_tiles_4">4 один. кости</string>
+    <string name="lbl_stat_eq_tiles_6">6 один. костей</string>
+    <!-- CLR-->
+    <string name="lbl_stat_time_1">1 с.</string>
+    <string name="lbl_stat_time_2">2 с.</string>
+    <string name="lbl_stat_time_3">3 с.</string>
+    <string name="lbl_stat_time_4">4 с.</string>
+    <string name="lbl_stat_time_5">5 с.</string>
+    <string name="lbl_stat_time_6">6 с.</string>
 
 </resources>
