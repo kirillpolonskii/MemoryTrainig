@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,18 +27,22 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class MainMenuActivity extends AppCompatActivity {
 
     private static final String DEBUG_TAG = "Gestures";
     private MyMotionLayout mtnLtMainMenu;
+    String languageToLoad;
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         Log.d(DEBUG_TAG, "IN onCreate()");
-        init(getApplicationContext());
+        SharedPreferences sharedPreferences =
+                getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        init(sharedPreferences);
 
         mtnLtMainMenu = findViewById(R.id.mtn_lt_main_m);
 
@@ -104,13 +109,29 @@ public class MainMenuActivity extends AppCompatActivity {
             }
         });
 
-        sgBtnGrSwitchLang.setPosition(1, false);
+        int switchLangPos = sharedPreferences.getInt(getString(R.string.saved_lang_pos_key), 1);
+        sgBtnGrSwitchLang.setPosition(switchLangPos, false);
         sgBtnGrSwitchLang.setOnPositionChangedListener(new SegmentedButtonGroup.OnPositionChangedListener() {
             @Override
             public void onPositionChanged(final int position) {
                 // Handle stuff here
                 Log.d(DEBUG_TAG, "setOnPositionChangedListener: position = " + position);
-                //sgBtnGrSwitchLang.setElevation(0);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt(getString(R.string.saved_lang_pos_key), position);
+                editor.apply();
+                if (position == 1) {
+                    languageToLoad = "ru";// russian
+                } else {
+                    languageToLoad = "en";// english
+                }
+
+                Locale locale = new Locale(languageToLoad);
+                Locale.setDefault(locale);
+                Configuration config = new Configuration();
+                config.locale = locale;
+                getBaseContext().getResources().updateConfiguration(config, null);
+                finish();
+                startActivity(getIntent());
             }
         });
 
@@ -135,14 +156,9 @@ public class MainMenuActivity extends AppCompatActivity {
                                 ", elev = " + elevPx);
                         //sgBtnGrSwitchLang.onTouchEvent(motionEvent);
                         sgBtnGrSwitchLang.setElevation(elevPx);
-
                         return true;
                     case (MotionEvent.ACTION_CANCEL):
                         Log.d(DEBUG_TAG, "sgBtnEn onTouch. Action was CANCEL");
-                        return true;
-                    case (MotionEvent.ACTION_OUTSIDE):
-                        Log.d(DEBUG_TAG, "sgBtnEn onTouch. Movement occurred outside bounds " +
-                                "of current screen element");
                         return true;
                     default:
                         return false;
@@ -175,10 +191,6 @@ public class MainMenuActivity extends AppCompatActivity {
                     case (MotionEvent.ACTION_CANCEL):
                         Log.d(DEBUG_TAG, "sgBtnRu onTouch. Action was CANCEL");
                         return true;
-                    case (MotionEvent.ACTION_OUTSIDE):
-                        Log.d(DEBUG_TAG, "sgBtnRu onTouch. Movement occurred outside bounds " +
-                                "of current screen element");
-                        return true;
                     default:
                         return false;
                 }
@@ -193,9 +205,7 @@ public class MainMenuActivity extends AppCompatActivity {
         super.onResume();
     }
 
-    private void init(Context context){
-        SharedPreferences sharedPreferences =
-                context.getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
+    private void init(SharedPreferences sharedPreferences){
         boolean firstLaunch =
                 sharedPreferences.getBoolean(getString(R.string.first_launch_key), true);
         if(!firstLaunch){

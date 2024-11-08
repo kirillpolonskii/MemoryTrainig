@@ -16,6 +16,7 @@
     <string name="info">info</string>
     <string name="en">EN</string>
     <string name="ru">РУ</string>
+    <string name="saved_lang_pos_key">LANG_POS_KEY</string>
     <string name="statistics">statistics</string>
     <string name="settings">settings</string>
     <!-- STRINGS FOR MAHJONG SETTINGS -->

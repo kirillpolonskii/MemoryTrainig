@@ -1,0 +1,204 @@
+<resources>
+    <!-- STRINGS FOR APP -->
+    <string name="app_name">Memory Training</string>
+    <string name="msg_collection_title_not_unique">Title is not unique</string>
+    <string name="first_launch_key">FIRST_LAUNCH_KEY</string>
+    <string name="delete_collection_dialog_title">Delete collection</string>
+    <string name="delete_collection_dialog_message">Are you sure you want to delete the selected collection?</string>
+    <string name="msg_forbid_delete_collection">Only 1 collection remaining</string>
+    <!-- STRINGS FOR BUTTONS -->
+    <string name="btn_mahjong_training_ru">mahjong</string>
+    <string name="btn_colors_training_ru">colors</string>
+    <string name="btn_shapes_training_ru">shapes</string>
+    <string name="btn_words_training_ru">words</string>
+    <string name="btn_phrases_training_ru">phrases</string>
+    <string name="btn_details_training_ru">details</string>
+    <string name="info">info</string>
+    <string name="en">EN</string>
+    <string name="ru">РУ</string>
+    <string name="saved_lang_pos_key">LANG_POS_KEY</string>
+    <string name="statistics">statistics</string>
+    <string name="settings">settings</string>
+    <!-- STRINGS FOR MAHJONG SETTINGS -->
+    <string name="tbr_mahjong_settings_title">Settings: mahjong</string>
+    <string name="remember_time">Seconds to memorize:</string>
+    <string name="tiles_amount">Amount of tiles:</string>
+    <string name="equal_tiles_amount">Amount of equal tiles:</string>
+    <string name="tiles_amount_12">12</string>
+    <string name="tiles_amount_24">24</string>
+    <string name="equal_tiles_amount_2">2</string>
+    <string name="equal_tiles_amount_3">3</string>
+    <string name="equal_tiles_amount_4">4</string>
+    <string name="equal_tiles_amount_6">6</string>
+
+    <string name="preference_file_key">com.youngsophomore.PREFERENCE_FILE_KEY</string>
+    <string name="saved_mahjong_remember_time_key">MAHJONG_REMEMBER_TIME</string>
+    <string name="saved_mahjong_tiles_amount_key">MAHJONG_BONES_AMOUNT</string>
+    <string name="saved_mahjong_equal_tiles_amount_key">MAHJONG_EQUAL_BONES_AMOUNT</string>
+    <!-- STRINGS FOR COLORS SETTINGS -->
+    <string name="tbr_colors_settings_title">Settings: colors</string>
+    <string name="colors_amount">The number of colors in the sequence:</string>
+    <string name="distinct_colors_amount">Number of different colors:</string>
+    <string name="max_repeat_colors_amount">Maximum number of color repetitions:</string>
+    <string name="color_show_time">Seconds to memorize color:</string>
+    <string name="max_repeat_colors_amount_0">0</string>
+    <string name="max_repeat_colors_amount_1">1</string>
+    <string name="max_repeat_colors_amount_2">2</string>
+    <string name="max_repeat_colors_amount_3">3</string>
+    <string name="max_repeat_colors_amount_4">4</string>
+
+    <string name="saved_colors_amount_key">COLORS_AMOUNT</string>
+    <string name="saved_distinct_colors_amount_key">DISTINCT_COLORS_AMOUNT</string>
+    <string name="saved_max_repeat_colors_amount_key">MAX_REPEAT_COLORS_AMOUNT</string>
+    <string name="saved_color_show_time_key">COLOR_SHOW_TIME</string>
+    <!-- STRINGS FOR SHAPES SETTINGS -->
+    <string name="tbr_shapes_settings_title">Settings: shapes</string>
+    <string name="shapes_amount">The number of shapes in the sequence:</string>
+    <string name="distinct_shapes_amount">The number of different shapes:</string>
+    <string name="max_repeat_shapes_amount">Maximum number of shape repetitions:</string>
+    <string name="shape_show_time">Seconds to memorize shape:</string>
+    <string name="max_repeat_shapes_amount_0">0</string>
+    <string name="max_repeat_shapes_amount_1">1</string>
+    <string name="max_repeat_shapes_amount_2">2</string>
+    <string name="max_repeat_shapes_amount_3">3</string>
+    <string name="max_repeat_shapes_amount_4">4</string>
+
+    <string name="saved_shapes_amount_key">SHAPES_AMOUNT</string>
+    <string name="saved_distinct_shapes_amount_key">DISTINCT_SHAPES_AMOUNT</string>
+    <string name="saved_max_repeat_shapes_amount_key">MAX_REPEAT_SHAPES_AMOUNT</string>
+    <string name="saved_shape_show_time_key">SHAPE_SHOW_TIME</string>
+    <!-- STRINGS FOR WORDS SETTINGS -->
+    <string name="tbr_words_settings_title">Settings: words</string>
+    <string name="tbr_words_add_collection_title">New collection</string>
+    <string name="words_collection">Words collection:</string>
+    <string name="word_show_time">Seconds to memorize word:</string>
+    <string name="et_words_collection_title_hint">Title of collection</string>
+    <string name="et_words_collection_hint">Collection of words separated by a space</string>
+    <string name="init_words_collection">Thanks for using the app, I hope you find it useful</string>
+
+    <string name="saved_words_collection_position_key">WORDS_COLLECTION_POSITION</string>
+    <string name="saved_word_show_time_key">WORD_SHOW_TIME</string>
+    <string name="words_collections_titles_key">WORDS_COLLECTIONS_TITLES</string>
+    <!-- STRINGS FOR PHRASES SETTINGS -->
+    <string name="tbr_phrases_settings_title">Settings: phrases</string>
+    <string name="tbr_phrases_add_collection_title">New collection</string>
+    <string name="phrases_collection">Phrases collection:</string>
+    <string name="phrase_show_time">Seconds to memorize phrase:</string>
+    <string name="et_phrases_collection_title_hint">Title of collection</string>
+    <string name="et_phrases_collection_hint">The phrase</string>
+    <string name="new_phrases_collection_key">NEW_PHRASES_COLLECTION</string>
+    <string name="new_phrase_key">NEW_PHRASE</string>
+
+    <string name="saved_phrases_collection_position_key">PHRASES_COLLECTION_POSITION</string>
+    <string name="saved_phrase_show_time_key">PHRASE_SHOW_TIME</string>
+    <string name="phrases_collections_titles_key">PHRASES_COLLECTIONS_TITLES</string>
+
+    <!-- STRINGS FOR DETAILS SETTINGS -->
+    <string name="tbr_details_settings_title">Settings: details</string>
+    <string name="tbr_details_add_image_title">New image</string>
+    <string name="images_collection">Image:</string>
+    <string name="image_show_time">Seconds to memorize the image:</string>
+    <string name="new_image">New image:</string>
+    <string name="new_questions_collection">Questions collection</string>
+    <string name="et_question_hint">New question</string>
+    <string name="et_answer_hint">Answer to the question</string>
+    <string name="new_questions_collection_key">NEW_QUESTIONS_COLLECTION</string>
+    <!--<string name="new_phrase_key">NEW_PHRASE</string>-->
+    <string name="saved_images_collection_position_key">IMAGES_COLLECTION_POSITION</string>
+    <string name="saved_image_show_time_key">IMAGE_SHOW_TIME</string>
+    <string name="questions_collections_titles_key">QUESTIONS_COLLECTIONS_TITLES</string>
+    <string name="chosen_img_key">CHOSEN_IMG_KEY</string>
+
+    <string name="question_type_dialog_title">Type of question</string>
+    <string name="question_type_dialog_message">Does the new question contain only one answer?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="ok">Ok</string>
+
+    <string name="correct_answer_dialog_title">The correctness of the answer</string>
+    <string name="correct_answer_dialog_message">Is the answer correct?</string>
+
+    <string name="msg_dlg_too_many_correct_answers_title">Error</string>
+    <string name="msg_dlg_too_many_correct_answers_message">A new question can have only one correct answer</string>
+
+    <string name="delete_answer_dialog_title">Delete answer</string>
+    <string name="delete_answer_dialog_message">Are you sure you want to delete the answer?</string>
+    <string name="delete_question_dialog_title">Delete question</string>
+    <string name="delete_question_dialog_message">Are you sure you want to delete the question?</string>
+
+    <string name="et_new_image_dialog_hint">Type a unique name</string>
+    <string name="new_image_dialog_title">Title of the new image</string>
+    <!--STRINGS FOR INFO DIALOGS-->
+    <string name="hyphen"> - </string>
+    <string name="instruction">Guide</string>
+    <string name="tv_save_settings">Save settings</string>
+    <string name="tv_save_settings_and_play">Save settings and play</string>
+    <string name="mi_info_title">info</string>
+
+    <string name="tv_add_words_collection">Add words collection</string>
+    <string name="tv_confirm_words_collection">Save words collection</string>
+    <string name="tv_long_click">Long press on the selected collection to delete the collection</string>
+
+    <string name="tv_add_phrases_collection">Add phrases collection</string>
+
+    <string name="tv_add_phrase">Add a phrase to a collection</string>
+    <string name="tv_save_phrase">Save the phrase in a collection</string>
+    <string name="tv_confirm_phrases_collection">Confirm the phrases collection</string>
+
+    <string name="tv_add_image">Add an image and a collection of questions</string>
+
+    <string name="tv_choose_image">Select an image</string>
+    <string name="tv_add_question">Add a question to the collection</string>
+    <string name="tv_save_question">Save the question to the collection</string>
+    <string name="tv_confirm_questions_collection">Confirm the questions collection</string>
+    <string name="tv_add_answer">Add an answer</string>
+    <string name="tv_save_answer">Save an answer</string>
+    <string name="tv_remind_image">Show an image</string>
+
+    <string name="m_training_small_top_gl">0.1</string>
+    <string name="m_training_big_top_gl">0.3</string>
+    <string name="m_training_small_bottom_gl">0.96</string>
+    <string name="m_training_big_bottom_gl">0.93</string>
+    <string name="m_training_small_left_gl">0.05</string>
+    <!--STRINGS FOR FINISH DIALOGS-->
+    <string name="finish_dialog_title">The training is over!</string>
+    <string name="training_dur">Time of the training:</string>
+    <string name="seq_train_mistakes_amount">Mistakes amount:</string>
+    <string name="phr_train_moves_amount">Moves amount:</string>
+    <string name="det_train_mistakes_amount">Mistakes amount (one answer / multiple answers):</string>
+    <!--STRINGS FOR STATISTICS-->
+    <string name="tv_subtitle_time">Average time of a training</string>
+    <string name="tv_subtitle_tiles">For the amount of tiles</string>
+    <string name="tv_subtitle_eq_tiles">For the amount of equal tiles</string>
+    <string name="tv_subtitle_colors">For the number of colors</string>
+    <string name="tv_subtitle_dist_colors">For the number of different colors</string>
+    <string name="tv_subtitle_shapes">For the number of shapes</string>
+    <string name="tv_subtitle_dist_shapes">For the number of different shapes</string>
+    <string name="tv_subtitle_time_wrd_phr">Average time of a training and number of mistakes</string>
+    <string name="tv_subtitle_time_wrd">For different sizes of collections and memorizing time of a word</string>
+    <string name="tv_subtitle_time_phr">For different sizes of collections and memorizing time of a phrase</string>
+    <string name="tv_subtitle_time_det">Average time of a training and number of mistakes (one answer / multiple answers)</string>
+    <string name="tv_subtitle_time_collect">For different collections</string>
+    <string name="sec">sec.</string>
+    <string name="bc_time_to_moves_desc_mhj">The average number of mistakes depending on the time of memorization</string>
+    <string name="bc_amount_to_moves_desc_clr">The average number of mistakes depending on the number of colors</string>
+    <string name="bc_dist_amount_to_moves_desc_clr">The average number of mistakes depending on the number of different colors</string>
+    <string name="bc_amount_to_moves_desc_shp">The average number of mistakes depending on the number of shapes</string>
+    <string name="bc_dist_amount_to_moves_desc_shp">The average number of mistakes depending on the number of different shapes</string>
+
+    <!-- MHJ-->
+    <string name="lbl_stat_tiles_12">12 tiles</string>
+    <string name="lbl_stat_tiles_24">24 tiles</string>
+    <string name="lbl_stat_eq_tiles_2">2 eq. tiles</string>
+    <string name="lbl_stat_eq_tiles_3">3 eq. tiles</string>
+    <string name="lbl_stat_eq_tiles_4">4 eq. tiles</string>
+    <string name="lbl_stat_eq_tiles_6">6 eq. tiles</string>
+    <!-- CLR-->
+    <string name="lbl_stat_time_1">1 sec.</string>
+    <string name="lbl_stat_time_2">2 sec.</string>
+    <string name="lbl_stat_time_3">3 sec.</string>
+    <string name="lbl_stat_time_4">4 sec.</string>
+    <string name="lbl_stat_time_5">5 sec.</string>
+    <string name="lbl_stat_time_6">6 sec.</string>
+
+</resources>
