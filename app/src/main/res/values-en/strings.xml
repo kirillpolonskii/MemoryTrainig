@@ -6,7 +6,7 @@
     <string name="delete_collection_dialog_title">Delete collection</string>
     <string name="delete_collection_dialog_message">Are you sure you want to delete the selected collection?</string>
     <string name="msg_forbid_delete_collection">Only 1 collection remaining</string>
-    <!-- STRINGS FOR BUTTONS -->
+    <!-- STRINGS FOR MAIN MENU -->
     <string name="btn_mahjong_training_ru">mahjong</string>
     <string name="btn_colors_training_ru">colors</string>
     <string name="btn_shapes_training_ru">shapes</string>
@@ -19,6 +19,11 @@
     <string name="saved_lang_pos_key">LANG_POS_KEY</string>
     <string name="statistics">statistics</string>
     <string name="settings">settings</string>
+
+    <string name="tv_play_info">Start a training with the current settings</string>
+    <string name="tv_settings_info">Open the training settings</string>
+    <string name="tv_statistics_info">Open statistics</string>
+    <string name="tv_swipe_info">Swipe right on the training button to display the settings button</string>
     <!-- STRINGS FOR MAHJONG SETTINGS -->
     <string name="tbr_mahjong_settings_title">Settings: mahjong</string>
     <string name="remember_time">Seconds to memorize:</string>

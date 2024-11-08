@@ -6,7 +6,7 @@
     <string name="delete_collection_dialog_title">Удаление коллекции</string>
     <string name="delete_collection_dialog_message">Вы действительно хотите удалить выбранную коллекцию?</string>
     <string name="msg_forbid_delete_collection">Осталась только 1 коллекция</string>
-    <!-- STRINGS FOR BUTTONS -->
+    <!-- STRINGS FOR MAIN MENU -->
     <string name="btn_mahjong_training_ru">маджонг</string>
     <string name="btn_colors_training_ru">цвета</string>
     <string name="btn_shapes_training_ru">фигуры</string>
@@ -19,6 +19,11 @@
     <string name="saved_lang_pos_key">LANG_POS_KEY</string>
     <string name="statistics">statistics</string>
     <string name="settings">settings</string>
+
+    <string name="tv_play_info">Запустить тренировку с текущими настройками</string>
+    <string name="tv_settings_info">Открыть настройки тренировки</string>
+    <string name="tv_statistics_info">Открыть статистику</string>
+    <string name="tv_swipe_info">Свайп вправо по кнопке тренировки - отображение кнопки настроек</string>
     <!-- STRINGS FOR MAHJONG SETTINGS -->
     <string name="tbr_mahjong_settings_title">Настройки: маджонг</string>
     <string name="remember_time">Время на запоминание (с):</string>

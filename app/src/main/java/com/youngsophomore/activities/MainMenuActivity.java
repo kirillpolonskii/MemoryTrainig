@@ -1,6 +1,7 @@
 package com.youngsophomore.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -18,6 +19,7 @@ import com.addisonelliott.segmentedbutton.SegmentedButton;
 import com.addisonelliott.segmentedbutton.SegmentedButtonGroup;
 import com.youngsophomore.R;
 import com.youngsophomore.data.Question;
+import com.youngsophomore.fragments.InfoDialogFragment;
 import com.youngsophomore.viewgroups.MyMotionLayout;
 
 import java.io.File;
@@ -95,13 +97,7 @@ public class MainMenuActivity extends AppCompatActivity {
                                 ", R.dimen.btn_info_elev = " + R.dimen.btn_info_elev +
                                 ", elev = " + elevPx);
                         view.setElevation(elevPx);
-                        return true;
-                    case (MotionEvent.ACTION_CANCEL):
-                        Log.d(DEBUG_TAG, "btnInfo onTouch. Action was CANCEL");
-                        return true;
-                    case (MotionEvent.ACTION_OUTSIDE):
-                        Log.d(DEBUG_TAG, "btnInfo onTouch. Movement occurred outside bounds " +
-                                "of current screen element");
+                        showInfoDialog(R.layout.fragment_main_menu_info);
                         return true;
                     default:
                         return false;
@@ -203,6 +199,11 @@ public class MainMenuActivity extends AppCompatActivity {
     public void onResume(){
         mtnLtMainMenu.transitionToState(R.id.base_state);
         super.onResume();
+    }
+
+    public void showInfoDialog(int layoutResource) {
+        DialogFragment newFragment = new InfoDialogFragment(layoutResource);
+        newFragment.show(getSupportFragmentManager(), "InfoDialogFragment");
     }
 
     private void init(SharedPreferences sharedPreferences){
