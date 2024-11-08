@@ -234,7 +234,7 @@ public class AddImageActivity extends AppCompatActivity implements
     }
 
     public void openFileChooser(){
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         intent.setType("image/*");
         startActivityForResult(intent, NEW_IMAGE_REQUEST_CODE);
     }

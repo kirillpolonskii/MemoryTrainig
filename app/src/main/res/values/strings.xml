@@ -133,6 +133,8 @@
 
     <string name="et_new_image_dialog_hint">Введите уникальное название</string>
     <string name="new_image_dialog_title">Название нового изображения</string>
+
+    <string name="tv_pretrain_tip_det">Для проверки правильности ответа нажмите на область вопроса</string>
     <!--STRINGS FOR INFO DIALOGS-->
     <string name="hyphen"> - </string>
     <string name="instruction">Инструкция</string>

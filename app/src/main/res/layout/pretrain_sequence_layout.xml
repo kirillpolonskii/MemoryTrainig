@@ -31,6 +31,18 @@
         android:text="использование"
         android:textAlignment="center"
         />
+    <TextView
+        android:id="@+id/tv_pretrain_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_countdown"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:textAlignment="center"
+        style="@style/SettingsTextViewStyle"
+        android:textSize="20sp"
+        />
 
 
 

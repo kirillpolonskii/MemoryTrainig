@@ -89,6 +89,8 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
 
         TextView tvCountdown = findViewById(R.id.tv_countdown);
         TextView tvCurPhraseNum = findViewById(R.id.tv_cur_elem_num);
+        TextView tvPretrainTip = findViewById(R.id.tv_pretrain_tip);
+        tvPretrainTip.setText(getString(R.string.tv_pretrain_tip_det));
         CountDownTimer countDownTimer = new CountDownTimer(3000 + 200, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -106,6 +108,7 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
                 // заменить textview на imageview и показать картинку
                 ConstraintLayout cntLytPretrain = findViewById(R.id.cst_lt_pretrain);
                 cntLytPretrain.removeView(tvCountdown);
+                cntLytPretrain.removeView(tvPretrainTip);
                 ImageView ivCollectionImage = new ImageView(getApplicationContext());
                 ivCollectionImage.setId(View.generateViewId());
                 ConstraintLayout.LayoutParams ivCurColorParams = new ConstraintLayout.LayoutParams(

@@ -184,7 +184,7 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
                                                     btnTile.setClickable(true);
                                                 }
                                             }
-                                        }, 800);
+                                        }, 600);
 
                                     }
                                 }
