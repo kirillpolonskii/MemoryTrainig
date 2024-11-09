@@ -74,35 +74,21 @@ public class TrainHelper {
             for (int i = 0; i < mahjongBonesAmount; ++i) {
                 tiles.add(0);
             }
-            TreeSet<Integer> usedTiles = new TreeSet<>();
-            for (int i = 0; i < mahjongBonesAmount / mahjongEqualBonesAmount; ++i) {
+            for(int i = 0; i < mahjongBonesAmount / mahjongEqualBonesAmount; ++i){
                 int tileNum = ThreadLocalRandom.current().nextInt(1, 13 + 1);
-                while (usedTiles.contains(tileNum)) {
+                while (tiles.contains(tileNum)) {
                     tileNum = ThreadLocalRandom.current().nextInt(1, 13 + 1);
                 }
-                Log.d(DEBUG_TAG, "tileNum = " + tileNum);
-                usedTiles.add(tileNum);
-                if (i < (mahjongBonesAmount / mahjongEqualBonesAmount) * 10 / 15) {
-                    Log.d(DEBUG_TAG, "in if branch");
-                    int filledPositions = 0;
-                    while (filledPositions < mahjongEqualBonesAmount) {
-                        int newPosition = ThreadLocalRandom.current().nextInt(0, mahjongBonesAmount);
-                        if (tiles.get(newPosition) == 0) {
-                            int prev = tiles.set(newPosition, tileNum);
-                            Log.d(DEBUG_TAG, "prev elem = " + prev);
-                            ++filledPositions;
-                        }
+                int firstNotFilledPos = tiles.indexOf(0);
+                tiles.set(firstNotFilledPos, tileNum);
+                for(int j = 0; j < mahjongEqualBonesAmount - 1; ++j){
+                    int newPosition = ThreadLocalRandom.current().nextInt(firstNotFilledPos + 1, mahjongBonesAmount);
+                    while (tiles.get(newPosition) != 0) {
+                        newPosition = ThreadLocalRandom.current().nextInt(firstNotFilledPos + 1, mahjongBonesAmount);
                     }
-                } else {
-                    Log.d(DEBUG_TAG, "in else branch");
-                    int filledPositions = 0;
-                    for (int j = 0; j < mahjongBonesAmount && filledPositions < mahjongEqualBonesAmount; ++j) {
-                        if (tiles.get(j) == 0) {
-                            tiles.set(j, tileNum);
-                            ++filledPositions;
-                        }
-                    }
+                    tiles.set(newPosition, tileNum);
                 }
+
             }
             Log.d(DEBUG_TAG, tiles.toString());
             return tiles;
