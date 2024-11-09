@@ -51,6 +51,9 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
                 sharedPreferences.getInt(getString(R.string.saved_mahjong_tiles_amount_key), 0));
         int mhjEqualTilesAmount = PrepHelper.Mahjong.sgBtnGroupEqualTilesPosToAmount(
                 sharedPreferences.getInt(getString(R.string.saved_mahjong_equal_tiles_amount_key), 0));
+
+        // Формирование матрицы (или массива) костей с загруженными параметрами
+        ArrayList<Integer> tilesNum = TrainHelper.Mahjong.generateTiles(mhjTilesAmount, mhjEqualTilesAmount);
         TextView tvCountdown = findViewById(R.id.tv_countdown);
         CountDownTimer countDownTimer = new CountDownTimer(3000 + 200, 1000) {
             @Override
@@ -70,8 +73,6 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
                 Log.d(DEBUG_TAG, "saved mhjShowTime = " + mhjShowTime +
                         ", mhjTilesAmount = " + mhjTilesAmount +
                         ", mhjEqualTilesAmount = " + mhjEqualTilesAmount);
-                // Формирование матрицы (или массива) костей с загруженными параметрами
-                ArrayList<Integer> tilesNum = TrainHelper.Mahjong.generateTiles(mhjTilesAmount, mhjEqualTilesAmount);
                 Log.d(DEBUG_TAG, tilesNum.toString());
                 // Заполнение массива кнопок-костей из массива номеров костей, а также массива background
                 ConstraintLayout constraintLayout = findViewById(R.id.cst_lt_chld_mhj);
