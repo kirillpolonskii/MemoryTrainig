@@ -38,30 +38,8 @@ public class MessageDialogFragment extends DialogFragment {
                     }
                 });
         // Create the AlertDialog object and return it
-        return builder.create();
+        AlertDialog dialog = builder.create();
+        dialog.setCanceledOnTouchOutside(false);
+        return dialog;
     }
-
-    /*public MessageDialogFragment() {
-        // Required empty public constructor
-    }
-
-    public static MessageDialogFragment newInstance(String param1, String param2) {
-        MessageDialogFragment fragment = new MessageDialogFragment();
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_question_type_dialog, container, false);
-    }*/
 }

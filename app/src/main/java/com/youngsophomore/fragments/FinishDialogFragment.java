@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
@@ -74,5 +75,11 @@ public class FinishDialogFragment extends DialogFragment {
                 });
         // Create the AlertDialog object and return it
         return builder.create();
+    }
+
+    @Override
+    public void onCancel(@NonNull DialogInterface dialog) {
+        super.onCancel(dialog);
+        listener.onFinishPosClick(FinishDialogFragment.this);
     }
 }

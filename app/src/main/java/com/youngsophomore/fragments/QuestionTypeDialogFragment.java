@@ -61,30 +61,8 @@ public class QuestionTypeDialogFragment extends DialogFragment {
                     }
                 });
         // Create the AlertDialog object and return it
-        return builder.create();
+        AlertDialog dialog = builder.create();
+        dialog.setCanceledOnTouchOutside(false);
+        return dialog;
     }
-
-    /*public QuestionTypeDialogFragment() {
-        // Required empty public constructor
-    }
-
-    public static QuestionTypeDialogFragment newInstance(String param1, String param2) {
-        QuestionTypeDialogFragment fragment = new QuestionTypeDialogFragment();
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_question_type_dialog, container, false);
-    }*/
 }

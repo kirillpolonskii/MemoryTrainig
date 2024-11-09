@@ -63,7 +63,9 @@ public class DeleteQuestionDialogFragment extends DialogFragment {
                     }
                 });
         // Create the AlertDialog object and return it
-        return builder.create();
+        AlertDialog dialog = builder.create();
+        dialog.setCanceledOnTouchOutside(false);
+        return dialog;
     }
 
     public DeleteQuestionDialogFragment(int position) {

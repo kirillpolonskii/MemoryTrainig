@@ -48,23 +48,4 @@ public class InfoDialogFragment extends DialogFragment {
         this.layoutResource = layoutResource;
     }
 
-    /*public static InfoDialogFragment newInstance(String param1, String param2) {
-        InfoDialogFragment fragment = new InfoDialogFragment();
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_question_type_dialog, container, false);
-    }*/
 }
