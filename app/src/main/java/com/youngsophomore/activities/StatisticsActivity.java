@@ -3,6 +3,7 @@ package com.youngsophomore.activities;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
@@ -32,6 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StatisticsActivity extends AppCompatActivity {
+    private static final String DEBUG_TAG = "Gestures";
     SharedPreferences sharedPreferences;
     // определить поля, которые будут нужны для формирования гистограмм и отображения времени
     // МАДЖОНГ
@@ -383,27 +385,31 @@ public class StatisticsActivity extends AppCompatActivity {
         numPckShowTimeWrd.setMaxValue(6);
         numPckSizeWrd.setValue(1);
         numPckShowTimeWrd.setValue(1);
-        String strAvTimeWrd = avTimeWrd[0][0] + " " + getString(R.string.sec);
+        String strAvTimeWrd = avTimeWrd[1][1] + " " + getString(R.string.sec);
         tvAvTimeWrd.setText(strAvTimeWrd);
-        String strAvMovesWrd = String.valueOf(avMovesWrd[0][0]);
+        String strAvMovesWrd = String.valueOf(avMovesWrd[1][1]);
         tvAvMovesWrd.setText(strAvMovesWrd);
         numPckSizeWrd.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                String strAvTimeWrd = avTimeWrd[newVal - 1][numPckShowTimeWrd.getValue() - 1] + " " +
+                Log.d(DEBUG_TAG, "newVal = " + (newVal) + ", numPckShowTimeWrd.getValue() = " +
+                        (numPckShowTimeWrd.getValue()));
+                Log.d(DEBUG_TAG, "avTimeWrd[newVal][numPckShowTimeWrd.getValue()] = " +
+                        avTimeWrd[newVal][numPckShowTimeWrd.getValue()]);
+                String strAvTimeWrd = avTimeWrd[newVal][numPckShowTimeWrd.getValue()] + " " +
                         getString(R.string.sec);
                 tvAvTimeWrd.setText(strAvTimeWrd);
-                String strAvMovesWrd = String.valueOf(avMovesWrd[newVal - 1][numPckShowTimeWrd.getValue() - 1]);
+                String strAvMovesWrd = String.valueOf(avMovesWrd[newVal][numPckShowTimeWrd.getValue()]);
                 tvAvMovesWrd.setText(strAvMovesWrd);
             }
         });
         numPckShowTimeWrd.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                String strAvTimeWrd = avTimeWrd[numPckSizeWrd.getValue() - 1][newVal - 1] + " " +
+                String strAvTimeWrd = avTimeWrd[numPckSizeWrd.getValue()][newVal] + " " +
                         getString(R.string.sec);
                 tvAvTimeWrd.setText(strAvTimeWrd);
-                String strAvMovesWrd = String.valueOf(avMovesWrd[numPckSizeWrd.getValue() - 1][newVal - 1]);
+                String strAvMovesWrd = String.valueOf(avMovesWrd[numPckSizeWrd.getValue()][newVal]);
                 tvAvMovesWrd.setText(strAvMovesWrd);
             }
         });
@@ -422,27 +428,27 @@ public class StatisticsActivity extends AppCompatActivity {
         numPckShowTimePhr.setMaxValue(6);
         numPckSizePhr.setValue(1);
         numPckShowTimePhr.setValue(1);
-        String strAvTimePhr = avTimePhr[0][0] + " " + getString(R.string.sec);
+        String strAvTimePhr = avTimePhr[1][1] + " " + getString(R.string.sec);
         tvAvTimePhr.setText(strAvTimePhr);
-        String strAvMovesPhr = String.valueOf(avMovesPhr[0][0]);
+        String strAvMovesPhr = String.valueOf(avMovesPhr[1][1]);
         tvAvMovesPhr.setText(strAvMovesPhr);
         numPckSizePhr.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                String strAvTimePhr = avTimePhr[newVal - 1][numPckShowTimePhr.getValue() - 1] + " " +
+                String strAvTimePhr = avTimePhr[newVal][numPckShowTimePhr.getValue()] + " " +
                         getString(R.string.sec);
                 tvAvTimePhr.setText(strAvTimePhr);
-                String strAvMovesPhr = String.valueOf(avMovesPhr[newVal - 1][numPckShowTimePhr.getValue() - 1]);
+                String strAvMovesPhr = String.valueOf(avMovesPhr[newVal][numPckShowTimePhr.getValue()]);
                 tvAvMovesPhr.setText(strAvMovesPhr);
             }
         });
         numPckShowTimePhr.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                String strAvTimePhr = avTimePhr[numPckSizePhr.getValue() - 1][newVal - 1] + " " +
+                String strAvTimePhr = avTimePhr[numPckSizePhr.getValue()][newVal] + " " +
                         getString(R.string.sec);
                 tvAvTimePhr.setText(strAvTimePhr);
-                String strAvMovesPhr = String.valueOf(avMovesPhr[numPckSizePhr.getValue() - 1][newVal - 1]);
+                String strAvMovesPhr = String.valueOf(avMovesPhr[numPckSizePhr.getValue()][newVal]);
                 tvAvMovesPhr.setText(strAvMovesPhr);
             }
         });
@@ -1027,16 +1033,19 @@ public class StatisticsActivity extends AppCompatActivity {
     }
 
     private void fillDataWrd(){
-        avTimeWrd = new double[100][6];
-        avMovesWrd = new double[100][6];
-        for(int i = 0; i < 100; ++i){
-            for (int j = 0; j < 6; ++j){
+        avTimeWrd = new double[101][7];
+        avMovesWrd = new double[101][7];
+        for(int i = 0; i < 101; ++i){
+            for (int j = 0; j < 7; ++j){
                 String curKeyTime = TrainHelper.getStatParamKey(Training.WRD, StatParam.TOTNUMTIME, i, j);
                 String curKeyMoves = TrainHelper.getStatParamKey(Training.WRD, StatParam.TOTNUMMOVES, i, j);
                 String curKeyTrain = TrainHelper.getStatParamKey(Training.WRD, StatParam.TOTNUMTRAINS, i, j);
                 if (sharedPreferences.getInt(curKeyTrain, 0) != 0){
+                    Log.d(DEBUG_TAG, "TOTNUMTRAIN of words, i = " + i + ", j = " + j + " "
+                            + sharedPreferences.getInt(curKeyTrain, 0));
                     avTimeWrd[i][j] = round2((double) sharedPreferences.getInt(curKeyTime, 0) /
                             (double) sharedPreferences.getInt(curKeyTrain, 0));
+                    Log.d(DEBUG_TAG, "avTimeWrd[i][j] = " + avTimeWrd[i][j]);
                     avMovesWrd[i][j] = round2((double) sharedPreferences.getInt(curKeyMoves, 0) /
                             (double) sharedPreferences.getInt(curKeyTrain, 0));
                 }
@@ -1044,13 +1053,14 @@ public class StatisticsActivity extends AppCompatActivity {
             }
 
         }
+        Log.d(DEBUG_TAG, "avTimeWrd[4][1] = " + avTimeWrd[4][1]);
     }
 
     private void fillDataPhr(){
-        avTimePhr = new double[35][6];
-        avMovesPhr = new double[35][6];
-        for(int i = 0; i < 35; ++i){
-            for (int j = 0; j < 6; ++j){
+        avTimePhr = new double[36][7];
+        avMovesPhr = new double[36][7];
+        for(int i = 0; i < 36; ++i){
+            for (int j = 0; j < 7; ++j){
                 String curKeyTime = TrainHelper.getStatParamKey(Training.PHR, StatParam.TOTNUMTIME, i, j);
                 String curKeyMoves = TrainHelper.getStatParamKey(Training.PHR, StatParam.TOTNUMMOVES, i, j);
                 String curKeyTrain = TrainHelper.getStatParamKey(Training.PHR, StatParam.TOTNUMTRAINS, i, j);
