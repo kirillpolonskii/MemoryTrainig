@@ -32,66 +32,40 @@ public class WordsSettingsActivity extends AppCompatActivity {
     private final String DISPLAY_SETTINGS_FRAGMENT_TAG = "display_words_settings_fragment";
     private final String ADD_COLLECTION_FRAGMENT_TAG = "add_collection_fragment";
     private static final String DEBUG_TAG = "Gestures";
+    Toolbar toolbar;
+    FragmentManager fragmentManager;
     Spinner sprWordsCollection;
     NumberPicker pckrWordShowTime;
+    int elevPx;
+    ImageButton btnSaveSettings;
+    ImageButton btnPlayWSettings;
+    ImageButton btnAddWordsCollection;
+    ImageButton btnConfirmWordsCollection;
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_words_settings);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(getString(R.string.tbr_words_settings_title));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
+        elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .setReorderingAllowed(true)
                 .add(R.id.frt_cnt_v_wrd, DisplayWordsSettingsFragment.class, null, DISPLAY_SETTINGS_FRAGMENT_TAG)
                 .commit();
 
-        ImageButton btnSaveSettings = findViewById(R.id.btn_save_wrd_settings);
-        ImageButton btnPlayWSettings = findViewById(R.id.btn_play_w_settings_wrd);
-        ImageButton btnAddWordsCollection = findViewById(R.id.btn_add_wrd_collection);
-        ImageButton btnConfirmWordsCollection = findViewById(R.id.btn_confirm_wrd_collection);
+        btnSaveSettings = findViewById(R.id.btn_save_wrd_settings);
+        btnPlayWSettings = findViewById(R.id.btn_play_w_settings_wrd);
+        btnAddWordsCollection = findViewById(R.id.btn_add_wrd_collection);
+        btnConfirmWordsCollection = findViewById(R.id.btn_confirm_wrd_collection);
 
         PrepHelper.deactivateBtn(btnConfirmWordsCollection);
-        btnAddWordsCollection.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent event) {
-                int action = event.getAction();
-                switch(action) {
-                    case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnAddWordsCollection onTouch. Action was DOWN");
-                        //view.setElevation(0);
-                        return true;
-                    case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnAddWordsCollection onTouch. Action was MOVE");
-                        return true;
-                    case (MotionEvent.ACTION_UP):
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        Log.d(DEBUG_TAG, "btnAddWordsCollection onTouch. Action was UP");
-
-                        PrepHelper.deactivateBtn(btnAddWordsCollection);
-                        PrepHelper.deactivateBtn(btnSaveSettings);
-                        PrepHelper.deactivateBtn(btnPlayWSettings);
-                        PrepHelper.activateBtn(btnConfirmWordsCollection, elevPx);
-
-                        fragmentManager.beginTransaction()
-                                .replace(R.id.frt_cnt_v_wrd, AddWordsCollectionFragment.class, null, ADD_COLLECTION_FRAGMENT_TAG)
-                                .setReorderingAllowed(true)
-                                .addToBackStack("transaction_add_words_collection_fragment")
-                                .commit();
-                        toolbar.setTitle(R.string.tbr_words_add_collection_title);
-                        return true;
-                    default:
-                        return false;
-                }
-            }
-        });
-
         btnSaveSettings.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
@@ -105,7 +79,6 @@ public class WordsSettingsActivity extends AppCompatActivity {
                         Log.d(DEBUG_TAG, "btnSaveSettings onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                         Log.d(DEBUG_TAG, "btnSaveSettings onTouch. Action was UP");
                         view.setElevation(elevPx);
                         Fragment displayWordsCollectionsFragment = fragmentManager.findFragmentByTag(DISPLAY_SETTINGS_FRAGMENT_TAG);
@@ -142,7 +115,6 @@ public class WordsSettingsActivity extends AppCompatActivity {
                         Log.d(DEBUG_TAG, "btnPlayWSettings onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                         Log.d(DEBUG_TAG, "btnPlayWSettings onTouch. Action was UP");
                         view.setElevation(elevPx);
                         Fragment displayWordsCollectionsFragment = fragmentManager.findFragmentByTag(DISPLAY_SETTINGS_FRAGMENT_TAG);
@@ -166,6 +138,39 @@ public class WordsSettingsActivity extends AppCompatActivity {
             }
         });
 
+        btnAddWordsCollection.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                int action = event.getAction();
+                switch(action) {
+                    case (MotionEvent.ACTION_DOWN):
+                        Log.d(DEBUG_TAG, "btnAddWordsCollection onTouch. Action was DOWN");
+                        //view.setElevation(0);
+                        return true;
+                    case (MotionEvent.ACTION_MOVE):
+                        Log.d(DEBUG_TAG, "btnAddWordsCollection onTouch. Action was MOVE");
+                        return true;
+                    case (MotionEvent.ACTION_UP):
+                        Log.d(DEBUG_TAG, "btnAddWordsCollection onTouch. Action was UP");
+
+                        PrepHelper.deactivateBtn(btnAddWordsCollection);
+                        PrepHelper.deactivateBtn(btnSaveSettings);
+                        PrepHelper.deactivateBtn(btnPlayWSettings);
+                        PrepHelper.activateBtn(btnConfirmWordsCollection, elevPx);
+
+                        fragmentManager.beginTransaction()
+                                .replace(R.id.frt_cnt_v_wrd, AddWordsCollectionFragment.class, null, ADD_COLLECTION_FRAGMENT_TAG)
+                                .setReorderingAllowed(true)
+                                .addToBackStack("transaction_add_words_collection_fragment")
+                                .commit();
+                        toolbar.setTitle(R.string.tbr_words_add_collection_title);
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
+
         btnConfirmWordsCollection.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
@@ -179,7 +184,6 @@ public class WordsSettingsActivity extends AppCompatActivity {
                         Log.d(DEBUG_TAG, "btnConfirmWordsCollection onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                         Log.d(DEBUG_TAG, "btnConfirmWordsCollection onTouch. Action was UP");
                         Fragment addWordsCollectionFragment = fragmentManager.findFragmentByTag(ADD_COLLECTION_FRAGMENT_TAG);
                         EditText etWordsCollectionTitle = addWordsCollectionFragment.getView()
@@ -245,11 +249,28 @@ public class WordsSettingsActivity extends AppCompatActivity {
         newFragment.show(getSupportFragmentManager(), "InfoDialogFragment");
     }
 
-    
-
     @Override
     public boolean onSupportNavigateUp(){
         onBackPressed();
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        Log.d(DEBUG_TAG, "in onBackPressed()");
+        AddWordsCollectionFragment addWordsCollectionFragment =
+                (AddWordsCollectionFragment) fragmentManager.findFragmentByTag(ADD_COLLECTION_FRAGMENT_TAG);
+        DisplayWordsSettingsFragment displayWordsSettingsFragment =
+                (DisplayWordsSettingsFragment) fragmentManager.findFragmentByTag(DISPLAY_SETTINGS_FRAGMENT_TAG);
+        Log.d(DEBUG_TAG, addWordsCollectionFragment + ",, " + displayWordsSettingsFragment);
+        if(addWordsCollectionFragment != null && addWordsCollectionFragment.isVisible()){
+            toolbar.setTitle(R.string.tbr_words_settings_title);
+            PrepHelper.activateBtn(btnSaveSettings, elevPx);
+            PrepHelper.activateBtn(btnPlayWSettings, elevPx);
+            PrepHelper.activateBtn(btnAddWordsCollection, elevPx);
+            PrepHelper.deactivateBtn(btnConfirmWordsCollection);
+        }
+        super.onBackPressed();
     }
 }

@@ -21,6 +21,8 @@ import android.widget.Toast;
 import com.youngsophomore.R;
 import com.youngsophomore.data.CollectionsStorage;
 import com.youngsophomore.fragments.AddPhraseFragment;
+import com.youngsophomore.fragments.AddWordsCollectionFragment;
+import com.youngsophomore.fragments.DisplayWordsSettingsFragment;
 import com.youngsophomore.fragments.InfoDialogFragment;
 import com.youngsophomore.fragments.NewPhrasesListFragment;
 import com.youngsophomore.helpers.PrepHelper;
@@ -31,6 +33,11 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
     private final String NEW_PHRASES_LIST_FRAGMENT_TAG = "new_phrases_list_fragment";
     private final String ADD_PHRASE_FRAGMENT_TAG = "add_phrase_fragment";
     private static final String DEBUG_TAG = "Gestures";
+    FragmentManager fragmentManager;
+    int elevPx;
+    ImageButton btnAddPhrase;
+    ImageButton btnConfirmPhrase;
+    ImageButton btnConfirmPhrasesCollection;
     private ArrayList<CharSequence> newPhrasesCollectionCharS;
     private EditText etPhrasesCollectionTitle;
     @SuppressLint("ClickableViewAccessibility")
@@ -46,16 +53,17 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         newPhrasesCollectionCharS = new ArrayList<>();
         bundle.putCharSequenceArrayList(getString(R.string.new_phrases_collection_key), newPhrasesCollectionCharS);
+        elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .setReorderingAllowed(true)
                 .add(R.id.frt_cnt_v_tiles, NewPhrasesListFragment.class, bundle, NEW_PHRASES_LIST_FRAGMENT_TAG)
                 .commit();
 
-        ImageButton btnAddPhrase = findViewById(R.id.btn_add_phrase);
-        ImageButton btnConfirmPhrase = findViewById(R.id.btn_confirm_phrase);
-        ImageButton btnConfirmPhrasesCollection = findViewById(R.id.btn_confirm_phrases_collection);
+        btnAddPhrase = findViewById(R.id.btn_add_phrase);
+        btnConfirmPhrase = findViewById(R.id.btn_confirm_phrase);
+        btnConfirmPhrasesCollection = findViewById(R.id.btn_confirm_phrases_collection);
 
         PrepHelper.deactivateBtn(btnConfirmPhrase);
 
@@ -72,7 +80,6 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
                         Log.d(DEBUG_TAG, "btnAddPhrase onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                         Log.d(DEBUG_TAG, "btnAddPhrase onTouch. Action was UP");
                         view.setElevation(elevPx);
 
@@ -108,7 +115,6 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
                         Log.d(DEBUG_TAG, "btnConfirmPhrase onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                         Log.d(DEBUG_TAG, "btnConfirmPhrase onTouch. Action was UP");
                         view.setElevation(elevPx);
                         PrepHelper.activateBtn(btnAddPhrase, elevPx);
@@ -149,7 +155,6 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
                         Log.d(DEBUG_TAG, "btnConfirmPhrasesCollection onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                         Log.d(DEBUG_TAG, "btnConfirmPhrasesCollection onTouch. Action was UP");
                         view.setElevation(elevPx);
                         ArrayList<String> newPhrasesCollection = new ArrayList<>();
@@ -213,5 +218,21 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp(){
         onBackPressed();
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        Log.d(DEBUG_TAG, "in onBackPressed()");
+        AddPhraseFragment addPhraseFragment =
+                (AddPhraseFragment) fragmentManager.findFragmentByTag(ADD_PHRASE_FRAGMENT_TAG);
+        NewPhrasesListFragment newPhrasesListFragment =
+                (NewPhrasesListFragment) fragmentManager.findFragmentByTag(NEW_PHRASES_LIST_FRAGMENT_TAG);
+        Log.d(DEBUG_TAG, addPhraseFragment + ",, " + newPhrasesListFragment);
+        if(addPhraseFragment != null && addPhraseFragment.isVisible()){
+            PrepHelper.activateBtn(btnAddPhrase, elevPx);
+            PrepHelper.activateBtn(btnConfirmPhrasesCollection, elevPx);
+            PrepHelper.deactivateBtn(btnConfirmPhrase);
+        }
+        super.onBackPressed();
     }
 }

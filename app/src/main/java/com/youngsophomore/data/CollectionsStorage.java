@@ -59,6 +59,9 @@ public static ArrayList<String> getCollectionsTitles(SharedPreferences sharedPre
             String strWordsCollectionsTitles,
             SharedPreferences sharedPreferences,
             String wordsCollectionsTitlesKey){
+        while(newCollection.contains("  ")){
+            newCollection = newCollection.replace("  ", " ");
+        }
         // add title to Set<String> in shared preferences
         strWordsCollectionsTitles += title + ",";
         Log.d(DEBUG_TAG, "in CollectionStorage: strWordsCollectionsTitles = " + strWordsCollectionsTitles);
