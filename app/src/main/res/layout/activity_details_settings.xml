@@ -78,8 +78,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btn_play_w_settings_det"
+        app:layout_constraintVertical_bias="1"
 
-
+        android:layout_marginVertical="@dimen/settings_large_margin"
         android:background="@drawable/btn_save_bg"
         android:contentDescription="@string/info"
         android:elevation="@dimen/btn_stats_elev"
@@ -95,7 +96,9 @@
         app:layout_constraintStart_toEndOf="@id/btn_save_settings_det"
         app:layout_constraintEnd_toStartOf="@id/btn_add_image"
         app:layout_constraintTop_toBottomOf="@id/num_pck_image_show_time"
+        app:layout_constraintVertical_bias="1"
 
+        android:layout_marginVertical="@dimen/settings_large_margin"
         android:background="@drawable/btn_save_and_play_bg"
         android:contentDescription="@string/info"
         android:elevation="@dimen/btn_stats_elev"
@@ -110,7 +113,9 @@
         app:layout_constraintTop_toBottomOf="@id/num_pck_image_show_time"
         app:layout_constraintStart_toEndOf="@id/btn_play_w_settings_det"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="1"
 
+        android:layout_marginVertical="@dimen/settings_large_margin"
         android:background="@drawable/btn_save_bg"
         android:contentDescription="@string/info"
         android:elevation="@dimen/btn_stats_elev"
