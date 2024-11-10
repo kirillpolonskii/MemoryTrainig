@@ -29,7 +29,7 @@
         app:layout_constraintHorizontal_bias="0"
 
         android:text="@string/tiles_amount"
-        style="@style/SettingsTextViewStyle"
+        style="@style/SettingsTextViewStyle.MarginStart"
         />
 
     <com.addisonelliott.segmentedbutton.SegmentedButtonGroup
@@ -82,7 +82,7 @@
         app:layout_constraintHorizontal_bias="0"
 
         android:text="@string/equal_tiles_amount"
-        style="@style/SettingsTextViewStyle"
+        style="@style/SettingsTextViewStyle.MarginStart"
         android:layout_marginEnd="5dp"
         />
 
@@ -157,7 +157,7 @@
         app:layout_constraintHorizontal_bias="0"
 
         android:text="@string/remember_time"
-        style="@style/SettingsTextViewStyle"
+        style="@style/SettingsTextViewStyle.MarginStart"
         />
 
     <NumberPicker
