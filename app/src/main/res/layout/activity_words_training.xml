@@ -6,9 +6,9 @@
     android:id="@+id/cst_lt_parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".activities.WordsTrainingActivity"
     android:background="@color/white_blue"
-
     android:clipChildren="false"
     android:clipToPadding="false"
     >
@@ -47,6 +47,7 @@
         app:layout_constraintBottom_toTopOf="@id/guideline_bottom_pal"
         app:layout_constraintStart_toEndOf="@id/guideline_left"
         app:layout_constraintEnd_toStartOf="@id/guideline_right"
+
         android:clipChildren="false"
         android:clipToPadding="false"
         >
@@ -54,6 +55,7 @@
             android:id="@+id/cst_lt_words_pal"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+
             android:clipChildren="false"
             android:clipToPadding="false"
             >
@@ -67,42 +69,40 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/btn_word_2"
 
-                android:layout_margin="5dp"
                 android:text="rgge5geth"
                 android:theme="@style/WordsPalBtnStyle"
                 android:background="@drawable/btn_save_bg"
                 android:elevation="@dimen/btn_stats_elev"
+                android:layout_margin="5dp"
 
                 />
             <Button
                 android:id="@+id/btn_word_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/guideline_raw1_pal"
                 app:layout_constraintStart_toEndOf="@id/btn_word_1"
                 app:layout_constraintEnd_toStartOf="@id/btn_word_3"
 
-                android:layout_margin="5dp"
                 android:text="rggeth"
                 android:theme="@style/WordsPalBtnStyle"
                 android:background="@drawable/btn_save_bg"
                 android:elevation="@dimen/btn_stats_elev"
+                android:layout_margin="5dp"
                 />
             <Button
                 android:id="@+id/btn_word_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/guideline_raw1_pal"
                 app:layout_constraintStart_toEndOf="@id/btn_word_2"
 
-                android:layout_margin="5dp"
                 android:text="rgge5h"
                 android:theme="@style/WordsPalBtnStyle"
                 android:background="@drawable/btn_save_bg"
+                android:layout_margin="5dp"
                 />
             <Button
                 android:id="@+id/btn_word_4"
@@ -114,11 +114,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/btn_word_5"
 
-                android:layout_margin="5dp"
                 android:text="rth"
                 android:theme="@style/WordsPalBtnStyle"
                 android:background="@drawable/btn_save_bg"
                 android:elevation="@dimen/btn_stats_elev"
+                android:layout_margin="5dp"
                 />
             <Button
                 android:id="@+id/btn_word_5"
@@ -129,11 +129,11 @@
                 app:layout_constraintStart_toEndOf="@id/btn_word_4"
                 app:layout_constraintEnd_toStartOf="@id/btn_word_6"
 
-                android:layout_margin="5dp"
                 android:text="rgge5geth"
                 android:theme="@style/WordsPalBtnStyle"
                 android:background="@drawable/btn_save_bg"
                 android:elevation="@dimen/btn_stats_elev"
+                android:layout_margin="5dp"
                 />
             <Button
                 android:id="@+id/btn_word_6"
@@ -143,11 +143,11 @@
                 app:layout_constraintBottom_toTopOf="@id/guideline_raw2_pal"
                 app:layout_constraintStart_toEndOf="@id/btn_word_5"
 
-                android:layout_margin="5dp"
                 android:text="rgge5geth"
                 android:theme="@style/WordsPalBtnStyle"
                 android:background="@drawable/btn_save_bg"
                 android:elevation="@dimen/btn_stats_elev"
+                android:layout_margin="5dp"
                 />
             <Button
                 android:id="@+id/btn_word_7"
@@ -159,11 +159,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/btn_word_8"
 
-                android:layout_margin="5dp"
                 android:text="rgge5geth"
                 android:theme="@style/WordsPalBtnStyle"
                 android:background="@drawable/btn_save_bg"
                 android:elevation="@dimen/btn_stats_elev"
+                android:layout_margin="5dp"
                 />
             <Button
                 android:id="@+id/btn_word_8"
@@ -174,11 +174,11 @@
                 app:layout_constraintStart_toEndOf="@id/btn_word_7"
                 app:layout_constraintEnd_toStartOf="@id/btn_word_9"
 
-                android:layout_margin="5dp"
                 android:text="rgge5geh"
                 android:theme="@style/WordsPalBtnStyle"
                 android:background="@drawable/btn_save_bg"
                 android:elevation="@dimen/btn_stats_elev"
+                android:layout_margin="5dp"
                 />
             <Button
                 android:id="@+id/btn_word_9"
@@ -188,11 +188,11 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/btn_word_8"
 
-                android:layout_margin="5dp"
                 android:text="rgge5geth"
                 android:theme="@style/WordsPalBtnStyle"
                 android:background="@drawable/btn_save_bg"
                 android:elevation="@dimen/btn_stats_elev"
+                android:layout_margin="5dp"
                 />
 
             <androidx.constraintlayout.widget.Guideline
@@ -211,9 +211,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </HorizontalScrollView>
-
-
-
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_top_seq"

@@ -7,9 +7,9 @@
     android:id="@+id/cst_lt_parent_mhj"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:background="@color/white_blue"
     tools:context=".activities.MahjongTrainingActivity"
-
     android:clipChildren="false"
     android:clipToPadding="false"
     >
@@ -22,7 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="0"
-        
+
         android:layout_marginTop="@dimen/stopwatch_top_margin"
         />
 
@@ -47,13 +47,13 @@
             app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_2"
-
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintVertical_chainStyle="spread"
             app:layout_constraintVertical_weight="1"
+
+            android:src="@drawable/tile_back"
             android:background="@drawable/btn_tile_bg"
             android:scaleType="fitXY"
-            android:src="@drawable/tile_back"
             android:contentDescription="@string/info"
 
             />
@@ -65,18 +65,15 @@
             app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_6"
             app:layout_constraintStart_toEndOf="@id/btn_tile_pos_1"
             app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_3"
-
             app:layout_constraintHorizontal_chainStyle="spread"
-            
             app:layout_constraintVertical_chainStyle="spread"
             app:layout_constraintVertical_weight="1"
+
+            android:src="@drawable/tile_back"
             android:background="@drawable/btn_tile_bg"
             android:scaleType="fitXY"
-            android:src="@drawable/tile_back"
             android:contentDescription="@string/info"
-
             android:layout_marginStart="@dimen/m_training_horiz_middle_margin"
-
 
             />
         <ImageButton
@@ -87,16 +84,14 @@
             app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_7"
             app:layout_constraintStart_toEndOf="@id/btn_tile_pos_2"
             app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_4"
-
             app:layout_constraintHorizontal_chainStyle="spread"
-            
             app:layout_constraintVertical_chainStyle="spread"
             app:layout_constraintVertical_weight="1"
+
+            android:src="@drawable/tile_back"
             android:background="@drawable/btn_tile_bg"
             android:scaleType="fitXY"
-            android:src="@drawable/tile_back"
             android:contentDescription="@string/info"
-
             android:layout_marginStart="@dimen/m_training_horiz_middle_margin"
 
             />
@@ -108,16 +103,14 @@
             app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_8"
             app:layout_constraintStart_toEndOf="@id/btn_tile_pos_3"
             app:layout_constraintEnd_toEndOf="parent"
-
             app:layout_constraintHorizontal_chainStyle="spread"
-            
             app:layout_constraintVertical_chainStyle="spread"
             app:layout_constraintVertical_weight="1"
+
+            android:src="@drawable/tile_back"
             android:background="@drawable/btn_tile_bg"
             android:scaleType="fitXY"
-            android:src="@drawable/tile_back"
             android:contentDescription="@string/info"
-
             android:layout_marginStart="@dimen/m_training_horiz_middle_margin"
 
             />
@@ -129,15 +122,14 @@
             app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_9"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_6"
-
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintVertical_chainStyle="spread"
             app:layout_constraintVertical_weight="1"
+
+            android:src="@drawable/tile_back"
             android:background="@drawable/btn_tile_bg"
             android:scaleType="fitXY"
-            android:src="@drawable/tile_back"
             android:contentDescription="@string/info"
-
             android:layout_marginVertical="@dimen/m_training_vert_middle_margin_12"
             />
         <ImageButton
@@ -148,15 +140,14 @@
             app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_10"
             app:layout_constraintStart_toEndOf="@id/btn_tile_pos_5"
             app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_7"
-
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintVertical_chainStyle="spread"
             app:layout_constraintVertical_weight="1"
+
+            android:src="@drawable/tile_back"
             android:background="@drawable/btn_tile_bg"
             android:scaleType="fitXY"
-            android:src="@drawable/tile_back"
             android:contentDescription="@string/info"
-
             android:layout_marginStart="@dimen/m_training_horiz_middle_margin"
             android:layout_marginVertical="@dimen/m_training_vert_middle_margin_12"
             />
@@ -168,15 +159,14 @@
             app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_11"
             app:layout_constraintStart_toEndOf="@id/btn_tile_pos_6"
             app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_8"
-
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintVertical_chainStyle="spread"
             app:layout_constraintVertical_weight="1"
+
+            android:src="@drawable/tile_back"
             android:background="@drawable/btn_tile_bg"
             android:scaleType="fitXY"
-            android:src="@drawable/tile_back"
             android:contentDescription="@string/info"
-
             android:layout_marginStart="@dimen/m_training_horiz_middle_margin"
             android:layout_marginVertical="@dimen/m_training_vert_middle_margin_12"
             />
@@ -188,15 +178,14 @@
             app:layout_constraintBottom_toTopOf="@id/btn_tile_pos_12"
             app:layout_constraintStart_toEndOf="@id/btn_tile_pos_7"
             app:layout_constraintEnd_toEndOf="parent"
-
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintVertical_chainStyle="spread"
             app:layout_constraintVertical_weight="1"
+
+            android:src="@drawable/tile_back"
             android:background="@drawable/btn_tile_bg"
             android:scaleType="fitXY"
-            android:src="@drawable/tile_back"
             android:contentDescription="@string/info"
-
             android:layout_marginStart="@dimen/m_training_horiz_middle_margin"
             android:layout_marginVertical="@dimen/m_training_vert_middle_margin_12"
             />
@@ -208,13 +197,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_10"
-
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintVertical_chainStyle="spread"
             app:layout_constraintVertical_weight="1"
+
+            android:src="@drawable/tile_back"
             android:background="@drawable/btn_tile_bg"
             android:scaleType="fitXY"
-            android:src="@drawable/tile_back"
             android:contentDescription="@string/info"
 
             />
@@ -226,17 +215,15 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/btn_tile_pos_9"
             app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_11"
-
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintVertical_chainStyle="spread"
             app:layout_constraintVertical_weight="1"
+
+            android:src="@drawable/tile_back"
             android:background="@drawable/btn_tile_bg"
             android:scaleType="fitXY"
-            android:src="@drawable/tile_back"
             android:contentDescription="@string/info"
-
             android:layout_marginStart="@dimen/m_training_horiz_middle_margin"
-
 
             />
         <ImageButton
@@ -247,15 +234,14 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/btn_tile_pos_10"
             app:layout_constraintEnd_toStartOf="@id/btn_tile_pos_12"
-
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintVertical_chainStyle="spread"
             app:layout_constraintVertical_weight="1"
+
+            android:src="@drawable/tile_back"
             android:background="@drawable/btn_tile_bg"
             android:scaleType="fitXY"
-            android:src="@drawable/tile_back"
             android:contentDescription="@string/info"
-
             android:layout_marginStart="@dimen/m_training_horiz_middle_margin"
 
             />
@@ -267,15 +253,14 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/btn_tile_pos_11"
             app:layout_constraintEnd_toEndOf="parent"
-
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintVertical_chainStyle="spread"
             app:layout_constraintVertical_weight="1"
+
+            android:src="@drawable/tile_back"
             android:background="@drawable/btn_tile_bg"
             android:scaleType="fitXY"
-            android:src="@drawable/tile_back"
             android:contentDescription="@string/info"
-
             android:layout_marginStart="@dimen/m_training_horiz_middle_margin"
             />
 

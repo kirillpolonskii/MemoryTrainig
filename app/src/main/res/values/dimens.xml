@@ -6,9 +6,11 @@
     <dimen name="btn_training_elev">15dp</dimen>
     <dimen name="sgbtn_elev">5dp</dimen>
     <dimen name="sgbtn_tiles_elev">7dp</dimen>
-
     <dimen name="btn_stats_elev">8dp</dimen>
     <dimen name="switch_lang_text_size">23sp</dimen>
+
+    <dimen name="info_horiz_margin">3dp</dimen>
+    <dimen name="settings_horiz_margin">6dp</dimen>
 
     <dimen name="settings_text_size">22sp</dimen>
     <dimen name="settings_small_margin">15dp</dimen>

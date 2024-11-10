@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    >
 
     <ImageView
         android:id="@+id/iv_save_mhj_settings"
@@ -13,6 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
 
         android:src="@drawable/baseline_save_24"
+        android:layout_marginStart="@dimen/info_horiz_margin"
         />
     <TextView
         android:id="@+id/tv_save_mhj_settings_hyphen"
@@ -48,6 +51,7 @@
         app:layout_constraintStart_toStartOf="parent"
 
         android:src="@drawable/round_play_arrow_24"
+        android:layout_marginStart="@dimen/info_horiz_margin"
         />
     <TextView
         android:id="@+id/tv_save_mhj_settings_and_play_hyphen"
@@ -68,10 +72,10 @@
         app:layout_constraintStart_toEndOf="@id/tv_save_mhj_settings_and_play_hyphen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
-        android:layout_marginEnd="3dp"
 
         android:text="@string/tv_save_settings_and_play"
         style="@style/SettingsTextViewStyle"
+        android:layout_marginEnd="3dp"
 
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

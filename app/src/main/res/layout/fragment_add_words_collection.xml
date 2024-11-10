@@ -15,15 +15,14 @@
         app:layout_constraintBottom_toTopOf="@id/et_wrd_collection"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginHorizontal="5dp"
 
         android:hint="@string/et_words_collection_title_hint"
         android:inputType="text"
         android:textSize="22sp"
         android:textColor="?attr/colorPrimary"
         android:backgroundTint="?attr/colorPrimary"
-
         android:importantForAutofill="no"
+        android:layout_marginHorizontal="5dp"
         />
 
     <EditText
@@ -34,7 +33,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginHorizontal="5dp"
 
         android:hint="@string/et_words_collection_hint"
         android:gravity="top"
@@ -42,8 +40,8 @@
         android:textSize="22sp"
         android:textColor="?attr/colorPrimary"
         android:backgroundTint="?attr/colorPrimary"
-
         android:importantForAutofill="no"
+        android:layout_marginHorizontal="5dp"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

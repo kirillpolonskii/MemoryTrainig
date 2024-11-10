@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    >
 
     <ImageView
         android:id="@+id/iv_save_wrd_settings"
@@ -14,7 +15,9 @@
         app:layout_constraintStart_toStartOf="parent"
 
         android:src="@drawable/baseline_save_24"
-        android:contentDescription="@string/tv_save_settings" />
+        android:contentDescription="@string/tv_save_settings"
+        android:layout_marginStart="@dimen/info_horiz_margin"
+        />
     <TextView
         android:id="@+id/tv_save_wrd_settings_hyphen"
         android:layout_width="wrap_content"
@@ -34,10 +37,10 @@
         app:layout_constraintStart_toEndOf="@id/tv_save_wrd_settings_hyphen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
-        android:layout_marginEnd="3dp"
+
         android:text="@string/tv_save_settings"
         style="@style/SettingsTextViewStyle"
-
+        android:layout_marginEnd="3dp"
         />
     <ImageView
         android:id="@+id/iv_play_w_settings_wrd"
@@ -48,6 +51,7 @@
         app:layout_constraintStart_toStartOf="parent"
 
         android:src="@drawable/round_play_arrow_24"
+        android:layout_marginStart="@dimen/info_horiz_margin"
         />
     <TextView
         android:id="@+id/tv_play_w_settings_wrd_hyphen"
@@ -68,9 +72,10 @@
         app:layout_constraintStart_toEndOf="@id/tv_play_w_settings_wrd_hyphen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
-        android:layout_marginEnd="3dp"
+
         android:text="@string/tv_save_settings_and_play"
         style="@style/SettingsTextViewStyle"
+        android:layout_marginEnd="3dp"
 
         />
 
@@ -84,6 +89,7 @@
         app:layout_constraintStart_toStartOf="parent"
 
         android:src="@drawable/outline_note_add_24"
+        android:layout_marginStart="@dimen/info_horiz_margin"
         />
     <TextView
         android:id="@+id/tv_add_wrd_collection_hyphen"
@@ -104,9 +110,10 @@
         app:layout_constraintStart_toEndOf="@id/tv_add_wrd_collection_hyphen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
-        android:layout_marginEnd="3dp"
+
         android:text="@string/tv_add_words_collection"
         style="@style/SettingsTextViewStyle"
+        android:layout_marginEnd="3dp"
 
         />
 
@@ -120,6 +127,7 @@
         app:layout_constraintStart_toStartOf="parent"
 
         android:src="@drawable/outline_library_add_check_24"
+        android:layout_marginStart="@dimen/info_horiz_margin"
         />
     <TextView
         android:id="@+id/tv_confirm_wrd_collection_hyphen"
@@ -140,9 +148,10 @@
         app:layout_constraintStart_toEndOf="@id/tv_confirm_wrd_collection_hyphen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
-        android:layout_marginEnd="3dp"
+
         android:text="@string/tv_confirm_words_collection"
         style="@style/SettingsTextViewStyle"
+        android:layout_marginEnd="3dp"
 
         />
     <TextView
@@ -153,10 +162,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
-        android:layout_marginStart="3dp"
-        android:layout_marginEnd="3dp"
+
         android:text="@string/tv_long_click"
-        style="@style/SettingsTextViewStyle"
+        style="@style/SettingsTextViewStyle.MarginHorizontal"
 
         />
 

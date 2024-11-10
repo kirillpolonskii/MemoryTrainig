@@ -6,12 +6,13 @@
     android:id="@+id/cst_lt_parent_stat"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".activities.StatisticsActivity">
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar"
         app:layout_constraintTop_toTopOf="parent"
+        layout="@layout/toolbar"
         />
     <ScrollView
         android:id="@+id/scr_v_stat"
@@ -27,7 +28,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cst_lt_chld_stat"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
             <TextView
                 android:id="@+id/tv_title_mhj_stat"
                 android:layout_width="wrap_content"
@@ -77,7 +79,7 @@
                 app:layout_constraintVertical_bias="0"
 
                 android:text="@string/tv_subtitle_time"
-                style="@style/SettingsTextViewStyle"
+                style="@style/SettingsTextViewStyle.MarginHorizontal"
                 />
             <TextView
                 android:id="@+id/tv_subtitle_tiles_mhj"
@@ -91,7 +93,7 @@
                 app:layout_constraintHorizontal_bias="0"
 
                 android:text="@string/tv_subtitle_tiles"
-                style="@style/SettingsTextViewStyle"
+                style="@style/SettingsTextViewStyle.MarginStart"
                 />
             <TextView
                 android:id="@+id/tv_av_time_tiles_12"
@@ -131,7 +133,7 @@
                 app:layout_constraintVertical_bias="0"
 
                 android:text="@string/tv_subtitle_eq_tiles"
-                style="@style/SettingsTextViewStyle"
+                style="@style/SettingsTextViewStyle.MarginStart"
                 />
             <TextView
                 android:id="@+id/tv_av_time_eq_tiles_2"
@@ -236,7 +238,7 @@
                 app:layout_constraintVertical_bias="0"
 
                 android:text="@string/tv_subtitle_time"
-                style="@style/SettingsTextViewStyle"
+                style="@style/SettingsTextViewStyle.MarginHorizontal"
                 />
             <TextView
                 android:id="@+id/tv_subtitle_colors"
@@ -250,7 +252,7 @@
                 app:layout_constraintHorizontal_bias="0"
 
                 android:text="@string/tv_subtitle_colors"
-                style="@style/SettingsTextViewStyle"
+                style="@style/SettingsTextViewStyle.MarginStart"
                 />
             <NumberPicker
                 android:id="@+id/num_pck_colors_stat"
@@ -262,10 +264,10 @@
                 app:layout_constraintEnd_toStartOf="@id/guideline_center"
                 app:layout_constraintHorizontal_bias="1"
 
-                android:layout_marginEnd="@dimen/stat_num_pck_tv_margin"
                 android:theme="@style/NumberPickerTheme"
                 android:textColor="?attr/colorPrimary"
                 android:colorControlNormal="?attr/colorPrimary"
+                android:layout_marginEnd="@dimen/stat_num_pck_tv_margin"
                 />
             <TextView
                 android:id="@+id/tv_av_time_colors"
@@ -277,9 +279,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
 
-                android:layout_marginStart="@dimen/stat_num_pck_tv_margin"
                 android:text="15 с."
                 style="@style/SettingsTextViewStyle"
+                android:layout_marginStart="@dimen/stat_num_pck_tv_margin"
                 />
             <TextView
                 android:id="@+id/tv_subtitle_dist_colors"
@@ -293,7 +295,7 @@
                 app:layout_constraintVertical_bias="0"
 
                 android:text="@string/tv_subtitle_dist_colors"
-                style="@style/SettingsTextViewStyle"
+                style="@style/SettingsTextViewStyle.MarginStart"
                 />
             <NumberPicker
                 android:id="@+id/num_pck_dist_colors"
@@ -305,10 +307,9 @@
                 app:layout_constraintEnd_toStartOf="@id/guideline_center"
                 app:layout_constraintHorizontal_bias="1"
 
-                android:layout_marginEnd="@dimen/stat_num_pck_tv_margin"
                 android:theme="@style/NumberPickerTheme"
                 android:textColor="?attr/colorPrimary"
-                android:colorControlNormal="?attr/colorPrimary"
+                android:layout_marginEnd="@dimen/stat_num_pck_tv_margin"
                 />
             <TextView
                 android:id="@+id/tv_av_time_dist_colors"
@@ -320,9 +321,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
 
-                android:layout_marginStart="@dimen/stat_num_pck_tv_margin"
                 android:text="15 с."
                 style="@style/SettingsTextViewStyle"
+                android:layout_marginStart="@dimen/stat_num_pck_tv_margin"
                 />
 
 
@@ -375,7 +376,7 @@
                 app:layout_constraintVertical_bias="0"
 
                 android:text="@string/tv_subtitle_time"
-                style="@style/SettingsTextViewStyle"
+                style="@style/SettingsTextViewStyle.MarginHorizontal"
                 />
             <TextView
                 android:id="@+id/tv_subtitle_shapes"
@@ -389,7 +390,7 @@
                 app:layout_constraintHorizontal_bias="0"
 
                 android:text="@string/tv_subtitle_shapes"
-                style="@style/SettingsTextViewStyle"
+                style="@style/SettingsTextViewStyle.MarginStart"
                 />
             <NumberPicker
                 android:id="@+id/num_pck_shapes_stat"
@@ -401,10 +402,9 @@
                 app:layout_constraintEnd_toStartOf="@id/guideline_center"
                 app:layout_constraintHorizontal_bias="1"
 
-                android:layout_marginEnd="@dimen/stat_num_pck_tv_margin"
                 android:theme="@style/NumberPickerTheme"
                 android:textColor="?attr/colorPrimary"
-                android:colorControlNormal="?attr/colorPrimary"
+                android:layout_marginEnd="@dimen/stat_num_pck_tv_margin"
                 />
             <TextView
                 android:id="@+id/tv_av_time_shapes"
@@ -416,9 +416,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
 
-                android:layout_marginStart="@dimen/stat_num_pck_tv_margin"
                 android:text="15 с."
                 style="@style/SettingsTextViewStyle"
+                android:layout_marginStart="@dimen/stat_num_pck_tv_margin"
                 />
             <TextView
                 android:id="@+id/tv_subtitle_dist_shapes"
@@ -431,9 +431,8 @@
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintVertical_bias="0"
 
-
                 android:text="@string/tv_subtitle_dist_shapes"
-                style="@style/SettingsTextViewStyle"
+                style="@style/SettingsTextViewStyle.MarginStart"
                 />
             <NumberPicker
                 android:id="@+id/num_pck_dist_shapes"
@@ -445,10 +444,9 @@
                 app:layout_constraintEnd_toStartOf="@id/guideline_center"
                 app:layout_constraintHorizontal_bias="1"
 
-                android:layout_marginEnd="@dimen/stat_num_pck_tv_margin"
                 android:theme="@style/NumberPickerTheme"
                 android:textColor="?attr/colorPrimary"
-                android:colorControlNormal="?attr/colorPrimary"
+                android:layout_marginEnd="@dimen/stat_num_pck_tv_margin"
                 />
             <TextView
                 android:id="@+id/tv_av_time_dist_shapes"
@@ -460,12 +458,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
 
-                android:layout_marginStart="@dimen/stat_num_pck_tv_margin"
                 android:text="15 с."
                 style="@style/SettingsTextViewStyle"
+                android:layout_marginStart="@dimen/stat_num_pck_tv_margin"
                 />
-
-
 
 
 
@@ -494,7 +490,7 @@
                 app:layout_constraintVertical_bias="0"
 
                 android:text="@string/tv_subtitle_time_wrd_phr"
-                style="@style/SettingsTextViewStyle"
+                style="@style/SettingsTextViewStyle.MarginHorizontal"
                 android:gravity="center"
                 />
             <TextView
@@ -509,7 +505,7 @@
                 app:layout_constraintVertical_bias="0"
 
                 android:text="@string/tv_subtitle_time_wrd"
-                style="@style/SettingsTextViewStyle"
+                style="@style/SettingsTextViewStyle.MarginStart"
                 />
             <NumberPicker
                 android:id="@+id/num_pck_stat_size_wrd"
@@ -519,9 +515,9 @@
                 app:layout_constraintBottom_toTopOf="@id/tv_title_phr_stat"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/num_pck_stat_show_time_wrd"
+
                 android:theme="@style/NumberPickerTheme"
                 android:textColor="?attr/colorPrimary"
-                android:colorControlNormal="?attr/colorPrimary"
                 />
             <NumberPicker
                 android:id="@+id/num_pck_stat_show_time_wrd"
@@ -531,9 +527,9 @@
                 app:layout_constraintBottom_toTopOf="@id/tv_title_phr_stat"
                 app:layout_constraintStart_toEndOf="@id/num_pck_stat_size_wrd"
                 app:layout_constraintEnd_toStartOf="@id/tv_av_time_colors"
+
                 android:theme="@style/NumberPickerTheme"
                 android:textColor="?attr/colorPrimary"
-                android:colorControlNormal="?attr/colorPrimary"
                 />
             <TextView
                 android:id="@+id/tv_av_time_wrd"
@@ -556,12 +552,8 @@
                 app:layout_constraintStart_toEndOf="@id/tv_av_time_wrd"
                 app:layout_constraintEnd_toEndOf="parent"
 
-
                 style="@style/SettingsTextViewStyle"
                 />
-
-
-
 
 
 
@@ -591,7 +583,7 @@
                 app:layout_constraintVertical_bias="0"
 
                 android:text="@string/tv_subtitle_time_wrd_phr"
-                style="@style/SettingsTextViewStyle"
+                style="@style/SettingsTextViewStyle.MarginHorizontal"
                 android:gravity="center"
                 />
             <TextView
@@ -606,7 +598,7 @@
                 app:layout_constraintVertical_bias="0"
 
                 android:text="@string/tv_subtitle_time_phr"
-                style="@style/SettingsTextViewStyle"
+                style="@style/SettingsTextViewStyle.MarginStart"
                 />
             <NumberPicker
                 android:id="@+id/num_pck_stat_size_phr"
@@ -616,9 +608,9 @@
                 app:layout_constraintBottom_toTopOf="@id/tv_title_det_stat"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/num_pck_stat_show_time_phr"
+
                 android:theme="@style/NumberPickerTheme"
                 android:textColor="?attr/colorPrimary"
-                android:colorControlNormal="?attr/colorPrimary"
                 />
             <NumberPicker
                 android:id="@+id/num_pck_stat_show_time_phr"
@@ -628,9 +620,9 @@
                 app:layout_constraintBottom_toTopOf="@id/tv_title_det_stat"
                 app:layout_constraintStart_toEndOf="@id/num_pck_stat_size_phr"
                 app:layout_constraintEnd_toStartOf="@id/tv_av_time_colors"
+
                 android:theme="@style/NumberPickerTheme"
                 android:textColor="?attr/colorPrimary"
-                android:colorControlNormal="?attr/colorPrimary"
                 />
             <TextView
                 android:id="@+id/tv_av_time_phr"
@@ -653,10 +645,8 @@
                 app:layout_constraintStart_toEndOf="@id/tv_av_time_phr"
                 app:layout_constraintEnd_toEndOf="parent"
 
-
                 style="@style/SettingsTextViewStyle"
                 />
-
 
 
 
@@ -686,7 +676,7 @@
                 app:layout_constraintVertical_bias="0"
 
                 android:text="@string/tv_subtitle_time_det"
-                style="@style/SettingsTextViewStyle"
+                style="@style/SettingsTextViewStyle.MarginHorizontal"
                 />
             <TextView
                 android:id="@+id/tv_subtitle_time_collect"
@@ -700,7 +690,7 @@
                 app:layout_constraintVertical_bias="0"
 
                 android:text="@string/tv_subtitle_time_collect"
-                style="@style/SettingsTextViewStyle"
+                style="@style/SettingsTextViewStyle.MarginHorizontal"
                 />
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_collect_time"

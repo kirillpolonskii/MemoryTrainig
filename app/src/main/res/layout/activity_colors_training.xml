@@ -6,6 +6,7 @@
     android:id="@+id/cst_lt_clr"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:background="@color/white_blue"
     tools:context=".activities.ColorsTrainingActivity"
     android:clipChildren="false"
@@ -400,9 +401,9 @@
         app:layout_constraintStart_toEndOf="@id/guideline_left"
         app:layout_constraintEnd_toStartOf="@id/btn_clr_pos_2"
         app:layout_constraintVertical_bias="1"
+
         app:cardCornerRadius="15dp"
         app:cardElevation="8dp"
-
         android:layout_margin="@dimen/c_training_set_margin">
         <ImageButton
             android:layout_width="match_parent"
@@ -425,9 +426,9 @@
         app:layout_constraintStart_toEndOf="@id/btn_clr_pos_1"
         app:layout_constraintEnd_toStartOf="@id/btn_clr_pos_3"
         app:layout_constraintVertical_bias="1"
+
         app:cardCornerRadius="15dp"
         app:cardElevation="8dp"
-
         android:layout_margin="@dimen/c_training_set_margin">
         <ImageButton
             android:layout_width="match_parent"

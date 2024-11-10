@@ -6,9 +6,9 @@
     android:id="@+id/cst_lt_phrases_parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".activities.PhrasesTrainingActivity"
     android:background="@color/white_blue"
-
     android:clipChildren="false"
     android:clipToPadding="false"
 

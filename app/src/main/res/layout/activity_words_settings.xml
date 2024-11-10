@@ -10,8 +10,8 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar"
         app:layout_constraintTop_toTopOf="parent"
+        layout="@layout/toolbar"
         />
 
     <androidx.fragment.app.FragmentContainerView
@@ -35,12 +35,11 @@
         app:layout_constraintEnd_toStartOf="@id/btn_play_w_settings_wrd"
         app:layout_constraintVertical_bias="1"
 
-        android:layout_marginVertical="@dimen/settings_large_margin"
+        android:src="@drawable/baseline_save_60"
         android:background="@drawable/btn_save_bg"
         android:contentDescription="@string/info"
         android:elevation="@dimen/btn_stats_elev"
-        android:src="@drawable/baseline_save_60"
-        android:layout_marginBottom="40dp"
+        android:layout_marginVertical="@dimen/settings_large_margin"
 
         />
     <ImageButton
@@ -53,11 +52,11 @@
         app:layout_constraintEnd_toStartOf="@id/btn_add_wrd_collection"
         app:layout_constraintVertical_bias="1"
 
-        android:layout_marginVertical="@dimen/settings_large_margin"
+        android:src="@drawable/round_play_arrow_60"
         android:background="@drawable/btn_save_bg"
         android:contentDescription="@string/info"
         android:elevation="@dimen/btn_stats_elev"
-        android:src="@drawable/round_play_arrow_60"
+        android:layout_marginVertical="@dimen/settings_large_margin"
 
         />
     <ImageButton
@@ -70,11 +69,11 @@
         app:layout_constraintEnd_toStartOf="@id/btn_confirm_wrd_collection"
         app:layout_constraintVertical_bias="1"
 
-        android:layout_marginVertical="@dimen/settings_large_margin"
+        android:src="@drawable/outline_note_add_60"
         android:background="@drawable/btn_save_bg"
         android:contentDescription="@string/info"
         android:elevation="@dimen/btn_stats_elev"
-        android:src="@drawable/outline_note_add_60"
+        android:layout_marginVertical="@dimen/settings_large_margin"
 
         />
     <ImageButton
@@ -87,11 +86,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="1"
 
-        android:layout_marginVertical="@dimen/settings_large_margin"
+        android:src="@drawable/outline_library_add_check_60"
         android:background="@drawable/btn_save_bg"
         android:contentDescription="@string/info"
         android:elevation="@dimen/btn_stats_elev"
-        android:src="@drawable/outline_library_add_check_60"
+        android:layout_marginVertical="@dimen/settings_large_margin"
 
         />
 

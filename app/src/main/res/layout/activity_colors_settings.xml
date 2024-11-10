@@ -11,8 +11,8 @@
     >
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar"
         app:layout_constraintTop_toTopOf="parent"
+        layout="@layout/toolbar"
         />
 
     <ScrollView
@@ -41,9 +41,10 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/num_pck_clr_amount"
                 app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0"
+                
                 android:text="@string/colors_amount"
-                style="@style/SettingsTextViewStyle"
+                style="@style/SettingsTextViewStyle.MarginStart"
 
                 />
 
@@ -73,11 +74,11 @@
                 app:layout_constraintBottom_toBottomOf="@id/num_pck_distinct_clr_amount"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/num_pck_distinct_clr_amount"
-
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintHorizontal_bias="0"
+
                 android:text="@string/distinct_colors_amount"
-                style="@style/SettingsTextViewStyle"
+                style="@style/SettingsTextViewStyle.MarginStart"
                 />
 
             <NumberPicker
@@ -107,8 +108,9 @@
                 app:layout_constraintEnd_toStartOf="@id/num_pck_clr_show_time"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintHorizontal_bias="0"
+
                 android:text="@string/color_show_time"
-                style="@style/SettingsTextViewStyle"
+                style="@style/SettingsTextViewStyle.MarginStart"
                 />
 
             <NumberPicker
@@ -140,11 +142,11 @@
         app:layout_constraintEnd_toStartOf="@id/btn_play_w_settings_clr"
         app:layout_constraintVertical_bias="1"
 
-        android:layout_marginVertical="@dimen/settings_large_margin"
+        android:src="@drawable/baseline_save_60"
         android:background="@drawable/btn_save_bg"
         android:contentDescription="@string/info"
         android:elevation="@dimen/btn_stats_elev"
-        android:src="@drawable/baseline_save_60"
+        android:layout_marginVertical="@dimen/settings_large_margin"
 
         />
 
@@ -158,11 +160,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="1"
 
-        android:layout_marginVertical="@dimen/settings_large_margin"
+        android:src="@drawable/round_play_arrow_60"
         android:background="@drawable/btn_save_and_play_bg"
         android:contentDescription="@string/info"
         android:elevation="@dimen/btn_stats_elev"
-        android:src="@drawable/round_play_arrow_60"
+        android:layout_marginVertical="@dimen/settings_large_margin"
 
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

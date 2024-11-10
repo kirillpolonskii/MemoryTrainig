@@ -9,8 +9,8 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar"
         app:layout_constraintTop_toTopOf="parent"
+        layout="@layout/toolbar"
         />
 
     <TextView
@@ -22,10 +22,10 @@
         app:layout_constraintBottom_toBottomOf="@id/spr_image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/spr_image"
-
         app:layout_constraintHorizontal_bias="0"
+
         android:text="@string/images_collection"
-        style="@style/SettingsTextViewStyle"
+        style="@style/SettingsTextViewStyle.MarginStart"
         />
 
     <Spinner
@@ -36,8 +36,8 @@
         app:layout_constraintStart_toEndOf="@id/tv_image"
         app:layout_constraintEnd_toEndOf="parent"
 
-        android:layout_marginTop="15dp"
         android:backgroundTint="?attr/colorPrimary"
+        android:layout_marginTop="15dp"
         />
 
     <TextView
@@ -51,8 +51,9 @@
         app:layout_constraintEnd_toStartOf="@id/num_pck_image_show_time"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintHorizontal_bias="0"
+
         android:text="@string/image_show_time"
-        style="@style/SettingsTextViewStyle"
+        style="@style/SettingsTextViewStyle.MarginStart"
         />
 
     <NumberPicker
@@ -65,7 +66,6 @@
 
         android:theme="@style/NumberPickerTheme"
         android:textColor="?attr/colorPrimary"
-        android:colorControlNormal="?attr/colorPrimary"
         android:layout_marginStart="@dimen/settings_small_margin"
         android:layout_marginEnd="@dimen/settings_medium_margin"
         />
@@ -80,11 +80,11 @@
         app:layout_constraintEnd_toStartOf="@id/btn_play_w_settings_det"
         app:layout_constraintVertical_bias="1"
 
-        android:layout_marginVertical="@dimen/settings_large_margin"
+        android:src="@drawable/baseline_save_60"
         android:background="@drawable/btn_save_bg"
         android:contentDescription="@string/info"
         android:elevation="@dimen/btn_stats_elev"
-        android:src="@drawable/baseline_save_60"
+        android:layout_marginVertical="@dimen/settings_large_margin"
 
         />
 
@@ -92,34 +92,34 @@
         android:id="@+id/btn_play_w_settings_det"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        app:layout_constraintTop_toBottomOf="@id/num_pck_image_show_time"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_save_settings_det"
         app:layout_constraintEnd_toStartOf="@id/btn_add_image"
-        app:layout_constraintTop_toBottomOf="@id/num_pck_image_show_time"
         app:layout_constraintVertical_bias="1"
 
-        android:layout_marginVertical="@dimen/settings_large_margin"
+        android:src="@drawable/round_play_arrow_60"
         android:background="@drawable/btn_save_and_play_bg"
         android:contentDescription="@string/info"
         android:elevation="@dimen/btn_stats_elev"
-        android:src="@drawable/round_play_arrow_60"
+        android:layout_marginVertical="@dimen/settings_large_margin"
 
         />
     <ImageButton
         android:id="@+id/btn_add_image"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/num_pck_image_show_time"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_play_w_settings_det"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="1"
 
-        android:layout_marginVertical="@dimen/settings_large_margin"
+        android:src="@drawable/outline_note_add_60"
         android:background="@drawable/btn_save_bg"
         android:contentDescription="@string/info"
         android:elevation="@dimen/btn_stats_elev"
-        android:src="@drawable/outline_note_add_60"
+        android:layout_marginVertical="@dimen/settings_large_margin"
 
         />
 

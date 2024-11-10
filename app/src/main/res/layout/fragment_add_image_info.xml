@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    >
 
     <ImageView
         android:id="@+id/iv_choose_image"
@@ -14,7 +15,9 @@
         app:layout_constraintStart_toStartOf="parent"
 
         android:src="@drawable/baseline_image_search_24"
-        android:contentDescription="@string/tv_save_settings" />
+        android:contentDescription="@string/tv_save_settings"
+        android:layout_marginStart="@dimen/info_horiz_margin"
+        />
     <TextView
         android:id="@+id/tv_choose_image_hyphen"
         android:layout_width="wrap_content"
@@ -34,10 +37,10 @@
         app:layout_constraintStart_toEndOf="@id/tv_choose_image_hyphen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
-        android:layout_marginEnd="3dp"
 
         android:text="@string/tv_choose_image"
         style="@style/SettingsTextViewStyle"
+        android:layout_marginEnd="3dp"
 
         />
     <ImageView
@@ -49,6 +52,7 @@
         app:layout_constraintStart_toStartOf="parent"
 
         android:src="@drawable/round_add_to_collection_24"
+        android:layout_marginStart="@dimen/info_horiz_margin"
         />
     <TextView
         android:id="@+id/tv_add_question_hyphen"
@@ -69,10 +73,10 @@
         app:layout_constraintStart_toEndOf="@id/tv_add_question_hyphen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
-        android:layout_marginEnd="3dp"
 
         android:text="@string/tv_add_question"
         style="@style/SettingsTextViewStyle"
+        android:layout_marginEnd="3dp"
 
         />
 
@@ -86,6 +90,7 @@
         app:layout_constraintStart_toStartOf="parent"
 
         android:src="@drawable/round_save_in_collection_24"
+        android:layout_marginStart="@dimen/info_horiz_margin"
         />
     <TextView
         android:id="@+id/tv_save_question_hyphen"
@@ -106,9 +111,10 @@
         app:layout_constraintStart_toEndOf="@id/tv_save_question_hyphen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
-        android:layout_marginEnd="3dp"
+
         android:text="@string/tv_save_question"
         style="@style/SettingsTextViewStyle"
+        android:layout_marginEnd="3dp"
 
         />
 
@@ -122,6 +128,7 @@
         app:layout_constraintStart_toStartOf="parent"
 
         android:src="@drawable/outline_library_add_check_24"
+        android:layout_marginStart="@dimen/info_horiz_margin"
         />
     <TextView
         android:id="@+id/tv_confirm_questions_hyphen"
@@ -142,10 +149,10 @@
         app:layout_constraintStart_toEndOf="@id/tv_add_answer_hyphen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
-        android:layout_marginEnd="3dp"
 
         android:text="@string/tv_confirm_questions_collection"
         style="@style/SettingsTextViewStyle"
+        android:layout_marginEnd="3dp"
 
         />
     
@@ -160,6 +167,7 @@
         app:layout_constraintStart_toStartOf="parent"
 
         android:src="@drawable/outline_add_circle_outline_24"
+        android:layout_marginStart="@dimen/info_horiz_margin"
         />
     <TextView
         android:id="@+id/tv_add_answer_hyphen"
@@ -180,9 +188,10 @@
         app:layout_constraintStart_toEndOf="@id/tv_add_answer_hyphen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
-        android:layout_marginEnd="3dp"
+
         android:text="@string/tv_add_answer"
         style="@style/SettingsTextViewStyle"
+        android:layout_marginEnd="3dp"
 
         />
     <ImageView
@@ -194,6 +203,7 @@
         app:layout_constraintStart_toStartOf="parent"
 
         android:src="@drawable/outline_check_circle_outline_24"
+        android:layout_marginStart="@dimen/info_horiz_margin"
         />
     <TextView
         android:id="@+id/tv_save_answer_hyphen"
@@ -214,9 +224,10 @@
         app:layout_constraintStart_toEndOf="@id/tv_add_answer_hyphen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
-        android:layout_marginEnd="3dp"
+
         android:text="@string/tv_save_answer"
         style="@style/SettingsTextViewStyle"
+        android:layout_marginEnd="3dp"
 
         />
     <ImageView
@@ -228,6 +239,7 @@
         app:layout_constraintStart_toStartOf="parent"
 
         android:src="@drawable/outline_image_48"
+        android:layout_marginStart="@dimen/info_horiz_margin"
         />
     <TextView
         android:id="@+id/tv_remind_img_hyphen"
@@ -248,9 +260,10 @@
         app:layout_constraintStart_toEndOf="@id/tv_remind_img_hyphen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
-        android:layout_marginEnd="3dp"
+
         android:text="@string/tv_remind_image"
         style="@style/SettingsTextViewStyle"
+        android:layout_marginEnd="3dp"
 
         />
 

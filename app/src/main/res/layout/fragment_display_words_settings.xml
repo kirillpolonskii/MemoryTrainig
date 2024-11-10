@@ -20,8 +20,9 @@
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintVertical_bias="0"
+
         android:text="@string/words_collection"
-        style="@style/SettingsTextViewStyle"
+        style="@style/SettingsTextViewStyle.MarginStart"
         android:layout_marginEnd="5dp"
         android:layout_marginTop="15dp"
         />
@@ -35,8 +36,9 @@
         app:layout_constraintStart_toEndOf="@id/tv_wrd_collection"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
-        android:layout_marginEnd="2dp"
+
         android:backgroundTint="?attr/colorPrimary"
+        android:layout_marginEnd="2dp"
         />
 
     <TextView
@@ -50,8 +52,9 @@
         app:layout_constraintEnd_toStartOf="@id/num_pck_wrd_show_time"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintHorizontal_bias="0"
+
         android:text="@string/word_show_time"
-        style="@style/SettingsTextViewStyle"
+        style="@style/SettingsTextViewStyle.MarginStart"
         />
 
     <NumberPicker
@@ -64,9 +67,8 @@
 
         android:theme="@style/NumberPickerTheme"
         android:textColor="?attr/colorPrimary"
-        android:colorControlNormal="?attr/colorPrimary"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginStart="@dimen/settings_small_margin"
+        android:layout_marginEnd="@dimen/settings_small_margin"
 
         />
 
