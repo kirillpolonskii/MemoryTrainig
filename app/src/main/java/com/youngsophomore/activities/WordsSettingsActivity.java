@@ -29,9 +29,9 @@ import com.youngsophomore.fragments.InfoDialogFragment;
 import com.youngsophomore.helpers.PrepHelper;
 
 public class WordsSettingsActivity extends AppCompatActivity {
+    private static final String DEBUG_TAG = "Gestures";
     private final String DISPLAY_SETTINGS_FRAGMENT_TAG = "display_words_settings_fragment";
     private final String ADD_COLLECTION_FRAGMENT_TAG = "add_collection_fragment";
-    private static final String DEBUG_TAG = "Gestures";
     Toolbar toolbar;
     FragmentManager fragmentManager;
     Spinner sprWordsCollection;
@@ -145,7 +145,7 @@ public class WordsSettingsActivity extends AppCompatActivity {
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
                         Log.d(DEBUG_TAG, "btnAddWordsCollection onTouch. Action was DOWN");
-                        //view.setElevation(0);
+                        view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
                         Log.d(DEBUG_TAG, "btnAddWordsCollection onTouch. Action was MOVE");
@@ -257,7 +257,6 @@ public class WordsSettingsActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
         Log.d(DEBUG_TAG, "in onBackPressed()");
         AddWordsCollectionFragment addWordsCollectionFragment =
                 (AddWordsCollectionFragment) fragmentManager.findFragmentByTag(ADD_COLLECTION_FRAGMENT_TAG);

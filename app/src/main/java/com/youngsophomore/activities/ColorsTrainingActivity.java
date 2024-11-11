@@ -40,17 +40,13 @@ public class ColorsTrainingActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Отображение обратного отсчёта перед тренировкой
         setContentView(R.layout.pretrain_sequence_layout);
-        // Загрузка данных из сохранённых настроек
 
         SharedPreferences sharedPreferences =
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         int colorsAmount = sharedPreferences.getInt(getString(R.string.saved_colors_amount_key), 6);
         int distinctColorsAmount = sharedPreferences.getInt(getString(R.string.saved_distinct_colors_amount_key), 2);
         int colorShowTime = sharedPreferences.getInt(getString(R.string.saved_color_show_time_key), 2);
-        Log.d(DEBUG_TAG, "saved colorsAmount = " + colorsAmount +
-                ", distinctColorsAmount = " + distinctColorsAmount + ", colorShowTime = " + colorShowTime);
 
         TextView tvCountdown = findViewById(R.id.tv_countdown);
         CountDownTimer countDownTimer = new CountDownTimer(3000 + 200, 1000) {
@@ -106,14 +102,13 @@ public class ColorsTrainingActivity extends AppCompatActivity implements
                     @Override
                     public void onFinish() {
                         setContentView(R.layout.activity_colors_training);
-                        ConstraintLayout cstLtClr = findViewById(R.id.cst_lt_clr);
-                        // Запуск секундомера
                         Bundle bundle = new Bundle();
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         fragmentManager.beginTransaction()
                                 .setReorderingAllowed(true)
-                                .add(R.id.frt_cnt_v_clr, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
+                                .add(R.id.frt_cnt_v_stopwatch, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
                                 .commit();
+                        ConstraintLayout cstLtClr = findViewById(R.id.cst_lt_clr);
                         Log.d(DEBUG_TAG, "cstLtClr.getChildCount() = " + cstLtClr.getChildCount());
                         // Make all ImageView background white_blue
                         // Fill palette with right amount of colors

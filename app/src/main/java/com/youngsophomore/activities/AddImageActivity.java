@@ -37,9 +37,9 @@ import java.util.ArrayList;
 
 public class AddImageActivity extends AppCompatActivity implements
         NewImageNameDialogFragment.NewImageNameDialogListener {
+    private static final String DEBUG_TAG = "Gestures";
     private final String NEW_QUESTIONS_FRAGMENT_TAG = "new_questions_fragment";
     private final String ADD_QUESTION_FRAGMENT_TAG = "add_question_fragment";
-    private static final String DEBUG_TAG = "Gestures";
     FragmentManager fragmentManager;
     ImageButton btnAddQuestion;
     ImageButton btnConfirmQuestion;
@@ -50,12 +50,10 @@ public class AddImageActivity extends AppCompatActivity implements
     Uri imageUri = null;
     public final int NEW_IMAGE_REQUEST_CODE = 20;
     TextView tvNewImage;
-    int tvNewImageNameId;
     SharedPreferences sharedPreferences;
     ImageButton btnNewImage;
     FrameLayout frLtRemindImg;
     ImageView ivRemindImg;
-    boolean wasImageSelected;
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +70,6 @@ public class AddImageActivity extends AppCompatActivity implements
         Bundle bundle = new Bundle();
         newQuestions = new ArrayList<>();
         bundle.putParcelableArrayList(getString(R.string.new_questions_collection_key), newQuestions);
-        elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
 
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
@@ -80,14 +77,42 @@ public class AddImageActivity extends AppCompatActivity implements
                 .add(R.id.frt_cnt_v_tiles, NewQuestionsListFragment.class, bundle, NEW_QUESTIONS_FRAGMENT_TAG)
                 .commit();
 
+        btnNewImage = findViewById(R.id.btn_new_image);
         btnAddQuestion = findViewById(R.id.btn_add_question);
         btnConfirmQuestion = findViewById(R.id.btn_confirm_question);
         btnConfirmQuestionsCollection = findViewById(R.id.btn_confirm_questions_collection);
         tvNewImage = findViewById(R.id.tv_new_image);
+        frLtRemindImg = findViewById(R.id.fr_lt_remind_img);
         ivRemindImg = findViewById(R.id.iv_remind_img);
+        elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
 
         PrepHelper.deactivateBtn(btnConfirmQuestion);
         PrepHelper.deactivateBtn(btnAddQuestion);
+
+        btnNewImage.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                int action = event.getAction();
+                switch(action) {
+                    case (MotionEvent.ACTION_DOWN):
+                        Log.d(DEBUG_TAG, "btnNewImage onTouch. Action was DOWN");
+                        view.setElevation(0);
+                        return true;
+                    case (MotionEvent.ACTION_MOVE):
+                        Log.d(DEBUG_TAG, "btnNewImage onTouch. Action was MOVE");
+                        return true;
+                    case (MotionEvent.ACTION_UP):
+                        Log.d(DEBUG_TAG, "btnNewImage onTouch. Action was UP");
+                        view.setElevation(elevPx);
+                        openFileChooser();
+                        Log.d(DEBUG_TAG, "Uri from file picker = " + imageUri);
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
+
         btnAddQuestion.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
@@ -114,8 +139,6 @@ public class AddImageActivity extends AppCompatActivity implements
                                 .setReorderingAllowed(true)
                                 .addToBackStack("transaction_add_questions_collection_fragment")
                                 .commit();
-
-                        /*SharedPreferences.Editor editor = sharedPreferences.edit();*/
                         return true;
                     default:
                         return false;
@@ -123,7 +146,6 @@ public class AddImageActivity extends AppCompatActivity implements
             }
         });
         btnConfirmQuestion.setOnTouchListener(new View.OnTouchListener() {
-            // return to the NewQuestionsListFragment
             @Override
             public boolean onTouch(View view, MotionEvent event) {
                 int action = event.getAction();
@@ -138,7 +160,6 @@ public class AddImageActivity extends AppCompatActivity implements
                     case (MotionEvent.ACTION_UP):
                         Log.d(DEBUG_TAG, "btnConfirmQuestion onTouch. Action was UP");
                         view.setElevation(elevPx);
-
                         PrepHelper.activateBtn(btnAddQuestion, elevPx);
                         PrepHelper.activateBtn(btnConfirmQuestionsCollection, elevPx);
                         PrepHelper.deactivateBtn(btnConfirmQuestion);
@@ -156,13 +177,13 @@ public class AddImageActivity extends AppCompatActivity implements
                                 .setReorderingAllowed(true)
                                 .commit();
                         fragmentManager.popBackStack();
-                        /*SharedPreferences.Editor editor = sharedPreferences.edit();*/
                         return true;
                     default:
                         return false;
                 }
             }
         });
+
         btnConfirmQuestionsCollection.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
@@ -185,40 +206,13 @@ public class AddImageActivity extends AppCompatActivity implements
 
                         }
                         onBackPressed();
-
                         return true;
                     default:
                         return false;
                 }
             }
         });
-        btnNewImage = findViewById(R.id.btn_new_image);
-        btnNewImage.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent event) {
-                int action = event.getAction();
-                switch(action) {
-                    case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnNewImage onTouch. Action was DOWN");
-                        view.setElevation(0);
-                        return true;
-                    case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnNewImage onTouch. Action was MOVE");
-                        return true;
-                    case (MotionEvent.ACTION_UP):
-                        Log.d(DEBUG_TAG, "btnNewImage onTouch. Action was UP");
-                        view.setElevation(elevPx);
-                        openFileChooser();
-                        Log.d(DEBUG_TAG, "Uri from file picker = " + imageUri);
 
-                        /*SharedPreferences.Editor editor = sharedPreferences.edit();*/
-                        return true;
-                    default:
-                        return false;
-                }
-            }
-        });
-        frLtRemindImg = findViewById(R.id.fr_lt_remind_img);
         frLtRemindImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -231,16 +225,13 @@ public class AddImageActivity extends AppCompatActivity implements
     public void onActivityResult(int requestCode, int resultCode, Intent intent){
         super.onActivityResult(requestCode, resultCode, intent);
         if(requestCode == NEW_IMAGE_REQUEST_CODE && resultCode == Activity.RESULT_OK && intent != null){
-            wasImageSelected = true;
             imageUri = intent.getData();
             Log.d(DEBUG_TAG, "Uri from file picker = " + imageUri);
             ivRemindImg.setImageURI(imageUri);
             showNewImageNameDialog();
             PrepHelper.activateBtn(btnAddQuestion, elevPx);
-
         }
         else{
-            wasImageSelected = false;
             Log.d(DEBUG_TAG, "Something went wrong. Uri from file picker = " + imageUri);
         }
     }
@@ -323,16 +314,21 @@ public class AddImageActivity extends AppCompatActivity implements
     @Override
     public void onBackPressed() {
         Log.d(DEBUG_TAG, "in onBackPressed()");
-        AddQuestionFragment addQuestionFragment =
-                (AddQuestionFragment) fragmentManager.findFragmentByTag(ADD_QUESTION_FRAGMENT_TAG);
-        NewQuestionsListFragment newQuestionsListFragment =
-                (NewQuestionsListFragment) fragmentManager.findFragmentByTag(NEW_QUESTIONS_FRAGMENT_TAG);
-        Log.d(DEBUG_TAG, addQuestionFragment + ",, " + newQuestionsListFragment);
-        if(addQuestionFragment != null && addQuestionFragment.isVisible()){
-            PrepHelper.activateBtn(btnAddQuestion, elevPx);
-            PrepHelper.activateBtn(btnConfirmQuestionsCollection, elevPx);
-            PrepHelper.deactivateBtn(btnConfirmQuestion);
+        if(frLtRemindImg.getVisibility() == View.VISIBLE){
+            frLtRemindImg.setVisibility(View.GONE);
         }
-        super.onBackPressed();
+        else{
+            AddQuestionFragment addQuestionFragment =
+                    (AddQuestionFragment) fragmentManager.findFragmentByTag(ADD_QUESTION_FRAGMENT_TAG);
+            NewQuestionsListFragment newQuestionsListFragment =
+                    (NewQuestionsListFragment) fragmentManager.findFragmentByTag(NEW_QUESTIONS_FRAGMENT_TAG);
+            Log.d(DEBUG_TAG, addQuestionFragment + ",, " + newQuestionsListFragment);
+            if(addQuestionFragment != null && addQuestionFragment.isVisible()){
+                PrepHelper.activateBtn(btnAddQuestion, elevPx);
+                PrepHelper.activateBtn(btnConfirmQuestionsCollection, elevPx);
+                PrepHelper.deactivateBtn(btnConfirmQuestion);
+            }
+            super.onBackPressed();
+        }
     }
 }

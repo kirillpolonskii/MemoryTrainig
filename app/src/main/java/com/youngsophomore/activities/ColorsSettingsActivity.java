@@ -42,18 +42,19 @@ public class ColorsSettingsActivity extends AppCompatActivity {
         NumberPicker pckrColorsAmount = findViewById(R.id.num_pck_clr_amount);
         NumberPicker pckrDistinctColorsAmount = findViewById(R.id.num_pck_distinct_clr_amount);
         NumberPicker pckrColorShowTime = findViewById(R.id.num_pck_clr_show_time);
-        pckrColorsAmount.setMinValue(6);
-        pckrColorsAmount.setMaxValue(24);
-        pckrDistinctColorsAmount.setMinValue(2);
-        pckrDistinctColorsAmount.setMaxValue(15);
-        pckrColorShowTime.setMinValue(1);
-        pckrColorShowTime.setMaxValue(6);
-        pckrColorsAmount.setValue(colorsAmount);
-        pckrDistinctColorsAmount.setValue(distinctColorsAmount);
-        pckrColorShowTime.setValue(colorShowTime);
-
         ImageButton btnSaveSettings = findViewById(R.id.btn_save_settings_clr);
         ImageButton btnPlayWSettings = findViewById(R.id.btn_play_w_settings_clr);
+
+        pckrColorsAmount.setMinValue(6);
+        pckrColorsAmount.setMaxValue(24);
+        pckrColorsAmount.setValue(colorsAmount);
+        pckrDistinctColorsAmount.setMinValue(2);
+        pckrDistinctColorsAmount.setMaxValue(15);
+        pckrDistinctColorsAmount.setValue(distinctColorsAmount);
+        pckrColorShowTime.setMinValue(1);
+        pckrColorShowTime.setMaxValue(6);
+        pckrColorShowTime.setValue(colorShowTime);
+
         btnSaveSettings.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
@@ -77,13 +78,6 @@ public class ColorsSettingsActivity extends AppCompatActivity {
                         editor.apply();
 
                         onBackPressed();
-                        return true;
-                    case (MotionEvent.ACTION_CANCEL):
-                        Log.d(DEBUG_TAG, "btnSave onTouch. Action was CANCEL");
-                        return true;
-                    case (MotionEvent.ACTION_OUTSIDE):
-                        Log.d(DEBUG_TAG, "btnSave onTouch. Movement occurred outside bounds " +
-                                "of current screen element");
                         return true;
                     default:
                         return false;
@@ -124,7 +118,6 @@ public class ColorsSettingsActivity extends AppCompatActivity {
                 }
 
             }
-
         });
     }
 

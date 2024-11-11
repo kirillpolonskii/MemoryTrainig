@@ -19,40 +19,16 @@ import java.util.Scanner;
 
 public class CollectionsStorage {
     private static final String DEBUG_TAG = "Gestures";
-    private static ArrayList<String> wordsCollectionsTitles;
-    private static ArrayList<ArrayList<String>> wordsCollections;
-    private static ArrayList<String> phrasesCollectionsTitles;
-    private static ArrayList<ArrayList<String>> phrasesCollections;
-
-    private static ArrayList<String> questionsCollectionsTitles; // collection named after image
-    private static ArrayList<ArrayList<Question>> questionsCollections;
-    private static ArrayMap<String, Uri> imageNamesForUri;
 
 
-//    static {
-//        Log.d(DEBUG_TAG, "in CollectionsStorage: static worked");
-//        wordsCollectionsTitles = new ArrayList<>();
-//        wordsCollectionsTitles.add("FirstWordsCollection");
-//        wordsCollections = new ArrayList<>();
-//
-//        phrasesCollectionsTitles = new ArrayList<>();
-//        phrasesCollectionsTitles.add("FirstPhrasesCollection");
-//        phrasesCollections = new ArrayList<>();
-//
-//        questionsCollectionsTitles = new ArrayList<>();
-//        questionsCollectionsTitles.add("Image1");
-//        questionsCollections = new ArrayList<>();
-//        imageNamesForUri = new ArrayMap<>();
-//    }
+    public static ArrayList<String> getCollectionsTitles(SharedPreferences sharedPreferences, String key){
+        String strWordsCollectionsTitles = sharedPreferences.getString(key, "");
+        String[] splittedWordsCollectionsTitles = strWordsCollectionsTitles.split(",");
+        ArrayList<String> newCollectionArray = new ArrayList<>(Arrays.asList(splittedWordsCollectionsTitles));
+        newCollectionArray.remove(0);
+        return newCollectionArray;
+    }
 
-public static ArrayList<String> getCollectionsTitles(SharedPreferences sharedPreferences, String key){
-    // get Set<String> from shared preferences
-    String strWordsCollectionsTitles = sharedPreferences.getString(key, "");
-    String[] splittedWordsCollectionsTitles = strWordsCollectionsTitles.split(",");
-    ArrayList<String> newCollectionArray = new ArrayList<>(Arrays.asList(splittedWordsCollectionsTitles));
-    newCollectionArray.remove(0);
-    return newCollectionArray;
-}
     public static void saveWordsCollection(
             String title,
             String newCollection,
@@ -62,9 +38,7 @@ public static ArrayList<String> getCollectionsTitles(SharedPreferences sharedPre
         while(newCollection.contains("  ")){
             newCollection = newCollection.replace("  ", " ");
         }
-        // add title to Set<String> in shared preferences
         strWordsCollectionsTitles += title + ",";
-        Log.d(DEBUG_TAG, "in CollectionStorage: strWordsCollectionsTitles = " + strWordsCollectionsTitles);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(wordsCollectionsTitlesKey, strWordsCollectionsTitles);
         editor.putString(title, newCollection);
@@ -86,11 +60,6 @@ public static ArrayList<String> getCollectionsTitles(SharedPreferences sharedPre
         editor.putInt(savedWordsCollectionPositionKey, 0);
         editor.apply();
 
-    }
-
-    public static String getWordsCollectionTitle(int position){
-        // get collection from shared preferences and get title
-        return wordsCollectionsTitles.get(position);
     }
 
     public static void savePhrasesCollection(String title,
@@ -169,7 +138,6 @@ public static ArrayList<String> getCollectionsTitles(SharedPreferences sharedPre
             String pathName){
         ArrayList<String> phrasesCollection = new ArrayList<>();
         try {
-            // File filePath = new File(context.getExternalFilesDir(null).getAbsolutePath() + "/phrases");
             File filePath = new File(pathName);
             Log.d(DEBUG_TAG, "in CollectionStorage: filePath = " + filePath);
             String fileName = "/" + title + ".txt";
@@ -182,18 +150,12 @@ public static ArrayList<String> getCollectionsTitles(SharedPreferences sharedPre
                 Log.d(DEBUG_TAG, "in CollectionStorage: " + inFile.getAbsolutePath() +
                         " existed");
             }
-            // FileOutputStream fos = new FileOutputStream(inFile);
-            // OutputStreamWriter osw = new OutputStreamWriter(fos);
             Log.d(DEBUG_TAG, "in CollectionStorage: fileName = " + inFile);
             Scanner scanner = new Scanner(inFile);
             scanner.useDelimiter("\\|");
             while (scanner.hasNext()){
                 phrasesCollection.add(scanner.next());
             }
-
-            // osw.flush();
-            // osw.close();
-            // fos.close();
         }
         catch (IOException e) {
             Log.d(DEBUG_TAG, "in CollectionStorage: File write failed: " + e.toString());
@@ -206,7 +168,6 @@ public static ArrayList<String> getCollectionsTitles(SharedPreferences sharedPre
                                                 String questionsCollectionsTitlesKey,
                                                 SharedPreferences sharedPreferences,
                                                 Context context){
-        // add a folder named "title"
         // write uri in title/imageUri or in SharedPreferences
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(title, imageUri.toString());
@@ -216,11 +177,11 @@ public static ArrayList<String> getCollectionsTitles(SharedPreferences sharedPre
         strQuestionsCollectionsTitles += title + ",";
         editor.putString(questionsCollectionsTitlesKey, strQuestionsCollectionsTitles);
         editor.apply();
+        // add a folder named "title"
         // write answers to questionNNN in title/questionNNN.txt
         try {
             File questionsDir = new File(context.getExternalFilesDir(null).getAbsolutePath()
                     + "/details" + "/" + title);
-            //File phrasesDir = new File(context.getExternalFilesDir(null).getAbsolutePath() + "/phrases");
             if (!questionsDir.exists() && questionsDir.mkdir()) {
                 Log.d(DEBUG_TAG, "in CollectionStorage: " + questionsDir + " created");
             }
@@ -228,10 +189,10 @@ public static ArrayList<String> getCollectionsTitles(SharedPreferences sharedPre
             for(int i = 0; i < newCollection.size(); ++i){
                 String questionNum = "question";
                 if(i < 10){
-                    questionNum += "00" + String.valueOf(i);
+                    questionNum += "00" + i;
                 }
                 else if(i < 100){
-                    questionNum += "0" + String.valueOf(i);
+                    questionNum += "0" + i;
                 }
                 else{
                     questionNum += String.valueOf(i);
@@ -277,7 +238,6 @@ public static ArrayList<String> getCollectionsTitles(SharedPreferences sharedPre
         editor.apply();
         File questionsDir = new File(context.getExternalFilesDir(null).getAbsolutePath()
                 + "/details" + "/" + title);
-        //File phrasesDir = new File(context.getExternalFilesDir(null).getAbsolutePath() + "/phrases");
         if (questionsDir.isDirectory())
             for (File child : questionsDir.listFiles())
                 child.delete();

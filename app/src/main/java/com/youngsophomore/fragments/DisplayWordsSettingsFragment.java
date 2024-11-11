@@ -20,18 +20,17 @@ import com.youngsophomore.data.CollectionsStorage;
 
 public class DisplayWordsSettingsFragment extends Fragment
 implements DeleteCollectionDialogFragment.DeleteCollectionDialogListener{
-
     private static final String DEBUG_TAG = "Gestures";
     Spinner sprWordsCollection;
     SharedPreferences sharedPreferences;
     ArrayAdapter<String> adapter;
+
     public DisplayWordsSettingsFragment() {
         // Required empty public constructor
     }
 
 
     public static DisplayWordsSettingsFragment newInstance(String param1, String param2) {
-
         return new DisplayWordsSettingsFragment();
     }
 
@@ -44,19 +43,21 @@ implements DeleteCollectionDialogFragment.DeleteCollectionDialogListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View fragment = inflater.inflate(R.layout.fragment_display_words_settings, container, false);
 
         sharedPreferences =
                 getContext().getSharedPreferences(getString(R.string.preference_file_key), android.content.Context.MODE_PRIVATE);
+        int wordsCollectionPosition = sharedPreferences.getInt(getString(R.string.saved_words_collection_position_key), 0);
+        int wordShowTime = sharedPreferences.getInt(getString(R.string.saved_word_show_time_key), 2);
+
+        sprWordsCollection = fragment.findViewById(R.id.spr_wrd_collection);
+        NumberPicker pckrWordShowTime = fragment.findViewById(R.id.num_pck_wrd_show_time);
 
         adapter = new ArrayAdapter<>(fragment.getContext(),
                 R.layout.custom_spinner_item,
                 CollectionsStorage.getCollectionsTitles(sharedPreferences, getString(R.string.words_collections_titles_key)));
         adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
-        sprWordsCollection = fragment.findViewById(R.id.spr_wrd_collection);
         sprWordsCollection.setAdapter(adapter);
-        //sprWordsCollection.setLongClickable(true);
         sprWordsCollection.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -72,13 +73,8 @@ implements DeleteCollectionDialogFragment.DeleteCollectionDialogListener{
             }
         });
 
-        int wordsCollectionPosition = sharedPreferences.getInt(getString(R.string.saved_words_collection_position_key), 0);
-        Log.d(DEBUG_TAG, String.valueOf(wordsCollectionPosition));
-        int wordShowTime = sharedPreferences.getInt(getString(R.string.saved_word_show_time_key), 2);
-
         sprWordsCollection.setSelection(wordsCollectionPosition);
 
-        NumberPicker pckrWordShowTime = fragment.findViewById(R.id.num_pck_wrd_show_time);
         pckrWordShowTime.setMinValue(1);
         pckrWordShowTime.setMaxValue(6);
         pckrWordShowTime.setValue(wordShowTime);

@@ -1,17 +1,14 @@
 package com.youngsophomore.adapters;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.youngsophomore.R;
-import com.youngsophomore.helpers.TrainHelper;
 
 import java.util.ArrayList;
 
@@ -51,8 +48,6 @@ public class DetailsStatAdapter extends RecyclerView.Adapter<DetailsStatAdapter.
 
         public ViewHolder(View view) {
             super(view);
-            // Define click listener for the ViewHolder's View
-            //Log.d(DEBUG_TAG, "In public ViewHolder()");
             tvCollectTitle = view.findViewById(R.id.tv_collect_title);
             tvAvTimeMoves = view.findViewById(R.id.tv_collect_av_time_moves);
 

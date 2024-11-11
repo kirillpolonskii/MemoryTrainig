@@ -2,7 +2,6 @@ package com.youngsophomore.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.res.ColorStateList;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -22,18 +21,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 
 import com.google.android.material.divider.MaterialDividerItemDecoration;
 import com.youngsophomore.R;
 import com.youngsophomore.adapters.AnswersAdapter;
-import com.youngsophomore.adapters.QuestionsAdapter;
 import com.youngsophomore.data.Question;
 import com.youngsophomore.helpers.PrepHelper;
 import com.youngsophomore.interfaces.RecyclerViewClickListener;
-
-import java.util.ArrayList;
 
 public class AddQuestionFragment extends Fragment
         implements QuestionTypeDialogFragment.QuestionTypeDialogListener,
@@ -41,19 +36,15 @@ public class AddQuestionFragment extends Fragment
         DeleteAnswerDialogFragment.DeleteAnswerDialogListener,
                     RecyclerViewClickListener {
     private static final String DEBUG_TAG = "Gestures";
-    //private ArrayList<String> answers;
     EditText etNewQuestion;
     EditText etNewAnswer;
     Question question;
-    int etNewQuestionId;
     int etNewAnswerId;
     private boolean haveCorrectAnswer;
     AnswersAdapter answersAdapter;
     Uri imageUri;
 
     public AddQuestionFragment() {
-        Log.d(DEBUG_TAG, "in AddQuestionFragment() of AddQuestionFragment");
-
         // Required empty public constructor
     }
 
@@ -104,11 +95,10 @@ public class AddQuestionFragment extends Fragment
         etNewAnswer.setHint(getString(R.string.et_answer_hint));
         etNewAnswer.setGravity(Gravity.TOP);
         etNewAnswer.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
-        //etNewAnswer.setTextSize(getResources().getDimension(R.dimen.settings_text_size));
         etNewAnswer.setTextSize(22);
         etNewAnswer.setTextColor(getResources().getColor(R.color.blue));
         etNewAnswer.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
-        //etNewAnswer.setText(getResources().getString(R.string.new_questions_collection_key));
+
         ConstraintLayout.LayoutParams etNewAnswerParams = new ConstraintLayout.LayoutParams(
                 ConstraintLayout.LayoutParams.MATCH_PARENT,
                 0
@@ -142,10 +132,6 @@ public class AddQuestionFragment extends Fragment
                         ((ViewGroup) view).removeView(etNewQuestion);
                         Log.d(DEBUG_TAG, "view.getChildCount() aft removeView = " +
                                 ((ConstraintLayout) view).getChildCount());
-                        //((ViewGroup) view.getParent()).removeView(etNewQuestion);
-
-                        //etNewAnswer.setActivated(true);
-                        //etNewAnswer.setImportantForAutofill(View.IMPORTANT_FOR_AUTOFILL_NO);
 
                         ((ViewGroup) view).addView(etNewAnswer);
                         ConstraintSet constraintSet = new ConstraintSet();
@@ -154,8 +140,6 @@ public class AddQuestionFragment extends Fragment
                                 R.id.constr_layout_add_question, ConstraintSet.TOP);
                         constraintSet.connect(R.id.rv_answers_collection, ConstraintSet.TOP,
                                 etNewAnswerId, ConstraintSet.BOTTOM);
-                        //constraintSet.constrainHeight(etNewAnswerId, ConstraintSet.MATCH_CONSTRAINT_PERCENT);
-                        //constraintSet.constrainDefaultHeight(etNewAnswerId, ConstraintSet.MATCH_CONSTRAINT_PERCENT);
                         constraintSet.constrainPercentHeight(etNewAnswerId, 0.4f);
                         constraintSet.applyTo((ConstraintLayout) view);
                         return true;
@@ -208,8 +192,6 @@ public class AddQuestionFragment extends Fragment
                 }
             }
         });
-
-        // Inflate the layout for this fragment
         return view;
     }
 
@@ -233,9 +215,7 @@ public class AddQuestionFragment extends Fragment
 
     public void showQuestionTypeDialog() {
         DialogFragment newFragment = new QuestionTypeDialogFragment();
-        //newFragment.setTargetFragment(this, 1);
         newFragment.show(getChildFragmentManager(), "QuestionTypeDialogFragment");
-        //newFragment.show(getFragmentManager(), "QuestionTypeDialogFragment");
     }
     public void showCorrectAnswerDialog() {
         DialogFragment newFragment = new CorrectAnswerDialogFragment();

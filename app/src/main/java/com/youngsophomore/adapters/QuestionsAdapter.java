@@ -16,7 +16,6 @@ import com.youngsophomore.interfaces.RecyclerViewClickListener;
 import java.util.ArrayList;
 
 public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.ViewHolder> {
-
     private static final String DEBUG_TAG = "Gestures";
     private ArrayList<Question> localQuestions;
     private RecyclerViewClickListener rvClickListener;
@@ -34,8 +33,8 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.View
         public ViewHolder(View view, RecyclerViewClickListener rvClickListener) {
             super(view);
 
-            tvQuestionText = (TextView) view.findViewById(R.id.tv_question_text);
-            tvAnswers = (TextView) view.findViewById(R.id.tv_answers);
+            tvQuestionText = view.findViewById(R.id.tv_question_text);
+            tvAnswers = view.findViewById(R.id.tv_answers);
             view.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
@@ -62,7 +61,6 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.View
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         Log.d(DEBUG_TAG, "QuestionsAdapter: In onCreateViewHolder()");
-        // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.new_question_list_item, viewGroup, false);
 
@@ -72,8 +70,6 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
         Log.d(DEBUG_TAG, "QuestionsAdapter: In onBindViewHolder()");
-        // Get element from your dataset at this position and replace the
-        // contents of the view with that element
         viewHolder.getTVQuestionText().setText(localQuestions.get(position).getQuestionText());
         viewHolder.getTVAnswers().setText(localQuestions.get(position).getAnswersInOneString(true));
     }

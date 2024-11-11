@@ -54,14 +54,22 @@ public class PhrasesSettingsActivity extends AppCompatActivity
 
         sharedPreferences =
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        phrasesCollectionPosition = sharedPreferences.getInt(getString(R.string.saved_phrases_collection_position_key), 0);
+        int phraseShowTime = sharedPreferences.getInt(getString(R.string.saved_phrase_show_time_key), 2);
+
+        sprPhrasesCollection = findViewById(R.id.spr_phr_collection);
+        NumberPicker pckrPhraseShowTime = findViewById(R.id.num_pck_phr_show_time);
+        ImageButton btnAddPhrasesCollection = findViewById(R.id.btn_add_phr_collection);
+        ImageButton btnSaveSettings = findViewById(R.id.btn_save_phr_settings);
+        ImageButton btnPlayWSettings = findViewById(R.id.btn_play_w_settings_phr);
+
         phrasesCollectionsTitles = CollectionsStorage.getCollectionsTitles(
                 sharedPreferences, getString(R.string.phrases_collections_titles_key));
         adapter = new ArrayAdapter<>(this,
-                R.layout.custom_spinner_item, phrasesCollectionsTitles
-                );
+                R.layout.custom_spinner_item, phrasesCollectionsTitles);
         adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
-        sprPhrasesCollection = findViewById(R.id.spr_phr_collection);
         sprPhrasesCollection.setAdapter(adapter);
+        sprPhrasesCollection.setSelection(phrasesCollectionPosition);
         sprPhrasesCollection.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -77,19 +85,9 @@ public class PhrasesSettingsActivity extends AppCompatActivity
             }
         });
 
-        phrasesCollectionPosition = sharedPreferences.getInt(getString(R.string.saved_phrases_collection_position_key), 0);
-        int phraseShowTime = sharedPreferences.getInt(getString(R.string.saved_phrase_show_time_key), 2);
-
-        sprPhrasesCollection.setSelection(phrasesCollectionPosition);
-
-        NumberPicker pckrPhraseShowTime = findViewById(R.id.num_pck_phr_show_time);
         pckrPhraseShowTime.setMinValue(1);
         pckrPhraseShowTime.setMaxValue(6);
         pckrPhraseShowTime.setValue(phraseShowTime);
-
-        ImageButton btnAddPhrasesCollection = findViewById(R.id.btn_add_phr_collection);
-        ImageButton btnSaveSettings = findViewById(R.id.btn_save_phr_settings);
-        ImageButton btnPlayWSettings = findViewById(R.id.btn_play_w_settings_phr);
 
         btnAddPhrasesCollection.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -188,34 +186,6 @@ public class PhrasesSettingsActivity extends AppCompatActivity
                         sharedPreferences, getString(R.string.phrases_collections_titles_key)));
 
         adapter.notifyDataSetChanged();
-
-        /*try {
-            File file = new File(getExternalFilesDir(null).getAbsolutePath() + "/phrases/" + "seccoll.txt");
-
-            FileInputStream fis = new FileInputStream(file);
-            InputStreamReader isr = new InputStreamReader(fis);
-            BufferedReader br = new BufferedReader(isr);
-
-            StringBuilder sb = new StringBuilder();
-            String line;
-            while ((line = br.readLine()) != null) {
-                sb.append(line);
-                sb.append("\n");
-            }
-
-            String text = sb.toString();
-            Log.d(DEBUG_TAG, "in PhrasesSettingsActivity: text = " + text);
-            br.close();
-            isr.close();
-            fis.close();
-
-        }
-        catch (FileNotFoundException e) {
-            Log.d(DEBUG_TAG, "File not found: " + e.toString());
-        } catch (IOException e) {
-            Log.d(DEBUG_TAG, "Can not read file: " + e.toString());
-        }*/
-
     }
 
     @Override
@@ -251,7 +221,8 @@ public class PhrasesSettingsActivity extends AppCompatActivity
     public void onDeleteCollectionPosClick(DialogFragment dialog) {
         Log.d(DEBUG_TAG, "In PhrasesSettingsActivity: Pos button clicked, slctd= " +
                 sprPhrasesCollection.getSelectedItem());
-        CollectionsStorage.deletePhrasesCollection((String) sprPhrasesCollection.getSelectedItem(),
+        CollectionsStorage.deletePhrasesCollection(
+                (String) sprPhrasesCollection.getSelectedItem(),
                 getString(R.string.phrases_collections_titles_key),
                 getString(R.string.saved_phrases_collection_position_key),
                 sharedPreferences, getApplicationContext());
@@ -261,7 +232,5 @@ public class PhrasesSettingsActivity extends AppCompatActivity
     }
 
     @Override
-    public void onDeleteCollectionNegClick(DialogFragment dialog) {
-
-    }
+    public void onDeleteCollectionNegClick(DialogFragment dialog) {}
 }

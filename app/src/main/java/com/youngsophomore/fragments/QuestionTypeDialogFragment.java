@@ -7,46 +7,28 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.youngsophomore.R;
 
 public class QuestionTypeDialogFragment extends DialogFragment {
     private static final String DEBUG_TAG = "Gestures";
     public interface QuestionTypeDialogListener {
-        public void onQuestionTypePosClick(DialogFragment dialog);
-        public void onQuestionTypeNegClick(DialogFragment dialog);
+        void onQuestionTypePosClick(DialogFragment dialog);
+        void onQuestionTypeNegClick(DialogFragment dialog);
     }
 
-    // Use this instance of the interface to deliver action events
     QuestionTypeDialogListener listener;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         Log.d(DEBUG_TAG, "in onAttach() of QuestionTypeDialogFragment");
-        Log.d(DEBUG_TAG, "context: " + context.toString());
-        // Verify that the host activity implements the callback interface
         listener = (QuestionTypeDialogListener) getParentFragment();
-        /*try {
-            // Instantiate the NoticeDialogListener so we can send events to the host
-            listener = (QuestionTypeDialogListener) context;
-        } catch (ClassCastException e) {
-            // The activity doesn't implement the interface, throw exception
-            throw new ClassCastException(getParentFragment().toString()
-                    + " must implement QuestionTypeDialogListener");
-        }*/
     }
 
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        Log.d(DEBUG_TAG, "in onCreateDialog() of QuestionTypeDialogFragment");
-
-        // Use the Builder class for convenient dialog construction
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.question_type_dialog_title)
                 .setMessage(R.string.question_type_dialog_message)
@@ -60,7 +42,6 @@ public class QuestionTypeDialogFragment extends DialogFragment {
                         listener.onQuestionTypeNegClick(QuestionTypeDialogFragment.this);
                     }
                 });
-        // Create the AlertDialog object and return it
         AlertDialog dialog = builder.create();
         dialog.setCanceledOnTouchOutside(false);
         return dialog;

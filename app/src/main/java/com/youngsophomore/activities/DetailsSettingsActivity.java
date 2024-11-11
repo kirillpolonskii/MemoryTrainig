@@ -49,12 +49,18 @@ public class DetailsSettingsActivity extends AppCompatActivity
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         int imagesCollectionPosition = sharedPreferences.getInt(getString(R.string.saved_images_collection_position_key), 0);
         int imageShowTime = sharedPreferences.getInt(getString(R.string.saved_image_show_time_key), 2);
+
+        sprImagesCollection = findViewById(R.id.spr_image);
+        NumberPicker pckrImageShowTime = findViewById(R.id.num_pck_image_show_time);
+        ImageButton btnAddImage = findViewById(R.id.btn_add_image);
+        ImageButton btnSaveDetailsSettings = findViewById(R.id.btn_save_settings_det);
+        ImageButton btnPlayDetailsWSettings = findViewById(R.id.btn_play_w_settings_det);
+
         questionsCollectionsTitles = CollectionsStorage.getCollectionsTitles(sharedPreferences,
                 getString(R.string.questions_collections_titles_key));
         adapter = new ArrayAdapter<>(this,
                 R.layout.custom_spinner_item, questionsCollectionsTitles);
         adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
-        sprImagesCollection = findViewById(R.id.spr_image);
         sprImagesCollection.setAdapter(adapter);
         sprImagesCollection.setSelection(imagesCollectionPosition);
         sprImagesCollection.setOnLongClickListener(new View.OnLongClickListener() {
@@ -72,39 +78,9 @@ public class DetailsSettingsActivity extends AppCompatActivity
             }
         });
 
-        NumberPicker pckrImageShowTime = findViewById(R.id.num_pck_image_show_time);
         pckrImageShowTime.setMinValue(1);
         pckrImageShowTime.setMaxValue(10);
         pckrImageShowTime.setValue(imageShowTime);
-
-        ImageButton btnAddImage = findViewById(R.id.btn_add_image);
-        ImageButton btnSaveDetailsSettings = findViewById(R.id.btn_save_settings_det);
-        ImageButton btnPlayDetailsWSettings = findViewById(R.id.btn_play_w_settings_det);
-
-        btnAddImage.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent event) {
-                int action = event.getAction();
-                switch(action) {
-                    case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnAddImage onTouch. Action was DOWN");
-                        view.setElevation(0);
-                        return true;
-                    case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnAddImage onTouch. Action was MOVE");
-                        return true;
-                    case (MotionEvent.ACTION_UP):
-                        int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        Log.d(DEBUG_TAG, "btnAddImage onTouch. Action was UP");
-                        view.setElevation(elevPx);
-                        Intent intent = new Intent(DetailsSettingsActivity.this, AddImageActivity.class);
-                        startActivity(intent);
-                        return true;
-                    default:
-                        return false;
-                }
-            }
-        });
 
         btnSaveDetailsSettings.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -167,6 +143,31 @@ public class DetailsSettingsActivity extends AppCompatActivity
                 }
             }
         });
+
+        btnAddImage.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                int action = event.getAction();
+                switch(action) {
+                    case (MotionEvent.ACTION_DOWN):
+                        Log.d(DEBUG_TAG, "btnAddImage onTouch. Action was DOWN");
+                        view.setElevation(0);
+                        return true;
+                    case (MotionEvent.ACTION_MOVE):
+                        Log.d(DEBUG_TAG, "btnAddImage onTouch. Action was MOVE");
+                        return true;
+                    case (MotionEvent.ACTION_UP):
+                        int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
+                        Log.d(DEBUG_TAG, "btnAddImage onTouch. Action was UP");
+                        view.setElevation(elevPx);
+                        Intent intent = new Intent(DetailsSettingsActivity.this, AddImageActivity.class);
+                        startActivity(intent);
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
     }
 
     @Override
@@ -178,34 +179,6 @@ public class DetailsSettingsActivity extends AppCompatActivity
                 getString(R.string.questions_collections_titles_key)));
 
         adapter.notifyDataSetChanged();
-
-        /*try {
-            File file = new File(getExternalFilesDir(null).getAbsolutePath() + "/phrases/" + "seccoll.txt");
-
-            FileInputStream fis = new FileInputStream(file);
-            InputStreamReader isr = new InputStreamReader(fis);
-            BufferedReader br = new BufferedReader(isr);
-
-            StringBuilder sb = new StringBuilder();
-            String line;
-            while ((line = br.readLine()) != null) {
-                sb.append(line);
-                sb.append("\n");
-            }
-
-            String text = sb.toString();
-            Log.d(DEBUG_TAG, "in PhrasesSettingsActivity: text = " + text);
-            br.close();
-            isr.close();
-            fis.close();
-
-        }
-        catch (FileNotFoundException e) {
-            Log.d(DEBUG_TAG, "File not found: " + e.toString());
-        } catch (IOException e) {
-            Log.d(DEBUG_TAG, "Can not read file: " + e.toString());
-        }*/
-
     }
 
     @Override
@@ -230,7 +203,6 @@ public class DetailsSettingsActivity extends AppCompatActivity
         DialogFragment newFragment = new DeleteCollectionDialogFragment();
         newFragment.show(getSupportFragmentManager(), "DeleteCollectionDialogFragment");
     }
-
 
     @Override
     public boolean onSupportNavigateUp(){

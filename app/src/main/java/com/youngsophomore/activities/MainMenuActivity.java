@@ -32,7 +32,6 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 public class MainMenuActivity extends AppCompatActivity {
-
     private static final String DEBUG_TAG = "Gestures";
     private MyMotionLayout mtnLtMainMenu;
     String languageToLoad;
@@ -41,13 +40,11 @@ public class MainMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-        Log.d(DEBUG_TAG, "IN onCreate()");
         SharedPreferences sharedPreferences =
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         init(sharedPreferences);
 
         mtnLtMainMenu = findViewById(R.id.mtn_lt_main_m);
-
         ImageButton btnStats = findViewById(R.id.btn_stats);
         ImageButton btnInfo = findViewById(R.id.btn_info_main_m);
         SegmentedButtonGroup sgBtnGrSwitchLang = findViewById(R.id.sg_btn_gr_switch_lang);
@@ -140,7 +137,6 @@ public class MainMenuActivity extends AppCompatActivity {
                     case (MotionEvent.ACTION_DOWN):
                         Log.d(DEBUG_TAG, "sgBtnEn onTouch. Action was DOWN");
                         sgBtnGrSwitchLang.setElevation(0);
-                        //sgBtnGrSwitchLang.onTouchEvent(motionEvent);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
                         Log.d(DEBUG_TAG, "sgBtnEn onTouch. Action was MOVE");
@@ -150,7 +146,6 @@ public class MainMenuActivity extends AppCompatActivity {
                         Log.d(DEBUG_TAG, "sgBtnEn onTouch. Action was UP. open statistics" +
                                 ", R.dimen.sgbtn_elev = " + R.dimen.sgbtn_elev +
                                 ", elev = " + elevPx);
-                        //sgBtnGrSwitchLang.onTouchEvent(motionEvent);
                         sgBtnGrSwitchLang.setElevation(elevPx);
                         return true;
                     case (MotionEvent.ACTION_CANCEL):
@@ -170,7 +165,6 @@ public class MainMenuActivity extends AppCompatActivity {
                     case (MotionEvent.ACTION_DOWN):
                         Log.d(DEBUG_TAG, "sgBtnRu onTouch. Action was DOWN");
                         sgBtnGrSwitchLang.setElevation(0);
-                        //sgBtnGrSwitchLang.onTouchEvent(motionEvent);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
                         Log.d(DEBUG_TAG, "sgBtnRu onTouch. Action was MOVE");
@@ -180,7 +174,6 @@ public class MainMenuActivity extends AppCompatActivity {
                         Log.d(DEBUG_TAG, "sgBtnRu onTouch. Action was UP. open statistics" +
                                 ", R.dimen.sgbtn_elev = " + R.dimen.sgbtn_elev +
                                 ", elev = " + elevPx);
-                        //sgBtnGrSwitchLang.onTouchEvent(motionEvent);
                         sgBtnGrSwitchLang.setElevation(elevPx);
 
                         return true;
@@ -232,7 +225,7 @@ public class MainMenuActivity extends AppCompatActivity {
         editor.putString(getString(R.string.questions_collections_titles_key),
                 strQuestionsCollectionsTitles);
         editor.apply();
-        // make necessary directories
+        // create necessary directories
         File phrasesDir = new File(getExternalFilesDir(null).getAbsolutePath() + "/phrases");
         if (!phrasesDir.exists() && phrasesDir.mkdir()) {
             Log.d(DEBUG_TAG, "in MainMenuActivity: " + phrasesDir + " created");
@@ -283,21 +276,21 @@ public class MainMenuActivity extends AppCompatActivity {
         }
         ArrayList<Question> questionCollection = new ArrayList<>();
         Question question1 = new Question();
-        question1.setQuestionText("Текст первого вопроса?");
+        question1.setQuestionText("Что изображено на картине?");
         ArrayList<String> answers1 = new ArrayList<>();
-        answers1.add("Ответ11 +");
-        answers1.add("Ответ12 -");
-        answers1.add("Ответ13 -");
+        answers1.add("Квадрат +");
+        answers1.add("Круг -");
+        answers1.add("Треугольник -");
         question1.setAnswers(answers1);
         question1.setSingleAnswer(true);
         question1.putAnswersInOneString();
         questionCollection.add(question1);
         Question question2 = new Question();
-        question2.setQuestionText("Текст второго вопроса?");
+        question2.setQuestionText("Какие цвета присутствуют на изображении?");
         ArrayList<String> answers2 = new ArrayList<>();
-        answers2.add("Ответ21 +");
-        answers2.add("Ответ22 +");
-        answers2.add("Ответ23 -");
+        answers2.add("Чёрный +");
+        answers2.add("Белый +");
+        answers2.add("Розовый -");
         question2.setAnswers(answers2);
         question2.setSingleAnswer(false);
         question2.putAnswersInOneString();
@@ -362,6 +355,5 @@ public class MainMenuActivity extends AppCompatActivity {
         }
 
     }
-
 
 }

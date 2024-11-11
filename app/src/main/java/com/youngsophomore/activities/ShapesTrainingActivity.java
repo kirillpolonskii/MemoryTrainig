@@ -48,8 +48,6 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
         int shapesAmount = sharedPreferences.getInt(getString(R.string.saved_shapes_amount_key), 4);
         int distinctShapesAmount = sharedPreferences.getInt(getString(R.string.saved_distinct_shapes_amount_key), 2);
         int shapeShowTime = sharedPreferences.getInt(getString(R.string.saved_shape_show_time_key), 2);
-        Log.d(DEBUG_TAG, "saved shapesAmount = " + shapesAmount +
-                ", distinctShapesAmount = " + distinctShapesAmount + ", shapeShowTime = " + shapeShowTime);
 
         TextView tvCountdown = findViewById(R.id.tv_countdown);
         CountDownTimer countDownTimer = new CountDownTimer(3000 + 200, 1000) {
@@ -110,12 +108,11 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
                     public void onFinish() {
                         setContentView(R.layout.activity_shapes_training);
                         ConstraintLayout clShapes = findViewById(R.id.cst_lt_parent_shp);
-                        // Запуск секундомера
                         Bundle bundle = new Bundle();
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         fragmentManager.beginTransaction()
                                 .setReorderingAllowed(true)
-                                .add(R.id.frt_cnt_v_shp, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
+                                .add(R.id.frt_cnt_v_stopwatch, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
                                 .commit();
                         Log.d(DEBUG_TAG, "clShapes.getChildCount() = " + clShapes.getChildCount());
                         // Make all ImageView background white_blue
@@ -141,7 +138,6 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
                             iv.setVisibility(View.INVISIBLE);
                         }
                         for (int i = 0; i < btnShapesSet.size(); ++i){
-                            Log.d(DEBUG_TAG, "i = " + i + "btnShapesSet.size() = " + btnShapesSet.size());
                             btnShapesSet.get(i).setImageResource(shapesSet.get(i));
                             int finalI = i;
                             btnShapesSet.get(i).setOnTouchListener(new View.OnTouchListener() {
@@ -179,7 +175,6 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
                                                         );
                                                     }
                                                 }, 60);
-                                                // Add 1 to mistakes amount
                                             }
                                             if(curShapeSeqInd == shapesAmount){
                                                 Log.d(DEBUG_TAG, "ALL SHAPES CHOSEN CORRECT");

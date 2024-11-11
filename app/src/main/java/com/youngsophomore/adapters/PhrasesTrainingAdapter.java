@@ -27,7 +27,7 @@ public class PhrasesTrainingAdapter extends RecyclerView.Adapter<PhrasesTraining
     private float elevPx;
     private int movesAmount;
     public interface PhraseTrainingListener {
-        public void onFinishTraining(int movesAmount);
+        void onFinishTraining(int movesAmount);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -35,7 +35,6 @@ public class PhrasesTrainingAdapter extends RecyclerView.Adapter<PhrasesTraining
 
         public ViewHolder(View view) {
             super(view);
-            // Define click listener for the ViewHolder's View
             Log.d(DEBUG_TAG, "In public ViewHolder()");
             btnCurPhrase = view.findViewById(R.id.btn_cur_phrase);
 
@@ -61,7 +60,6 @@ public class PhrasesTrainingAdapter extends RecyclerView.Adapter<PhrasesTraining
     @Override
     public PhrasesTrainingAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Log.d(DEBUG_TAG, "In onCreateViewHolder()");
-        // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.phrase_training_row_el, parent, false);
 
@@ -70,9 +68,6 @@ public class PhrasesTrainingAdapter extends RecyclerView.Adapter<PhrasesTraining
 
     @Override
     public void onBindViewHolder(@NonNull PhrasesTrainingAdapter.ViewHolder holder, int position) {
-        Log.d(DEBUG_TAG, "In onBindViewHolder()");
-        // Get element from your dataset at this position and replace the
-        // contents of the view with that element
         holder.getButton().setText(localDataSet.get(position));
         Log.d(DEBUG_TAG, "In onBindViewHolder(): elevation = " + holder.getButton().getElevation());
         holder.getButton().setElevation(0);
@@ -98,8 +93,6 @@ public class PhrasesTrainingAdapter extends RecyclerView.Adapter<PhrasesTraining
                     indicesPerm.set(elAPos, indicesPerm.get(elBPos));
                     indicesPerm.set(elBPos, tempInd);
                     elB = (Button) v;
-                    //elA.setElevation(0);
-                    //elB.setElevation(0);
                     Log.d(DEBUG_TAG, "In onClick(): " + elB);
                     elAPos = elBPos = 0;
                     elA = null;

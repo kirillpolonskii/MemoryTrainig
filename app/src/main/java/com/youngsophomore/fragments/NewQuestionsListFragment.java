@@ -29,7 +29,6 @@ public class NewQuestionsListFragment extends Fragment
 
     public NewQuestionsListFragment() {
         Log.d(DEBUG_TAG, "in NewQuestionsListFragment() of NewQuestionsListFragment");
-        // Required empty public constructor
     }
 
     public static NewQuestionsListFragment newInstance() {
@@ -51,7 +50,6 @@ public class NewQuestionsListFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Log.d(DEBUG_TAG, "in onCreateView() of NewQuestionsListFragment");
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_new_questions_list, container, false);
     }
 

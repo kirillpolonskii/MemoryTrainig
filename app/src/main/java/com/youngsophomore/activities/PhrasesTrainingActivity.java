@@ -37,19 +37,17 @@ public class PhrasesTrainingActivity extends AppCompatActivity implements
     ArrayList<String> phrasesCollection;
     int curPhraseShowInd = 0;
     FragmentManager fragmentManager;
-    private int movesAmount = 0;
-    private int trainingDurationSec = 0;
+    int trainingDurationSec = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pretrain_sequence_layout);
         sharedPreferences =
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+
         int phrasesCollectionPosition = sharedPreferences.getInt(getString(R.string.saved_phrases_collection_position_key), 0);;
         phraseShowTime = sharedPreferences.getInt(getString(R.string.saved_phrase_show_time_key), 2);
-        Log.d(DEBUG_TAG, "phrasesCollectionPosition and phraseShowTime = " +
-                phrasesCollectionPosition + " " +
-                phraseShowTime);
+
         ArrayList<String> phrasesCollectionsTitles = CollectionsStorage.getCollectionsTitles(
                 sharedPreferences, getString(R.string.phrases_collections_titles_key)
         );
@@ -77,13 +75,8 @@ public class PhrasesTrainingActivity extends AppCompatActivity implements
 
             @Override
             public void onFinish() {
-                // get string with all titles from sharedpref
-                // split it and get unique title by the phrasesCollectionPosition
-
                 Log.d(DEBUG_TAG, phrasesCollectionsTitles.toString());
-                // get phrases collection from /phrases via title
 
-                // String[] splittedPhrasesCollection = strPhrasesCollection.split(" ");
                 ArrayList<String> origPhrasesCollection = CollectionsStorage.getPhrasesCollection(
                         phrasesCollectionsTitles.get(phrasesCollectionPosition),
                         getApplicationContext().getExternalFilesDir(null).getAbsolutePath() + "/phrases"
@@ -110,18 +103,16 @@ public class PhrasesTrainingActivity extends AppCompatActivity implements
                     public void onFinish() {
                         setContentView(R.layout.activity_phrases_training);
 
-
                         RecyclerView rvPhrasesCollection = findViewById(R.id.rv_phrases_collection);
                         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
                         rvPhrasesCollection.setLayoutManager(layoutManager);
                         rvPhrasesCollection.setAdapter(phrasesAdapter);
 
-                        // Запуск секундомера
                         Bundle bundle = new Bundle();
                         fragmentManager = getSupportFragmentManager();
                         fragmentManager.beginTransaction()
                                 .setReorderingAllowed(true)
-                                .add(R.id.frt_cnt_v_tiles, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
+                                .add(R.id.frt_cnt_v_stopwatch, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
                                 .commit();
                     }
                 }.start();
@@ -132,7 +123,6 @@ public class PhrasesTrainingActivity extends AppCompatActivity implements
 
     @Override
     public void onFinishTraining(int movesAmount) {
-        this.movesAmount = movesAmount;
         StopwatchFragment stopwatchFragment =
                 (StopwatchFragment) fragmentManager.findFragmentByTag(STOPWATCH_FRAGMENT_TAG);
         trainingDurationSec = stopwatchFragment.getDecisecond() / 10;

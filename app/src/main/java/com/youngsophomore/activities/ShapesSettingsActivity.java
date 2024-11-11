@@ -42,19 +42,19 @@ public class ShapesSettingsActivity extends AppCompatActivity {
         NumberPicker pckrShapesAmount = findViewById(R.id.num_pck_shp_amount);
         NumberPicker pckrDistinctShapesAmount = findViewById(R.id.num_pck_distinct_shp_amount);
         NumberPicker pckrShapeShowTime = findViewById(R.id.num_pck_shape_show_time);
-        pckrShapesAmount.setMinValue(4);
-        pckrShapesAmount.setMaxValue(24);
-        pckrDistinctShapesAmount.setMinValue(2);
-        pckrDistinctShapesAmount.setMaxValue(9);
-        pckrShapeShowTime.setMinValue(1);
-        pckrShapeShowTime.setMaxValue(6);
-
-        pckrShapesAmount.setValue(shapesAmount);
-        pckrDistinctShapesAmount.setValue(distinctShapesAmount);
-        pckrShapeShowTime.setValue(shapeShowTime);
-
         ImageButton btnSaveSettings = findViewById(R.id.btn_save_settings_shp);
         ImageButton btnPlayWSettings = findViewById(R.id.btn_play_w_settings_shp);
+
+        pckrShapesAmount.setMinValue(4);
+        pckrShapesAmount.setMaxValue(24);
+        pckrShapesAmount.setValue(shapesAmount);
+        pckrDistinctShapesAmount.setMinValue(2);
+        pckrDistinctShapesAmount.setMaxValue(9);
+        pckrDistinctShapesAmount.setValue(distinctShapesAmount);
+        pckrShapeShowTime.setMinValue(1);
+        pckrShapeShowTime.setMaxValue(6);
+        pckrShapeShowTime.setValue(shapeShowTime);
+
         btnSaveSettings.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {

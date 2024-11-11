@@ -41,18 +41,16 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Отображение обратного отсчёта перед тренировкой
         setContentView(R.layout.pretrain_countdown_layout);
-        // Загрузка данных из сохранённых настроек
+
         SharedPreferences sharedPreferences =
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-        int mhjShowTime = sharedPreferences.getInt(getString(R.string.saved_mahjong_remember_time_key), 2);
         int mhjTilesAmount = PrepHelper.Mahjong.sgBtnGroupTilesPosToAmount(
                 sharedPreferences.getInt(getString(R.string.saved_mahjong_tiles_amount_key), 0));
         int mhjEqualTilesAmount = PrepHelper.Mahjong.sgBtnGroupEqualTilesPosToAmount(
                 sharedPreferences.getInt(getString(R.string.saved_mahjong_equal_tiles_amount_key), 0));
+        int mhjShowTime = sharedPreferences.getInt(getString(R.string.saved_mahjong_remember_time_key), 2);
 
-        // Формирование матрицы (или массива) костей с загруженными параметрами
         ArrayList<Integer> tilesNum = TrainHelper.Mahjong.generateTiles(mhjTilesAmount, mhjEqualTilesAmount);
         TextView tvCountdown = findViewById(R.id.tv_countdown);
         CountDownTimer countDownTimer = new CountDownTimer(3000 + 200, 1000) {
@@ -70,17 +68,14 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
                 else{
                     setContentView(R.layout.activity_mahjong_training_24);
                 }
-                Log.d(DEBUG_TAG, "saved mhjShowTime = " + mhjShowTime +
-                        ", mhjTilesAmount = " + mhjTilesAmount +
-                        ", mhjEqualTilesAmount = " + mhjEqualTilesAmount);
                 Log.d(DEBUG_TAG, tilesNum.toString());
-                // Заполнение массива кнопок-костей из массива номеров костей, а также массива background
                 ConstraintLayout constraintLayout = findViewById(R.id.cst_lt_chld_mhj);
                 Guideline guidelineTop = findViewById(R.id.guideline_top);
                 Guideline guidelineBottom = findViewById(R.id.guideline_bottom);
                 Guideline guidelineLeft = findViewById(R.id.guideline_left);
                 Guideline guidelineRight = findViewById(R.id.guideline_right);
                 setGuidelines(mhjTilesAmount, guidelineTop, guidelineBottom, guidelineLeft, guidelineRight);
+
                 ArrayList<ImageButton> btnTiles = new ArrayList<>();
                 for(int i = 0; i < constraintLayout.getChildCount(); ++i){
                     btnTiles.add((ImageButton) constraintLayout.getChildAt(i));
@@ -99,15 +94,13 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         fragmentManager.beginTransaction()
                                 .setReorderingAllowed(true)
-                                .add(R.id.frt_cnt_v_tiles, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
+                                .add(R.id.frt_cnt_v_stopwatch, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
                                 .commit();
-                        // В таймере: смена background кнопок на tile_back
                         for (int i = 0; i < btnBackgroundResources.size(); ++i){
                             btnTiles.get(i).setImageResource(R.drawable.tile_back);
                         }
                         flippedTiles = new ArrayList<>();
                         flippedTilesNum = new ArrayList<>();
-                        // Обработка нажатий кнопок
                         for (int i = 0; i < btnBackgroundResources.size(); ++i){
                             int finalI = i;
                             btnTiles.get(i).setOnClickListener(new View.OnClickListener() {
@@ -131,7 +124,6 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
                                             @Override
                                             public void run() {
                                                 if(isAllTilesEqual()){
-                                                    // Hide mhjEqualTilesAmount chosen tiles
                                                     Log.d(DEBUG_TAG, "YOU CHOSE CORRECT!!!");
                                                     for(ImageButton flippedBtnTile : flippedTiles){
                                                         flippedBtnTile.setClickable(false);
@@ -175,12 +167,9 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
                                                         flippedBtnTile.setElevation(0);
 
                                                     }
-                                                    Log.d(DEBUG_TAG, "btnTiles.size = " + btnTiles.size());
                                                 }
                                                 flippedTiles.clear();
                                                 flippedTilesNum.clear();
-
-                                                // Set background of mhjEqualTilesAmount chosen tiles to tile_back
                                                 for (ImageButton btnTile : btnTiles){
                                                     btnTile.setClickable(true);
                                                 }
@@ -191,14 +180,10 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
                                 }
                             });
                         }
-
                     }
                 }.start();
-
             }
         }.start();
-
-
     }
 
     private ArrayList<Integer> tilesNumToBackgroundRes(ArrayList<Integer> tilesNum){

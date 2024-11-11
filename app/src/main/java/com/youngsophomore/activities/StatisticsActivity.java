@@ -35,8 +35,7 @@ import java.util.List;
 public class StatisticsActivity extends AppCompatActivity {
     private static final String DEBUG_TAG = "Gestures";
     SharedPreferences sharedPreferences;
-    // определить поля, которые будут нужны для формирования гистограмм и отображения времени
-    // МАДЖОНГ
+    // MHJ
     int[] mhjTilesAmounts = {12, 24};
     int[] mhjEqualTilesAmounts = {2, 3, 4, 6};
     int[] mhjShowTimeSecs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -47,7 +46,7 @@ public class StatisticsActivity extends AppCompatActivity {
     List<BarEntry> entriesByEqTiles4;
     List<BarEntry> entriesByEqTiles6;
     double avTimeTiles12, avTimeTiles24, avTimeEqTiles2, avTimeEqTiles3, avTimeEqTiles4, avTimeEqTiles6;
-    // ЦВЕТА
+    // CLR
     int[] colorsAmounts = {6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24};
     int[] distinctColorsAmounts = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
     int[] colorShowTimeSec = {1, 2, 3, 4, 5, 6};
@@ -65,7 +64,7 @@ public class StatisticsActivity extends AppCompatActivity {
     List<BarEntry> entriesDistColorsByTime6;
     ArrayList<Double> avTimeColors;
     ArrayList<Double> avTimeDistColors;
-    // ФИГУРЫ
+    // SHP
     int[] shapesAmounts = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24};
     int[] distinctShapesAmounts = {2, 3, 4, 5, 6, 7, 8, 9};
     int[] shapeShowTimeSec = {1, 2, 3, 4, 5, 6};
@@ -83,13 +82,13 @@ public class StatisticsActivity extends AppCompatActivity {
     List<BarEntry> entriesDistShapesByTime6;
     ArrayList<Double> avTimeShapes;
     ArrayList<Double> avTimeDistShapes;
-    // СЛОВА
+    // WRD
     double[][] avTimeWrd;
     double[][] avMovesWrd;
-    // ФРАЗЫ
+    // PHR
     double[][] avTimePhr;
     double[][] avMovesPhr;
-    // ДЕТАЛИ
+    // DET
     ArrayList<String> questionsCollectionsTitles;
     ArrayList<String> questionsCollectionsSecsMoves;
     @Override
@@ -99,8 +98,7 @@ public class StatisticsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_statistics);
         sharedPreferences =
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-        // МАДЖОНГ
-        // инициализировать view
+        // MHJ
         BarChart bcTimeToMovesMhjTiles = findViewById(R.id.bc_time_to_moves_mhj_tiles);
         BarChart bcTimeToMovesMhjEqTiles = findViewById(R.id.bc_time_to_moves_mhj_eq_tiles);
         TextView tvAvTimeTiles12 = findViewById(R.id.tv_av_time_tiles_12);
@@ -109,20 +107,20 @@ public class StatisticsActivity extends AppCompatActivity {
         TextView tvAvTimeEqTiles3 = findViewById(R.id.tv_av_time_eq_tiles_3);
         TextView tvAvTimeEqTiles4 = findViewById(R.id.tv_av_time_eq_tiles_4);
         TextView tvAvTimeEqTiles6 = findViewById(R.id.tv_av_time_eq_tiles_6);
-        // достать из SP все значения, сохранённые в конце тренировок и положить их в соответствующие массивы
+        
         fillDataMhj();
         float grSpaceTilesMhj = 0.06f;
         float barSpaceTilesMhj = 0.02f; // x2 dataset
         float barWidthTilesMhj = 0.45f; // x2 dataset
-        // (0.02 + 0.45) * 2 + 0.06 = 1.00 -> interval per "group
+        // (0.02 + 0.45) * 2 + 0.06 = 1.00 -> interval per group
         BarDataSet setTiles12 = new BarDataSet(entriesByTiles12, getString(R.string.lbl_stat_tiles_12));
         BarDataSet setTiles24 = new BarDataSet(entriesByTiles24, getString(R.string.lbl_stat_tiles_24));
         setTiles12.setColor(getResources().getColor(R.color.blue));
         setTiles24.setColor(getResources().getColor(R.color.black));
         BarData bDataTimeToMovesMhjTiles = new BarData(setTiles12, setTiles24);
-        bDataTimeToMovesMhjTiles.setBarWidth(barWidthTilesMhj); // set the width of each bar
+        bDataTimeToMovesMhjTiles.setBarWidth(barWidthTilesMhj);
         bcTimeToMovesMhjTiles.setData(bDataTimeToMovesMhjTiles);
-        bcTimeToMovesMhjTiles.groupBars(1f, grSpaceTilesMhj, barSpaceTilesMhj); // perform the "explicit" grouping
+        bcTimeToMovesMhjTiles.groupBars(1f, grSpaceTilesMhj, barSpaceTilesMhj);
         XAxis xAxisTiles = bcTimeToMovesMhjTiles.getXAxis();
         xAxisTiles.setAxisMinimum(1);
         xAxisTiles.setAxisMaximum(11);
@@ -135,7 +133,7 @@ public class StatisticsActivity extends AppCompatActivity {
         float grSpaceEqTilesMhj = 0.06f;
         float barSpaceEqTilesMhj = 0.02f; // x4 dataset
         float barWidthEqTilesMhj = 0.215f; // x4 dataset
-        // (0.02 + 0.215) * 4 + 0.06 = 1.00 -> interval per "group
+        // (0.02 + 0.215) * 4 + 0.06 = 1.00 -> interval per group
         BarDataSet setEqTiles2 = new BarDataSet(entriesByEqTiles2, getString(R.string.lbl_stat_eq_tiles_2));
         BarDataSet setEqTiles3 = new BarDataSet(entriesByEqTiles3, getString(R.string.lbl_stat_eq_tiles_3));
         BarDataSet setEqTiles4 = new BarDataSet(entriesByEqTiles4, getString(R.string.lbl_stat_eq_tiles_4));
@@ -145,9 +143,9 @@ public class StatisticsActivity extends AppCompatActivity {
         setEqTiles4.setColor(getResources().getColor(R.color.c_training_color_12));
         setEqTiles6.setColor(getResources().getColor(R.color.c_training_color_9));
         BarData bDataTimeToMovesMhjEqTiles = new BarData(setEqTiles2, setEqTiles3, setEqTiles4, setEqTiles6);
-        bDataTimeToMovesMhjEqTiles.setBarWidth(barWidthEqTilesMhj); // set the width of each bar
+        bDataTimeToMovesMhjEqTiles.setBarWidth(barWidthEqTilesMhj);
         bcTimeToMovesMhjEqTiles.setData(bDataTimeToMovesMhjEqTiles);
-        bcTimeToMovesMhjEqTiles.groupBars(1, grSpaceEqTilesMhj, barSpaceEqTilesMhj); // perform the "explicit" grouping
+        bcTimeToMovesMhjEqTiles.groupBars(1, grSpaceEqTilesMhj, barSpaceEqTilesMhj);
         XAxis xAxisEqTiles = bcTimeToMovesMhjEqTiles.getXAxis();
         xAxisEqTiles.setAxisMinimum(1);
         xAxisEqTiles.setAxisMaximum(11);
@@ -181,20 +179,18 @@ public class StatisticsActivity extends AppCompatActivity {
                 String.valueOf(avTimeEqTiles6) + " " +
                 getString(R.string.sec);
         tvAvTimeEqTiles6.setText(strAvTimeEqTiles6);
-        // ЦВЕТА
-        // инициализировать view
+        // CLR
         BarChart bcColorsToMoves = findViewById(R.id.bc_colors_to_moves);
         BarChart bcDistColorsToMoves = findViewById(R.id.bc_dist_colors_to_moves);
         NumberPicker numPckColors = findViewById(R.id.num_pck_colors_stat);
         TextView tvAvTimeColors = findViewById(R.id.tv_av_time_colors);
         NumberPicker numPckDistColors = findViewById(R.id.num_pck_dist_colors);
         TextView tvAvTimeDistColors = findViewById(R.id.tv_av_time_dist_colors);
-        // достать из SP все значения, сохранённые в конце тренировок и положить их в соответствующие массивы
         fillDataClr();
         float grSpaceColors = 0.04f;
         float barSpaceColors = 0.02f; // x6 dataset
         float barWidthColors = 0.14f; // x6 dataset
-        // (0.02 + 0.14) * 6 + 0.04 = 1.00 -> interval per "group
+        // (0.02 + 0.14) * 6 + 0.04 = 1.00 -> interval per group
         BarDataSet setColorsTime1 = new BarDataSet(entriesColorsByTime1, getString(R.string.lbl_stat_time_1));
         BarDataSet setColorsTime2 = new BarDataSet(entriesColorsByTime2, getString(R.string.lbl_stat_time_2));
         BarDataSet setColorsTime3 = new BarDataSet(entriesColorsByTime3, getString(R.string.lbl_stat_time_3));
@@ -209,9 +205,9 @@ public class StatisticsActivity extends AppCompatActivity {
         setColorsTime6.setColor(getResources().getColor(R.color.c_training_color_9));
         BarData bDataColorsToMoves = new BarData(setColorsTime1, setColorsTime2, setColorsTime3,
                 setColorsTime4, setColorsTime5, setColorsTime6);
-        bDataColorsToMoves.setBarWidth(barWidthColors); // set the width of each bar
+        bDataColorsToMoves.setBarWidth(barWidthColors);
         bcColorsToMoves.setData(bDataColorsToMoves);
-        bcColorsToMoves.groupBars(6, grSpaceColors, barSpaceColors); // perform the "explicit" grouping
+        bcColorsToMoves.groupBars(6, grSpaceColors, barSpaceColors);
         XAxis xAxisColors = bcColorsToMoves.getXAxis();
         xAxisColors.setAxisMinimum(6);
         xAxisColors.setAxisMaximum(25);
@@ -235,9 +231,9 @@ public class StatisticsActivity extends AppCompatActivity {
         setDistColorsTime6.setColor(getResources().getColor(R.color.c_training_color_9));
         BarData bDataDistColorsToMoves = new BarData(setDistColorsTime1, setDistColorsTime2, setDistColorsTime3,
                 setDistColorsTime4, setDistColorsTime5, setDistColorsTime6);
-        bDataDistColorsToMoves.setBarWidth(barWidthColors); // set the width of each bar
+        bDataDistColorsToMoves.setBarWidth(barWidthColors);
         bcDistColorsToMoves.setData(bDataDistColorsToMoves);
-        bcDistColorsToMoves.groupBars(2, grSpaceColors, barSpaceColors); // perform the "explicit" grouping
+        bcDistColorsToMoves.groupBars(2, grSpaceColors, barSpaceColors);
         XAxis xAxisDistColors = bcDistColorsToMoves.getXAxis();
         xAxisDistColors.setAxisMinimum(2);
         xAxisDistColors.setAxisMaximum(16);
@@ -276,20 +272,18 @@ public class StatisticsActivity extends AppCompatActivity {
             }
         });
 
-        // ФИГУРЫ
-        // инициализировать view
+        // SHP
         BarChart bcShapesToMoves = findViewById(R.id.bc_shapes_to_moves);
         BarChart bcDistShapesToMoves = findViewById(R.id.bc_dist_shapes_to_moves);
         NumberPicker numPckShapes = findViewById(R.id.num_pck_shapes_stat);
         TextView tvAvTimeShapes = findViewById(R.id.tv_av_time_shapes);
         NumberPicker numPckDistShapes = findViewById(R.id.num_pck_dist_shapes);
         TextView tvAvTimeDistShapes = findViewById(R.id.tv_av_time_dist_shapes);
-        // достать из SP все значения, сохранённые в конце тренировок и положить их в соответствующие массивы
         fillDataShp();
         float grSpaceShapes = 0.04f;
         float barSpaceShapes = 0.02f; // x6 dataset
         float barWidthShapes = 0.14f; // x6 dataset
-        // (0.02 + 0.14) * 6 + 0.04 = 1.00 -> interval per "group
+        // (0.02 + 0.14) * 6 + 0.04 = 1.00 -> interval per group
         BarDataSet setShapesTime1 = new BarDataSet(entriesShapesByTime1, getString(R.string.lbl_stat_time_1));
         BarDataSet setShapesTime2 = new BarDataSet(entriesShapesByTime2, getString(R.string.lbl_stat_time_2));
         BarDataSet setShapesTime3 = new BarDataSet(entriesShapesByTime3, getString(R.string.lbl_stat_time_3));
@@ -304,9 +298,9 @@ public class StatisticsActivity extends AppCompatActivity {
         setShapesTime6.setColor(getResources().getColor(R.color.c_training_color_9));
         BarData bDataShapesToMoves = new BarData(setShapesTime1, setShapesTime2, setShapesTime3,
                 setShapesTime4, setShapesTime5, setShapesTime6);
-        bDataShapesToMoves.setBarWidth(barWidthShapes); // set the width of each bar
+        bDataShapesToMoves.setBarWidth(barWidthShapes);
         bcShapesToMoves.setData(bDataShapesToMoves);
-        bcShapesToMoves.groupBars(4, grSpaceShapes, barSpaceShapes); // perform the "explicit" grouping
+        bcShapesToMoves.groupBars(4, grSpaceShapes, barSpaceShapes);
         XAxis xAxisShapes = bcShapesToMoves.getXAxis();
         xAxisShapes.setAxisMinimum(4);
         xAxisShapes.setAxisMaximum(25);
@@ -330,9 +324,9 @@ public class StatisticsActivity extends AppCompatActivity {
         setDistShapesTime6.setColor(getResources().getColor(R.color.c_training_color_9));
         BarData bDataDistShapesToMoves = new BarData(setDistShapesTime1, setDistShapesTime2, setDistShapesTime3,
                 setDistShapesTime4, setDistShapesTime5, setDistShapesTime6);
-        bDataDistShapesToMoves.setBarWidth(barWidthShapes); // set the width of each bar
+        bDataDistShapesToMoves.setBarWidth(barWidthShapes);
         bcDistShapesToMoves.setData(bDataDistShapesToMoves);
-        bcDistShapesToMoves.groupBars(2, grSpaceShapes, barSpaceShapes); // perform the "explicit" grouping
+        bcDistShapesToMoves.groupBars(2, grSpaceShapes, barSpaceShapes);
         XAxis xAxisDistShapes = bcDistShapesToMoves.getXAxis();
         xAxisDistShapes.setAxisMinimum(2);
         xAxisDistShapes.setAxisMaximum(10);
@@ -371,13 +365,12 @@ public class StatisticsActivity extends AppCompatActivity {
             }
         });
 
-        // СЛОВА
-        // инициализировать view
+        // WRD
         NumberPicker numPckSizeWrd = findViewById(R.id.num_pck_stat_size_wrd);
         NumberPicker numPckShowTimeWrd = findViewById(R.id.num_pck_stat_show_time_wrd);
         TextView tvAvTimeWrd = findViewById(R.id.tv_av_time_wrd);
         TextView tvAvMovesWrd = findViewById(R.id.tv_av_moves_wrd);
-        // достать из SP все значения, сохранённые в конце тренировок и положить их в соответствующие массивы
+        
         fillDataWrd();
         numPckSizeWrd.setMinValue(1);
         numPckSizeWrd.setMaxValue(100);
@@ -392,10 +385,6 @@ public class StatisticsActivity extends AppCompatActivity {
         numPckSizeWrd.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                Log.d(DEBUG_TAG, "newVal = " + (newVal) + ", numPckShowTimeWrd.getValue() = " +
-                        (numPckShowTimeWrd.getValue()));
-                Log.d(DEBUG_TAG, "avTimeWrd[newVal][numPckShowTimeWrd.getValue()] = " +
-                        avTimeWrd[newVal][numPckShowTimeWrd.getValue()]);
                 String strAvTimeWrd = avTimeWrd[newVal][numPckShowTimeWrd.getValue()] + " " +
                         getString(R.string.sec);
                 tvAvTimeWrd.setText(strAvTimeWrd);
@@ -414,13 +403,12 @@ public class StatisticsActivity extends AppCompatActivity {
             }
         });
 
-        // ФРАЗЫ
-        // инициализировать view
+        // PHR
         NumberPicker numPckSizePhr = findViewById(R.id.num_pck_stat_size_phr);
         NumberPicker numPckShowTimePhr = findViewById(R.id.num_pck_stat_show_time_phr);
         TextView tvAvTimePhr = findViewById(R.id.tv_av_time_phr);
         TextView tvAvMovesPhr = findViewById(R.id.tv_av_moves_phr);
-        // достать из SP все значения, сохранённые в конце тренировок и положить их в соответствующие массивы
+        
         fillDataPhr();
         numPckSizePhr.setMinValue(1);
         numPckSizePhr.setMaxValue(35);
@@ -453,10 +441,8 @@ public class StatisticsActivity extends AppCompatActivity {
             }
         });
 
-        // ДЕТАЛИ
-        // инициализировать view
+        // DET
         RecyclerView rvCollectTime = findViewById(R.id.rv_collect_time);
-        // достать из SP все значения, сохранённые в конце тренировок и положить их в соответствующие массивы
         fillDataDet();
         DetailsStatAdapter detailsStatAdapter = new DetailsStatAdapter(questionsCollectionsTitles,
                 questionsCollectionsSecsMoves);
@@ -1041,11 +1027,8 @@ public class StatisticsActivity extends AppCompatActivity {
                 String curKeyMoves = TrainHelper.getStatParamKey(Training.WRD, StatParam.TOTNUMMOVES, i, j);
                 String curKeyTrain = TrainHelper.getStatParamKey(Training.WRD, StatParam.TOTNUMTRAINS, i, j);
                 if (sharedPreferences.getInt(curKeyTrain, 0) != 0){
-                    Log.d(DEBUG_TAG, "TOTNUMTRAIN of words, i = " + i + ", j = " + j + " "
-                            + sharedPreferences.getInt(curKeyTrain, 0));
                     avTimeWrd[i][j] = round2((double) sharedPreferences.getInt(curKeyTime, 0) /
                             (double) sharedPreferences.getInt(curKeyTrain, 0));
-                    Log.d(DEBUG_TAG, "avTimeWrd[i][j] = " + avTimeWrd[i][j]);
                     avMovesWrd[i][j] = round2((double) sharedPreferences.getInt(curKeyMoves, 0) /
                             (double) sharedPreferences.getInt(curKeyTrain, 0));
                 }
@@ -1053,7 +1036,6 @@ public class StatisticsActivity extends AppCompatActivity {
             }
 
         }
-        Log.d(DEBUG_TAG, "avTimeWrd[4][1] = " + avTimeWrd[4][1]);
     }
 
     private void fillDataPhr(){

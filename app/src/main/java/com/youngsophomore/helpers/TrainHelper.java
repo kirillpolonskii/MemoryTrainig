@@ -1,7 +1,6 @@
 package com.youngsophomore.helpers;
 
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.util.Log;
 import android.util.Pair;
 
@@ -12,12 +11,8 @@ import com.youngsophomore.data.Training;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
-import java.util.TreeSet;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class TrainHelper {
@@ -231,7 +226,6 @@ public class TrainHelper {
                 }
             }
             else{
-
                 ArrayList<Integer> randIndPerm = new ArrayList<>();
                 for (int i = 0; i < curPaletteSize; ++i) randIndPerm.add(curWordPos + i);
                 Collections.shuffle(randIndPerm);

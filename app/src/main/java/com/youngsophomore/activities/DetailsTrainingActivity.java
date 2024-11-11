@@ -47,7 +47,7 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
     ArrayList<RadioButton> rBtnSingleAnswers;
     ArrayList<CheckBox> ckBxMultAnswers;
     private final int ANSWERS_NUM = 8;
-    HashSet<Integer> corrAnswersIndices;
+    HashSet<Integer> answersIndices;
     private int singleMistakesAmount = 0;
     private int multipMistakesAmount = 0;
     private int trainingDurationSec = 0;
@@ -58,20 +58,14 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
         setContentView(R.layout.pretrain_sequence_layout);
         SharedPreferences sharedPreferences =
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-        // достать позицию названия коллекции и время показа картинки
+
         int questionsCollectionPosition = sharedPreferences.getInt(getString(R.string.saved_images_collection_position_key), 0);
         int imageShowTime = sharedPreferences.getInt(getString(R.string.saved_image_show_time_key), 2);
-        Log.d(DEBUG_TAG, "questionsCollectionPosition and imageShowTime = " +
-                questionsCollectionPosition + " " +
-                imageShowTime);
-        // get string with all titles from sharedpref
-        // split it and get unique title
+        
         ArrayList<String> questionsCollectionsTitles = CollectionsStorage.getCollectionsTitles(
                 sharedPreferences, getString(R.string.questions_collections_titles_key)
         );
         String questionsCollectionTitle = questionsCollectionsTitles.get(questionsCollectionPosition);
-        // сгенерировать 10 рандомных чисел от 0 до размера коллекции, преобразовать их
-        // в названия файлов, загрузить строки из файлов и распарсить их в объекты Question
 
         File questionsDir = new File(getExternalFilesDir(null).getAbsolutePath()
                 + "/details" + "/" + questionsCollectionTitle);
@@ -79,7 +73,7 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
             Log.d(DEBUG_TAG, "DetailsTraining: " + questionsDir + " DOESN'T EXIST");
         }
         File[] fullQuestionsFiles = questionsDir.listFiles();
-        int questionsAmount = (fullQuestionsFiles.length > 10) ? 10: fullQuestionsFiles.length;
+        int questionsAmount = Math.min(fullQuestionsFiles.length, 10);
         ArrayList<Integer> questionNums = TrainHelper.getRandomNumsInRange(questionsAmount, 0, fullQuestionsFiles.length);
         ArrayList<File> questionsFiles = new ArrayList<>();
         for (int i = 0; i < 10 && i < fullQuestionsFiles.length; ++i){
@@ -100,12 +94,11 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
 
             @Override
             public void onFinish() {
-                corrAnswersIndices = new HashSet<>();
+                answersIndices = new HashSet<>();
                 rBtnSingleAnswers = new ArrayList<>();
                 ckBxMultAnswers = new ArrayList<>();
                 Uri imageUri = Uri.parse(sharedPreferences.getString(questionsCollectionTitle, ""));
-                // Log.d(DEBUG_TAG, phrasesCollectionsTitles.toString());
-                // заменить textview на imageview и показать картинку
+
                 ConstraintLayout cntLytPretrain = findViewById(R.id.cst_lt_pretrain);
                 cntLytPretrain.removeView(tvCountdown);
                 cntLytPretrain.removeView(tvPretrainTip);
@@ -165,138 +158,67 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
                             @Override
                             public void onCheckedChanged(RadioGroup group, int checkedId) {
                                 if (checkedId == R.id.r_btn_answer_1){
-                                    corrAnswersIndices.clear();
-                                    corrAnswersIndices.add(1);
+                                    answersIndices.clear();
+                                    answersIndices.add(1);
                                 }
                                 else if (checkedId == R.id.r_btn_answer_2){
-                                    corrAnswersIndices.clear();
-                                    corrAnswersIndices.add(2);
+                                    answersIndices.clear();
+                                    answersIndices.add(2);
                                 }
                                 else if (checkedId == R.id.r_btn_answer_3){
-                                    corrAnswersIndices.clear();
-                                    corrAnswersIndices.add(3);
+                                    answersIndices.clear();
+                                    answersIndices.add(3);
                                 }
                                 else if (checkedId == R.id.r_btn_answer_4){
-                                    corrAnswersIndices.clear();
-                                    corrAnswersIndices.add(4);
+                                    answersIndices.clear();
+                                    answersIndices.add(4);
                                 }
                                 else if (checkedId == R.id.r_btn_answer_5){
-                                    corrAnswersIndices.clear();
-                                    corrAnswersIndices.add(5);
+                                    answersIndices.clear();
+                                    answersIndices.add(5);
                                 }
                                 else if (checkedId == R.id.r_btn_answer_6){
-                                    corrAnswersIndices.clear();
-                                    corrAnswersIndices.add(6);
+                                    answersIndices.clear();
+                                    answersIndices.add(6);
                                 }
                                 else if (checkedId == R.id.r_btn_answer_7){
-                                    corrAnswersIndices.clear();
-                                    corrAnswersIndices.add(7);
+                                    answersIndices.clear();
+                                    answersIndices.add(7);
                                 }
                                 else if (checkedId == R.id.r_btn_answer_8){
-                                    corrAnswersIndices.clear();
-                                    corrAnswersIndices.add(8);
+                                    answersIndices.clear();
+                                    answersIndices.add(8);
                                 }
                             }
                         });
-                        ckBxMultAnswers.get(0).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                            @Override
-                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                if (isChecked) {
-                                    corrAnswersIndices.add(1);
-                                } else {
-                                    corrAnswersIndices.remove(1);
+                        for(int i = 0; i < ckBxMultAnswers.size(); ++i){
+                            int finalI = i;
+                            ckBxMultAnswers.get(i).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                                @Override
+                                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                    if (isChecked) {
+                                        answersIndices.add(finalI + 1);
+                                    } else {
+                                        answersIndices.remove(finalI + 1);
+                                    }
                                 }
-                            }
-                        });
-                        ckBxMultAnswers.get(1).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                            @Override
-                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                if (isChecked) {
-                                    corrAnswersIndices.add(2);
-                                } else {
-                                    corrAnswersIndices.remove(2);
-                                }
-                            }
-                        });
-                        ckBxMultAnswers.get(2).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                            @Override
-                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                if (isChecked) {
-                                    corrAnswersIndices.add(3);
-                                } else {
-                                    corrAnswersIndices.remove(3);
-                                }
-                            }
-                        });
-                        ckBxMultAnswers.get(3).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                            @Override
-                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                if (isChecked) {
-                                    corrAnswersIndices.add(4);
-                                } else {
-                                    corrAnswersIndices.remove(4);
-                                }
-                            }
-                        });
-                        ckBxMultAnswers.get(4).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                            @Override
-                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                if (isChecked) {
-                                    corrAnswersIndices.add(5);
-                                } else {
-                                    corrAnswersIndices.remove(5);
-                                }
-                            }
-                        });
-                        ckBxMultAnswers.get(5).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                            @Override
-                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                if (isChecked) {
-                                    corrAnswersIndices.add(6);
-                                } else {
-                                    corrAnswersIndices.remove(6);
-                                }
-                            }
-                        });
-                        ckBxMultAnswers.get(6).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                            @Override
-                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                if (isChecked) {
-                                    corrAnswersIndices.add(7);
-                                } else {
-                                    corrAnswersIndices.remove(7);
-                                }
-                            }
-                        });
-                        ckBxMultAnswers.get(7).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                            @Override
-                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                if (isChecked) {
-                                    corrAnswersIndices.add(8);
-                                } else {
-                                    corrAnswersIndices.remove(8);
-                                }
-                            }
-                        });
+                            });
+                        }
 
-                        // Запуск секундомера
                         Bundle bundle = new Bundle();
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         fragmentManager.beginTransaction()
                                 .setReorderingAllowed(true)
-                                .add(R.id.frt_cnt_v_tiles, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
+                                .add(R.id.frt_cnt_v_stopwatch, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
                                 .commit();
-                        // методом nextQuestion() заполнить textview текущим вопросом, сделать видимыми
-                        // только нужные radiobutton или checkbox и заполнить их ответами
+
                         showNextQuestion();
-                        // добавить на textview вопроса слушатель и при нажатии осуществлять проверку
-                        // правильности ответа, и если он правильный, вызывать nextQuestion, а если нет,
-                        // подсвечивать задний фон красным
+
                         tvQuestionText.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 if (questionsCollection.get(curQuestionInd).getCorrAnswersIndices().equals(
-                                        corrAnswersIndices
+                                        answersIndices
                                 )){
                                     Log.d(DEBUG_TAG, "YOU CHOSE RIGHT ANSWERS");
                                     ++curQuestionInd;
@@ -364,7 +286,7 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
     }
 
     private void showNextQuestion(){
-        corrAnswersIndices.clear();
+        answersIndices.clear();
         Question curQuestion = questionsCollection.get(curQuestionInd);
         changeAnswersLayout(curQuestion.isSingleAnswer(), curQuestion.getAnswers().size());
         tvQuestionText.setText(curQuestion.getQuestionText());

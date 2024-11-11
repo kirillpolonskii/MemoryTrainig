@@ -12,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.material.color.MaterialColors;
 import com.google.android.material.divider.MaterialDividerItemDecoration;
 import com.youngsophomore.R;
 import com.youngsophomore.adapters.PhrasesAdapter;
@@ -27,7 +26,6 @@ public class NewPhrasesListFragment extends Fragment {
 
     public NewPhrasesListFragment() {
         Log.d(DEBUG_TAG, "in NewPhrasesListFragment() of NewPhrasesListFragment");
-        // Required empty public constructor
     }
 
     public static NewPhrasesListFragment newInstance() {
@@ -46,7 +44,6 @@ public class NewPhrasesListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         Log.d(DEBUG_TAG, "in onCreateView() of NewPhrasesListFragment");
         return inflater.inflate(R.layout.fragment_new_phrases_list, container, false);
     }

@@ -46,9 +46,6 @@ public class WordsTrainingActivity extends AppCompatActivity implements
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         int wordsCollectionPosition = sharedPreferences.getInt(getString(R.string.saved_words_collection_position_key), 0);;
         int wordShowTime = sharedPreferences.getInt(getString(R.string.saved_word_show_time_key), 2);
-        Log.d(DEBUG_TAG, "wordsCollectionPosition and wordShowTime = " +
-                wordsCollectionPosition + " " +
-                wordShowTime);
 
         TextView tvCountdown = findViewById(R.id.tv_countdown);
         TextView tvCurWordNum = findViewById(R.id.tv_cur_elem_num);
@@ -61,14 +58,11 @@ public class WordsTrainingActivity extends AppCompatActivity implements
 
             @Override
             public void onFinish() {
-                // get string with all titles from sharedpref
-                // split it and get unique title by the wordsCollectionPosition
                 ArrayList<String> wordsCollectionsTitles = CollectionsStorage.getCollectionsTitles(
                         sharedPreferences, getString(R.string.words_collections_titles_key)
                 );
                 Log.d(DEBUG_TAG, wordsCollectionsTitles.toString());
                 String wordsCollectionTitle = wordsCollectionsTitles.get(wordsCollectionPosition);
-                // get words collection from sharedpref via title
                 String strWordsCollection = sharedPreferences.getString(wordsCollectionTitle, "");
                 Log.d(DEBUG_TAG, strWordsCollection);
                 String[] splittedWordsCollection = strWordsCollection.split(" ");
@@ -102,14 +96,13 @@ public class WordsTrainingActivity extends AppCompatActivity implements
                         tvWordsSeq.setMovementMethod(new ScrollingMovementMethod());
                         String curStrWordsCollection = "";
                         tvWordsSeq.setText(curStrWordsCollection);
-                        // Запуск секундомера
+
                         Bundle bundle = new Bundle();
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         fragmentManager.beginTransaction()
                                 .setReorderingAllowed(true)
-                                .add(R.id.frt_cnt_v_wrd, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
+                                .add(R.id.frt_cnt_v_stopwatch, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
                                 .commit();
-                        //Log.d(DEBUG_TAG, "clWords.getChildCount() = " + clWords.getChildCount());
                         // Fill palette with right amount of words
                         ArrayList<Button> btnWordPal = new ArrayList<>();
                         for(int i = 0; i < clWordsPal.getChildCount() - 2; ++i){
@@ -150,7 +143,6 @@ public class WordsTrainingActivity extends AppCompatActivity implements
                                                         wordsCollection, curWordSeqInd, curPaletteSize
                                                 );
                                                 for(int j = 0; j < clWordsPal.getChildCount() - 2; ++j){
-                                                    Log.d(DEBUG_TAG, "j=" + j);
                                                     if (j < curPaletteSize)
                                                         btnWordPal.get(j).setText(curWordPalette.get(j));
                                                     else
@@ -171,7 +163,6 @@ public class WordsTrainingActivity extends AppCompatActivity implements
                                                         );
                                                     }
                                                 }, 60);
-                                                // Add 1 to mistakes amount
                                             }
                                             if(curWordSeqInd == wordsCollection.size()){
                                                 Log.d(DEBUG_TAG, "ALL WORDS CHOSEN CORRECT");

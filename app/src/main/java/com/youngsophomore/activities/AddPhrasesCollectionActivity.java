@@ -30,9 +30,9 @@ import com.youngsophomore.helpers.PrepHelper;
 import java.util.ArrayList;
 
 public class AddPhrasesCollectionActivity extends AppCompatActivity {
+    private static final String DEBUG_TAG = "Gestures";
     private final String NEW_PHRASES_LIST_FRAGMENT_TAG = "new_phrases_list_fragment";
     private final String ADD_PHRASE_FRAGMENT_TAG = "add_phrase_fragment";
-    private static final String DEBUG_TAG = "Gestures";
     FragmentManager fragmentManager;
     int elevPx;
     ImageButton btnAddPhrase;
@@ -53,7 +53,6 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         newPhrasesCollectionCharS = new ArrayList<>();
         bundle.putCharSequenceArrayList(getString(R.string.new_phrases_collection_key), newPhrasesCollectionCharS);
-        elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
 
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
@@ -61,12 +60,13 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
                 .add(R.id.frt_cnt_v_tiles, NewPhrasesListFragment.class, bundle, NEW_PHRASES_LIST_FRAGMENT_TAG)
                 .commit();
 
+        etPhrasesCollectionTitle = findViewById(R.id.et_phrases_collection_title);
         btnAddPhrase = findViewById(R.id.btn_add_phrase);
         btnConfirmPhrase = findViewById(R.id.btn_confirm_phrase);
         btnConfirmPhrasesCollection = findViewById(R.id.btn_confirm_phrases_collection);
+        elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
 
         PrepHelper.deactivateBtn(btnConfirmPhrase);
-
         btnAddPhrase.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
@@ -92,15 +92,12 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
                                 .setReorderingAllowed(true)
                                 .addToBackStack("transaction_add_words_collection_fragment")
                                 .commit();
-
-                        /*SharedPreferences.Editor editor = sharedPreferences.edit();*/
                         return true;
                     default:
                         return false;
                 }
             }
         });
-
 
         btnConfirmPhrase.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -132,15 +129,12 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
                                 .setReorderingAllowed(true)
                                 .commit();
                         fragmentManager.popBackStack();
-                        /*SharedPreferences.Editor editor = sharedPreferences.edit();*/
                         return true;
                     default:
                         return false;
                 }
             }
         });
-
-        etPhrasesCollectionTitle = findViewById(R.id.et_phrases_collection_title);
 
         btnConfirmPhrasesCollection.setOnTouchListener(new View.OnTouchListener() {
             @Override
