@@ -61,7 +61,7 @@ implements DeleteCollectionDialogFragment.DeleteCollectionDialogListener{
         sprWordsCollection.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Log.d(DEBUG_TAG, "In DisplayWordsSettingsFragment: Long click on spinner itself");
+                
                 if(adapter.getCount() > 1){
                     showDeleteCollectionDialog();
                 }
@@ -91,8 +91,6 @@ implements DeleteCollectionDialogFragment.DeleteCollectionDialogListener{
     }
     @Override
     public void onDeleteCollectionPosClick(DialogFragment dialog) {
-        Log.d(DEBUG_TAG, "In DisplayWordsSettingsFragment: Pos button clicked, slctd= " +
-                sprWordsCollection.getSelectedItem());
         CollectionsStorage.deleteWordsCollection((String) sprWordsCollection.getSelectedItem(),
                 getString(R.string.words_collections_titles_key),
                 getString(R.string.saved_words_collection_position_key),
@@ -104,6 +102,6 @@ implements DeleteCollectionDialogFragment.DeleteCollectionDialogListener{
 
     @Override
     public void onDeleteCollectionNegClick(DialogFragment dialog) {
-        Log.d(DEBUG_TAG, "In DisplayWordsSettingsFragment: Neg button clicked");
+        
     }
 }

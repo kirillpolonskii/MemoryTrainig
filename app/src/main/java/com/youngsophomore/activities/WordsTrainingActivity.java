@@ -52,7 +52,7 @@ public class WordsTrainingActivity extends AppCompatActivity implements
         CountDownTimer countDownTimer = new CountDownTimer(3000 + 200, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                Log.d(DEBUG_TAG, "onTick: millisUntilFinished = " + millisUntilFinished);
+                
                 tvCountdown.setText(String.valueOf(millisUntilFinished / 1000));
             }
 
@@ -61,13 +61,13 @@ public class WordsTrainingActivity extends AppCompatActivity implements
                 ArrayList<String> wordsCollectionsTitles = CollectionsStorage.getCollectionsTitles(
                         sharedPreferences, getString(R.string.words_collections_titles_key)
                 );
-                Log.d(DEBUG_TAG, wordsCollectionsTitles.toString());
+                
                 String wordsCollectionTitle = wordsCollectionsTitles.get(wordsCollectionPosition);
                 String strWordsCollection = sharedPreferences.getString(wordsCollectionTitle, "");
-                Log.d(DEBUG_TAG, strWordsCollection);
+                
                 String[] splittedWordsCollection = strWordsCollection.split(" ");
                 ArrayList<String> wordsCollection = new ArrayList<>(Arrays.asList(splittedWordsCollection));
-                Log.d(DEBUG_TAG, wordsCollection.toString());
+                
                 if (wordsCollection.size() < curPaletteSize) curPaletteSize = wordsCollection.size();
                 tvCountdown.setTextSize(TypedValue.COMPLEX_UNIT_PX,
                         getResources().getDimension(R.dimen.w_training_seq_text_size));
@@ -79,7 +79,7 @@ public class WordsTrainingActivity extends AppCompatActivity implements
                             tvCountdown.setText(wordsCollection.get(curWordShowInd));
                             ++curWordShowInd;
                             tvCurWordNum.setText(String.valueOf(curWordShowInd));
-                            Log.d(DEBUG_TAG, "curWordInd = " + curWordShowInd);
+                            
                         }
                     }
 
@@ -123,18 +123,18 @@ public class WordsTrainingActivity extends AppCompatActivity implements
                                     int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                                     switch(action) {
                                         case (MotionEvent.ACTION_DOWN):
-                                            Log.d(DEBUG_TAG, "cvWordPal.get(i) onTouch. Action was DOWN");
+                                            
                                             btnWordPal.get(finalI).setElevation(0);
                                             return true;
                                         case (MotionEvent.ACTION_MOVE):
-                                            Log.d(DEBUG_TAG, "btnWordPal.get(i) onTouch. Action was MOVE");
+                                            
                                             btnWordPal.get(finalI).setElevation(elevPx);
                                             return false;
                                         case (MotionEvent.ACTION_UP):
-                                            Log.d(DEBUG_TAG, "btnWordPal.get(i) onTouch. Action was UP");
+                                            
                                             btnWordPal.get(finalI).setElevation(elevPx);
                                             if(btnWordPal.get(finalI).getText() == wordsCollection.get(curWordSeqInd)){
-                                                Log.d(DEBUG_TAG, "YOU CHOSE CORRECT WORD");
+                                                
                                                 tvWordsSeq.setText(tvWordsSeq.getText() + " " + wordsCollection.get(curWordSeqInd));
                                                 ++curWordSeqInd;
                                                 if (curWordSeqInd + curPaletteSize > wordsCollection.size())
@@ -150,7 +150,7 @@ public class WordsTrainingActivity extends AppCompatActivity implements
                                                 }
                                             }
                                             else {
-                                                Log.d(DEBUG_TAG, "YOU CHOSE WRONG WORD");
+                                                
                                                 ++mistakesAmount;
                                                 clParent.setBackgroundColor(
                                                         getResources().getColor(R.color.seq_training_wrong_choice
@@ -165,7 +165,7 @@ public class WordsTrainingActivity extends AppCompatActivity implements
                                                 }, 60);
                                             }
                                             if(curWordSeqInd == wordsCollection.size()){
-                                                Log.d(DEBUG_TAG, "ALL WORDS CHOSEN CORRECT");
+                                                
                                                 StopwatchFragment stopwatchFragment =
                                                         (StopwatchFragment) fragmentManager.findFragmentByTag(STOPWATCH_FRAGMENT_TAG);
                                                 trainingDurationSec = stopwatchFragment.getDecisecond() / 10;

@@ -54,15 +54,15 @@ public class StopwatchFragment extends Fragment {
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnPauseResume onTouch. Action was DOWN");
+                        
                         v.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnPauseResume onTouch. Action was MOVE");
+                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        Log.d(DEBUG_TAG, "btnPauseResume onTouch. Action was UP");
+                        
                         v.setElevation(elevPx);
                         if (running){
                             onClickStop();

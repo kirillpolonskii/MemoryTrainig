@@ -61,12 +61,12 @@ public class ShapesSettingsActivity extends AppCompatActivity {
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnSave onTouch. Action was DOWN");
+                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        Log.d(DEBUG_TAG, "btnSave onTouch. Action was UP. open info");
+                        
                         view.setElevation(elevPx);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt(getString(R.string.saved_shapes_amount_key),
@@ -92,14 +92,11 @@ public class ShapesSettingsActivity extends AppCompatActivity {
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnSavePlaySettings onTouch. Action was DOWN");
+                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        Log.d(DEBUG_TAG, "btnSavePlaySettings onTouch. Action was UP. open info" +
-                                ", R.dimen.btn_info_elev = " + R.dimen.btn_info_elev +
-                                ", elev = " + elevPx);
                         view.setElevation(elevPx);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt(getString(R.string.saved_shapes_amount_key),
@@ -129,7 +126,7 @@ public class ShapesSettingsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.mi_btn_info) {
-            Log.d(DEBUG_TAG, "info button in ShapesSettingsActivity");
+            
             showInfoDialog(R.layout.fragment_mahjong_settings_info);
             return true;
         }

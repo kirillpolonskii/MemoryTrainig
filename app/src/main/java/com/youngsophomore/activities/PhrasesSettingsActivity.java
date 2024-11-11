@@ -73,7 +73,7 @@ public class PhrasesSettingsActivity extends AppCompatActivity
         sprPhrasesCollection.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Log.d(DEBUG_TAG, "In PhrasesSettingsActivity: Long click on spinner itself");
+                
                 if(adapter.getCount() > 1){
                     showDeleteCollectionDialog();
                 }
@@ -95,15 +95,15 @@ public class PhrasesSettingsActivity extends AppCompatActivity
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnAddPhrasesCollection onTouch. Action was DOWN");
+                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnAddPhrasesCollection onTouch. Action was MOVE");
+                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        Log.d(DEBUG_TAG, "btnAddPhrasesCollection onTouch. Action was UP");
+                        
                         view.setElevation(elevPx);
                         Intent intent = new Intent(PhrasesSettingsActivity.this, AddPhrasesCollectionActivity.class);
                         startActivity(intent);
@@ -120,15 +120,15 @@ public class PhrasesSettingsActivity extends AppCompatActivity
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnSaveSettings onTouch. Action was DOWN");
+                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnSaveSettings onTouch. Action was MOVE");
+                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        Log.d(DEBUG_TAG, "btnSaveSettings onTouch. Action was UP");
+                        
                         view.setElevation(elevPx);
 
                         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -151,15 +151,15 @@ public class PhrasesSettingsActivity extends AppCompatActivity
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnSaveSettingsAndPlay onTouch. Action was DOWN");
+                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnSaveSettingsAndPlay onTouch. Action was MOVE");
+                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        Log.d(DEBUG_TAG, "btnSaveSettingsAndPlay onTouch. Action was UP");
+                        
                         view.setElevation(elevPx);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt(getString(R.string.saved_phrases_collection_position_key),
@@ -180,7 +180,7 @@ public class PhrasesSettingsActivity extends AppCompatActivity
     @Override
     public void onResume(){
         super.onResume();
-        Log.d(DEBUG_TAG, "in PhrasesSettingsActivity: onResume() called");
+        
         phrasesCollectionsTitles.clear();
         phrasesCollectionsTitles.addAll(CollectionsStorage.getCollectionsTitles(
                         sharedPreferences, getString(R.string.phrases_collections_titles_key)));
@@ -196,7 +196,7 @@ public class PhrasesSettingsActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.mi_btn_info) {
-            Log.d(DEBUG_TAG, "info button in ShapesSettingsActivity");
+            
             showInfoDialog(R.layout.fragment_phrases_settings_info);
             return true;
         }
@@ -219,8 +219,7 @@ public class PhrasesSettingsActivity extends AppCompatActivity
 
     @Override
     public void onDeleteCollectionPosClick(DialogFragment dialog) {
-        Log.d(DEBUG_TAG, "In PhrasesSettingsActivity: Pos button clicked, slctd= " +
-                sprPhrasesCollection.getSelectedItem());
+        
         CollectionsStorage.deletePhrasesCollection(
                 (String) sprPhrasesCollection.getSelectedItem(),
                 getString(R.string.phrases_collections_titles_key),

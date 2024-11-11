@@ -21,7 +21,7 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.View
     private RecyclerViewClickListener rvClickListener;
 
     public QuestionsAdapter(ArrayList<Question> questions, RecyclerViewClickListener rvClickListener) {
-        Log.d(DEBUG_TAG, "In QuestionsAdapter()");
+        
         localQuestions = questions;
         this.rvClickListener = rvClickListener;
     }
@@ -60,7 +60,7 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.View
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        Log.d(DEBUG_TAG, "QuestionsAdapter: In onCreateViewHolder()");
+        
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.new_question_list_item, viewGroup, false);
 
@@ -69,14 +69,14 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-        Log.d(DEBUG_TAG, "QuestionsAdapter: In onBindViewHolder()");
+        
         viewHolder.getTVQuestionText().setText(localQuestions.get(position).getQuestionText());
         viewHolder.getTVAnswers().setText(localQuestions.get(position).getAnswersInOneString(true));
     }
 
     @Override
     public int getItemCount() {
-        Log.d(DEBUG_TAG, "QuestionsAdapter: In getItemCount()");
+        
         return localQuestions.size();
     }
 }

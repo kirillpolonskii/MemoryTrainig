@@ -69,13 +69,13 @@ public class PhrasesTrainingActivity extends AppCompatActivity implements
         CountDownTimer countDownTimer = new CountDownTimer(3000 + 200, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                Log.d(DEBUG_TAG, "onTick: millisUntilFinished = " + millisUntilFinished);
+                
                 tvCountdown.setText(String.valueOf(millisUntilFinished / 1000));
             }
 
             @Override
             public void onFinish() {
-                Log.d(DEBUG_TAG, phrasesCollectionsTitles.toString());
+                
 
                 ArrayList<String> origPhrasesCollection = CollectionsStorage.getPhrasesCollection(
                         phrasesCollectionsTitles.get(phrasesCollectionPosition),
@@ -83,7 +83,7 @@ public class PhrasesTrainingActivity extends AppCompatActivity implements
                 );
                 ArrayList<Integer> indicesPerm = TrainHelper.getRandomIndicesPerm(0, origPhrasesCollection.size());
                 ArrayList<String> phrasesCollection = TrainHelper.Phrases.generatePhrasesList(origPhrasesCollection, indicesPerm);
-                Log.d(DEBUG_TAG, phrasesCollection.toString());
+                
                 tvCountdown.setTextSize(TypedValue.COMPLEX_UNIT_PX,
                         getResources().getDimension(R.dimen.w_training_seq_text_size));
                 CountDownTimer pretrainSequenceTimer = new CountDownTimer(
@@ -94,7 +94,7 @@ public class PhrasesTrainingActivity extends AppCompatActivity implements
                             tvCountdown.setText(origPhrasesCollection.get(curPhraseShowInd));
                             ++curPhraseShowInd;
                             tvCurPhraseNum.setText(String.valueOf(curPhraseShowInd));
-                            Log.d(DEBUG_TAG, "curPhraseInd = " + curPhraseShowInd);
+                            
                         }
                     }
 

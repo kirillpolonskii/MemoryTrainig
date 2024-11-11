@@ -28,18 +28,18 @@ public class NewQuestionsListFragment extends Fragment
     QuestionsAdapter questionsAdapter;
 
     public NewQuestionsListFragment() {
-        Log.d(DEBUG_TAG, "in NewQuestionsListFragment() of NewQuestionsListFragment");
+        
     }
 
     public static NewQuestionsListFragment newInstance() {
-        Log.d(DEBUG_TAG, "in newInstance() of NewQuestionsListFragment");
+        
         NewQuestionsListFragment fragment = new NewQuestionsListFragment();
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Log.d(DEBUG_TAG, "in onCreate() of NewQuestionsListFragment");
+        
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             newQuestionsCollection = getArguments().getParcelableArrayList(getString(R.string.new_questions_collection_key));
@@ -49,7 +49,7 @@ public class NewQuestionsListFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.d(DEBUG_TAG, "in onCreateView() of NewQuestionsListFragment");
+        
         return inflater.inflate(R.layout.fragment_new_questions_list, container, false);
     }
 
@@ -57,7 +57,7 @@ public class NewQuestionsListFragment extends Fragment
     public void onViewCreated(View view, Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-        Log.d(DEBUG_TAG, "in onViewCreated() of NewPhrasesListFragment");
+        
 
         questionsAdapter = new QuestionsAdapter(newQuestionsCollection, this);
         RecyclerView rvNewQuestionsCollection = view.findViewById(R.id.rv_new_questions_collection);

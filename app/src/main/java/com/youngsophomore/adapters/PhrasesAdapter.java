@@ -32,13 +32,13 @@ public class PhrasesAdapter extends RecyclerView.Adapter<PhrasesAdapter.ViewHold
 
 
     public PhrasesAdapter(ArrayList<String> dataSet) {
-        Log.d(DEBUG_TAG, "In PhrasesAdapter()");
+        
         localDataSet = dataSet;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        Log.d(DEBUG_TAG, "In onCreateViewHolder()");
+        
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.text_row_item, viewGroup, false);
 
@@ -47,7 +47,7 @@ public class PhrasesAdapter extends RecyclerView.Adapter<PhrasesAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
-        Log.d(DEBUG_TAG, "In onBindViewHolder()");
+        
         viewHolder.getTextView().setText(localDataSet.get(position));
     }
 

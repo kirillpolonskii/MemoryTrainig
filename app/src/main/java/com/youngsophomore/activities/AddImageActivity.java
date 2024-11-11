@@ -95,17 +95,13 @@ public class AddImageActivity extends AppCompatActivity implements
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnNewImage onTouch. Action was DOWN");
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnNewImage onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        Log.d(DEBUG_TAG, "btnNewImage onTouch. Action was UP");
                         view.setElevation(elevPx);
                         openFileChooser();
-                        Log.d(DEBUG_TAG, "Uri from file picker = " + imageUri);
                         return true;
                     default:
                         return false;
@@ -119,14 +115,11 @@ public class AddImageActivity extends AppCompatActivity implements
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnAddQuestion onTouch. Action was DOWN");
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnAddQuestion onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        Log.d(DEBUG_TAG, "btnAddQuestion onTouch. Action was UP");
                         view.setElevation(elevPx);
 
                         PrepHelper.deactivateBtn(btnAddQuestion);
@@ -151,14 +144,11 @@ public class AddImageActivity extends AppCompatActivity implements
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnConfirmQuestion onTouch. Action was DOWN");
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnConfirmQuestion onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        Log.d(DEBUG_TAG, "btnConfirmQuestion onTouch. Action was UP");
                         view.setElevation(elevPx);
                         PrepHelper.activateBtn(btnAddQuestion, elevPx);
                         PrepHelper.activateBtn(btnConfirmQuestionsCollection, elevPx);
@@ -190,14 +180,11 @@ public class AddImageActivity extends AppCompatActivity implements
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnConfirmQuestionsCollection onTouch. Action was DOWN");
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnConfirmQuestionsCollection onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        Log.d(DEBUG_TAG, "btnConfirmQuestionsCollection onTouch. Action was UP");
                         view.setElevation(elevPx);
                         if (imageUri != null && !newQuestions.isEmpty()){
                             CollectionsStorage.saveQuestionsCollections(newQuestionsCollectionTitle, imageUri,
@@ -226,14 +213,11 @@ public class AddImageActivity extends AppCompatActivity implements
         super.onActivityResult(requestCode, resultCode, intent);
         if(requestCode == NEW_IMAGE_REQUEST_CODE && resultCode == Activity.RESULT_OK && intent != null){
             imageUri = intent.getData();
-            Log.d(DEBUG_TAG, "Uri from file picker = " + imageUri);
             ivRemindImg.setImageURI(imageUri);
             showNewImageNameDialog();
             PrepHelper.activateBtn(btnAddQuestion, elevPx);
         }
-        else{
-            Log.d(DEBUG_TAG, "Something went wrong. Uri from file picker = " + imageUri);
-        }
+
     }
 
     public void openFileChooser(){
@@ -250,7 +234,6 @@ public class AddImageActivity extends AppCompatActivity implements
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.mi_btn_info) {
-            Log.d(DEBUG_TAG, "info button in ShapesSettingsActivity");
             showInfoDialog(R.layout.fragment_add_image_info);
             return true;
         }
@@ -286,15 +269,12 @@ public class AddImageActivity extends AppCompatActivity implements
                     int action = event.getAction();
                     switch(action) {
                         case (MotionEvent.ACTION_DOWN):
-                            Log.d(DEBUG_TAG, "btnNewImage onTouch. Action was DOWN");
                             view.setElevation(0);
                             return true;
                         case (MotionEvent.ACTION_MOVE):
-                            Log.d(DEBUG_TAG, "btnNewImage onTouch. Action was MOVE");
                             return true;
                         case (MotionEvent.ACTION_UP):
                             int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                            Log.d(DEBUG_TAG, "btnNewImage onTouch. Action was UP");
                             view.setElevation(elevPx);
                             frLtRemindImg.setVisibility(View.VISIBLE);
                             return true;
@@ -313,7 +293,6 @@ public class AddImageActivity extends AppCompatActivity implements
 
     @Override
     public void onBackPressed() {
-        Log.d(DEBUG_TAG, "in onBackPressed()");
         if(frLtRemindImg.getVisibility() == View.VISIBLE){
             frLtRemindImg.setVisibility(View.GONE);
         }

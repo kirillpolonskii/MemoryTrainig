@@ -49,14 +49,14 @@ public class AddQuestionFragment extends Fragment
     }
 
     public static AddQuestionFragment newInstance(String param1, String param2) {
-        Log.d(DEBUG_TAG, "in newInstance() of AddQuestionFragment");
+        
         AddQuestionFragment fragment = new AddQuestionFragment();
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Log.d(DEBUG_TAG, "in onCreate() of AddQuestionFragment");
+        
         super.onCreate(savedInstanceState);
         question = new Question();
         question.setQuestionText("");
@@ -68,25 +68,25 @@ public class AddQuestionFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.d(DEBUG_TAG, "in onCreateView() of AddQuestionFragment");
+        
         if (container instanceof FragmentContainerView){
-            Log.d(DEBUG_TAG, "container IS instance of FragmentContainerView");
+            
         }
         else{
-            Log.d(DEBUG_TAG, container.toString());
+            
         }
         View view = inflater.inflate(R.layout.fragment_add_question, container, false);
         if (view instanceof ConstraintLayout){
-            Log.d(DEBUG_TAG, "view IS instance of ConstraintLayout");
+            
         }
         else{
-            Log.d(DEBUG_TAG, container.toString());
+            
         }
         if (view.getId() == view.findViewById(R.id.constr_layout_add_question).getId()){
-            Log.d(DEBUG_TAG, "view.getId() == view.findViewById(R.id.constr_layout_add_question).getId()");
+            
         }
         else{
-            Log.d(DEBUG_TAG, "view.getId() != view.findViewById(R.id.constr_layout_add_question).getId()");
+            
         }
         etNewQuestion = view.findViewById(R.id.et_new_question);
         etNewAnswer = new EditText(getContext());
@@ -115,23 +115,20 @@ public class AddQuestionFragment extends Fragment
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnAddAnswer onTouch. Action was DOWN");
+                        
                         v.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnAddAnswer onTouch. Action was MOVE");
+                        
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        Log.d(DEBUG_TAG, "btnAddAnswer onTouch. Action was UP");
+                        
                         PrepHelper.deactivateBtn(btnAddAnswer);
                         PrepHelper.activateBtn(btnConfirmAnswer, elevPx);
 
                         question.setQuestionText(etNewQuestion.getText().toString());
-                        Log.d(DEBUG_TAG, "view.getChildCount() bef removeView = " +
-                                ((ConstraintLayout) view).getChildCount());
                         ((ViewGroup) view).removeView(etNewQuestion);
-                        Log.d(DEBUG_TAG, "view.getChildCount() aft removeView = " +
-                                ((ConstraintLayout) view).getChildCount());
+                        
 
                         ((ViewGroup) view).addView(etNewAnswer);
                         ConstraintSet constraintSet = new ConstraintSet();
@@ -155,11 +152,11 @@ public class AddQuestionFragment extends Fragment
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnConfirmAnswer onTouch. Action was DOWN");
+                        
                         v.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnConfirmAnswer onTouch. Action was MOVE");
+                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         if (!etNewAnswer.getText().toString().equals("")){
@@ -167,15 +164,10 @@ public class AddQuestionFragment extends Fragment
                         }
                         PrepHelper.deactivateBtn(btnConfirmAnswer);
                         PrepHelper.activateBtn(btnAddAnswer, elevPx);
-                        Log.d(DEBUG_TAG, "btnConfirmAnswer onTouch. Action was UP");
+                        
                         //v.setElevation(elevPx);
                         
-                        Log.d(DEBUG_TAG, "view.getChildCount() bef removeView = " +
-                                ((ConstraintLayout) view).getChildCount());
                         ((ViewGroup) view).removeView(etNewAnswer);
-                        Log.d(DEBUG_TAG, "view.getChildCount() aft removeView = " +
-                                ((ConstraintLayout) view).getChildCount());
-
                         ((ViewGroup) view).addView(etNewQuestion);
                         etNewQuestion.setText(question.getQuestionText());
                         ConstraintSet constraintSet = new ConstraintSet();
@@ -198,7 +190,7 @@ public class AddQuestionFragment extends Fragment
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Log.d(DEBUG_TAG, "in onViewCreated() of AddQuestionFragment");
+        
 
         answersAdapter = new AnswersAdapter(question.getAnswers(), this);
         RecyclerView rvAnswers = view.findViewById(R.id.rv_answers_collection);

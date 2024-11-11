@@ -72,14 +72,14 @@ public class WordsSettingsActivity extends AppCompatActivity {
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnSaveSettings onTouch. Action was DOWN");
+                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnSaveSettings onTouch. Action was MOVE");
+                        
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        Log.d(DEBUG_TAG, "btnSaveSettings onTouch. Action was UP");
+                        
                         view.setElevation(elevPx);
                         Fragment displayWordsCollectionsFragment = fragmentManager.findFragmentByTag(DISPLAY_SETTINGS_FRAGMENT_TAG);
                         sprWordsCollection = displayWordsCollectionsFragment.getView()
@@ -108,14 +108,14 @@ public class WordsSettingsActivity extends AppCompatActivity {
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnPlayWSettings onTouch. Action was DOWN");
+                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnPlayWSettings onTouch. Action was MOVE");
+                        
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        Log.d(DEBUG_TAG, "btnPlayWSettings onTouch. Action was UP");
+                        
                         view.setElevation(elevPx);
                         Fragment displayWordsCollectionsFragment = fragmentManager.findFragmentByTag(DISPLAY_SETTINGS_FRAGMENT_TAG);
                         sprWordsCollection = displayWordsCollectionsFragment.getView()
@@ -144,14 +144,14 @@ public class WordsSettingsActivity extends AppCompatActivity {
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnAddWordsCollection onTouch. Action was DOWN");
+                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnAddWordsCollection onTouch. Action was MOVE");
+                        
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        Log.d(DEBUG_TAG, "btnAddWordsCollection onTouch. Action was UP");
+                        
 
                         PrepHelper.deactivateBtn(btnAddWordsCollection);
                         PrepHelper.deactivateBtn(btnSaveSettings);
@@ -177,14 +177,14 @@ public class WordsSettingsActivity extends AppCompatActivity {
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnConfirmWordsCollection onTouch. Action was DOWN");
+                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnConfirmWordsCollection onTouch. Action was MOVE");
+                        
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        Log.d(DEBUG_TAG, "btnConfirmWordsCollection onTouch. Action was UP");
+                        
                         Fragment addWordsCollectionFragment = fragmentManager.findFragmentByTag(ADD_COLLECTION_FRAGMENT_TAG);
                         EditText etWordsCollectionTitle = addWordsCollectionFragment.getView()
                                 .findViewById(R.id.et_wrd_collection_title);
@@ -238,7 +238,7 @@ public class WordsSettingsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.mi_btn_info) {
-            Log.d(DEBUG_TAG, "info button in WordsSettingsActivity");
+            
             showInfoDialog(R.layout.fragment_words_settings_info);
             return true;
         }
@@ -257,12 +257,12 @@ public class WordsSettingsActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Log.d(DEBUG_TAG, "in onBackPressed()");
+        
         AddWordsCollectionFragment addWordsCollectionFragment =
                 (AddWordsCollectionFragment) fragmentManager.findFragmentByTag(ADD_COLLECTION_FRAGMENT_TAG);
         DisplayWordsSettingsFragment displayWordsSettingsFragment =
                 (DisplayWordsSettingsFragment) fragmentManager.findFragmentByTag(DISPLAY_SETTINGS_FRAGMENT_TAG);
-        Log.d(DEBUG_TAG, addWordsCollectionFragment + ",, " + displayWordsSettingsFragment);
+        
         if(addWordsCollectionFragment != null && addWordsCollectionFragment.isVisible()){
             toolbar.setTitle(R.string.tbr_words_settings_title);
             PrepHelper.activateBtn(btnSaveSettings, elevPx);

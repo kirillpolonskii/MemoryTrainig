@@ -39,8 +39,8 @@ public class FinishDialogFragment extends DialogFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        Log.d(DEBUG_TAG, "in onAttach() of FinishDialogFragment");
-        Log.d(DEBUG_TAG, "context: " + context.toString());
+        
+        
         try {
             listener = (FinishDialogFragment.FinishDialogListener) context;
         } catch (ClassCastException e) {

@@ -77,20 +77,12 @@ public class CollectionsStorage {
         // write newCollection in title.txt
         try {
             File filePath = new File(context.getExternalFilesDir(null).getAbsolutePath() + "/phrases");
-            Log.d(DEBUG_TAG, "in CollectionStorage: filePath = " + filePath);
+            
             String fileName = "/" + title + ".txt";
             File outFile = new File(filePath, fileName);
-            if (!outFile.exists() && outFile.createNewFile()) {
-                Log.d(DEBUG_TAG, "in CollectionStorage: " + outFile.getAbsolutePath() +
-                        " did NOT exist and was created");
-            }
-            else{
-                Log.d(DEBUG_TAG, "in CollectionStorage: " + outFile.getAbsolutePath() +
-                        " existed or was NOT created");
-            }
             FileOutputStream fos = new FileOutputStream(outFile);
             OutputStreamWriter osw = new OutputStreamWriter(fos);
-            Log.d(DEBUG_TAG, "in CollectionStorage: fileName = " + outFile);
+            
             for(String phrase : newCollection){
                 osw.write(phrase);
                 osw.write("|");
@@ -100,7 +92,7 @@ public class CollectionsStorage {
             fos.close();
         }
         catch (IOException e) {
-            Log.d(DEBUG_TAG, "in CollectionStorage: File write failed: " + e.toString());
+            
         }
     }
 
@@ -118,18 +110,18 @@ public class CollectionsStorage {
         editor.apply();
         try {
             File filePath = new File(context.getExternalFilesDir(null).getAbsolutePath() + "/phrases");
-            Log.d(DEBUG_TAG, "in CollectionStorage: filePath = " + filePath);
+            
             String fileName = "/" + title + ".txt";
             File deleteFile = new File(filePath, fileName);
             if(deleteFile.delete()){
-                Log.d(DEBUG_TAG, "in CollectionStorage: deleted file successfully = ");
+                
             }
             else{
-                Log.d(DEBUG_TAG, "in CollectionStorage: deleted file NOT successfully = ");
+                
             }
         }
         catch (NullPointerException e) {
-            Log.d(DEBUG_TAG, "in CollectionStorage: File is null: " + e.toString());
+            
         }
     }
 
@@ -139,18 +131,10 @@ public class CollectionsStorage {
         ArrayList<String> phrasesCollection = new ArrayList<>();
         try {
             File filePath = new File(pathName);
-            Log.d(DEBUG_TAG, "in CollectionStorage: filePath = " + filePath);
+            
             String fileName = "/" + title + ".txt";
             File inFile = new File(filePath, fileName);
-            if (!inFile.exists()) {
-                Log.d(DEBUG_TAG, "in CollectionStorage: " + inFile.getAbsolutePath() +
-                        " don't exist");
-            }
-            else{
-                Log.d(DEBUG_TAG, "in CollectionStorage: " + inFile.getAbsolutePath() +
-                        " existed");
-            }
-            Log.d(DEBUG_TAG, "in CollectionStorage: fileName = " + inFile);
+            
             Scanner scanner = new Scanner(inFile);
             scanner.useDelimiter("\\|");
             while (scanner.hasNext()){
@@ -158,7 +142,7 @@ public class CollectionsStorage {
             }
         }
         catch (IOException e) {
-            Log.d(DEBUG_TAG, "in CollectionStorage: File write failed: " + e.toString());
+            
         }
         return phrasesCollection;
     }
@@ -183,9 +167,9 @@ public class CollectionsStorage {
             File questionsDir = new File(context.getExternalFilesDir(null).getAbsolutePath()
                     + "/details" + "/" + title);
             if (!questionsDir.exists() && questionsDir.mkdir()) {
-                Log.d(DEBUG_TAG, "in CollectionStorage: " + questionsDir + " created");
+                
             }
-            Log.d(DEBUG_TAG, "in CollectionStorage: questionsDir = " + questionsDir);
+            
             for(int i = 0; i < newCollection.size(); ++i){
                 String questionNum = "question";
                 if(i < 10){
@@ -199,17 +183,10 @@ public class CollectionsStorage {
                 }
                 String fileName = "/" + questionNum + ".txt";
                 File outFile = new File(questionsDir, fileName);
-                if (!outFile.exists() && outFile.createNewFile()) {
-                    Log.d(DEBUG_TAG, "in CollectionStorage: " + outFile.getAbsolutePath() +
-                            " did NOT exist and was created");
-                }
-                else{
-                    Log.d(DEBUG_TAG, "in CollectionStorage: " + outFile.getAbsolutePath() +
-                            " existed or was NOT created");
-                }
+
                 FileOutputStream fos = new FileOutputStream(outFile);
                 OutputStreamWriter osw = new OutputStreamWriter(fos);
-                Log.d(DEBUG_TAG, "in CollectionStorage: fileName = " + outFile);
+                
                 osw.write(newCollection.get(i).getQuestionText());
                 osw.write("\n");
                 osw.write(newCollection.get(i).getAnswersInOneString(false));
@@ -221,7 +198,7 @@ public class CollectionsStorage {
 
         }
         catch (IOException e) {
-            Log.d(DEBUG_TAG, "in CollectionStorage: File write failed: " + e.toString());
+            
         }
     }
 
@@ -243,7 +220,7 @@ public class CollectionsStorage {
                 child.delete();
 
         questionsDir.delete();
-        Log.d(DEBUG_TAG, "in CollectionStorage: questionsDir = " + questionsDir);
+        
     }
 
 }

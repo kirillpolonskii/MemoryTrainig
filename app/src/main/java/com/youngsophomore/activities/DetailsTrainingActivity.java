@@ -70,7 +70,7 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
         File questionsDir = new File(getExternalFilesDir(null).getAbsolutePath()
                 + "/details" + "/" + questionsCollectionTitle);
         if (!questionsDir.exists()) {
-            Log.d(DEBUG_TAG, "DetailsTraining: " + questionsDir + " DOESN'T EXIST");
+            
         }
         File[] fullQuestionsFiles = questionsDir.listFiles();
         int questionsAmount = Math.min(fullQuestionsFiles.length, 10);
@@ -88,7 +88,7 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
         CountDownTimer countDownTimer = new CountDownTimer(3000 + 200, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                Log.d(DEBUG_TAG, "onTick: millisUntilFinished = " + millisUntilFinished);
+                
                 tvCountdown.setText(String.valueOf(millisUntilFinished / 1000));
             }
 
@@ -220,13 +220,13 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
                                 if (questionsCollection.get(curQuestionInd).getCorrAnswersIndices().equals(
                                         answersIndices
                                 )){
-                                    Log.d(DEBUG_TAG, "YOU CHOSE RIGHT ANSWERS");
+                                    
                                     ++curQuestionInd;
                                     if (curQuestionInd < questionsCollection.size()){
                                         showNextQuestion();
                                     }
                                     else {
-                                        Log.d(DEBUG_TAG, "ALL QUESTIONS ARE ANSWERED");
+                                        
                                         StopwatchFragment stopwatchFragment =
                                                 (StopwatchFragment) fragmentManager.findFragmentByTag(STOPWATCH_FRAGMENT_TAG);
                                         trainingDurationSec = stopwatchFragment.getDecisecond() / 10;
@@ -257,7 +257,7 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
                                     }
                                 }
                                 else{
-                                    Log.d(DEBUG_TAG, "YOU CHOSE WRONG ANSWERS");
+                                    
                                     if (questionsCollection.get(curQuestionInd).isSingleAnswer()){
                                         ++singleMistakesAmount;
                                     }

@@ -25,11 +25,11 @@ public class NewPhrasesListFragment extends Fragment {
 
 
     public NewPhrasesListFragment() {
-        Log.d(DEBUG_TAG, "in NewPhrasesListFragment() of NewPhrasesListFragment");
+        
     }
 
     public static NewPhrasesListFragment newInstance() {
-        Log.d(DEBUG_TAG, "in newInstance() of NewPhrasesListFragment");
+        
         return new NewPhrasesListFragment();
     }
 
@@ -38,13 +38,13 @@ public class NewPhrasesListFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         newPhrasesCollectionCharS = getArguments().getCharSequenceArrayList(getString(R.string.new_phrases_collection_key));
-        Log.d(DEBUG_TAG, "in onCreate() of NewPhrasesListFragment");
+        
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.d(DEBUG_TAG, "in onCreateView() of NewPhrasesListFragment");
+        
         return inflater.inflate(R.layout.fragment_new_phrases_list, container, false);
     }
 
@@ -53,7 +53,7 @@ public class NewPhrasesListFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-        Log.d(DEBUG_TAG, "in onViewCreated() of NewPhrasesListFragment");
+        
         newPhrasesCollection = new ArrayList<>();
         for(CharSequence phraseCharS: newPhrasesCollectionCharS){
             newPhrasesCollection.add(String.valueOf(phraseCharS));
@@ -71,29 +71,29 @@ public class NewPhrasesListFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        Log.d(DEBUG_TAG, "in onStart() of NewPhrasesListFragment");
+        
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        Log.d(DEBUG_TAG, "in onResume() of NewPhrasesListFragment");
+        
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        Log.d(DEBUG_TAG, "in onPause() of NewPhrasesListFragment");
+        
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        Log.d(DEBUG_TAG, "in onStop() of NewPhrasesListFragment");
+        
     }
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.d(DEBUG_TAG, "in onDestroy() of NewPhrasesListFragment");
+        
     }
 }

@@ -52,7 +52,6 @@ public class ColorsTrainingActivity extends AppCompatActivity implements
         CountDownTimer countDownTimer = new CountDownTimer(3000 + 200, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                Log.d(DEBUG_TAG, "onTick: millisUntilFinished = " + millisUntilFinished);
                 tvCountdown.setText(String.valueOf(millisUntilFinished / 1000));
             }
 
@@ -94,7 +93,6 @@ public class ColorsTrainingActivity extends AppCompatActivity implements
                             ivCurColor.setBackgroundColor(getResources().getColor(colorSeq.get(curColorShowInd)));
                             ++curColorShowInd;
                             tvCurColorNum.setText(String.valueOf(curColorShowInd));
-                            Log.d(DEBUG_TAG, "curColorInd = " + curColorShowInd);
                         }
                     }
 
@@ -109,7 +107,6 @@ public class ColorsTrainingActivity extends AppCompatActivity implements
                                 .add(R.id.frt_cnt_v_stopwatch, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
                                 .commit();
                         ConstraintLayout cstLtClr = findViewById(R.id.cst_lt_clr);
-                        Log.d(DEBUG_TAG, "cstLtClr.getChildCount() = " + cstLtClr.getChildCount());
                         // Make all ImageView background white_blue
                         // Fill palette with right amount of colors
                         ArrayList<ImageView> ivColorSeq = new ArrayList<>();
@@ -142,12 +139,10 @@ public class ColorsTrainingActivity extends AppCompatActivity implements
                                     int action = event.getAction();
                                     switch(action) {
                                         case (MotionEvent.ACTION_DOWN):
-                                            Log.d(DEBUG_TAG, "cvColorPal.get(i) onTouch. Action was DOWN");
                                             cvColorPal.get(finalI).setCardElevation(0);
                                             return true;
                                         case (MotionEvent.ACTION_UP):
                                             int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                                            Log.d(DEBUG_TAG, "cvColorPal.get(i) onTouch. Action was UP");
                                             cvColorPal.get(finalI).setCardElevation(elevPx);
                                             if(palette.get(finalI).intValue() == colorSeq.get(curColorSeqInd).intValue()){
                                                 ivColorSeq.get(curColorSeqInd).setVisibility(View.VISIBLE);
@@ -155,10 +150,8 @@ public class ColorsTrainingActivity extends AppCompatActivity implements
                                                         getResources().getColor(colorSeq.get(curColorSeqInd))
                                                 );
                                                 ++curColorSeqInd;
-                                                Log.d(DEBUG_TAG, "YOU CHOSE CORRECT COLOR");
                                             }
                                             else {
-                                                Log.d(DEBUG_TAG, "YOU CHOSE WRONG COLOR");
                                                 ++mistakesAmount;
                                                 cstLtClr.setBackgroundColor(
                                                         getResources().getColor(R.color.seq_training_wrong_choice
@@ -173,7 +166,6 @@ public class ColorsTrainingActivity extends AppCompatActivity implements
                                                 }, 60);
                                             }
                                             if(curColorSeqInd == colorsAmount){
-                                                Log.d(DEBUG_TAG, "ALL COLORS CHOSEN CORRECT");
                                                 StopwatchFragment stopwatchFragment =
                                                         (StopwatchFragment) fragmentManager.findFragmentByTag(STOPWATCH_FRAGMENT_TAG);
                                                 trainingDurationSec = stopwatchFragment.getDecisecond() / 10;

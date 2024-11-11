@@ -56,7 +56,7 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
         CountDownTimer countDownTimer = new CountDownTimer(3000 + 200, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                Log.d(DEBUG_TAG, "onTick: millisUntilFinished = " + millisUntilFinished);
+                
                 tvCountdown.setText(String.valueOf(millisUntilFinished / 1000));
             }
 
@@ -68,7 +68,7 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
                 else{
                     setContentView(R.layout.activity_mahjong_training_24);
                 }
-                Log.d(DEBUG_TAG, tilesNum.toString());
+                
                 ConstraintLayout constraintLayout = findViewById(R.id.cst_lt_chld_mhj);
                 Guideline guidelineTop = findViewById(R.id.guideline_top);
                 Guideline guidelineBottom = findViewById(R.id.guideline_bottom);
@@ -124,14 +124,14 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
                                             @Override
                                             public void run() {
                                                 if(isAllTilesEqual()){
-                                                    Log.d(DEBUG_TAG, "YOU CHOSE CORRECT!!!");
+                                                    
                                                     for(ImageButton flippedBtnTile : flippedTiles){
                                                         flippedBtnTile.setClickable(false);
                                                         flippedBtnTile.setVisibility(View.INVISIBLE);
                                                         ++removedTilesCount;
                                                     }
                                                     if (removedTilesCount == mhjTilesAmount){
-                                                        Log.d(DEBUG_TAG, "ALL TILES REMOVED");
+                                                        
                                                         StopwatchFragment stopwatchFragment =
                                                                 (StopwatchFragment) fragmentManager.findFragmentByTag(STOPWATCH_FRAGMENT_TAG);
                                                         trainingDurationSec = stopwatchFragment.getDecisecond() / 10;
@@ -160,7 +160,7 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
 
                                                 }
                                                 else{
-                                                    Log.d(DEBUG_TAG, "YOU CHOSE WRONG!!!");
+                                                    
                                                     ++mistakesAmount;
                                                     for(ImageButton flippedBtnTile : flippedTiles){
                                                         flippedBtnTile.setImageResource(R.drawable.tile_back);
@@ -250,9 +250,9 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
                                Guideline guidelineLeft, Guideline guidelineRight){
         int width = getResources().getDisplayMetrics().widthPixels;
         int height = getResources().getDisplayMetrics().heightPixels;
-        Log.d(DEBUG_TAG, "displayResolution = " + width + "x" + height);
+        
         if (width <= 900){ // For small phones
-            Log.d(DEBUG_TAG, "IT'S A SMALL PHONE");
+            
             if(mahjongTilesAmount == 12){
                 // Set big vert and small horiz indents
                 guidelineTop.setGuidelinePercent(
@@ -277,7 +277,7 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
             }
         }
         else{ // For big phones
-            Log.d(DEBUG_TAG, "IT'S A BIG PHONE");
+            
             if(mahjongTilesAmount == 12){
                 // Set big vert and small horiz indents
                 guidelineTop.setGuidelinePercent(

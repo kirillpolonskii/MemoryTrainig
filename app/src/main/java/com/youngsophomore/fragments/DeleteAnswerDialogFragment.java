@@ -25,8 +25,8 @@ public class DeleteAnswerDialogFragment extends DialogFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        Log.d(DEBUG_TAG, "in onAttach() of DeleteAnswerDialogFragment");
-        Log.d(DEBUG_TAG, "context: " + context.toString());
+        
+        
         try {
             listener = (DeleteAnswerDialogListener) getParentFragment();
         } catch (ClassCastException e) {
@@ -36,7 +36,7 @@ public class DeleteAnswerDialogFragment extends DialogFragment {
     }
 
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        Log.d(DEBUG_TAG, "in onCreateDialog() of DeleteAnswerDialogFragment");
+        
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.delete_answer_dialog_title)
@@ -57,7 +57,7 @@ public class DeleteAnswerDialogFragment extends DialogFragment {
     }
 
     public DeleteAnswerDialogFragment(int position) {
-        Log.d(DEBUG_TAG, "in DeleteAnswerDialogFragment()");
+        
         deletedPosition = position;
     }
 }

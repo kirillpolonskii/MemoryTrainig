@@ -55,17 +55,17 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
 
     public MyMotionLayout(@NonNull Context context) {
         super(context);
-        Log.d(DEBUG_TAG, "In MyMotionLayout(Context context)");
+        
     }
 
     public MyMotionLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        Log.d(DEBUG_TAG, "In MyMotionLayout(Context context, AttributeSet attrs)");
+        
     }
 
     public MyMotionLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        Log.d(DEBUG_TAG, "In MyMotionLayout(Context context, AttributeSet attrs, defStyleAttr)");
+        
     }
 
     @Override
@@ -77,35 +77,21 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
 
         switch (action) {
             case (MotionEvent.ACTION_DOWN):
-                Log.d(DEBUG_TAG, "onInterceptTouchEvent. Action was DOWN");
+                
                 if(btnStats != null && touchEventInsideTargetView(btnStats, motionEvent) ||
                     btnInfo != null && touchEventInsideTargetView(btnInfo, motionEvent) ||
                     segmentedButtonGroup != null && touchEventInsideTargetView(segmentedButtonGroup, motionEvent)){
-                    Log.d(DEBUG_TAG, "onInterceptTouchEvent. Action was DOWN. return false");
+                    
 
                     return false;
 
                 }
-                else{
-                    Log.d(DEBUG_TAG, "onInterceptTouchEvent. Event will be passed further");
-                }
+
                 return super.onTouchEvent(motionEvent);
             case (MotionEvent.ACTION_MOVE):
-                Log.d(DEBUG_TAG, "onInterceptTouchEvent. Action was MOVE");
                 return super.onInterceptTouchEvent(motionEvent);
             case (MotionEvent.ACTION_UP):
-                Log.d(DEBUG_TAG, "onInterceptTouchEvent. Action was UP");
                 return super.onInterceptTouchEvent(motionEvent);
-            case (MotionEvent.ACTION_CANCEL):
-                Log.d(DEBUG_TAG, "onInterceptTouchEvent. Action was CANCEL");
-                return false;
-            case (MotionEvent.ACTION_BUTTON_PRESS):
-                Log.d(DEBUG_TAG, "onInterceptTouchEvent. Action was PRESSED");
-                return onTouchEvent(motionEvent);
-            case (MotionEvent.ACTION_OUTSIDE):
-                Log.d(DEBUG_TAG, "onInterceptTouchEvent. Movement occurred outside bounds " +
-                        "of current screen element");
-                return false;
             default:
                 return false;
         }
@@ -133,7 +119,7 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
 
         switch (action) {
             case (MotionEvent.ACTION_DOWN):
-                Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. Action was DOWN");
+                
                 if(touchEventInsideTargetView(btnMahjongTraining, motionEvent)) {
                     btnWithEvent = btnMahjongTraining;
                     idBtnWithEvent = R.id.btn_mhj_training;
@@ -198,7 +184,7 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
 
                 return super.onTouchEvent(motionEvent);
             case (MotionEvent.ACTION_MOVE):
-                Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. Action was MOVE");
+                
                 viewWasMoved = true;
                 if(btnWithEvent != null &&
                         (!eventBtnCorrespondsWithState(btnWithEvent, myMotionLayout.getCurrentState()) ||
@@ -207,11 +193,11 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
                 }
                 return super.onTouchEvent(motionEvent);
             case (MotionEvent.ACTION_UP):
-                Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. Action was UP");
+                
                 int elevTrainingPx = getResources().getDimensionPixelSize(R.dimen.btn_training_elev);
                 int elevSettingsPx = getResources().getDimensionPixelSize(R.dimen.btn_info_elev);
                 if(btnWithEvent != null && idBtnWithEvent == R.id.btn_mhj_training) {
-                    Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. mahjong training was touched");
+                    
                     btnWithEvent.setElevation(elevTrainingPx);
                     if(!viewWasMoved){
                         Intent intent = new Intent(getContext(), MahjongTrainingActivity.class);
@@ -219,7 +205,7 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
                     }
                 }
                 if(btnWithEvent != null && idBtnWithEvent == R.id.btn_clr_training) {
-                    Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. colors training was touched");
+                    
                     btnWithEvent.setElevation(elevTrainingPx);
                     if(!viewWasMoved){
                         Intent intent = new Intent(getContext(), ColorsTrainingActivity.class);
@@ -227,7 +213,7 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
                     }
                 }
                 if(btnWithEvent != null && idBtnWithEvent == R.id.btn_shp_training) {
-                    Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. shapes training was touched");
+                    
                     btnWithEvent.setElevation(elevTrainingPx);
                     if(!viewWasMoved){
                         Intent intent = new Intent(getContext(), ShapesTrainingActivity.class);
@@ -235,7 +221,7 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
                     }
                 }
                 if(btnWithEvent != null && idBtnWithEvent == R.id.btn_wrd_training) {
-                    Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. words training was touched");
+                    
                     btnWithEvent.setElevation(elevTrainingPx);
                     if(!viewWasMoved){
                         Intent intent = new Intent(getContext(), WordsTrainingActivity.class);
@@ -243,7 +229,7 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
                     }
                 }
                 if(btnWithEvent != null && idBtnWithEvent == R.id.btn_phr_training) {
-                    Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. phrases training was touched");
+                    
                     btnWithEvent.setElevation(elevTrainingPx);
                     if(!viewWasMoved){
                         Intent intent = new Intent(getContext(), PhrasesTrainingActivity.class);
@@ -251,7 +237,7 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
                     }
                 }
                 if(btnWithEvent != null && idBtnWithEvent == R.id.btn_det_training) {
-                    Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. details training was touched");
+                    
                     btnWithEvent.setElevation(elevTrainingPx);
                     if(!viewWasMoved){
                         Intent intent = new Intent(getContext(), DetailsTrainingActivity.class);
@@ -260,37 +246,37 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
                 }
 
                 if(idBtnWithEvent == R.id.btn_mhj_settings) {
-                    Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. mahjong settings was clicked");
+                    
                     btnSettingsWithEvent.setElevation(elevSettingsPx);
                     Intent intent = new Intent(getContext(), MahjongSettingsActivity.class);
                     getContext().startActivity(intent);
                 }
                 if(idBtnWithEvent == R.id.btn_clr_settings) {
-                    Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. colors settings was clicked");
+                    
                     btnSettingsWithEvent.setElevation(elevSettingsPx);
                     Intent intent = new Intent(getContext(), ColorsSettingsActivity.class);
                     getContext().startActivity(intent);
                 }
                 if(idBtnWithEvent == R.id.btn_shp_settings) {
-                    Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. shapes settings was clicked");
+                    
                     btnSettingsWithEvent.setElevation(elevSettingsPx);
                     Intent intent = new Intent(getContext(), ShapesSettingsActivity.class);
                     getContext().startActivity(intent);
                 }
                 if(idBtnWithEvent == R.id.btn_wrd_settings) {
-                    Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. words settings was clicked");
+                    
                     btnSettingsWithEvent.setElevation(elevSettingsPx);
                     Intent intent = new Intent(getContext(), WordsSettingsActivity.class);
                     getContext().startActivity(intent);
                 }
                 if(idBtnWithEvent == R.id.btn_phr_settings) {
-                    Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. phrases settings was clicked");
+                    
                     btnSettingsWithEvent.setElevation(elevSettingsPx);
                     Intent intent = new Intent(getContext(), PhrasesSettingsActivity.class);
                     getContext().startActivity(intent);
                 }
                 if(idBtnWithEvent == R.id.btn_det_settings) {
-                    Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. details settings was clicked");
+                    
                     btnSettingsWithEvent.setElevation(elevSettingsPx);
                     Intent intent = new Intent(getContext(), DetailsSettingsActivity.class);
                     getContext().startActivity(intent);
@@ -299,13 +285,7 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
                 idBtnWithEvent = 0;
                 viewWasMoved = false;
                 return super.onTouchEvent(motionEvent);
-            case (MotionEvent.ACTION_CANCEL):
-                Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. Action was CANCEL");
-                return false;
-            case (MotionEvent.ACTION_OUTSIDE):
-                Log.d(DEBUG_TAG, "onTouchEvent in MyMotionLayout. Movement occurred outside bounds " +
-                        "of current screen element");
-                return false;
+
             default:
                 return false;
         }
@@ -338,22 +318,22 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
 
     @Override
     public void onTransitionStarted(MotionLayout motionLayout, int startId, int endId) {
-        Log.d(DEBUG_TAG, "onTransitionStarted.");
+        
     }
 
     @Override
     public void onTransitionChange(MotionLayout motionLayout, int startId, int endId, float progress) {
-        Log.d(DEBUG_TAG, "onTransitionChange.");
+        
     }
 
     @Override
     public void onTransitionCompleted(MotionLayout motionLayout, int currentId) {
-        Log.d(DEBUG_TAG, "onTransitionCompleted. Is state == mahjong_end" + (currentId == R.id.mahjong_end));
+        
     }
 
     @Override
     public void onTransitionTrigger(MotionLayout motionLayout, int triggerId, boolean positive, float progress) {
-        Log.d(DEBUG_TAG, "onTransitionTrigger.");
+        
     }
 }
 

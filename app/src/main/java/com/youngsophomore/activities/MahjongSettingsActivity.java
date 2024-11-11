@@ -55,15 +55,15 @@ public class MahjongSettingsActivity extends AppCompatActivity {
                     int action = motionEvent.getAction();
                     switch(action) {
                         case (MotionEvent.ACTION_DOWN):
-                            Log.d(DEBUG_TAG, "sgBtnTilesAmount12 onTouch. Action was DOWN");
+                            
                             sgBtnGrTilesAmount.setElevation(0);
                             return true;
                         case (MotionEvent.ACTION_MOVE):
-                            Log.d(DEBUG_TAG, "sgBtnTilesAmount12 onTouch. Action was MOVE");
+                            
                             return true;
                         case (MotionEvent.ACTION_UP):
                             int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_tiles_elev);
-                            Log.d(DEBUG_TAG, "sgBtnTilesAmount12 onTouch. Action was UP");
+                            
                             sgBtnGrTilesAmount.setElevation(elevPx);
                             return true;
                         default:
@@ -82,12 +82,12 @@ public class MahjongSettingsActivity extends AppCompatActivity {
                     int action = motionEvent.getAction();
                     switch(action) {
                         case (MotionEvent.ACTION_DOWN):
-                            Log.d(DEBUG_TAG, "sgBtnEqualTilesAmount2 onTouch. Action was DOWN");
+                            
                             sgBtnGrEqualTilesAmount.setElevation(0);
                             return true;
                         case (MotionEvent.ACTION_UP):
                             int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_tiles_elev);
-                            Log.d(DEBUG_TAG, "sgBtnEqualTilesAmount2 onTouch. Action was UP");
+                            
                             sgBtnGrEqualTilesAmount.setElevation(elevPx);
                             return true;
                         default:
@@ -107,15 +107,15 @@ public class MahjongSettingsActivity extends AppCompatActivity {
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnSave onTouch. Action was DOWN");
+                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnSave onTouch. Action was MOVE");
+                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        Log.d(DEBUG_TAG, "btnSave onTouch. Action was UP. open info");
+                        
                         view.setElevation(elevPx);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt(getString(R.string.saved_mahjong_remember_time_key),
@@ -140,11 +140,11 @@ public class MahjongSettingsActivity extends AppCompatActivity {
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnSavePlaySettings onTouch. Action was DOWN");
+                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnSavePlaySettings onTouch. Action was MOVE");
+                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
@@ -178,7 +178,7 @@ public class MahjongSettingsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.mi_btn_info) {
-            Log.d(DEBUG_TAG, "info button in MahjongSettingsActivity");
+            
             showInfoDialog(R.layout.fragment_mahjong_settings_info);
             return true;
         }

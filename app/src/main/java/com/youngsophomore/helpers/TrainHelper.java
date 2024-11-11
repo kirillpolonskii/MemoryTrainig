@@ -85,7 +85,7 @@ public class TrainHelper {
                 }
 
             }
-            Log.d(DEBUG_TAG, tiles.toString());
+            
             return tiles;
         }
     }
@@ -110,7 +110,7 @@ public class TrainHelper {
                 int colorInd = ThreadLocalRandom.current().nextInt(0, palette.size());
                 colors.add(palette.get(colorInd));
             }
-            Log.d(DEBUG_TAG, colors.toString());
+            
             return colors;
         }
 
@@ -173,7 +173,7 @@ public class TrainHelper {
                 int shapeInd = ThreadLocalRandom.current().nextInt(0, shapesSet.size());
                 shapesSeq.add(shapesSet.get(shapeInd));
             }
-            Log.d(DEBUG_TAG, shapesSet.toString());
+            
             return shapesSeq;
         }
 
@@ -252,7 +252,7 @@ public class TrainHelper {
         public static ArrayList<Question> parseQuestionsFiles(ArrayList<File> questionsFiles){
             ArrayList<Question> questions = new ArrayList<>();
             for (int i = 0; i < questionsFiles.size(); ++i){
-                Log.d(DEBUG_TAG, "File " + questionsFiles.get(i));
+                
                 try{
                     Scanner scanner = new Scanner(questionsFiles.get(i));
                     scanner.useDelimiter("\n");
@@ -260,11 +260,11 @@ public class TrainHelper {
                     String curAnswersInOneStr = scanner.next();
                     Question curQuestion = new Question(curQuestionText, curAnswersInOneStr);
                     curQuestion.parseAnswersFromString();
-                    Log.d(DEBUG_TAG, curQuestion.getAnswers().toString());
+                    
                     questions.add(curQuestion);
                 }
                 catch (Exception e){
-                    Log.d(DEBUG_TAG, "in TrainHelper: " + e.toString());
+                    
                 }
 
             }

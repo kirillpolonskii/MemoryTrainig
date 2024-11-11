@@ -24,8 +24,8 @@ public class CorrectAnswerDialogFragment extends DialogFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        Log.d(DEBUG_TAG, "in onAttach() of CorrectAnswerDialogFragment");
-        Log.d(DEBUG_TAG, "context: " + context.toString());
+        
+        
         try {
             listener = (CorrectAnswerDialogListener) getParentFragment();
         } catch (ClassCastException e) {
@@ -35,7 +35,7 @@ public class CorrectAnswerDialogFragment extends DialogFragment {
     }
 
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        Log.d(DEBUG_TAG, "in onCreateDialog() of CorrectAnswerDialogFragment");
+        
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.correct_answer_dialog_title)

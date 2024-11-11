@@ -66,7 +66,7 @@ public class DetailsSettingsActivity extends AppCompatActivity
         sprImagesCollection.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Log.d(DEBUG_TAG, "In DetailsSettingsActivity: Long click on spinner itself");
+                
                 if(adapter.getCount() > 1){
                     showDeleteCollectionDialog();
                 }
@@ -88,15 +88,15 @@ public class DetailsSettingsActivity extends AppCompatActivity
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnSaveDetailsSettings onTouch. Action was DOWN");
+                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnSaveDetailsSettings onTouch. Action was MOVE");
+                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        Log.d(DEBUG_TAG, "btnSaveDetailsSettings onTouch. Action was UP");
+                        
                         view.setElevation(elevPx);
 
                         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -119,15 +119,15 @@ public class DetailsSettingsActivity extends AppCompatActivity
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnPlayDetailsWSettings onTouch. Action was DOWN");
+                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnPlayDetailsWSettings onTouch. Action was MOVE");
+                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        Log.d(DEBUG_TAG, "btnPlayDetailsWSettings onTouch. Action was UP");
+                        
                         view.setElevation(elevPx);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt(getString(R.string.saved_images_collection_position_key),
@@ -150,15 +150,15 @@ public class DetailsSettingsActivity extends AppCompatActivity
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnAddImage onTouch. Action was DOWN");
+                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnAddImage onTouch. Action was MOVE");
+                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        Log.d(DEBUG_TAG, "btnAddImage onTouch. Action was UP");
+                        
                         view.setElevation(elevPx);
                         Intent intent = new Intent(DetailsSettingsActivity.this, AddImageActivity.class);
                         startActivity(intent);
@@ -173,7 +173,7 @@ public class DetailsSettingsActivity extends AppCompatActivity
     @Override
     public void onResume(){
         super.onResume();
-        Log.d(DEBUG_TAG, "in DetailsSettingsActivity: onResume() called");
+        
         questionsCollectionsTitles.clear();
         questionsCollectionsTitles.addAll(CollectionsStorage.getCollectionsTitles(sharedPreferences,
                 getString(R.string.questions_collections_titles_key)));
@@ -189,7 +189,7 @@ public class DetailsSettingsActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.mi_btn_info) {
-            Log.d(DEBUG_TAG, "info button in ShapesSettingsActivity");
+            
             showInfoDialog(R.layout.fragment_details_settings_info);
             return true;
         }

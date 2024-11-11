@@ -53,7 +53,7 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
         CountDownTimer countDownTimer = new CountDownTimer(3000 + 200, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                Log.d(DEBUG_TAG, "onTick: millisUntilFinished = " + millisUntilFinished);
+                
                 tvCountdown.setText(String.valueOf(millisUntilFinished / 1000));
             }
 
@@ -99,7 +99,7 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
                             ivCurShape.setBackgroundResource(shapesSeq.get(curShapeShowInd));
                             ++curShapeShowInd;
                             tvCurShapeNum.setText(String.valueOf(curShapeShowInd));
-                            // Log.d(DEBUG_TAG, "curShapeShowInd = " + curShapeShowInd);
+                            // 
                         }
                     }
 
@@ -114,7 +114,7 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
                                 .setReorderingAllowed(true)
                                 .add(R.id.frt_cnt_v_stopwatch, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
                                 .commit();
-                        Log.d(DEBUG_TAG, "clShapes.getChildCount() = " + clShapes.getChildCount());
+                        
                         // Make all ImageView background white_blue
                         // Fill palette with right amount of shapes
                         ArrayList<ImageView> ivShapesSeq = new ArrayList<>();
@@ -146,12 +146,12 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
                                     int action = event.getAction();
                                     switch(action) {
                                         case (MotionEvent.ACTION_DOWN):
-                                            Log.d(DEBUG_TAG, "cvShapePal.get(i) onTouch. Action was DOWN");
+                                            
                                             btnShapesSet.get(finalI).setElevation(0);
                                             return true;
                                         case (MotionEvent.ACTION_UP):
                                             int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                                            Log.d(DEBUG_TAG, "cvShapePal.get(i) onTouch. Action was UP");
+                                            
                                             btnShapesSet.get(finalI).setElevation(elevPx);
                                             if(shapesSet.get(finalI).intValue() == shapesSeq.get(curShapeSeqInd).intValue()){
                                                 ivShapesSeq.get(curShapeSeqInd).setVisibility(View.VISIBLE);
@@ -159,10 +159,10 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
                                                         shapesSeq.get(curShapeSeqInd)
                                                 );
                                                 ++curShapeSeqInd;
-                                                Log.d(DEBUG_TAG, "YOU CHOSE CORRECT SHAPE");
+                                                
                                             }
                                             else {
-                                                Log.d(DEBUG_TAG, "YOU CHOSE WRONG SHAPE");
+                                                
                                                 ++mistakesAmount;
                                                 clShapes.setBackgroundColor(
                                                         getResources().getColor(R.color.seq_training_wrong_choice
@@ -177,7 +177,7 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
                                                 }, 60);
                                             }
                                             if(curShapeSeqInd == shapesAmount){
-                                                Log.d(DEBUG_TAG, "ALL SHAPES CHOSEN CORRECT");
+                                                
                                                 StopwatchFragment stopwatchFragment =
                                                         (StopwatchFragment) fragmentManager.findFragmentByTag(STOPWATCH_FRAGMENT_TAG);
                                                 trainingDurationSec = stopwatchFragment.getDecisecond() / 10;

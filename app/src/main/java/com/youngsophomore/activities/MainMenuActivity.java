@@ -55,11 +55,11 @@ public class MainMenuActivity extends AppCompatActivity {
                 int action = motionEvent.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnStats onTouch. Action was DOWN");
+                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnStats onTouch. Action was MOVE");
+                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
@@ -82,11 +82,11 @@ public class MainMenuActivity extends AppCompatActivity {
                 int action = motionEvent.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnInfo onTouch. Action was DOWN");
+                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnInfo onTouch. Action was MOVE");
+                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_info_elev);
@@ -108,7 +108,7 @@ public class MainMenuActivity extends AppCompatActivity {
             @Override
             public void onPositionChanged(final int position) {
                 // Handle stuff here
-                Log.d(DEBUG_TAG, "setOnPositionChangedListener: position = " + position);
+                
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt(getString(R.string.saved_lang_pos_key), position);
                 editor.apply();
@@ -135,11 +135,11 @@ public class MainMenuActivity extends AppCompatActivity {
                 int action = motionEvent.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "sgBtnEn onTouch. Action was DOWN");
+                        
                         sgBtnGrSwitchLang.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "sgBtnEn onTouch. Action was MOVE");
+                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_elev);
@@ -149,7 +149,7 @@ public class MainMenuActivity extends AppCompatActivity {
                         sgBtnGrSwitchLang.setElevation(elevPx);
                         return true;
                     case (MotionEvent.ACTION_CANCEL):
-                        Log.d(DEBUG_TAG, "sgBtnEn onTouch. Action was CANCEL");
+                        
                         return true;
                     default:
                         return false;
@@ -163,11 +163,11 @@ public class MainMenuActivity extends AppCompatActivity {
                 int action = motionEvent.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "sgBtnRu onTouch. Action was DOWN");
+                        
                         sgBtnGrSwitchLang.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "sgBtnRu onTouch. Action was MOVE");
+                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_elev);
@@ -178,7 +178,7 @@ public class MainMenuActivity extends AppCompatActivity {
 
                         return true;
                     case (MotionEvent.ACTION_CANCEL):
-                        Log.d(DEBUG_TAG, "sgBtnRu onTouch. Action was CANCEL");
+                        
                         return true;
                     default:
                         return false;
@@ -228,10 +228,10 @@ public class MainMenuActivity extends AppCompatActivity {
         // create necessary directories
         File phrasesDir = new File(getExternalFilesDir(null).getAbsolutePath() + "/phrases");
         if (!phrasesDir.exists() && phrasesDir.mkdir()) {
-            Log.d(DEBUG_TAG, "in MainMenuActivity: " + phrasesDir + " created");
+            
         }
         else{
-            Log.d(DEBUG_TAG, "in MainMenuActivity: " + phrasesDir + "existed or was NOT created");
+            
         }
 
         try {
@@ -247,7 +247,7 @@ public class MainMenuActivity extends AppCompatActivity {
             }
             FileOutputStream fos = new FileOutputStream(outFile);
             OutputStreamWriter osw = new OutputStreamWriter(fos);
-            Log.d(DEBUG_TAG, "in CollectionStorage: fileName = " + outFile);
+            
             ArrayList<String> phrasesCollection = new ArrayList<>();
             phrasesCollection.add("Спасибо за");
             phrasesCollection.add("использование приложения");
@@ -262,17 +262,17 @@ public class MainMenuActivity extends AppCompatActivity {
             fos.close();
         }
         catch (IOException e) {
-            Log.d(DEBUG_TAG, "in CollectionStorage: File write failed: " + e.toString());
+            
         }
 
         // init for details settings
         // make all necessary directories
         File detailsDir = new File(getExternalFilesDir(null).getAbsolutePath() + "/details");
         if (!detailsDir.exists() && detailsDir.mkdir()) {
-            Log.d(DEBUG_TAG, "in MainMenuActivity: " + detailsDir + " created");
+            
         }
         else{
-            Log.d(DEBUG_TAG, "in MainMenuActivity: " + detailsDir + "existed or was NOT created");
+            
         }
         ArrayList<Question> questionCollection = new ArrayList<>();
         Question question1 = new Question();
@@ -300,9 +300,9 @@ public class MainMenuActivity extends AppCompatActivity {
                     + "/details" + "/" + questionsCollectionTitle);
             //File phrasesDir = new File(context.getExternalFilesDir(null).getAbsolutePath() + "/phrases");
             if (!questionsDir.exists() && questionsDir.mkdir()) {
-                Log.d(DEBUG_TAG, "in MainMenuActivity: " + questionsDir + " created");
+                
             }
-            Log.d(DEBUG_TAG, "in MainMenuActivity: questionsDir = " + questionsDir);
+            
             for(int i = 0; i < questionCollection.size(); ++i){
                 String questionNum = "question";
                 if(i < 10){
@@ -326,7 +326,7 @@ public class MainMenuActivity extends AppCompatActivity {
                 }
                 FileOutputStream fos = new FileOutputStream(outFile);
                 OutputStreamWriter osw = new OutputStreamWriter(fos);
-                Log.d(DEBUG_TAG, "in MainMenuActivity: fileName = " + outFile);
+                
                 osw.write(questionCollection.get(i).getQuestionText());
                 osw.write("\n");
                 osw.write(questionCollection.get(i).getAnswersInOneString(false));
@@ -351,7 +351,7 @@ public class MainMenuActivity extends AppCompatActivity {
             editor.apply();
         }
         catch (IOException e) {
-            Log.d(DEBUG_TAG, "in MainMenuActivity: File write failed: " + e.toString());
+            
         }
 
     }

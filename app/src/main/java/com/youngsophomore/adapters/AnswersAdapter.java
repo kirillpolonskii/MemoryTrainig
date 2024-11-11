@@ -47,7 +47,7 @@ public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.ViewHold
 
 
     public AnswersAdapter(ArrayList<String> dataSet, RecyclerViewClickListener rvClickListener) {
-        Log.d(DEBUG_TAG, "In AnswersAdapter()");
+        
         answers = dataSet;
         this.rvClickListener = rvClickListener;
     }

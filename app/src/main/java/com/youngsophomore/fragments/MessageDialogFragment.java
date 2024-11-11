@@ -21,7 +21,7 @@ public class MessageDialogFragment extends DialogFragment {
     }
 
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        Log.d(DEBUG_TAG, "in onCreateDialog() of MessageDialogFragment");
+        
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(title)

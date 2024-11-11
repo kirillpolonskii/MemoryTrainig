@@ -40,7 +40,7 @@ public class AddPhraseFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        Log.d(DEBUG_TAG, "in onStop() of NewPhrasesListFragment");
+        
         Bundle result = new Bundle();
         result.putCharSequence(getString(R.string.new_phrase_key), etNewPhrase.getText().toString());
         getParentFragmentManager().setFragmentResult("requestKey", result);

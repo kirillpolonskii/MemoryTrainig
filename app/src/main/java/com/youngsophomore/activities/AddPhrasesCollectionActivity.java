@@ -73,14 +73,11 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnAddPhrase onTouch. Action was DOWN");
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnAddPhrase onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        Log.d(DEBUG_TAG, "btnAddPhrase onTouch. Action was UP");
                         view.setElevation(elevPx);
 
                         PrepHelper.deactivateBtn(btnAddPhrase);
@@ -105,14 +102,11 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnConfirmPhrase onTouch. Action was DOWN");
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnConfirmPhrase onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        Log.d(DEBUG_TAG, "btnConfirmPhrase onTouch. Action was UP");
                         view.setElevation(elevPx);
                         PrepHelper.activateBtn(btnAddPhrase, elevPx);
                         PrepHelper.activateBtn(btnConfirmPhrasesCollection, elevPx);
@@ -142,14 +136,11 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        Log.d(DEBUG_TAG, "btnConfirmPhrasesCollection onTouch. Action was DOWN");
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        Log.d(DEBUG_TAG, "btnConfirmPhrasesCollection onTouch. Action was MOVE");
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        Log.d(DEBUG_TAG, "btnConfirmPhrasesCollection onTouch. Action was UP");
                         view.setElevation(elevPx);
                         ArrayList<String> newPhrasesCollection = new ArrayList<>();
                         for(CharSequence phraseCharS : newPhrasesCollectionCharS){
@@ -197,7 +188,6 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.mi_btn_info) {
-            Log.d(DEBUG_TAG, "info button in ShapesSettingsActivity");
             showInfoDialog(R.layout.fragment_add_phrases_info);
             return true;
         }
@@ -216,7 +206,6 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Log.d(DEBUG_TAG, "in onBackPressed()");
         AddPhraseFragment addPhraseFragment =
                 (AddPhraseFragment) fragmentManager.findFragmentByTag(ADD_PHRASE_FRAGMENT_TAG);
         NewPhrasesListFragment newPhrasesListFragment =

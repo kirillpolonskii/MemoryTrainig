@@ -24,13 +24,13 @@ public class AddWordsCollectionFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(DEBUG_TAG, "onCreate in AddWordsCollectionFragment");
+        
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.d(DEBUG_TAG, "onCreateView in AddWordsCollectionFragment");
+        
         View fragment = inflater.inflate(R.layout.fragment_add_words_collection, container, false);
         return fragment;
     }

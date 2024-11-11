@@ -35,7 +35,7 @@ public class PhrasesTrainingAdapter extends RecyclerView.Adapter<PhrasesTraining
 
         public ViewHolder(View view) {
             super(view);
-            Log.d(DEBUG_TAG, "In public ViewHolder()");
+            
             btnCurPhrase = view.findViewById(R.id.btn_cur_phrase);
 
         }
@@ -47,7 +47,7 @@ public class PhrasesTrainingAdapter extends RecyclerView.Adapter<PhrasesTraining
 
     public PhrasesTrainingAdapter(ArrayList<String> dataSet, ArrayList<Integer> indicesPerm,
                                   float elevPx, int colorFocused, int colorChosen, Context context) {
-        Log.d(DEBUG_TAG, "In PhrasesAdapter()");
+        
         localDataSet = dataSet;
         this.indicesPerm = indicesPerm;
         this.colorFocused = colorFocused;
@@ -59,7 +59,7 @@ public class PhrasesTrainingAdapter extends RecyclerView.Adapter<PhrasesTraining
     @NonNull
     @Override
     public PhrasesTrainingAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Log.d(DEBUG_TAG, "In onCreateViewHolder()");
+        
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.phrase_training_row_el, parent, false);
 
@@ -69,7 +69,7 @@ public class PhrasesTrainingAdapter extends RecyclerView.Adapter<PhrasesTraining
     @Override
     public void onBindViewHolder(@NonNull PhrasesTrainingAdapter.ViewHolder holder, int position) {
         holder.getButton().setText(localDataSet.get(position));
-        Log.d(DEBUG_TAG, "In onBindViewHolder(): elevation = " + holder.getButton().getElevation());
+        
         holder.getButton().setElevation(0);
         holder.getButton().setBackgroundColor(colorFocused);
         holder.getButton().setOnClickListener(new View.OnClickListener() {
@@ -80,7 +80,7 @@ public class PhrasesTrainingAdapter extends RecyclerView.Adapter<PhrasesTraining
                     v.setElevation(elevPx);
                     elA = (Button) v;
                     elA.setBackgroundColor(colorChosen);
-                    Log.d(DEBUG_TAG, "In onClick(): " + elA);
+                    
                     elAPos = holder.getAdapterPosition();
                 }
                 else if (elAPos != holder.getAdapterPosition()){
@@ -93,14 +93,14 @@ public class PhrasesTrainingAdapter extends RecyclerView.Adapter<PhrasesTraining
                     indicesPerm.set(elAPos, indicesPerm.get(elBPos));
                     indicesPerm.set(elBPos, tempInd);
                     elB = (Button) v;
-                    Log.d(DEBUG_TAG, "In onClick(): " + elB);
+                    
                     elAPos = elBPos = 0;
                     elA = null;
                     elB = null;
                     isElASelected = false;
                     notifyDataSetChanged();
                     if (phrasesInRightOrder()){
-                        Log.d(DEBUG_TAG, "YOU ORDERED PHRASES CORRECTLY");
+                        
                         phraseTrainingListener.onFinishTraining(movesAmount);
                     }
                 }
@@ -110,12 +110,12 @@ public class PhrasesTrainingAdapter extends RecyclerView.Adapter<PhrasesTraining
 
     @Override
     public int getItemCount() {
-        Log.d(DEBUG_TAG, "In getItemCount()");
+        
         return localDataSet.size();
     }
 
     private boolean phrasesInRightOrder(){
-        Log.d(DEBUG_TAG, "Entered phrasesInRightOrder()");
+        
         for(int i = 1; i < indicesPerm.size(); ++i){
             if(indicesPerm.get(i) - indicesPerm.get(i - 1) != 1){
                 return false;

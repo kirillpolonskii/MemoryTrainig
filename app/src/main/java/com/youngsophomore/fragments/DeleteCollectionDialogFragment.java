@@ -29,8 +29,8 @@ public class DeleteCollectionDialogFragment extends DialogFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        Log.d(DEBUG_TAG, "in onAttach() of DeleteCollectionDialogFragment");
-        Log.d(DEBUG_TAG, "context: " + context.toString());
+        
+        
         try {
             listener = (DeleteCollectionDialogFragment.DeleteCollectionDialogListener) getParentFragment();
             if(listener == null) {
@@ -63,6 +63,6 @@ public class DeleteCollectionDialogFragment extends DialogFragment {
     }
 
     public DeleteCollectionDialogFragment() {
-        Log.d(DEBUG_TAG, "in DeleteCollectionDialogFragment()");
+        
     }
 }

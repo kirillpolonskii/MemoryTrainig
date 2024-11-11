@@ -24,7 +24,7 @@ public class QuestionTypeDialogFragment extends DialogFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        Log.d(DEBUG_TAG, "in onAttach() of QuestionTypeDialogFragment");
+        
         listener = (QuestionTypeDialogListener) getParentFragment();
     }
 
