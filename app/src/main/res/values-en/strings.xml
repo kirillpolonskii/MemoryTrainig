@@ -115,7 +115,7 @@
     <string name="chosen_img_key">CHOSEN_IMG_KEY</string>
 
     <string name="question_type_dialog_title">Type of question</string>
-    <string name="question_type_dialog_message">Does the new question contain only one answer?</string>
+    <string name="question_type_dialog_message">Does the new question have only one answer?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="ok">Ok</string>

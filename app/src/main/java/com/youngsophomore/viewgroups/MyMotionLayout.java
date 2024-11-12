@@ -55,7 +55,6 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
 
     public MyMotionLayout(@NonNull Context context) {
         super(context);
-        
     }
 
     public MyMotionLayout(@NonNull Context context, @Nullable AttributeSet attrs) {

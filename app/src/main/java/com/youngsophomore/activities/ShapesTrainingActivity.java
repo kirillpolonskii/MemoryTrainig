@@ -147,7 +147,8 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
                                         case (MotionEvent.ACTION_UP):
                                             int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                                             btnShapesSet.get(finalI).setElevation(elevPx);
-                                            if(paletteShp.get(finalI).intValue() == shapesSeq.get(curShapeSeqInd).intValue()){
+                                            // TODO: добавить условие проверки индекса < размера
+                                            if(curShapeSeqInd < shapesAmount && paletteShp.get(finalI).intValue() == shapesSeq.get(curShapeSeqInd).intValue()){
                                                 ivShapesSeq.get(curShapeSeqInd).setVisibility(View.VISIBLE);
                                                 ivShapesSeq.get(curShapeSeqInd).setBackgroundResource(
                                                         shapesSeq.get(curShapeSeqInd)

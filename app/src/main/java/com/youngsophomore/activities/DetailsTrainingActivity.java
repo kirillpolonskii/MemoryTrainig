@@ -30,6 +30,7 @@ import com.youngsophomore.data.StatParam;
 import com.youngsophomore.data.Training;
 import com.youngsophomore.fragments.FinishDialogFragment;
 import com.youngsophomore.fragments.StopwatchFragment;
+import com.youngsophomore.helpers.PrepHelper;
 import com.youngsophomore.helpers.TrainHelper;
 
 import java.io.File;
@@ -99,14 +100,14 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
                 ConstraintSet constraintSet = new ConstraintSet();
                 constraintSet.clone(cntLytPretrain);
                 constraintSet.connect(ivCollectionImage.getId(), ConstraintSet.TOP,
-                        ConstraintSet.PARENT_ID, ConstraintSet.TOP);
+                        tvCurPhraseNum.getId(), ConstraintSet.BOTTOM);
                 constraintSet.connect(ivCollectionImage.getId(), ConstraintSet.BOTTOM,
                         ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM);
                 constraintSet.connect(ivCollectionImage.getId(), ConstraintSet.START,
                         ConstraintSet.PARENT_ID, ConstraintSet.START);
                 constraintSet.connect(ivCollectionImage.getId(), ConstraintSet.END,
                         ConstraintSet.PARENT_ID, ConstraintSet.END);
-                constraintSet.setDimensionRatio(ivCollectionImage.getId(), "1:1");
+                //constraintSet.setDimensionRatio(ivCollectionImage.getId(), "1:1");
                 constraintSet.applyTo(cntLytPretrain);
                 ivCollectionImage.setImageURI(imageUri);
 
@@ -144,36 +145,58 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
                             @Override
                             public void onCheckedChanged(RadioGroup group, int checkedId) {
                                 if (checkedId == R.id.r_btn_answer_1){
-                                    answersIndices.clear();
-                                    answersIndices.add(1);
+                                    if(((RadioButton)group.getChildAt(0)).isChecked()){
+                                        answersIndices.clear();
+                                        answersIndices.add(1);
+                                        Log.d(CollectionsStorage.DEBUG_TAG,
+                                                "in end of onCheckedChanged,r_btn_answer_1 " + answersIndices);
+                                    }
                                 }
                                 else if (checkedId == R.id.r_btn_answer_2){
-                                    answersIndices.clear();
-                                    answersIndices.add(2);
+                                    if(((RadioButton)group.getChildAt(1)).isChecked()){
+                                        answersIndices.clear();
+                                        answersIndices.add(2);
+                                        Log.d(CollectionsStorage.DEBUG_TAG,
+                                                "in end of onCheckedChanged,r_btn_answer_2 " + answersIndices);
+                                    }
                                 }
                                 else if (checkedId == R.id.r_btn_answer_3){
-                                    answersIndices.clear();
-                                    answersIndices.add(3);
+                                    if(((RadioButton)group.getChildAt(2)).isChecked()){
+                                        answersIndices.clear();
+                                        answersIndices.add(3);
+                                        Log.d(CollectionsStorage.DEBUG_TAG,
+                                                "in end of onCheckedChanged,r_btn_answer_3 " + answersIndices);
+                                    }
                                 }
                                 else if (checkedId == R.id.r_btn_answer_4){
                                     answersIndices.clear();
                                     answersIndices.add(4);
+                                    Log.d(CollectionsStorage.DEBUG_TAG,
+                                            "in end of onCheckedChanged,r_btn_answer_4 " + answersIndices);
                                 }
                                 else if (checkedId == R.id.r_btn_answer_5){
                                     answersIndices.clear();
                                     answersIndices.add(5);
+                                    Log.d(CollectionsStorage.DEBUG_TAG,
+                                            "in end of onCheckedChanged,r_btn_answer_5 " + answersIndices);
                                 }
                                 else if (checkedId == R.id.r_btn_answer_6){
                                     answersIndices.clear();
                                     answersIndices.add(6);
+                                    Log.d(CollectionsStorage.DEBUG_TAG,
+                                            "in end of onCheckedChanged,r_btn_answer_6 " + answersIndices);
                                 }
                                 else if (checkedId == R.id.r_btn_answer_7){
                                     answersIndices.clear();
                                     answersIndices.add(7);
+                                    Log.d(CollectionsStorage.DEBUG_TAG,
+                                            "in end of onCheckedChanged,r_btn_answer_7 " + answersIndices);
                                 }
                                 else if (checkedId == R.id.r_btn_answer_8){
                                     answersIndices.clear();
                                     answersIndices.add(8);
+                                    Log.d(CollectionsStorage.DEBUG_TAG,
+                                            "in end of onCheckedChanged,r_btn_answer_8 " + answersIndices);
                                 }
                             }
                         });
@@ -187,6 +210,8 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
                                     } else {
                                         answersIndices.remove(finalI + 1);
                                     }
+                                    Log.d(CollectionsStorage.DEBUG_TAG,
+                                            "in end of onCheckedChanged,ckBxMultAnswers.get(i) " + answersIndices);
                                 }
                             });
                         }
@@ -203,6 +228,7 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
                         tvQuestionText.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                Log.d(CollectionsStorage.DEBUG_TAG, "in beg of onClick " + answersIndices.toString());
                                 if (questionsCollection.get(curQuestionInd).getCorrAnswersIndices().equals(
                                         answersIndices
                                 )){
@@ -269,7 +295,9 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
     }
 
     private void showNextQuestion(){
+        Log.d(CollectionsStorage.DEBUG_TAG, "in beg of showNextQuestion " + answersIndices.toString());
         answersIndices.clear();
+        Log.d(CollectionsStorage.DEBUG_TAG, "aft clear " + answersIndices);
         Question curQuestion = questionsCollection.get(curQuestionInd);
         changeAnswersLayout(curQuestion.isSingleAnswer(), curQuestion.getAnswers().size());
         tvQuestionText.setText(curQuestion.getQuestionText());
@@ -277,16 +305,20 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
             if(curQuestion.isSingleAnswer()){
                 rBtnSingleAnswers.get(i).setText(
                         curQuestion.getAnswers().get(i).substring(0, curQuestion.getAnswers().get(i).length() - 1));
+                rBtnSingleAnswers.get(i).setChecked(false);
             }
             else{
                 ckBxMultAnswers.get(i).setText(
                         curQuestion.getAnswers().get(i).substring(0, curQuestion.getAnswers().get(i).length() - 1));
+                ckBxMultAnswers.get(i).setChecked(false);
             }
         }
+        Log.d(CollectionsStorage.DEBUG_TAG, "in end of showNextQuestion " + answersIndices.toString());
     }
     private void changeAnswersLayout(boolean hasSingleAnswer, int answersNum){
         if (hasSingleAnswer){
             rgSingleAnswer.setVisibility(View.VISIBLE);
+            rgSingleAnswer.clearCheck();
             for(int i = 0; i < TrainHelper.Details.ANSWERS_NUM; ++i){
                 if(i < answersNum){
                     rBtnSingleAnswers.get(i).setVisibility(View.VISIBLE);
@@ -308,6 +340,7 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
                 else{
                     ckBxMultAnswers.get(i).setVisibility(View.GONE);
                 }
+                ckBxMultAnswers.get(i).setChecked(false);
             }
         }
     }

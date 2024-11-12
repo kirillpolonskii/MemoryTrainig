@@ -142,7 +142,7 @@ public class ColorsTrainingActivity extends AppCompatActivity implements
                                         case (MotionEvent.ACTION_UP):
                                             int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                                             cvColorPal.get(finalI).setCardElevation(elevPx);
-                                            if(paletteClr.get(finalI).intValue() == colorSeq.get(curColorSeqInd).intValue()){
+                                            if(curColorSeqInd < colorsAmount && paletteClr.get(finalI).intValue() == colorSeq.get(curColorSeqInd).intValue()){
                                                 ivColorSeq.get(curColorSeqInd).setVisibility(View.VISIBLE);
                                                 ivColorSeq.get(curColorSeqInd).setBackgroundColor(
                                                         getResources().getColor(colorSeq.get(curColorSeqInd))

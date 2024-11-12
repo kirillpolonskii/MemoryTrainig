@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class CollectionsStorage {
-    private static final String DEBUG_TAG = "Gestures";
+    public static final String DEBUG_TAG = "Gestures";
 
 
     public static ArrayList<String> getCollectionsTitles(SharedPreferences sharedPreferences, String key){

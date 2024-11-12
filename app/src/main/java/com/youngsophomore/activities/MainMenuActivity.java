@@ -39,9 +39,21 @@ public class MainMenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu);
         SharedPreferences sharedPreferences =
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        int switchLangPos = sharedPreferences.getInt(getString(R.string.saved_lang_pos_key), 1);
+        if (switchLangPos == 1) {
+            languageToLoad = "ru";// russian
+        } else {
+            languageToLoad = "en";// english
+        }
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config, null);
+        setContentView(R.layout.activity_main_menu);
+
         init(sharedPreferences);
 
         mtnLtMainMenu = findViewById(R.id.mtn_lt_main_m);
@@ -92,7 +104,6 @@ public class MainMenuActivity extends AppCompatActivity {
             }
         });
 
-        int switchLangPos = sharedPreferences.getInt(getString(R.string.saved_lang_pos_key), 1);
         sgBtnGrSwitchLang.setPosition(switchLangPos, false);
         sgBtnGrSwitchLang.setOnPositionChangedListener(new SegmentedButtonGroup.OnPositionChangedListener() {
             @Override
