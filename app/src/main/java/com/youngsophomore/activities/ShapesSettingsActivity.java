@@ -21,7 +21,6 @@ import com.youngsophomore.R;
 import com.youngsophomore.fragments.InfoDialogFragment;
 
 public class ShapesSettingsActivity extends AppCompatActivity {
-    private static final String DEBUG_TAG = "Gestures";
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,12 +60,10 @@ public class ShapesSettingsActivity extends AppCompatActivity {
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        
                         view.setElevation(elevPx);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt(getString(R.string.saved_shapes_amount_key),

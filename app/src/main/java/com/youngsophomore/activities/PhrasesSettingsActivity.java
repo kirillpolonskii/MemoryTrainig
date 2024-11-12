@@ -73,7 +73,6 @@ public class PhrasesSettingsActivity extends AppCompatActivity
         sprPhrasesCollection.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                
                 if(adapter.getCount() > 1){
                     showDeleteCollectionDialog();
                 }
@@ -95,15 +94,12 @@ public class PhrasesSettingsActivity extends AppCompatActivity
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        
                         view.setElevation(elevPx);
                         Intent intent = new Intent(PhrasesSettingsActivity.this, AddPhrasesCollectionActivity.class);
                         startActivity(intent);
@@ -120,17 +116,13 @@ public class PhrasesSettingsActivity extends AppCompatActivity
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        
                         view.setElevation(elevPx);
-
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt(getString(R.string.saved_phrases_collection_position_key),
                                 sprPhrasesCollection.getSelectedItemPosition());
@@ -151,15 +143,12 @@ public class PhrasesSettingsActivity extends AppCompatActivity
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        
                         view.setElevation(elevPx);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt(getString(R.string.saved_phrases_collection_position_key),
@@ -219,7 +208,6 @@ public class PhrasesSettingsActivity extends AppCompatActivity
 
     @Override
     public void onDeleteCollectionPosClick(DialogFragment dialog) {
-        
         CollectionsStorage.deletePhrasesCollection(
                 (String) sprPhrasesCollection.getSelectedItem(),
                 getString(R.string.phrases_collections_titles_key),

@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import com.youngsophomore.R;
 
 public class AddWordsCollectionFragment extends Fragment {
-    private static final String DEBUG_TAG = "Gestures";
     public AddWordsCollectionFragment() {
         // Required empty public constructor
     }

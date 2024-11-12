@@ -21,7 +21,6 @@ public class PhrasesTrainingAdapter extends RecyclerView.Adapter<PhrasesTraining
     public ArrayList<Integer> indicesPerm;
     int colorFocused, colorChosen;
     private Button elA;
-    private Button elB;
     private int elAPos, elBPos;
     private boolean isElASelected = false;
     private float elevPx;
@@ -92,11 +91,9 @@ public class PhrasesTrainingAdapter extends RecyclerView.Adapter<PhrasesTraining
                     Integer tempInd = indicesPerm.get(elAPos);
                     indicesPerm.set(elAPos, indicesPerm.get(elBPos));
                     indicesPerm.set(elBPos, tempInd);
-                    elB = (Button) v;
-                    
+
                     elAPos = elBPos = 0;
                     elA = null;
-                    elB = null;
                     isElASelected = false;
                     notifyDataSetChanged();
                     if (phrasesInRightOrder()){

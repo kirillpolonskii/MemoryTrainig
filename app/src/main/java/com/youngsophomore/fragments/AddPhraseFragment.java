@@ -13,7 +13,6 @@ import android.widget.EditText;
 import com.youngsophomore.R;
 
 public class AddPhraseFragment extends Fragment {
-    private static final String DEBUG_TAG = "Gestures";
     private EditText etNewPhrase;
 
     public AddPhraseFragment() {
@@ -40,7 +39,6 @@ public class AddPhraseFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        
         Bundle result = new Bundle();
         result.putCharSequence(getString(R.string.new_phrase_key), etNewPhrase.getText().toString());
         getParentFragmentManager().setFragmentResult("requestKey", result);

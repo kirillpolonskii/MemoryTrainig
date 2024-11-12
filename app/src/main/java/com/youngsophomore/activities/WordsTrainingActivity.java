@@ -33,7 +33,6 @@ import java.util.Arrays;
 
 public class WordsTrainingActivity extends AppCompatActivity implements
         FinishDialogFragment.FinishDialogListener {
-    private static final String DEBUG_TAG = "Gestures";
     private static final String STOPWATCH_FRAGMENT_TAG = "stopwatch_fragment_tag";
     int curWordShowInd = 0, curWordSeqInd = 0, curPaletteSize = TrainHelper.Words.INIT_PAL_SIZE;
     private int mistakesAmount = 0;
@@ -52,7 +51,6 @@ public class WordsTrainingActivity extends AppCompatActivity implements
         CountDownTimer countDownTimer = new CountDownTimer(3000 + 200, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                
                 tvCountdown.setText(String.valueOf(millisUntilFinished / 1000));
             }
 
@@ -61,10 +59,8 @@ public class WordsTrainingActivity extends AppCompatActivity implements
                 ArrayList<String> wordsCollectionsTitles = CollectionsStorage.getCollectionsTitles(
                         sharedPreferences, getString(R.string.words_collections_titles_key)
                 );
-                
                 String wordsCollectionTitle = wordsCollectionsTitles.get(wordsCollectionPosition);
                 String strWordsCollection = sharedPreferences.getString(wordsCollectionTitle, "");
-                
                 String[] splittedWordsCollection = strWordsCollection.split(" ");
                 ArrayList<String> wordsCollection = new ArrayList<>(Arrays.asList(splittedWordsCollection));
                 
@@ -79,14 +75,13 @@ public class WordsTrainingActivity extends AppCompatActivity implements
                             tvCountdown.setText(wordsCollection.get(curWordShowInd));
                             ++curWordShowInd;
                             tvCurWordNum.setText(String.valueOf(curWordShowInd));
-                            
                         }
                     }
 
                     @SuppressLint("ClickableViewAccessibility")
                     @Override
                     public void onFinish() {
-                        ArrayList<String> curWordPalette = TrainHelper.Words.generateWordsPalette(
+                        ArrayList<String> curPaletteWrd = TrainHelper.Words.generatePalette(
                                 wordsCollection, curWordSeqInd, curPaletteSize
                         );
                         setContentView(R.layout.activity_words_training);
@@ -108,7 +103,7 @@ public class WordsTrainingActivity extends AppCompatActivity implements
                         for(int i = 0; i < clWordsPal.getChildCount() - 2; ++i){
                             btnWordPal.add((Button) clWordsPal.getChildAt(i));
                             if (i < curPaletteSize)
-                                btnWordPal.get(i).setText(curWordPalette.get(i));
+                                btnWordPal.get(i).setText(curPaletteWrd.get(i));
                             else
                                 btnWordPal.get(i).setVisibility(View.GONE);
                             int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
@@ -123,34 +118,29 @@ public class WordsTrainingActivity extends AppCompatActivity implements
                                     int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                                     switch(action) {
                                         case (MotionEvent.ACTION_DOWN):
-                                            
                                             btnWordPal.get(finalI).setElevation(0);
                                             return true;
                                         case (MotionEvent.ACTION_MOVE):
-                                            
                                             btnWordPal.get(finalI).setElevation(elevPx);
                                             return false;
                                         case (MotionEvent.ACTION_UP):
-                                            
                                             btnWordPal.get(finalI).setElevation(elevPx);
                                             if(btnWordPal.get(finalI).getText() == wordsCollection.get(curWordSeqInd)){
-                                                
                                                 tvWordsSeq.setText(tvWordsSeq.getText() + " " + wordsCollection.get(curWordSeqInd));
                                                 ++curWordSeqInd;
                                                 if (curWordSeqInd + curPaletteSize > wordsCollection.size())
                                                     --curPaletteSize;
-                                                ArrayList<String> curWordPalette = TrainHelper.Words.generateWordsPalette(
+                                                ArrayList<String> curPaletteWrd = TrainHelper.Words.generatePalette(
                                                         wordsCollection, curWordSeqInd, curPaletteSize
                                                 );
                                                 for(int j = 0; j < clWordsPal.getChildCount() - 2; ++j){
                                                     if (j < curPaletteSize)
-                                                        btnWordPal.get(j).setText(curWordPalette.get(j));
+                                                        btnWordPal.get(j).setText(curPaletteWrd.get(j));
                                                     else
                                                         btnWordPal.get(j).setVisibility(View.GONE);
                                                 }
                                             }
                                             else {
-                                                
                                                 ++mistakesAmount;
                                                 clParent.setBackgroundColor(
                                                         getResources().getColor(R.color.seq_training_wrong_choice
@@ -165,7 +155,6 @@ public class WordsTrainingActivity extends AppCompatActivity implements
                                                 }, 60);
                                             }
                                             if(curWordSeqInd == wordsCollection.size()){
-                                                
                                                 StopwatchFragment stopwatchFragment =
                                                         (StopwatchFragment) fragmentManager.findFragmentByTag(STOPWATCH_FRAGMENT_TAG);
                                                 trainingDurationSec = stopwatchFragment.getDecisecond() / 10;

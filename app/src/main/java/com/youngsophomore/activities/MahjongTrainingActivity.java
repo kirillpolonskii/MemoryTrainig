@@ -31,7 +31,6 @@ import java.util.ArrayList;
 @SuppressLint("MissingInflatedId")
 public class MahjongTrainingActivity extends AppCompatActivity implements
         FinishDialogFragment.FinishDialogListener {
-    private static final String DEBUG_TAG = "Gestures";
     private static final String STOPWATCH_FRAGMENT_TAG = "stopwatch_fragment_tag";
     private ArrayList<ImageButton> flippedTiles;
     private ArrayList<Integer> flippedTilesNum;
@@ -89,7 +88,6 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
                     public void onTick(long millisUntilFinished) {}
                     @Override
                     public void onFinish() {
-                        // Запуск секундомера
                         Bundle bundle = new Bundle();
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         fragmentManager.beginTransaction()
@@ -125,14 +123,12 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
                                             @Override
                                             public void run() {
                                                 if(isAllTilesEqual()){
-                                                    
                                                     for(ImageButton flippedBtnTile : flippedTiles){
                                                         flippedBtnTile.setClickable(false);
                                                         flippedBtnTile.setVisibility(View.INVISIBLE);
                                                         ++removedTilesCount;
                                                     }
                                                     if (removedTilesCount == mhjTilesAmount){
-                                                        
                                                         StopwatchFragment stopwatchFragment =
                                                                 (StopwatchFragment) fragmentManager.findFragmentByTag(STOPWATCH_FRAGMENT_TAG);
                                                         trainingDurationSec = stopwatchFragment.getDecisecond() / 10;
@@ -161,7 +157,6 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
 
                                                 }
                                                 else{
-                                                    
                                                     ++mistakesAmount;
                                                     for(ImageButton flippedBtnTile : flippedTiles){
                                                         flippedBtnTile.setImageResource(R.drawable.tile_back);

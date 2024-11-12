@@ -453,12 +453,8 @@ public class StatisticsActivity extends AppCompatActivity {
     }
 
     private void fillDataMhj(){
-        // в этом массиве длины 10 лежат средние кол-ва неправильных ходов для игр <12, X, X>
         ArrayList<Float> grAvMovesTiles12 = new ArrayList<>();
-        // в этом массиве длины 10 лежат средние кол-ва неправильных ходов для игр <12, X, X>
         ArrayList<Float> grAvMovesTiles24 = new ArrayList<>();
-        // для их заполнения нужно просуммировать все неправильные ходы в играх с этими параметрами и
-        // поделить на общее количество игр с этими параметрами, где время меняется  от 1 до 10
         for(int i = 0; i < mhjShowTimeSecs.length; ++i){
             int curTimeTotNumMoves12 = 0, curTimeTotNumMoves24 = 0;
             int curTimeTotTrain12 = 0, curTimeTotTrain24 = 0;
@@ -489,16 +485,10 @@ public class StatisticsActivity extends AppCompatActivity {
             entriesByTiles24.add(new BarEntry(mhjShowTimeSecs[i], grAvMovesTiles24.get(i)));
         }
 
-        // в этом массиве длины 10 лежат средние кол-ва неправильных ходов для игр <X, 2, X>
         ArrayList<Float> grAvMovesEqTiles2 = new ArrayList<>();
-        // в этом массиве длины 10 лежат средние кол-ва неправильных ходов для игр <X, 3, X>
         ArrayList<Float> grAvMovesEqTiles3 = new ArrayList<>();
-        // в этом массиве длины 10 лежат средние кол-ва неправильных ходов для игр <X, 4, X>
         ArrayList<Float> grAvMovesEqTiles4 = new ArrayList<>();
-        // в этом массиве длины 10 лежат средние кол-ва неправильных ходов для игр <X, 6, X>
         ArrayList<Float> grAvMovesEqTiles6 = new ArrayList<>();
-        // для их заполнения нужно просуммировать все неправильные ходы в играх с этими параметрами и
-        // поделить на общее количество игр с этими параметрами, где время меняется  от 1 до 10
         for(int i = 0; i < mhjShowTimeSecs.length; ++i){
             int curTimeTotNumMoves2 = 0, curTimeTotNumMoves3 = 0, curTimeTotNumMoves4 = 0, curTimeTotNumMoves6 = 0;
             int curTimeTotTrain2 = 0, curTimeTotTrain3 = 0, curTimeTotTrain4 = 0, curTimeTotTrain6 = 0;

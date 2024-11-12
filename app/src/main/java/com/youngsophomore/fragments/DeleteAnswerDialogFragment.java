@@ -13,7 +13,6 @@ import android.util.Log;
 import com.youngsophomore.R;
 
 public class DeleteAnswerDialogFragment extends DialogFragment {
-    private static final String DEBUG_TAG = "Gestures";
     private int deletedPosition;
     public interface DeleteAnswerDialogListener {
         void onDeleteAnswerPosClick(DialogFragment dialog, int position);
@@ -25,8 +24,6 @@ public class DeleteAnswerDialogFragment extends DialogFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        
-        
         try {
             listener = (DeleteAnswerDialogListener) getParentFragment();
         } catch (ClassCastException e) {
@@ -36,8 +33,6 @@ public class DeleteAnswerDialogFragment extends DialogFragment {
     }
 
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        
-
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.delete_answer_dialog_title)
                 .setMessage(R.string.delete_answer_dialog_message)
@@ -57,7 +52,6 @@ public class DeleteAnswerDialogFragment extends DialogFragment {
     }
 
     public DeleteAnswerDialogFragment(int position) {
-        
         deletedPosition = position;
     }
 }

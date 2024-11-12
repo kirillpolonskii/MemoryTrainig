@@ -110,7 +110,6 @@ public class ColorsSettingsActivity extends AppCompatActivity {
                     default:
                         return false;
                 }
-
             }
         });
     }

@@ -153,7 +153,7 @@ public class TrainHelper {
     }
 
     public class Shapes{
-        public static ArrayList<Integer> generateShapesSet(int distinctShapesAmount){
+        public static ArrayList<Integer> generatePalette(int distinctShapesAmount){
             ArrayList<Integer> shapesSet = new ArrayList<>();
             for(int i = 0; i < distinctShapesAmount; ++i){
                 int shapeInd = ThreadLocalRandom.current().nextInt(1, 9 + 1);
@@ -205,7 +205,7 @@ public class TrainHelper {
 
     public class Words{
         public static final int INIT_PAL_SIZE = 9;
-        public static ArrayList<String> generateWordsPalette(
+        public static ArrayList<String> generatePalette(
                 ArrayList<String> wordsCollection,
                 int curWordPos,
                 int curPaletteSize){
@@ -249,26 +249,7 @@ public class TrainHelper {
     }
 
     public class Details{
-        public static ArrayList<Question> parseQuestionsFiles(ArrayList<File> questionsFiles){
-            ArrayList<Question> questions = new ArrayList<>();
-            for (int i = 0; i < questionsFiles.size(); ++i){
-                
-                try{
-                    Scanner scanner = new Scanner(questionsFiles.get(i));
-                    scanner.useDelimiter("\n");
-                    String curQuestionText = scanner.next();
-                    String curAnswersInOneStr = scanner.next();
-                    Question curQuestion = new Question(curQuestionText, curAnswersInOneStr);
-                    curQuestion.parseAnswersFromString();
-                    
-                    questions.add(curQuestion);
-                }
-                catch (Exception e){
-                    
-                }
+        public static final int ANSWERS_NUM = 8;
 
-            }
-            return questions;
-        }
     }
 }

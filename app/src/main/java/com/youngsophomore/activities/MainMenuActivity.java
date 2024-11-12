@@ -55,17 +55,12 @@ public class MainMenuActivity extends AppCompatActivity {
                 int action = motionEvent.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        Log.d(DEBUG_TAG, "btnStats onTouch. Action was UP. open statistics" +
-                                ", R.dimen.btn_stats_elev = " + R.dimen.btn_stats_elev +
-                                ", elev = " + elevPx);
                         view.setElevation(elevPx);
                         Intent intent = new Intent(getApplicationContext(), StatisticsActivity.class);
                         startActivity(intent);
@@ -82,17 +77,12 @@ public class MainMenuActivity extends AppCompatActivity {
                 int action = motionEvent.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_info_elev);
-                        Log.d(DEBUG_TAG, "btnInfo onTouch. Action was UP. open info" +
-                                ", R.dimen.btn_info_elev = " + R.dimen.btn_info_elev +
-                                ", elev = " + elevPx);
                         view.setElevation(elevPx);
                         showInfoDialog(R.layout.fragment_main_menu_info);
                         return true;
@@ -135,21 +125,13 @@ public class MainMenuActivity extends AppCompatActivity {
                 int action = motionEvent.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        
                         sgBtnGrSwitchLang.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_elev);
-                        Log.d(DEBUG_TAG, "sgBtnEn onTouch. Action was UP. open statistics" +
-                                ", R.dimen.sgbtn_elev = " + R.dimen.sgbtn_elev +
-                                ", elev = " + elevPx);
                         sgBtnGrSwitchLang.setElevation(elevPx);
-                        return true;
-                    case (MotionEvent.ACTION_CANCEL):
-                        
                         return true;
                     default:
                         return false;
@@ -163,22 +145,13 @@ public class MainMenuActivity extends AppCompatActivity {
                 int action = motionEvent.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        
                         sgBtnGrSwitchLang.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_elev);
-                        Log.d(DEBUG_TAG, "sgBtnRu onTouch. Action was UP. open statistics" +
-                                ", R.dimen.sgbtn_elev = " + R.dimen.sgbtn_elev +
-                                ", elev = " + elevPx);
                         sgBtnGrSwitchLang.setElevation(elevPx);
-
-                        return true;
-                    case (MotionEvent.ACTION_CANCEL):
-                        
                         return true;
                     default:
                         return false;
@@ -227,12 +200,6 @@ public class MainMenuActivity extends AppCompatActivity {
         editor.apply();
         // create necessary directories
         File phrasesDir = new File(getExternalFilesDir(null).getAbsolutePath() + "/phrases");
-        if (!phrasesDir.exists() && phrasesDir.mkdir()) {
-            
-        }
-        else{
-            
-        }
 
         try {
             String fileName = "/" + phrasesCollectionTitle + ".txt";
@@ -264,16 +231,8 @@ public class MainMenuActivity extends AppCompatActivity {
         catch (IOException e) {
             
         }
-
         // init for details settings
         // make all necessary directories
-        File detailsDir = new File(getExternalFilesDir(null).getAbsolutePath() + "/details");
-        if (!detailsDir.exists() && detailsDir.mkdir()) {
-            
-        }
-        else{
-            
-        }
         ArrayList<Question> questionCollection = new ArrayList<>();
         Question question1 = new Question();
         question1.setQuestionText("Что изображено на картине?");
@@ -298,11 +257,6 @@ public class MainMenuActivity extends AppCompatActivity {
         try {
             File questionsDir = new File(getExternalFilesDir(null).getAbsolutePath()
                     + "/details" + "/" + questionsCollectionTitle);
-            //File phrasesDir = new File(context.getExternalFilesDir(null).getAbsolutePath() + "/phrases");
-            if (!questionsDir.exists() && questionsDir.mkdir()) {
-                
-            }
-            
             for(int i = 0; i < questionCollection.size(); ++i){
                 String questionNum = "question";
                 if(i < 10){
@@ -316,14 +270,7 @@ public class MainMenuActivity extends AppCompatActivity {
                 }
                 String fileName = "/" + questionNum + ".txt";
                 File outFile = new File(questionsDir, fileName);
-                if (!outFile.exists() && outFile.createNewFile()) {
-                    Log.d(DEBUG_TAG, "in MainMenuActivity: " + outFile.getAbsolutePath() +
-                            " did NOT exist and was created");
-                }
-                else{
-                    Log.d(DEBUG_TAG, "in MainMenuActivity: " + outFile.getAbsolutePath() +
-                            " existed or was NOT created");
-                }
+
                 FileOutputStream fos = new FileOutputStream(outFile);
                 OutputStreamWriter osw = new OutputStreamWriter(fos);
                 
@@ -353,7 +300,6 @@ public class MainMenuActivity extends AppCompatActivity {
         catch (IOException e) {
             
         }
-
     }
 
 }

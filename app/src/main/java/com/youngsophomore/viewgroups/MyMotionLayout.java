@@ -91,22 +91,18 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
                     Log.d(DEBUG_TAG, "onInterceptTouchEvent. Event will be passed further");
                 }
                 return super.onTouchEvent(motionEvent);
-            //return false;
             case (MotionEvent.ACTION_MOVE):
                 Log.d(DEBUG_TAG, "onInterceptTouchEvent. Action was MOVE");
                 return super.onInterceptTouchEvent(motionEvent);
-            //return false;
             case (MotionEvent.ACTION_UP):
                 Log.d(DEBUG_TAG, "onInterceptTouchEvent. Action was UP");
                 return super.onInterceptTouchEvent(motionEvent);
-            //return false;
             case (MotionEvent.ACTION_CANCEL):
                 Log.d(DEBUG_TAG, "onInterceptTouchEvent. Action was CANCEL");
                 return false;
             case (MotionEvent.ACTION_BUTTON_PRESS):
                 Log.d(DEBUG_TAG, "onInterceptTouchEvent. Action was PRESSED");
                 return onTouchEvent(motionEvent);
-            //return true;
             case (MotionEvent.ACTION_OUTSIDE):
                 Log.d(DEBUG_TAG, "onInterceptTouchEvent. Movement occurred outside bounds " +
                         "of current screen element");
@@ -265,37 +261,31 @@ public class MyMotionLayout extends MotionLayout implements MotionLayout.Transit
                 }
 
                 if(idBtnWithEvent == R.id.btn_mhj_settings) {
-                    
                     btnSettingsWithEvent.setElevation(elevSettingsPx);
                     Intent intent = new Intent(getContext(), MahjongSettingsActivity.class);
                     getContext().startActivity(intent);
                 }
                 if(idBtnWithEvent == R.id.btn_clr_settings) {
-                    
                     btnSettingsWithEvent.setElevation(elevSettingsPx);
                     Intent intent = new Intent(getContext(), ColorsSettingsActivity.class);
                     getContext().startActivity(intent);
                 }
                 if(idBtnWithEvent == R.id.btn_shp_settings) {
-                    
                     btnSettingsWithEvent.setElevation(elevSettingsPx);
                     Intent intent = new Intent(getContext(), ShapesSettingsActivity.class);
                     getContext().startActivity(intent);
                 }
                 if(idBtnWithEvent == R.id.btn_wrd_settings) {
-                    
                     btnSettingsWithEvent.setElevation(elevSettingsPx);
                     Intent intent = new Intent(getContext(), WordsSettingsActivity.class);
                     getContext().startActivity(intent);
                 }
                 if(idBtnWithEvent == R.id.btn_phr_settings) {
-                    
                     btnSettingsWithEvent.setElevation(elevSettingsPx);
                     Intent intent = new Intent(getContext(), PhrasesSettingsActivity.class);
                     getContext().startActivity(intent);
                 }
                 if(idBtnWithEvent == R.id.btn_det_settings) {
-                    
                     btnSettingsWithEvent.setElevation(elevSettingsPx);
                     Intent intent = new Intent(getContext(), DetailsSettingsActivity.class);
                     getContext().startActivity(intent);

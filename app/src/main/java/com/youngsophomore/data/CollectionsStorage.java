@@ -9,6 +9,8 @@ import android.net.Uri;
 import android.util.ArrayMap;
 import android.util.Log;
 
+import com.youngsophomore.helpers.TrainHelper;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -200,6 +202,35 @@ public class CollectionsStorage {
         catch (IOException e) {
             
         }
+    }
+
+    public static ArrayList<Question> getQuestionsCollection(String questionDir){
+        File questionsDir = new File(questionDir);
+        File[] fullQuestionsFiles = questionsDir.listFiles();
+        int questionsAmount = Math.min(fullQuestionsFiles.length, 10);
+        ArrayList<Integer> questionNums = TrainHelper.getRandomNumsInRange(questionsAmount, 0, fullQuestionsFiles.length);
+        ArrayList<File> questionsFiles = new ArrayList<>();
+        for (int i = 0; i < 10 && i < fullQuestionsFiles.length; ++i){
+            questionsFiles.add(fullQuestionsFiles[questionNums.get(i)]);
+        }
+        ArrayList<Question> questions = new ArrayList<>();
+        for (int i = 0; i < questionsFiles.size(); ++i){
+            try{
+                Scanner scanner = new Scanner(questionsFiles.get(i));
+                scanner.useDelimiter("\n");
+                String curQuestionText = scanner.next();
+                String curAnswersInOneStr = scanner.next();
+                Question curQuestion = new Question(curQuestionText, curAnswersInOneStr);
+                curQuestion.parseAnswersFromString();
+
+                questions.add(curQuestion);
+            }
+            catch (Exception e){
+
+            }
+
+        }
+        return questions;
     }
 
     public static void deleteQuestionsCollection(String title,

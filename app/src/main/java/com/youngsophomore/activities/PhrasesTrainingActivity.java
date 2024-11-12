@@ -30,13 +30,12 @@ import java.util.ArrayList;
 public class PhrasesTrainingActivity extends AppCompatActivity implements
         FinishDialogFragment.FinishDialogListener,
         PhrasesTrainingAdapter.PhraseTrainingListener {
-    private static final String DEBUG_TAG = "Gestures";
     private static final String STOPWATCH_FRAGMENT_TAG = "stopwatch_fragment_tag";
+    FragmentManager fragmentManager;
     SharedPreferences sharedPreferences;
     int phraseShowTime;
     ArrayList<String> phrasesCollection;
     int curPhraseShowInd = 0;
-    FragmentManager fragmentManager;
     int trainingDurationSec = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,21 +68,11 @@ public class PhrasesTrainingActivity extends AppCompatActivity implements
         CountDownTimer countDownTimer = new CountDownTimer(3000 + 200, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                
                 tvCountdown.setText(String.valueOf(millisUntilFinished / 1000));
             }
 
             @Override
             public void onFinish() {
-                
-
-                ArrayList<String> origPhrasesCollection = CollectionsStorage.getPhrasesCollection(
-                        phrasesCollectionsTitles.get(phrasesCollectionPosition),
-                        getApplicationContext().getExternalFilesDir(null).getAbsolutePath() + "/phrases"
-                );
-                ArrayList<Integer> indicesPerm = TrainHelper.getRandomIndicesPerm(0, origPhrasesCollection.size());
-                ArrayList<String> phrasesCollection = TrainHelper.Phrases.generatePhrasesList(origPhrasesCollection, indicesPerm);
-                
                 tvCountdown.setTextSize(TypedValue.COMPLEX_UNIT_PX,
                         getResources().getDimension(R.dimen.w_training_seq_text_size));
                 CountDownTimer pretrainSequenceTimer = new CountDownTimer(

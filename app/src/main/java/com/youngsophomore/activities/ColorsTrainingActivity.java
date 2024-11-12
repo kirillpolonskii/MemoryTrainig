@@ -32,7 +32,6 @@ import java.util.ArrayList;
 
 public class ColorsTrainingActivity extends AppCompatActivity implements
         FinishDialogFragment.FinishDialogListener {
-    private static final String DEBUG_TAG = "Gestures";
     private static final String STOPWATCH_FRAGMENT_TAG = "stopwatch_fragment_tag";
     int curColorShowInd = 0, curColorSeqInd = 0;
     private int mistakesAmount = 0;
@@ -57,9 +56,9 @@ public class ColorsTrainingActivity extends AppCompatActivity implements
 
             @Override
             public void onFinish() {
-                ArrayList<Integer> palette = TrainHelper.Colors.generatePalette(distinctColorsAmount);
-                ArrayList<Integer> colorSeq = TrainHelper.Colors.generateColors(colorsAmount, palette);
-
+                ArrayList<Integer> paletteClr = TrainHelper.Colors.generatePalette(distinctColorsAmount);
+                ArrayList<Integer> colorSeq = TrainHelper.Colors.generateColors(colorsAmount, paletteClr);
+                // Replace TextView for countdown with ImageView for the sequence of colors
                 ConstraintLayout constraintLayout = findViewById(R.id.cst_lt_pretrain);
                 constraintLayout.removeView(findViewById(R.id.tv_countdown));
                 ImageView ivCurColor = new ImageView(getApplicationContext());
@@ -107,8 +106,7 @@ public class ColorsTrainingActivity extends AppCompatActivity implements
                                 .add(R.id.frt_cnt_v_stopwatch_clr, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
                                 .commit();
                         ConstraintLayout cstLtClr = findViewById(R.id.cst_lt_clr);
-                        // Make all ImageView background white_blue
-                        // Fill palette with right amount of colors
+                        // Fill paletteClr with right amount of colors
                         ArrayList<ImageView> ivColorSeq = new ArrayList<>();
                         ArrayList<CardView> cvColorPal = new ArrayList<>();
                         for(int i = 1; i < 40; ++i){
@@ -131,7 +129,7 @@ public class ColorsTrainingActivity extends AppCompatActivity implements
                         }
                         for (int i = 0; i < cvColorPal.size(); ++i){
                             cvColorPal.get(i).getChildAt(0).setBackgroundTintList(
-                                    ColorStateList.valueOf(getResources().getColor(palette.get(i))));
+                                    ColorStateList.valueOf(getResources().getColor(paletteClr.get(i))));
                             int finalI = i;
                             cvColorPal.get(i).getChildAt(0).setOnTouchListener(new View.OnTouchListener() {
                                 @Override
@@ -144,7 +142,7 @@ public class ColorsTrainingActivity extends AppCompatActivity implements
                                         case (MotionEvent.ACTION_UP):
                                             int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                                             cvColorPal.get(finalI).setCardElevation(elevPx);
-                                            if(palette.get(finalI).intValue() == colorSeq.get(curColorSeqInd).intValue()){
+                                            if(paletteClr.get(finalI).intValue() == colorSeq.get(curColorSeqInd).intValue()){
                                                 ivColorSeq.get(curColorSeqInd).setVisibility(View.VISIBLE);
                                                 ivColorSeq.get(curColorSeqInd).setBackgroundColor(
                                                         getResources().getColor(colorSeq.get(curColorSeqInd))

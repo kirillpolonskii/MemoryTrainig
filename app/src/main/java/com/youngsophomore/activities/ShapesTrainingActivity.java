@@ -59,15 +59,14 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
 
             @Override
             public void onFinish() {
-                ArrayList<Integer> shapesSet = TrainHelper.Shapes.generateShapesSet(distinctShapesAmount);
-                ArrayList<Integer> shapesSeq = TrainHelper.Shapes.generateShapesSequence(shapesAmount, shapesSet);
-
+                ArrayList<Integer> paletteShp = TrainHelper.Shapes.generatePalette(distinctShapesAmount);
+                ArrayList<Integer> shapesSeq = TrainHelper.Shapes.generateShapesSequence(shapesAmount, paletteShp);
+                // Replace TextView for countdown with ImageView for sequence of shapes
                 ConstraintLayout constraintLayout = findViewById(R.id.cst_lt_pretrain);
                 constraintLayout.removeView(findViewById(R.id.tv_countdown));
                 ImageView ivCurShape = new ImageView(getApplicationContext());
                 ivCurShape.setId(View.generateViewId());
                 ivCurShape.setBackgroundResource(shapesSeq.get(curShapeShowInd));
-
                 ConstraintLayout.LayoutParams ivCurShapeParams = new ConstraintLayout.LayoutParams(
                         0,
                         0
@@ -75,7 +74,6 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
                 ivCurShapeParams.setMarginStart(20);
                 ivCurShapeParams.setMarginEnd(20);
                 ivCurShape.setLayoutParams(ivCurShapeParams);
-
                 constraintLayout.addView(ivCurShape);
                 ConstraintSet constraintSet = new ConstraintSet();
                 constraintSet.clone(constraintLayout);
@@ -99,7 +97,6 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
                             ivCurShape.setBackgroundResource(shapesSeq.get(curShapeShowInd));
                             ++curShapeShowInd;
                             tvCurShapeNum.setText(String.valueOf(curShapeShowInd));
-                            // 
                         }
                     }
 
@@ -115,7 +112,6 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
                                 .add(R.id.frt_cnt_v_stopwatch_shp, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
                                 .commit();
                         
-                        // Make all ImageView background white_blue
                         // Fill palette with right amount of shapes
                         ArrayList<ImageView> ivShapesSeq = new ArrayList<>();
                         ArrayList<ImageButton> btnShapesSet = new ArrayList<>();
@@ -138,7 +134,7 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
                             iv.setVisibility(View.INVISIBLE);
                         }
                         for (int i = 0; i < btnShapesSet.size(); ++i){
-                            btnShapesSet.get(i).setImageResource(shapesSet.get(i));
+                            btnShapesSet.get(i).setImageResource(paletteShp.get(i));
                             int finalI = i;
                             btnShapesSet.get(i).setOnTouchListener(new View.OnTouchListener() {
                                 @Override
@@ -146,14 +142,12 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
                                     int action = event.getAction();
                                     switch(action) {
                                         case (MotionEvent.ACTION_DOWN):
-                                            
                                             btnShapesSet.get(finalI).setElevation(0);
                                             return true;
                                         case (MotionEvent.ACTION_UP):
                                             int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                                            
                                             btnShapesSet.get(finalI).setElevation(elevPx);
-                                            if(shapesSet.get(finalI).intValue() == shapesSeq.get(curShapeSeqInd).intValue()){
+                                            if(paletteShp.get(finalI).intValue() == shapesSeq.get(curShapeSeqInd).intValue()){
                                                 ivShapesSeq.get(curShapeSeqInd).setVisibility(View.VISIBLE);
                                                 ivShapesSeq.get(curShapeSeqInd).setBackgroundResource(
                                                         shapesSeq.get(curShapeSeqInd)
@@ -177,7 +171,6 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
                                                 }, 60);
                                             }
                                             if(curShapeSeqInd == shapesAmount){
-                                                
                                                 StopwatchFragment stopwatchFragment =
                                                         (StopwatchFragment) fragmentManager.findFragmentByTag(STOPWATCH_FRAGMENT_TAG);
                                                 trainingDurationSec = stopwatchFragment.getDecisecond() / 10;

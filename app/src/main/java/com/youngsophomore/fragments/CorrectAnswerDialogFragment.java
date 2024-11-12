@@ -13,7 +13,6 @@ import android.util.Log;
 import com.youngsophomore.R;
 
 public class CorrectAnswerDialogFragment extends DialogFragment {
-    private static final String DEBUG_TAG = "Gestures";
     public interface CorrectAnswerDialogListener {
         void onCorrectAnswerPosClick(DialogFragment dialog);
         void onCorrectAnswerNegClick(DialogFragment dialog);

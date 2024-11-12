@@ -31,11 +31,11 @@ import com.youngsophomore.helpers.PrepHelper;
 import com.youngsophomore.interfaces.RecyclerViewClickListener;
 
 public class AddQuestionFragment extends Fragment
-        implements QuestionTypeDialogFragment.QuestionTypeDialogListener,
-                    CorrectAnswerDialogFragment.CorrectAnswerDialogListener,
+        implements
+        QuestionTypeDialogFragment.QuestionTypeDialogListener,
+        CorrectAnswerDialogFragment.CorrectAnswerDialogListener,
         DeleteAnswerDialogFragment.DeleteAnswerDialogListener,
-                    RecyclerViewClickListener {
-    private static final String DEBUG_TAG = "Gestures";
+        RecyclerViewClickListener {
     EditText etNewQuestion;
     EditText etNewAnswer;
     Question question;
@@ -68,26 +68,7 @@ public class AddQuestionFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        
-        if (container instanceof FragmentContainerView){
-            
-        }
-        else{
-            
-        }
         View view = inflater.inflate(R.layout.fragment_add_question, container, false);
-        if (view instanceof ConstraintLayout){
-            
-        }
-        else{
-            
-        }
-        if (view.getId() == view.findViewById(R.id.constr_layout_add_question).getId()){
-            
-        }
-        else{
-            
-        }
         etNewQuestion = view.findViewById(R.id.et_new_question);
         etNewAnswer = new EditText(getContext());
         etNewAnswerId = View.generateViewId();
@@ -115,20 +96,16 @@ public class AddQuestionFragment extends Fragment
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        
                         v.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        
                         PrepHelper.deactivateBtn(btnAddAnswer);
                         PrepHelper.activateBtn(btnConfirmAnswer, elevPx);
 
                         question.setQuestionText(etNewQuestion.getText().toString());
                         ((ViewGroup) view).removeView(etNewQuestion);
-                        
 
                         ((ViewGroup) view).addView(etNewAnswer);
                         ConstraintSet constraintSet = new ConstraintSet();
@@ -152,11 +129,9 @@ public class AddQuestionFragment extends Fragment
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        
                         v.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         if (!etNewAnswer.getText().toString().equals("")){
@@ -164,9 +139,7 @@ public class AddQuestionFragment extends Fragment
                         }
                         PrepHelper.deactivateBtn(btnConfirmAnswer);
                         PrepHelper.activateBtn(btnAddAnswer, elevPx);
-                        
-                        //v.setElevation(elevPx);
-                        
+
                         ((ViewGroup) view).removeView(etNewAnswer);
                         ((ViewGroup) view).addView(etNewQuestion);
                         etNewQuestion.setText(question.getQuestionText());
@@ -190,8 +163,6 @@ public class AddQuestionFragment extends Fragment
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        
-
         answersAdapter = new AnswersAdapter(question.getAnswers(), this);
         RecyclerView rvAnswers = view.findViewById(R.id.rv_answers_collection);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());

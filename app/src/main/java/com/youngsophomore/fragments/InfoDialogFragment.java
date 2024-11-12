@@ -34,5 +34,4 @@ public class InfoDialogFragment extends DialogFragment {
     public InfoDialogFragment(int layoutResource) {
         this.layoutResource = layoutResource;
     }
-
 }

@@ -13,7 +13,6 @@ import com.youngsophomore.R;
 import java.util.ArrayList;
 
 public class PhrasesAdapter extends RecyclerView.Adapter<PhrasesAdapter.ViewHolder> {
-    private static final String DEBUG_TAG = "Gestures";
 
     private ArrayList<String> localDataSet;
 

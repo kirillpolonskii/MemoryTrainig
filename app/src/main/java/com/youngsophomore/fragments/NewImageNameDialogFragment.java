@@ -26,8 +26,6 @@ public class NewImageNameDialogFragment extends DialogFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        
-        
         try {
             listener = (NewImageNameDialogListener) context;
         } catch (ClassCastException e) {

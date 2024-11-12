@@ -14,7 +14,6 @@ import com.youngsophomore.interfaces.RecyclerViewClickListener;
 import java.util.ArrayList;
 
 public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.ViewHolder> {
-    private static final String DEBUG_TAG = "Gestures";
     private RecyclerViewClickListener rvClickListener;
 
     private ArrayList<String> answers;
@@ -44,7 +43,6 @@ public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.ViewHold
             return textView;
         }
     }
-
 
     public AnswersAdapter(ArrayList<String> dataSet, RecyclerViewClickListener rvClickListener) {
         

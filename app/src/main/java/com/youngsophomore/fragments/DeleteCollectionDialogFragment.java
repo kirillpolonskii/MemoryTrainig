@@ -18,7 +18,6 @@ import com.youngsophomore.R;
 
 public class DeleteCollectionDialogFragment extends DialogFragment {
 
-    private static final String DEBUG_TAG = "Gestures";
     public interface DeleteCollectionDialogListener {
         void onDeleteCollectionPosClick(DialogFragment dialog);
         void onDeleteCollectionNegClick(DialogFragment dialog);
@@ -29,8 +28,6 @@ public class DeleteCollectionDialogFragment extends DialogFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        
-        
         try {
             listener = (DeleteCollectionDialogFragment.DeleteCollectionDialogListener) getParentFragment();
             if(listener == null) {
@@ -62,7 +59,5 @@ public class DeleteCollectionDialogFragment extends DialogFragment {
         return dialog;
     }
 
-    public DeleteCollectionDialogFragment() {
-        
-    }
+
 }

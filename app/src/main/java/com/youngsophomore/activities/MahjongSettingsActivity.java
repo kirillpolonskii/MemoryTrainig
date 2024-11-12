@@ -55,15 +55,12 @@ public class MahjongSettingsActivity extends AppCompatActivity {
                     int action = motionEvent.getAction();
                     switch(action) {
                         case (MotionEvent.ACTION_DOWN):
-                            
                             sgBtnGrTilesAmount.setElevation(0);
                             return true;
                         case (MotionEvent.ACTION_MOVE):
-                            
                             return true;
                         case (MotionEvent.ACTION_UP):
                             int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_tiles_elev);
-                            
                             sgBtnGrTilesAmount.setElevation(elevPx);
                             return true;
                         default:
@@ -82,12 +79,10 @@ public class MahjongSettingsActivity extends AppCompatActivity {
                     int action = motionEvent.getAction();
                     switch(action) {
                         case (MotionEvent.ACTION_DOWN):
-                            
                             sgBtnGrEqualTilesAmount.setElevation(0);
                             return true;
                         case (MotionEvent.ACTION_UP):
                             int elevPx = getResources().getDimensionPixelSize(R.dimen.sgbtn_tiles_elev);
-                            
                             sgBtnGrEqualTilesAmount.setElevation(elevPx);
                             return true;
                         default:
@@ -107,15 +102,12 @@ public class MahjongSettingsActivity extends AppCompatActivity {
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        
                         view.setElevation(elevPx);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt(getString(R.string.saved_mahjong_remember_time_key),
@@ -140,17 +132,12 @@ public class MahjongSettingsActivity extends AppCompatActivity {
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        Log.d(DEBUG_TAG, "btnPlayWSettings onTouch. Action was UP. open info" +
-                                ", R.dimen.btn_info_elev = " + R.dimen.btn_info_elev +
-                                ", elev = " + elevPx);
                         view.setElevation(elevPx);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt(getString(R.string.saved_mahjong_remember_time_key),

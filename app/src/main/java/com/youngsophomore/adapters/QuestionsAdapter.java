@@ -16,7 +16,6 @@ import com.youngsophomore.interfaces.RecyclerViewClickListener;
 import java.util.ArrayList;
 
 public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.ViewHolder> {
-    private static final String DEBUG_TAG = "Gestures";
     private ArrayList<Question> localQuestions;
     private RecyclerViewClickListener rvClickListener;
 

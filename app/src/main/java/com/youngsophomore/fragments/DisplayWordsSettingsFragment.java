@@ -19,8 +19,7 @@ import com.youngsophomore.R;
 import com.youngsophomore.data.CollectionsStorage;
 
 public class DisplayWordsSettingsFragment extends Fragment
-implements DeleteCollectionDialogFragment.DeleteCollectionDialogListener{
-    private static final String DEBUG_TAG = "Gestures";
+        implements DeleteCollectionDialogFragment.DeleteCollectionDialogListener{
     Spinner sprWordsCollection;
     SharedPreferences sharedPreferences;
     ArrayAdapter<String> adapter;
@@ -61,7 +60,6 @@ implements DeleteCollectionDialogFragment.DeleteCollectionDialogListener{
         sprWordsCollection.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                
                 if(adapter.getCount() > 1){
                     showDeleteCollectionDialog();
                 }

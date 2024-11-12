@@ -13,8 +13,6 @@ import android.util.Log;
 import com.youngsophomore.R;
 
 public class DeleteQuestionDialogFragment extends DialogFragment {
-
-    private static final String DEBUG_TAG = "Gestures";
     private int deletedPosition;
     public interface DeleteQuestionDialogListener {
         void onDeleteQuestionPosClick(DialogFragment dialog, int position);
@@ -37,7 +35,6 @@ public class DeleteQuestionDialogFragment extends DialogFragment {
     }
 
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.delete_question_dialog_title)
                 .setMessage(R.string.delete_question_dialog_message)
@@ -57,7 +54,6 @@ public class DeleteQuestionDialogFragment extends DialogFragment {
     }
 
     public DeleteQuestionDialogFragment(int position) {
-        
         deletedPosition = position;
     }
 

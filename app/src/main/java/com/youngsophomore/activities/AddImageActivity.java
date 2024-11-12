@@ -40,6 +40,7 @@ public class AddImageActivity extends AppCompatActivity implements
     private static final String DEBUG_TAG = "Gestures";
     private final String NEW_QUESTIONS_FRAGMENT_TAG = "new_questions_fragment";
     private final String ADD_QUESTION_FRAGMENT_TAG = "add_question_fragment";
+    SharedPreferences sharedPreferences;
     FragmentManager fragmentManager;
     ImageButton btnAddQuestion;
     ImageButton btnConfirmQuestion;
@@ -50,7 +51,6 @@ public class AddImageActivity extends AppCompatActivity implements
     Uri imageUri = null;
     public final int NEW_IMAGE_REQUEST_CODE = 20;
     TextView tvNewImage;
-    SharedPreferences sharedPreferences;
     ImageButton btnNewImage;
     FrameLayout frLtRemindImg;
     ImageView ivRemindImg;
@@ -70,11 +70,10 @@ public class AddImageActivity extends AppCompatActivity implements
         Bundle bundle = new Bundle();
         newQuestions = new ArrayList<>();
         bundle.putParcelableArrayList(getString(R.string.new_questions_collection_key), newQuestions);
-
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .setReorderingAllowed(true)
-                .add(R.id.frt_cnt_v_tiles, NewQuestionsListFragment.class, bundle, NEW_QUESTIONS_FRAGMENT_TAG)
+                .add(R.id.frt_cnt_v_questions, NewQuestionsListFragment.class, bundle, NEW_QUESTIONS_FRAGMENT_TAG)
                 .commit();
 
         btnNewImage = findViewById(R.id.btn_new_image);
@@ -88,7 +87,6 @@ public class AddImageActivity extends AppCompatActivity implements
 
         PrepHelper.deactivateBtn(btnConfirmQuestion);
         PrepHelper.deactivateBtn(btnAddQuestion);
-
         btnNewImage.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
@@ -128,7 +126,7 @@ public class AddImageActivity extends AppCompatActivity implements
                         Bundle addQuestionFragmentBundle = new Bundle();
                         addQuestionFragmentBundle.putString(getString(R.string.chosen_img_key), imageUri.toString());
                         fragmentManager.beginTransaction()
-                                .replace(R.id.frt_cnt_v_tiles, AddQuestionFragment.class, addQuestionFragmentBundle, ADD_QUESTION_FRAGMENT_TAG)
+                                .replace(R.id.frt_cnt_v_questions, AddQuestionFragment.class, addQuestionFragmentBundle, ADD_QUESTION_FRAGMENT_TAG)
                                 .setReorderingAllowed(true)
                                 .addToBackStack("transaction_add_questions_collection_fragment")
                                 .commit();
@@ -163,7 +161,7 @@ public class AddImageActivity extends AppCompatActivity implements
                         }
                         bundle.putParcelableArrayList(getString(R.string.new_questions_collection_key), newQuestions);
                         fragmentManager.beginTransaction()
-                                .replace(R.id.frt_cnt_v_tiles, NewQuestionsListFragment.class, bundle, NEW_QUESTIONS_FRAGMENT_TAG)
+                                .replace(R.id.frt_cnt_v_questions, NewQuestionsListFragment.class, bundle, NEW_QUESTIONS_FRAGMENT_TAG)
                                 .setReorderingAllowed(true)
                                 .commit();
                         fragmentManager.popBackStack();
@@ -299,9 +297,6 @@ public class AddImageActivity extends AppCompatActivity implements
         else{
             AddQuestionFragment addQuestionFragment =
                     (AddQuestionFragment) fragmentManager.findFragmentByTag(ADD_QUESTION_FRAGMENT_TAG);
-            NewQuestionsListFragment newQuestionsListFragment =
-                    (NewQuestionsListFragment) fragmentManager.findFragmentByTag(NEW_QUESTIONS_FRAGMENT_TAG);
-            Log.d(DEBUG_TAG, addQuestionFragment + ",, " + newQuestionsListFragment);
             if(addQuestionFragment != null && addQuestionFragment.isVisible()){
                 PrepHelper.activateBtn(btnAddQuestion, elevPx);
                 PrepHelper.activateBtn(btnConfirmQuestionsCollection, elevPx);

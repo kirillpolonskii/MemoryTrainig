@@ -34,10 +34,10 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
     private final String NEW_PHRASES_LIST_FRAGMENT_TAG = "new_phrases_list_fragment";
     private final String ADD_PHRASE_FRAGMENT_TAG = "add_phrase_fragment";
     FragmentManager fragmentManager;
-    int elevPx;
     ImageButton btnAddPhrase;
     ImageButton btnConfirmPhrase;
     ImageButton btnConfirmPhrasesCollection;
+    int elevPx;
     private ArrayList<CharSequence> newPhrasesCollectionCharS;
     private EditText etPhrasesCollectionTitle;
     @SuppressLint("ClickableViewAccessibility")
@@ -53,11 +53,10 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         newPhrasesCollectionCharS = new ArrayList<>();
         bundle.putCharSequenceArrayList(getString(R.string.new_phrases_collection_key), newPhrasesCollectionCharS);
-
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .setReorderingAllowed(true)
-                .add(R.id.frt_cnt_v_tiles, NewPhrasesListFragment.class, bundle, NEW_PHRASES_LIST_FRAGMENT_TAG)
+                .add(R.id.frt_cnt_v_phrases, NewPhrasesListFragment.class, bundle, NEW_PHRASES_LIST_FRAGMENT_TAG)
                 .commit();
 
         etPhrasesCollectionTitle = findViewById(R.id.et_phrases_collection_title);
@@ -79,13 +78,11 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
                         return true;
                     case (MotionEvent.ACTION_UP):
                         view.setElevation(elevPx);
-
                         PrepHelper.deactivateBtn(btnAddPhrase);
                         PrepHelper.deactivateBtn(btnConfirmPhrasesCollection);
                         PrepHelper.activateBtn(btnConfirmPhrase, elevPx);
-
                         fragmentManager.beginTransaction()
-                                .replace(R.id.frt_cnt_v_tiles, AddPhraseFragment.class, null, ADD_PHRASE_FRAGMENT_TAG)
+                                .replace(R.id.frt_cnt_v_phrases, AddPhraseFragment.class, null, ADD_PHRASE_FRAGMENT_TAG)
                                 .setReorderingAllowed(true)
                                 .addToBackStack("transaction_add_words_collection_fragment")
                                 .commit();
@@ -119,7 +116,7 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
                         }
                         bundle.putCharSequenceArrayList(getString(R.string.new_phrases_collection_key), newPhrasesCollectionCharS);
                         fragmentManager.beginTransaction()
-                                .replace(R.id.frt_cnt_v_tiles, NewPhrasesListFragment.class, bundle, NEW_PHRASES_LIST_FRAGMENT_TAG)
+                                .replace(R.id.frt_cnt_v_phrases, NewPhrasesListFragment.class, bundle, NEW_PHRASES_LIST_FRAGMENT_TAG)
                                 .setReorderingAllowed(true)
                                 .commit();
                         fragmentManager.popBackStack();
@@ -177,7 +174,6 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     @Override
@@ -208,9 +204,6 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
     public void onBackPressed() {
         AddPhraseFragment addPhraseFragment =
                 (AddPhraseFragment) fragmentManager.findFragmentByTag(ADD_PHRASE_FRAGMENT_TAG);
-        NewPhrasesListFragment newPhrasesListFragment =
-                (NewPhrasesListFragment) fragmentManager.findFragmentByTag(NEW_PHRASES_LIST_FRAGMENT_TAG);
-        Log.d(DEBUG_TAG, addPhraseFragment + ",, " + newPhrasesListFragment);
         if(addPhraseFragment != null && addPhraseFragment.isVisible()){
             PrepHelper.activateBtn(btnAddPhrase, elevPx);
             PrepHelper.activateBtn(btnConfirmPhrasesCollection, elevPx);

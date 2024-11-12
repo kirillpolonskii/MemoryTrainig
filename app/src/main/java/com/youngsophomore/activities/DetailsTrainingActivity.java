@@ -38,7 +38,6 @@ import java.util.HashSet;
 
 public class DetailsTrainingActivity extends AppCompatActivity implements
         FinishDialogFragment.FinishDialogListener {
-    private static final String DEBUG_TAG = "Gestures";
     private static final String STOPWATCH_FRAGMENT_TAG = "stopwatch_fragment_tag";
     int curQuestionInd = 0;
     ArrayList<Question> questionsCollection;
@@ -46,7 +45,6 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
     RadioGroup rgSingleAnswer;
     ArrayList<RadioButton> rBtnSingleAnswers;
     ArrayList<CheckBox> ckBxMultAnswers;
-    private final int ANSWERS_NUM = 8;
     HashSet<Integer> answersIndices;
     private int singleMistakesAmount = 0;
     private int multipMistakesAmount = 0;
@@ -66,20 +64,9 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
                 sharedPreferences, getString(R.string.questions_collections_titles_key)
         );
         String questionsCollectionTitle = questionsCollectionsTitles.get(questionsCollectionPosition);
-
-        File questionsDir = new File(getExternalFilesDir(null).getAbsolutePath()
-                + "/details" + "/" + questionsCollectionTitle);
-        if (!questionsDir.exists()) {
-            
-        }
-        File[] fullQuestionsFiles = questionsDir.listFiles();
-        int questionsAmount = Math.min(fullQuestionsFiles.length, 10);
-        ArrayList<Integer> questionNums = TrainHelper.getRandomNumsInRange(questionsAmount, 0, fullQuestionsFiles.length);
-        ArrayList<File> questionsFiles = new ArrayList<>();
-        for (int i = 0; i < 10 && i < fullQuestionsFiles.length; ++i){
-            questionsFiles.add(fullQuestionsFiles[questionNums.get(i)]);
-        }
-        questionsCollection = TrainHelper.Details.parseQuestionsFiles(questionsFiles);
+        questionsCollection = CollectionsStorage.getQuestionsCollection(
+                getExternalFilesDir(null).getAbsolutePath() +
+                        "/details" + "/" + questionsCollectionTitle);
 
         TextView tvCountdown = findViewById(R.id.tv_countdown);
         TextView tvCurPhraseNum = findViewById(R.id.tv_cur_elem_num);
@@ -88,7 +75,6 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
         CountDownTimer countDownTimer = new CountDownTimer(3000 + 200, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                
                 tvCountdown.setText(String.valueOf(millisUntilFinished / 1000));
             }
 
@@ -98,7 +84,7 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
                 rBtnSingleAnswers = new ArrayList<>();
                 ckBxMultAnswers = new ArrayList<>();
                 Uri imageUri = Uri.parse(sharedPreferences.getString(questionsCollectionTitle, ""));
-
+                // Replace TextView for countdown with ImageView for selected image
                 ConstraintLayout cntLytPretrain = findViewById(R.id.cst_lt_pretrain);
                 cntLytPretrain.removeView(tvCountdown);
                 cntLytPretrain.removeView(tvPretrainTip);
@@ -220,13 +206,11 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
                                 if (questionsCollection.get(curQuestionInd).getCorrAnswersIndices().equals(
                                         answersIndices
                                 )){
-                                    
                                     ++curQuestionInd;
                                     if (curQuestionInd < questionsCollection.size()){
                                         showNextQuestion();
                                     }
                                     else {
-                                        
                                         StopwatchFragment stopwatchFragment =
                                                 (StopwatchFragment) fragmentManager.findFragmentByTag(STOPWATCH_FRAGMENT_TAG);
                                         trainingDurationSec = stopwatchFragment.getDecisecond() / 10;
@@ -257,7 +241,6 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
                                     }
                                 }
                                 else{
-                                    
                                     if (questionsCollection.get(curQuestionInd).isSingleAnswer()){
                                         ++singleMistakesAmount;
                                     }
@@ -304,7 +287,7 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
     private void changeAnswersLayout(boolean hasSingleAnswer, int answersNum){
         if (hasSingleAnswer){
             rgSingleAnswer.setVisibility(View.VISIBLE);
-            for(int i = 0; i < ANSWERS_NUM; ++i){
+            for(int i = 0; i < TrainHelper.Details.ANSWERS_NUM; ++i){
                 if(i < answersNum){
                     rBtnSingleAnswers.get(i).setVisibility(View.VISIBLE);
                 }
@@ -312,13 +295,13 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
                     rBtnSingleAnswers.get(i).setVisibility(View.GONE);
                 }
             }
-            for(int i = 0; i < ANSWERS_NUM; ++i){
+            for(int i = 0; i < TrainHelper.Details.ANSWERS_NUM; ++i){
                 ckBxMultAnswers.get(i).setVisibility(View.GONE);
             }
         }
         else{
             rgSingleAnswer.setVisibility(View.GONE);
-            for(int i = 0; i < ANSWERS_NUM; ++i){
+            for(int i = 0; i < TrainHelper.Details.ANSWERS_NUM; ++i){
                 if(i < answersNum){
                     ckBxMultAnswers.get(i).setVisibility(View.VISIBLE);
                 }

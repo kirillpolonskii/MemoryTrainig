@@ -29,18 +29,17 @@ import com.youngsophomore.fragments.InfoDialogFragment;
 import com.youngsophomore.helpers.PrepHelper;
 
 public class WordsSettingsActivity extends AppCompatActivity {
-    private static final String DEBUG_TAG = "Gestures";
     private final String DISPLAY_SETTINGS_FRAGMENT_TAG = "display_words_settings_fragment";
     private final String ADD_COLLECTION_FRAGMENT_TAG = "add_collection_fragment";
     Toolbar toolbar;
     FragmentManager fragmentManager;
     Spinner sprWordsCollection;
     NumberPicker pckrWordShowTime;
-    int elevPx;
     ImageButton btnSaveSettings;
     ImageButton btnPlayWSettings;
     ImageButton btnAddWordsCollection;
     ImageButton btnConfirmWordsCollection;
+    int elevPx;
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,14 +71,11 @@ public class WordsSettingsActivity extends AppCompatActivity {
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        
                         view.setElevation(elevPx);
                         Fragment displayWordsCollectionsFragment = fragmentManager.findFragmentByTag(DISPLAY_SETTINGS_FRAGMENT_TAG);
                         sprWordsCollection = displayWordsCollectionsFragment.getView()
@@ -92,7 +88,6 @@ public class WordsSettingsActivity extends AppCompatActivity {
                                 sprWordsCollection.getSelectedItemPosition());
                         editor.putInt(getString(R.string.saved_word_show_time_key),
                                 pckrWordShowTime.getValue());
-
                         editor.apply();
                         onBackPressed();
                         return true;
@@ -108,14 +103,11 @@ public class WordsSettingsActivity extends AppCompatActivity {
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        
                         view.setElevation(elevPx);
                         Fragment displayWordsCollectionsFragment = fragmentManager.findFragmentByTag(DISPLAY_SETTINGS_FRAGMENT_TAG);
                         sprWordsCollection = displayWordsCollectionsFragment.getView()
@@ -127,7 +119,6 @@ public class WordsSettingsActivity extends AppCompatActivity {
                                 sprWordsCollection.getSelectedItemPosition());
                         editor.putInt(getString(R.string.saved_word_show_time_key),
                                 pckrWordShowTime.getValue());
-
                         editor.apply();
                         Intent intent = new Intent(getApplicationContext(), WordsTrainingActivity.class);
                         startActivity(intent);
@@ -144,15 +135,11 @@ public class WordsSettingsActivity extends AppCompatActivity {
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        
-
                         PrepHelper.deactivateBtn(btnAddWordsCollection);
                         PrepHelper.deactivateBtn(btnSaveSettings);
                         PrepHelper.deactivateBtn(btnPlayWSettings);
@@ -177,14 +164,11 @@ public class WordsSettingsActivity extends AppCompatActivity {
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        
                         Fragment addWordsCollectionFragment = fragmentManager.findFragmentByTag(ADD_COLLECTION_FRAGMENT_TAG);
                         EditText etWordsCollectionTitle = addWordsCollectionFragment.getView()
                                 .findViewById(R.id.et_wrd_collection_title);
@@ -238,7 +222,6 @@ public class WordsSettingsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.mi_btn_info) {
-            
             showInfoDialog(R.layout.fragment_words_settings_info);
             return true;
         }
@@ -257,7 +240,6 @@ public class WordsSettingsActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        
         AddWordsCollectionFragment addWordsCollectionFragment =
                 (AddWordsCollectionFragment) fragmentManager.findFragmentByTag(ADD_COLLECTION_FRAGMENT_TAG);
         DisplayWordsSettingsFragment displayWordsSettingsFragment =

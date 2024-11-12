@@ -29,7 +29,6 @@ import java.util.ArrayList;
 
 public class DetailsSettingsActivity extends AppCompatActivity
         implements DeleteCollectionDialogFragment.DeleteCollectionDialogListener{
-    private static final String DEBUG_TAG = "Gestures";
     ArrayList<String> questionsCollectionsTitles;
     SharedPreferences sharedPreferences;
     ArrayAdapter<String> adapter;
@@ -66,7 +65,6 @@ public class DetailsSettingsActivity extends AppCompatActivity
         sprImagesCollection.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                
                 if(adapter.getCount() > 1){
                     showDeleteCollectionDialog();
                 }
@@ -88,15 +86,12 @@ public class DetailsSettingsActivity extends AppCompatActivity
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        
                         view.setElevation(elevPx);
 
                         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -119,15 +114,12 @@ public class DetailsSettingsActivity extends AppCompatActivity
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
-                        
                         view.setElevation(elevPx);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt(getString(R.string.saved_images_collection_position_key),
@@ -150,11 +142,9 @@ public class DetailsSettingsActivity extends AppCompatActivity
                 int action = event.getAction();
                 switch(action) {
                     case (MotionEvent.ACTION_DOWN):
-                        
                         view.setElevation(0);
                         return true;
                     case (MotionEvent.ACTION_MOVE):
-                        
                         return true;
                     case (MotionEvent.ACTION_UP):
                         int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
@@ -173,7 +163,6 @@ public class DetailsSettingsActivity extends AppCompatActivity
     @Override
     public void onResume(){
         super.onResume();
-        
         questionsCollectionsTitles.clear();
         questionsCollectionsTitles.addAll(CollectionsStorage.getCollectionsTitles(sharedPreferences,
                 getString(R.string.questions_collections_titles_key)));
@@ -189,7 +178,6 @@ public class DetailsSettingsActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.mi_btn_info) {
-            
             showInfoDialog(R.layout.fragment_details_settings_info);
             return true;
         }
@@ -212,8 +200,6 @@ public class DetailsSettingsActivity extends AppCompatActivity
 
     @Override
     public void onDeleteCollectionPosClick(DialogFragment dialog) {
-        Log.d(DEBUG_TAG, "In DetailsSettingsActivity: Pos button clicked, slctd= " +
-                sprImagesCollection.getSelectedItem());
         CollectionsStorage.deleteQuestionsCollection((String) sprImagesCollection.getSelectedItem(),
                 getString(R.string.questions_collections_titles_key),
                 getString(R.string.saved_images_collection_position_key),
