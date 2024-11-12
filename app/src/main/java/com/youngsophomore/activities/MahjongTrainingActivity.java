@@ -94,7 +94,8 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         fragmentManager.beginTransaction()
                                 .setReorderingAllowed(true)
-                                .add(R.id.frt_cnt_v_stopwatch, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
+                                .add((mhjTilesAmount == 12) ? R.id.frt_cnt_v_stopwatch_mhj_12 : R.id.frt_cnt_v_stopwatch_mhj_24,
+                                        StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
                                 .commit();
                         for (int i = 0; i < btnBackgroundResources.size(); ++i){
                             btnTiles.get(i).setImageResource(R.drawable.tile_back);

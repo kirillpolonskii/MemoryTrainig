@@ -101,7 +101,7 @@ public class WordsTrainingActivity extends AppCompatActivity implements
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         fragmentManager.beginTransaction()
                                 .setReorderingAllowed(true)
-                                .add(R.id.frt_cnt_v_stopwatch, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
+                                .add(R.id.frt_cnt_v_stopwatch_wrd, StopwatchFragment.class, bundle, STOPWATCH_FRAGMENT_TAG)
                                 .commit();
                         // Fill palette with right amount of words
                         ArrayList<Button> btnWordPal = new ArrayList<>();
