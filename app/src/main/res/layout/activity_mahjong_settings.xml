@@ -209,5 +209,4 @@
         android:layout_marginVertical="@dimen/settings_large_margin"
 
         />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

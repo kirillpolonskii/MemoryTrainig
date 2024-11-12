@@ -25,9 +25,10 @@
         app:layout_constraintTop_toTopOf="@id/tv_save_wrd_settings_info"
         app:layout_constraintBottom_toBottomOf="@id/tv_save_wrd_settings_info"
         app:layout_constraintStart_toEndOf="@id/iv_save_wrd_settings"
+        app:layout_constraintEnd_toStartOf="@id/tv_save_wrd_settings_info"
 
         android:text="@string/hyphen"
-        style="@style/SettingsTextViewStyle"
+        style="@style/SettingsTextViewStyle.MarginHorizontal"
         />
     <TextView
         android:id="@+id/tv_save_wrd_settings_info"
@@ -60,9 +61,10 @@
         app:layout_constraintTop_toTopOf="@id/tv_play_w_settings_wrd_info"
         app:layout_constraintBottom_toBottomOf="@id/tv_play_w_settings_wrd_info"
         app:layout_constraintStart_toEndOf="@id/iv_play_w_settings_wrd"
+        app:layout_constraintEnd_toStartOf="@id/tv_play_w_settings_wrd_info"
 
         android:text="@string/hyphen"
-        style="@style/SettingsTextViewStyle"
+        style="@style/SettingsTextViewStyle.MarginHorizontal"
         />
     <TextView
         android:id="@+id/tv_play_w_settings_wrd_info"
@@ -98,9 +100,10 @@
         app:layout_constraintTop_toTopOf="@id/tv_add_wrd_collection_info"
         app:layout_constraintBottom_toBottomOf="@id/tv_add_wrd_collection_info"
         app:layout_constraintStart_toEndOf="@id/iv_add_wrd_collection"
+        app:layout_constraintEnd_toStartOf="@id/tv_add_wrd_collection_info"
 
         android:text="@string/hyphen"
-        style="@style/SettingsTextViewStyle"
+        style="@style/SettingsTextViewStyle.MarginHorizontal"
         />
     <TextView
         android:id="@+id/tv_add_wrd_collection_info"
@@ -116,7 +119,6 @@
         android:layout_marginEnd="3dp"
 
         />
-
 
     <ImageView
         android:id="@+id/iv_confirm_wrd_collection"
@@ -136,9 +138,10 @@
         app:layout_constraintTop_toTopOf="@id/tv_confirm_wrd_collection_info"
         app:layout_constraintBottom_toBottomOf="@id/tv_confirm_wrd_collection_info"
         app:layout_constraintStart_toEndOf="@id/iv_confirm_wrd_collection"
+        app:layout_constraintEnd_toStartOf="@id/tv_confirm_wrd_collection_info"
 
         android:text="@string/hyphen"
-        style="@style/SettingsTextViewStyle"
+        style="@style/SettingsTextViewStyle.MarginHorizontal"
         />
     <TextView
         android:id="@+id/tv_confirm_wrd_collection_info"

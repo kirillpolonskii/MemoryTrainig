@@ -25,9 +25,10 @@
         app:layout_constraintTop_toTopOf="@id/tv_add_phrase_info"
         app:layout_constraintBottom_toBottomOf="@id/tv_add_phrase_info"
         app:layout_constraintStart_toEndOf="@id/iv_add_phrase"
+        app:layout_constraintEnd_toStartOf="@id/tv_add_phrase_info"
 
         android:text="@string/hyphen"
-        style="@style/SettingsTextViewStyle"
+        style="@style/SettingsTextViewStyle.MarginHorizontal"
         />
     <TextView
         android:id="@+id/tv_add_phrase_info"
@@ -61,9 +62,10 @@
         app:layout_constraintTop_toTopOf="@id/tv_save_phrase_info"
         app:layout_constraintBottom_toBottomOf="@id/tv_save_phrase_info"
         app:layout_constraintStart_toEndOf="@id/iv_save_phrase"
+        app:layout_constraintEnd_toStartOf="@id/tv_save_phrase_info"
 
         android:text="@string/hyphen"
-        style="@style/SettingsTextViewStyle"
+        style="@style/SettingsTextViewStyle.MarginHorizontal"
         />
     <TextView
         android:id="@+id/tv_save_phrase_info"
@@ -98,9 +100,10 @@
         app:layout_constraintTop_toTopOf="@id/tv_confirm_collection_info"
         app:layout_constraintBottom_toBottomOf="@id/tv_confirm_collection_info"
         app:layout_constraintStart_toEndOf="@id/iv_confirm_collection"
+        app:layout_constraintEnd_toStartOf="@id/tv_confirm_collection_info"
 
         android:text="@string/hyphen"
-        style="@style/SettingsTextViewStyle"
+        style="@style/SettingsTextViewStyle.MarginHorizontal"
         />
     <TextView
         android:id="@+id/tv_confirm_collection_info"

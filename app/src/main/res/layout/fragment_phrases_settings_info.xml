@@ -24,9 +24,10 @@
         app:layout_constraintTop_toTopOf="@id/tv_save_phr_settings_info"
         app:layout_constraintBottom_toBottomOf="@id/tv_save_phr_settings_info"
         app:layout_constraintStart_toEndOf="@id/iv_save_phr_settings"
+        app:layout_constraintEnd_toStartOf="@id/tv_save_phr_settings_info"
 
         android:text="@string/hyphen"
-        style="@style/SettingsTextViewStyle"
+        style="@style/SettingsTextViewStyle.MarginHorizontal"
         />
     <TextView
         android:id="@+id/tv_save_phr_settings_info"
@@ -59,9 +60,10 @@
         app:layout_constraintTop_toTopOf="@id/tv_play_w_settings_phr_info"
         app:layout_constraintBottom_toBottomOf="@id/tv_play_w_settings_phr_info"
         app:layout_constraintStart_toEndOf="@id/iv_play_w_settings_phr"
+        app:layout_constraintEnd_toStartOf="@id/tv_play_w_settings_phr_info"
 
         android:text="@string/hyphen"
-        style="@style/SettingsTextViewStyle"
+        style="@style/SettingsTextViewStyle.MarginHorizontal"
         />
     <TextView
         android:id="@+id/tv_play_w_settings_phr_info"
@@ -96,9 +98,10 @@
         app:layout_constraintTop_toTopOf="@id/tv_add_phr_collection_info"
         app:layout_constraintBottom_toBottomOf="@id/tv_add_phr_collection_info"
         app:layout_constraintStart_toEndOf="@id/iv_add_phr_collection"
+        app:layout_constraintEnd_toStartOf="@id/tv_add_phr_collection_info"
 
         android:text="@string/hyphen"
-        style="@style/SettingsTextViewStyle"
+        style="@style/SettingsTextViewStyle.MarginHorizontal"
         />
     <TextView
         android:id="@+id/tv_add_phr_collection_info"

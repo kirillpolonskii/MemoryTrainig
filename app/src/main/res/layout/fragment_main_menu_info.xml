@@ -27,9 +27,10 @@
         app:layout_constraintTop_toTopOf="@id/tv_play_info"
         app:layout_constraintBottom_toBottomOf="@id/tv_play_info"
         app:layout_constraintStart_toEndOf="@id/btn_training"
+        app:layout_constraintEnd_toStartOf="@id/tv_play_info"
 
         android:text="@string/hyphen"
-        style="@style/SettingsTextViewStyle"
+        style="@style/SettingsTextViewStyle.MarginHorizontal"
         />
     <TextView
         android:id="@+id/tv_play_info"
@@ -62,9 +63,10 @@
         app:layout_constraintTop_toTopOf="@id/tv_settings_info"
         app:layout_constraintBottom_toBottomOf="@id/tv_settings_info"
         app:layout_constraintStart_toEndOf="@id/iv_settings"
+        app:layout_constraintEnd_toStartOf="@id/tv_settings_info"
 
         android:text="@string/hyphen"
-        style="@style/SettingsTextViewStyle"
+        style="@style/SettingsTextViewStyle.MarginHorizontal"
         />
 
     <TextView
@@ -99,9 +101,10 @@
         app:layout_constraintTop_toTopOf="@id/tv_statistics_info"
         app:layout_constraintBottom_toBottomOf="@id/tv_statistics_info"
         app:layout_constraintStart_toEndOf="@id/iv_statistics"
+        app:layout_constraintEnd_toStartOf="@id/tv_statistics_info"
 
         android:text="@string/hyphen"
-        style="@style/SettingsTextViewStyle"
+        style="@style/SettingsTextViewStyle.MarginHorizontal"
         />
     <TextView
         android:id="@+id/tv_statistics_info"

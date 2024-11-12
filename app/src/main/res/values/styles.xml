@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="main_menu_btn">
+    <style name="ButtonMainMenu">
         <item name="android:background">@drawable/btn_round_corner_bg</item>
         <item name="android:layout_marginTop">@dimen/main_menu_margin</item>
         <item name="android:layout_marginBottom">@dimen/main_menu_margin</item>
@@ -41,7 +41,6 @@
     <style name="SettingsTextViewStyle">
         <item name="android:textColor">?attr/colorPrimary</item>
         <item name="android:textSize">@dimen/settings_text_size</item>
-        <!--<item name="android:layout_marginStart">6dp</item>-->
         <item name="android:singleLine">false</item>
     </style>
     <style name="SettingsTextViewStyle.MarginStart" parent="SettingsTextViewStyle">
@@ -61,37 +60,13 @@
         <item name="android:colorControlNormal">?attr/colorPrimary</item>
         <item name="android:textColor">?attr/colorPrimary</item>
         <item name="android:textSize">20sp</item>
-
-
     </style>
+
     <style name="SpinnerItemDropdownStyle" parent="Widget.AppCompat.DropDownItem.Spinner">
         <item name="android:colorControlNormal">?attr/colorPrimary</item>
         <item name="android:textColor">?attr/colorPrimary</item>
         <item name="android:textSize">22sp</item>
 
     </style>
-    <style name="AddPhraseDialogTheme" parent="Theme.MemoryTraining">
-        <!--<item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>-->
-        <item name="android:layout_width">600dp</item>
-        <item name="android:layout_height">800dp</item>
-        <item name="android:background">@color/black</item>
-        <item name="android:layout_marginTop">70dp</item>
-        <item name="android:layout_marginBottom">70dp</item>
-        <item name="android:layout_marginStart">10dp</item>
-        <item name="android:layout_marginEnd">10dp</item>
 
-    </style>
-    <!--<item name="android:windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowIsFloating">false</item>-->
-
-    <!--<style name="switch_lang_btn" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="cornerRadius">19dp</item>
-        <item name="strokeColor">?attr/colorPrimary</item>
-        <item name="strokeWidth">3dp</item>
-        <item name="android:backgroundTint">@color/btn_switch_lang_bg_color</item>
-        <item name="android:textColor">@color/btn_switch_lang_text_color</item>
-
-    </style>-->
 </resources>
