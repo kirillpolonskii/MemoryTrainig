@@ -1,22 +1,17 @@
 package com.youngsophomore.helpers;
 
 import android.content.SharedPreferences;
-import android.util.Log;
 import android.util.Pair;
 
 import com.youngsophomore.R;
-import com.youngsophomore.data.Question;
 import com.youngsophomore.data.StatParam;
 import com.youngsophomore.data.Training;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class TrainHelper {
-    private static final String DEBUG_TAG = "Gestures";
     public static ArrayList<Integer> getRandomIndicesPerm(int start, int end){ // exclusive
         ArrayList<Integer> randPerm = new ArrayList<>();
         for(int i = 0; i < end - start; ++i){

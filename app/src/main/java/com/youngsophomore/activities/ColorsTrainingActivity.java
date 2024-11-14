@@ -7,7 +7,6 @@ import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.util.Log;
 import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
@@ -22,13 +21,10 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.youngsophomore.R;
-import com.youngsophomore.data.CollectionsStorage;
 import com.youngsophomore.data.StatParam;
 import com.youngsophomore.data.Training;
-import com.youngsophomore.fragments.AddPhraseFragment;
 import com.youngsophomore.fragments.FinishDialogFragment;
 import com.youngsophomore.fragments.StopwatchFragment;
-import com.youngsophomore.helpers.PrepHelper;
 import com.youngsophomore.helpers.TrainHelper;
 
 import java.util.ArrayList;
@@ -55,13 +51,11 @@ public class ColorsTrainingActivity extends AppCompatActivity implements
         countDownTimer = new CountDownTimer(3000 + 200, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                Log.d(CollectionsStorage.DEBUG_TAG, "in beg of tvCountdown.onTick");
                 tvCountdown.setText(String.valueOf(millisUntilFinished / 1000));
             }
 
             @Override
             public void onFinish() {
-                Log.d(CollectionsStorage.DEBUG_TAG, "in beg of tvCountdown.onFinish");
                 ArrayList<Integer> paletteClr = TrainHelper.Colors.generatePalette(distinctColorsAmount);
                 ArrayList<Integer> colorSeq = TrainHelper.Colors.generateColors(colorsAmount, paletteClr);
                 // Replace TextView for countdown with ImageView for the sequence of colors
@@ -95,7 +89,6 @@ public class ColorsTrainingActivity extends AppCompatActivity implements
                     @Override
                     public void onTick(long millisUntilFinished) {
                         if(curColorShowInd < colorSeq.size()){
-                            Log.d(CollectionsStorage.DEBUG_TAG, "in beg of pretrainSequenceTimer.onTick");
                             ivCurColor.setBackgroundColor(getResources().getColor(colorSeq.get(curColorShowInd)));
                             ++curColorShowInd;
                             tvCurColorNum.setText(String.valueOf(curColorShowInd));
@@ -105,7 +98,6 @@ public class ColorsTrainingActivity extends AppCompatActivity implements
                     @SuppressLint("ClickableViewAccessibility")
                     @Override
                     public void onFinish() {
-                        Log.d(CollectionsStorage.DEBUG_TAG, "in beg of pretrainSequenceTimer.onFinish");
                         setContentView(R.layout.activity_colors_training);
                         Bundle bundle = new Bundle();
                         FragmentManager fragmentManager = getSupportFragmentManager();

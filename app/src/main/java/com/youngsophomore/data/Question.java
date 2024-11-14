@@ -94,9 +94,7 @@ public class Question implements Parcelable {
     public void setAnswers(ArrayList<String> answers) {
         this.answers = answers;
     }
-    public void setAnswersInOneString(String answersInOneString) {
-        this.answersInOneString = answersInOneString;
-    }
+
     public void addAnswerToCollection(String newAnswer){
         answers.add(newAnswer);
     }

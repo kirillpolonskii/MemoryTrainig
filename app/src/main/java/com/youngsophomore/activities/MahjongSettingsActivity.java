@@ -9,7 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -23,7 +22,6 @@ import com.youngsophomore.R;
 import com.youngsophomore.fragments.InfoDialogFragment;
 
 public class MahjongSettingsActivity extends AppCompatActivity {
-    private static final String DEBUG_TAG = "Gestures";
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

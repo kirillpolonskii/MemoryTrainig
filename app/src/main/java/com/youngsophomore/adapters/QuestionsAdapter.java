@@ -1,6 +1,5 @@
 package com.youngsophomore.adapters;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,7 +60,7 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.View
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.new_question_list_item, viewGroup, false);
+                .inflate(R.layout.item_answers, viewGroup, false);
 
         return new QuestionsAdapter.ViewHolder(view, rvClickListener);
     }

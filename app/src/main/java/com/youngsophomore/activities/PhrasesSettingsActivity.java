@@ -3,14 +3,12 @@ package com.youngsophomore.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -26,17 +24,10 @@ import com.youngsophomore.data.CollectionsStorage;
 import com.youngsophomore.fragments.DeleteCollectionDialogFragment;
 import com.youngsophomore.fragments.InfoDialogFragment;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class PhrasesSettingsActivity extends AppCompatActivity
         implements DeleteCollectionDialogFragment.DeleteCollectionDialogListener{
-    private static final String DEBUG_TAG = "Gestures";
     SharedPreferences sharedPreferences;
     ArrayAdapter<String> adapter;
     Spinner sprPhrasesCollection;
@@ -66,8 +57,8 @@ public class PhrasesSettingsActivity extends AppCompatActivity
         phrasesCollectionsTitles = CollectionsStorage.getCollectionsTitles(
                 sharedPreferences, getString(R.string.phrases_collections_titles_key));
         adapter = new ArrayAdapter<>(this,
-                R.layout.custom_spinner_item, phrasesCollectionsTitles);
-        adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+                R.layout.item_spinner, phrasesCollectionsTitles);
+        adapter.setDropDownViewResource(R.layout.item_spinner_dropdown);
         sprPhrasesCollection.setAdapter(adapter);
         sprPhrasesCollection.setSelection(phrasesCollectionPosition);
         sprPhrasesCollection.setOnLongClickListener(new View.OnLongClickListener() {

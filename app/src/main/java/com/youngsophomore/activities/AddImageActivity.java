@@ -11,7 +11,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -25,11 +24,9 @@ import android.widget.Toast;
 import com.youngsophomore.R;
 import com.youngsophomore.data.CollectionsStorage;
 import com.youngsophomore.data.Question;
-import com.youngsophomore.fragments.AddPhraseFragment;
 import com.youngsophomore.fragments.AddQuestionFragment;
 import com.youngsophomore.fragments.InfoDialogFragment;
 import com.youngsophomore.fragments.NewImageNameDialogFragment;
-import com.youngsophomore.fragments.NewPhrasesListFragment;
 import com.youngsophomore.fragments.NewQuestionsListFragment;
 import com.youngsophomore.helpers.PrepHelper;
 
@@ -37,7 +34,6 @@ import java.util.ArrayList;
 
 public class AddImageActivity extends AppCompatActivity implements
         NewImageNameDialogFragment.NewImageNameDialogListener {
-    private static final String DEBUG_TAG = "Gestures";
     private final String NEW_QUESTIONS_FRAGMENT_TAG = "new_questions_fragment";
     private final String ADD_QUESTION_FRAGMENT_TAG = "add_question_fragment";
     SharedPreferences sharedPreferences;
@@ -155,7 +151,7 @@ public class AddImageActivity extends AppCompatActivity implements
                         AddQuestionFragment newQuestionFragment =
                                 (AddQuestionFragment) fragmentManager.findFragmentByTag(ADD_QUESTION_FRAGMENT_TAG);
                         Question newQuestion = newQuestionFragment.getQuestion();
-                        if(!newQuestion.getQuestionText().equals("")){
+                        if(!newQuestion.getQuestionText().isEmpty()){
                             newQuestion.putAnswersInOneString();
                             newQuestions.add(newQuestion);
                         }

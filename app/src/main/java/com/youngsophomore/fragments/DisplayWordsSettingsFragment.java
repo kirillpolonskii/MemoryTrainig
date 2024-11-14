@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,9 +52,9 @@ public class DisplayWordsSettingsFragment extends Fragment
         NumberPicker pckrWordShowTime = fragment.findViewById(R.id.num_pck_wrd_show_time);
 
         adapter = new ArrayAdapter<>(fragment.getContext(),
-                R.layout.custom_spinner_item,
+                R.layout.item_spinner,
                 CollectionsStorage.getCollectionsTitles(sharedPreferences, getString(R.string.words_collections_titles_key)));
-        adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.item_spinner_dropdown);
         sprWordsCollection.setAdapter(adapter);
         sprWordsCollection.setOnLongClickListener(new View.OnLongClickListener() {
             @Override

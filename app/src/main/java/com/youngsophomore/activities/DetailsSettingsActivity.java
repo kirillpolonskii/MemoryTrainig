@@ -9,7 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -58,8 +57,8 @@ public class DetailsSettingsActivity extends AppCompatActivity
         questionsCollectionsTitles = CollectionsStorage.getCollectionsTitles(sharedPreferences,
                 getString(R.string.questions_collections_titles_key));
         adapter = new ArrayAdapter<>(this,
-                R.layout.custom_spinner_item, questionsCollectionsTitles);
-        adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+                R.layout.item_spinner, questionsCollectionsTitles);
+        adapter.setDropDownViewResource(R.layout.item_spinner_dropdown);
         sprImagesCollection.setAdapter(adapter);
         sprImagesCollection.setSelection(imagesCollectionPosition);
         sprImagesCollection.setOnLongClickListener(new View.OnLongClickListener() {

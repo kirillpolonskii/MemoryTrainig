@@ -144,10 +144,10 @@ public class StatisticsActivity extends AppCompatActivity {
         BarDataSet setEqTiles3 = new BarDataSet(entriesByEqTiles3, getString(R.string.lbl_stat_eq_tiles_3));
         BarDataSet setEqTiles4 = new BarDataSet(entriesByEqTiles4, getString(R.string.lbl_stat_eq_tiles_4));
         BarDataSet setEqTiles6 = new BarDataSet(entriesByEqTiles6, getString(R.string.lbl_stat_eq_tiles_6));
-        setEqTiles2.setColor(getResources().getColor(R.color.blue));
-        setEqTiles3.setColor(getResources().getColor(R.color.c_training_color_10));
-        setEqTiles4.setColor(getResources().getColor(R.color.c_training_color_12));
-        setEqTiles6.setColor(getResources().getColor(R.color.c_training_color_9));
+        setEqTiles2.setColor(getResources().getColor(R.color.c_training_color_10));
+        setEqTiles3.setColor(getResources().getColor(R.color.c_training_color_12));
+        setEqTiles4.setColor(getResources().getColor(R.color.c_training_color_9));
+        setEqTiles6.setColor(getResources().getColor(R.color.black));
         BarData bDataTimeToMovesMhjEqTiles = new BarData(setEqTiles2, setEqTiles3, setEqTiles4, setEqTiles6);
         bDataTimeToMovesMhjEqTiles.setBarWidth(barWidthEqTilesMhj);
         bcTimeToMovesMhjEqTiles.setData(bDataTimeToMovesMhjEqTiles);

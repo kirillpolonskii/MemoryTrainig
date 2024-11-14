@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.util.Pair;
 import android.util.TypedValue;
 import android.view.MotionEvent;
@@ -127,14 +126,10 @@ public class WordsTrainingActivity extends AppCompatActivity implements
                                         case (MotionEvent.ACTION_UP):
                                             btnWordPal.get(finalI).setElevation(elevPx);
                                             if(btnWordPal.get(finalI).getText() == wordsCollection.get(curWordSeqInd)){
-                                                Log.d(CollectionsStorage.DEBUG_TAG,
-                                                        "tvWordsSeq.getText() = <" + tvWordsSeq.getText() + ">");
                                                 String updatedText = tvWordsSeq.getText() +
                                                         ((curWordSeqInd != 0) ? " " : "") +
                                                         wordsCollection.get(curWordSeqInd);
                                                 tvWordsSeq.setText(updatedText);
-                                                Log.d(CollectionsStorage.DEBUG_TAG,
-                                                        "tvWordsSeq.getText() = <" + tvWordsSeq.getText() + ">");
                                                 ++curWordSeqInd;
                                                 if (curWordSeqInd + curPaletteSize > wordsCollection.size())
                                                     --curPaletteSize;

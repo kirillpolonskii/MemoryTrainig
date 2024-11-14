@@ -1,7 +1,6 @@
 package com.youngsophomore.adapters;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,6 @@ import com.youngsophomore.R;
 import java.util.ArrayList;
 
 public class PhrasesTrainingAdapter extends RecyclerView.Adapter<PhrasesTrainingAdapter.ViewHolder> {
-    private static final String DEBUG_TAG = "Gestures";
     public PhraseTrainingListener phraseTrainingListener;
     private ArrayList<String> localDataSet;
     public ArrayList<Integer> indicesPerm;
@@ -60,7 +58,7 @@ public class PhrasesTrainingAdapter extends RecyclerView.Adapter<PhrasesTraining
     public PhrasesTrainingAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.phrase_training_row_el, parent, false);
+                .inflate(R.layout.item_phr_training, parent, false);
 
         return new PhrasesTrainingAdapter.ViewHolder(view);
     }

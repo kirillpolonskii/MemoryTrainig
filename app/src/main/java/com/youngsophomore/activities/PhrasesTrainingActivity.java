@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.util.Pair;
 import android.util.TypedValue;
 import android.widget.TextView;
@@ -45,7 +44,7 @@ public class PhrasesTrainingActivity extends AppCompatActivity implements
         sharedPreferences =
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
 
-        int phrasesCollectionPosition = sharedPreferences.getInt(getString(R.string.saved_phrases_collection_position_key), 0);;
+        int phrasesCollectionPosition = sharedPreferences.getInt(getString(R.string.saved_phrases_collection_position_key), 0);
         phraseShowTime = sharedPreferences.getInt(getString(R.string.saved_phrase_show_time_key), 2);
 
         ArrayList<String> phrasesCollectionsTitles = CollectionsStorage.getCollectionsTitles(

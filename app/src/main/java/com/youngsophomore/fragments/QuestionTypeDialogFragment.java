@@ -8,12 +8,9 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
-import android.util.Log;
-
 import com.youngsophomore.R;
 
 public class QuestionTypeDialogFragment extends DialogFragment {
-    private static final String DEBUG_TAG = "Gestures";
     public interface QuestionTypeDialogListener {
         void onQuestionTypePosClick(DialogFragment dialog);
         void onQuestionTypeNegClick(DialogFragment dialog);
@@ -24,7 +21,6 @@ public class QuestionTypeDialogFragment extends DialogFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        
         listener = (QuestionTypeDialogListener) getParentFragment();
     }
 

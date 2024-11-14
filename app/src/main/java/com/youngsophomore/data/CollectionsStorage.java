@@ -6,8 +6,6 @@ package com.youngsophomore.data;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.util.ArrayMap;
-import android.util.Log;
 
 import com.youngsophomore.helpers.TrainHelper;
 
@@ -20,8 +18,6 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class CollectionsStorage {
-    public static final String DEBUG_TAG = "Gestures";
-
 
     public static ArrayList<String> getCollectionsTitles(SharedPreferences sharedPreferences, String key){
         String strWordsCollectionsTitles = sharedPreferences.getString(key, "");
@@ -115,12 +111,6 @@ public class CollectionsStorage {
             
             String fileName = "/" + title + ".txt";
             File deleteFile = new File(filePath, fileName);
-            if(deleteFile.delete()){
-                
-            }
-            else{
-                
-            }
         }
         catch (NullPointerException e) {
             
@@ -168,9 +158,6 @@ public class CollectionsStorage {
         try {
             File questionsDir = new File(context.getExternalFilesDir(null).getAbsolutePath()
                     + "/details" + "/" + title);
-            if (!questionsDir.exists() && questionsDir.mkdir()) {
-                
-            }
             
             for(int i = 0; i < newCollection.size(); ++i){
                 String questionNum = "question";

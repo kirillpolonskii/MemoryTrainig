@@ -8,13 +8,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.youngsophomore.R;
@@ -22,7 +18,6 @@ import com.youngsophomore.R;
 
 public class FinishDialogFragment extends DialogFragment {
 
-    private static final String DEBUG_TAG = "Gestures";
     private String trainingDurSec, amountText, amount;
     public interface FinishDialogListener {
         void onFinishPosClick(DialogFragment dialog);
@@ -39,8 +34,7 @@ public class FinishDialogFragment extends DialogFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        
-        
+
         try {
             listener = (FinishDialogFragment.FinishDialogListener) context;
         } catch (ClassCastException e) {

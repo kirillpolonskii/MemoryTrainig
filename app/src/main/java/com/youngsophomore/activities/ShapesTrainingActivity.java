@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.util.Log;
 import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
@@ -14,7 +13,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
@@ -33,7 +31,6 @@ import java.util.ArrayList;
 public class ShapesTrainingActivity extends AppCompatActivity implements
         FinishDialogFragment.FinishDialogListener {
     CountDownTimer countDownTimer, pretrainSequenceTimer;
-    private static final String DEBUG_TAG = "Gestures";
     private static final String STOPWATCH_FRAGMENT_TAG = "stopwatch_fragment_tag";
     int curShapeShowInd = 0, curShapeSeqInd = 0;
     private int mistakesAmount = 0;
@@ -53,7 +50,6 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
         countDownTimer = new CountDownTimer(3000 + 200, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                
                 tvCountdown.setText(String.valueOf(millisUntilFinished / 1000));
             }
 

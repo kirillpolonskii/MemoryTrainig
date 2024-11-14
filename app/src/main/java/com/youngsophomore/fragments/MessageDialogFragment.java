@@ -7,12 +7,9 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
-import android.util.Log;
-
 import com.youngsophomore.R;
 
 public class MessageDialogFragment extends DialogFragment {
-    private static final String DEBUG_TAG = "Gestures";
     private String title;
     private String message;
     public MessageDialogFragment(String title, String message){

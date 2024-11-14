@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.CheckBox;
@@ -30,10 +29,8 @@ import com.youngsophomore.data.StatParam;
 import com.youngsophomore.data.Training;
 import com.youngsophomore.fragments.FinishDialogFragment;
 import com.youngsophomore.fragments.StopwatchFragment;
-import com.youngsophomore.helpers.PrepHelper;
 import com.youngsophomore.helpers.TrainHelper;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -108,7 +105,6 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
                         ConstraintSet.PARENT_ID, ConstraintSet.START);
                 constraintSet.connect(ivCollectionImage.getId(), ConstraintSet.END,
                         ConstraintSet.PARENT_ID, ConstraintSet.END);
-                //constraintSet.setDimensionRatio(ivCollectionImage.getId(), "1:1");
                 constraintSet.applyTo(cntLytPretrain);
                 ivCollectionImage.setImageURI(imageUri);
 
@@ -149,55 +145,39 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
                                     if(((RadioButton)group.getChildAt(0)).isChecked()){
                                         answersIndices.clear();
                                         answersIndices.add(1);
-                                        Log.d(CollectionsStorage.DEBUG_TAG,
-                                                "in end of onCheckedChanged,r_btn_answer_1 " + answersIndices);
                                     }
                                 }
                                 else if (checkedId == R.id.r_btn_answer_2){
                                     if(((RadioButton)group.getChildAt(1)).isChecked()){
                                         answersIndices.clear();
                                         answersIndices.add(2);
-                                        Log.d(CollectionsStorage.DEBUG_TAG,
-                                                "in end of onCheckedChanged,r_btn_answer_2 " + answersIndices);
                                     }
                                 }
                                 else if (checkedId == R.id.r_btn_answer_3){
                                     if(((RadioButton)group.getChildAt(2)).isChecked()){
                                         answersIndices.clear();
                                         answersIndices.add(3);
-                                        Log.d(CollectionsStorage.DEBUG_TAG,
-                                                "in end of onCheckedChanged,r_btn_answer_3 " + answersIndices);
                                     }
                                 }
                                 else if (checkedId == R.id.r_btn_answer_4){
                                     answersIndices.clear();
                                     answersIndices.add(4);
-                                    Log.d(CollectionsStorage.DEBUG_TAG,
-                                            "in end of onCheckedChanged,r_btn_answer_4 " + answersIndices);
                                 }
                                 else if (checkedId == R.id.r_btn_answer_5){
                                     answersIndices.clear();
                                     answersIndices.add(5);
-                                    Log.d(CollectionsStorage.DEBUG_TAG,
-                                            "in end of onCheckedChanged,r_btn_answer_5 " + answersIndices);
                                 }
                                 else if (checkedId == R.id.r_btn_answer_6){
                                     answersIndices.clear();
                                     answersIndices.add(6);
-                                    Log.d(CollectionsStorage.DEBUG_TAG,
-                                            "in end of onCheckedChanged,r_btn_answer_6 " + answersIndices);
                                 }
                                 else if (checkedId == R.id.r_btn_answer_7){
                                     answersIndices.clear();
                                     answersIndices.add(7);
-                                    Log.d(CollectionsStorage.DEBUG_TAG,
-                                            "in end of onCheckedChanged,r_btn_answer_7 " + answersIndices);
                                 }
                                 else if (checkedId == R.id.r_btn_answer_8){
                                     answersIndices.clear();
                                     answersIndices.add(8);
-                                    Log.d(CollectionsStorage.DEBUG_TAG,
-                                            "in end of onCheckedChanged,r_btn_answer_8 " + answersIndices);
                                 }
                             }
                         });
@@ -211,8 +191,6 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
                                     } else {
                                         answersIndices.remove(finalI + 1);
                                     }
-                                    Log.d(CollectionsStorage.DEBUG_TAG,
-                                            "in end of onCheckedChanged,ckBxMultAnswers.get(i) " + answersIndices);
                                 }
                             });
                         }
@@ -229,7 +207,6 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
                         tvQuestionText.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Log.d(CollectionsStorage.DEBUG_TAG, "in beg of onClick " + answersIndices.toString());
                                 if (questionsCollection.get(curQuestionInd).getCorrAnswersIndices().equals(
                                         answersIndices
                                 )){
@@ -296,9 +273,7 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
     }
 
     private void showNextQuestion(){
-        Log.d(CollectionsStorage.DEBUG_TAG, "in beg of showNextQuestion " + answersIndices.toString());
         answersIndices.clear();
-        Log.d(CollectionsStorage.DEBUG_TAG, "aft clear " + answersIndices);
         Question curQuestion = questionsCollection.get(curQuestionInd);
         changeAnswersLayout(curQuestion.isSingleAnswer(), curQuestion.getAnswers().size());
         tvQuestionText.setText(curQuestion.getQuestionText());
@@ -314,7 +289,6 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
                 ckBxMultAnswers.get(i).setChecked(false);
             }
         }
-        Log.d(CollectionsStorage.DEBUG_TAG, "in end of showNextQuestion " + answersIndices.toString());
     }
     private void changeAnswersLayout(boolean hasSingleAnswer, int answersNum){
         if (hasSingleAnswer){

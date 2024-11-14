@@ -26,7 +26,7 @@ public class DetailsStatAdapter extends RecyclerView.Adapter<DetailsStatAdapter.
     @Override
     public DetailsStatAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.collection_stat_row_el, parent, false);
+                .inflate(R.layout.item_stat_imgs_collection, parent, false);
 
         return new DetailsStatAdapter.ViewHolder(view);
     }

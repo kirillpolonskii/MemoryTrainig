@@ -8,7 +8,6 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -16,7 +15,6 @@ import android.widget.EditText;
 import com.youngsophomore.R;
 
 public class NewImageNameDialogFragment extends DialogFragment {
-    private static final String DEBUG_TAG = "Gestures";
     public interface NewImageNameDialogListener {
         void onNewImageNamePosClick(DialogFragment dialog, String newImageName);
     }

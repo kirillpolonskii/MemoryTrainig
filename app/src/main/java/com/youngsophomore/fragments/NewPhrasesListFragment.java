@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,24 +18,20 @@ import com.youngsophomore.adapters.PhrasesAdapter;
 import java.util.ArrayList;
 
 public class NewPhrasesListFragment extends Fragment {
-    private static final String DEBUG_TAG = "Gestures";
     private ArrayList<CharSequence> newPhrasesCollectionCharS;
     private ArrayList<String> newPhrasesCollection;
-
 
     public NewPhrasesListFragment() {
         
     }
 
     public static NewPhrasesListFragment newInstance() {
-        
         return new NewPhrasesListFragment();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         newPhrasesCollectionCharS = getArguments().getCharSequenceArrayList(getString(R.string.new_phrases_collection_key));
         
     }

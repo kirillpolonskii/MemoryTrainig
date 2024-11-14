@@ -9,12 +9,10 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentContainerView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.InputType;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -134,7 +132,7 @@ public class AddQuestionFragment extends Fragment
                     case (MotionEvent.ACTION_MOVE):
                         return true;
                     case (MotionEvent.ACTION_UP):
-                        if (!etNewAnswer.getText().toString().equals("")){
+                        if (!etNewAnswer.getText().toString().isEmpty()){
                             showCorrectAnswerDialog();
                         }
                         PrepHelper.deactivateBtn(btnConfirmAnswer);
@@ -216,7 +214,7 @@ public class AddQuestionFragment extends Fragment
         }
         else{
             String newAnswer = etNewAnswer.getText().toString() + " +";
-            if (!etNewAnswer.getText().toString().equals("")){
+            if (!etNewAnswer.getText().toString().isEmpty()){
                 question.addAnswerToCollection(newAnswer);
                 answersAdapter.notifyDataSetChanged();
                 haveCorrectAnswer = false;

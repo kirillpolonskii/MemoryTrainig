@@ -10,7 +10,6 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
@@ -32,7 +31,6 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 public class MainMenuActivity extends AppCompatActivity {
-    private static final String DEBUG_TAG = "Gestures";
     private MyMotionLayout mtnLtMainMenu;
     String languageToLoad;
     @SuppressLint("ClickableViewAccessibility")
@@ -215,14 +213,6 @@ public class MainMenuActivity extends AppCompatActivity {
         try {
             String fileName = "/" + phrasesCollectionTitle + ".txt";
             File outFile = new File(phrasesDir, fileName);
-            if (!outFile.exists() && outFile.createNewFile()) {
-                Log.d(DEBUG_TAG, "in MainMenuActivity: " + outFile.getAbsolutePath() +
-                        " did NOT exist and was created");
-            }
-            else{
-                Log.d(DEBUG_TAG, "in MainMenuActivity: " + outFile.getAbsolutePath() +
-                        " existed or was NOT created");
-            }
             FileOutputStream fos = new FileOutputStream(outFile);
             OutputStreamWriter osw = new OutputStreamWriter(fos);
             

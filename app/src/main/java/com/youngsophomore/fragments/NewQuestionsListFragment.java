@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +22,6 @@ import java.util.ArrayList;
 public class NewQuestionsListFragment extends Fragment
         implements RecyclerViewClickListener,
         DeleteQuestionDialogFragment.DeleteQuestionDialogListener {
-    private static final String DEBUG_TAG = "Gestures";
     private ArrayList<Question> newQuestionsCollection;
     QuestionsAdapter questionsAdapter;
 
@@ -39,7 +37,6 @@ public class NewQuestionsListFragment extends Fragment
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             newQuestionsCollection = getArguments().getParcelableArrayList(getString(R.string.new_questions_collection_key));
@@ -49,7 +46,6 @@ public class NewQuestionsListFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        
         return inflater.inflate(R.layout.fragment_new_questions_list, container, false);
     }
 
@@ -57,8 +53,6 @@ public class NewQuestionsListFragment extends Fragment
     public void onViewCreated(View view, Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-        
-
         questionsAdapter = new QuestionsAdapter(newQuestionsCollection, this);
         RecyclerView rvNewQuestionsCollection = view.findViewById(R.id.rv_new_questions_collection);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());

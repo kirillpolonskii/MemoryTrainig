@@ -2,7 +2,6 @@ package com.youngsophomore.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.Guideline;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -12,14 +11,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.youngsophomore.R;
-import com.youngsophomore.data.CollectionsStorage;
 import com.youngsophomore.data.StatParam;
 import com.youngsophomore.data.Training;
 import com.youngsophomore.fragments.FinishDialogFragment;
@@ -28,7 +25,6 @@ import com.youngsophomore.helpers.PrepHelper;
 import com.youngsophomore.helpers.TrainHelper;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 @SuppressLint("MissingInflatedId")
 public class MahjongTrainingActivity extends AppCompatActivity implements

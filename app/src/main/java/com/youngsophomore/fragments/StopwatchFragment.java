@@ -7,7 +7,6 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,7 +19,6 @@ import com.youngsophomore.R;
 import java.util.Locale;
 
 public class StopwatchFragment extends Fragment {
-    private static final String DEBUG_TAG = "Gestures";
     private int decisecond = 0;
     private boolean running;
     private boolean wasRunning;

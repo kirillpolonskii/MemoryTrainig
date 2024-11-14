@@ -9,7 +9,6 @@ import androidx.fragment.app.FragmentManager;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -21,8 +20,6 @@ import android.widget.Toast;
 import com.youngsophomore.R;
 import com.youngsophomore.data.CollectionsStorage;
 import com.youngsophomore.fragments.AddPhraseFragment;
-import com.youngsophomore.fragments.AddWordsCollectionFragment;
-import com.youngsophomore.fragments.DisplayWordsSettingsFragment;
 import com.youngsophomore.fragments.InfoDialogFragment;
 import com.youngsophomore.fragments.NewPhrasesListFragment;
 import com.youngsophomore.helpers.PrepHelper;
@@ -30,7 +27,6 @@ import com.youngsophomore.helpers.PrepHelper;
 import java.util.ArrayList;
 
 public class AddPhrasesCollectionActivity extends AppCompatActivity {
-    private static final String DEBUG_TAG = "Gestures";
     private final String NEW_PHRASES_LIST_FRAGMENT_TAG = "new_phrases_list_fragment";
     private final String ADD_PHRASE_FRAGMENT_TAG = "add_phrase_fragment";
     FragmentManager fragmentManager;
@@ -111,7 +107,7 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
 
                         Fragment newPhraseFragment = fragmentManager.findFragmentByTag(ADD_PHRASE_FRAGMENT_TAG);
                         EditText etNewPhrase = newPhraseFragment.getView().findViewById(R.id.et_new_phrase);
-                        if (!etNewPhrase.getText().toString().equals("")){
+                        if (!etNewPhrase.getText().toString().isEmpty()){
                             newPhrasesCollectionCharS.add(etNewPhrase.getText().toString());
                         }
                         bundle.putCharSequenceArrayList(getString(R.string.new_phrases_collection_key), newPhrasesCollectionCharS);
@@ -147,7 +143,7 @@ public class AddPhrasesCollectionActivity extends AppCompatActivity {
                         String newTitle = etPhrasesCollectionTitle.getText().toString();
                         String strPhrasesCollectionsTitles =
                                 sharedPreferences.getString(getString(R.string.phrases_collections_titles_key), "");
-                        if (newTitle.equals("") || newPhrasesCollectionCharS.size() < 2){
+                        if (newTitle.isEmpty() || newPhrasesCollectionCharS.size() < 2){
                             onBackPressed();
                         }
                         else{
