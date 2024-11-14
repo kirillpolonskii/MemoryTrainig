@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -21,6 +22,7 @@ import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.google.android.material.divider.MaterialDividerItemDecoration;
 import com.youngsophomore.R;
 import com.youngsophomore.adapters.DetailsStatAdapter;
 import com.youngsophomore.data.CollectionsStorage;
@@ -94,8 +96,12 @@ public class StatisticsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_statistics);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(getString(R.string.tbr_stat_title));
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         sharedPreferences =
                 getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         // MHJ
@@ -449,6 +455,10 @@ public class StatisticsActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rvCollectTime.setLayoutManager(layoutManager);
         rvCollectTime.setAdapter(detailsStatAdapter);
+        MaterialDividerItemDecoration dividerItemDecoration = new MaterialDividerItemDecoration(rvCollectTime.getContext(),
+                layoutManager.getOrientation());
+        dividerItemDecoration.setDividerColorResource(this, R.color.blue);
+        rvCollectTime.addItemDecoration(dividerItemDecoration);
 
     }
 
@@ -1074,5 +1084,11 @@ public class StatisticsActivity extends AppCompatActivity {
 
     private double round2(double num){
         return (double)Math.round(num * 100) / 100.0;
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        onBackPressed();
+        return true;
     }
 }

@@ -168,6 +168,7 @@
     <string name="phr_train_moves_amount">Количество ходов:</string>
     <string name="det_train_mistakes_amount">Количество ошибок (один вариант / несколько вариантов ответа):</string>
     <!--STRINGS FOR STATISTICS-->
+    <string name="tbr_stat_title">Статистика</string>
     <string name="tv_subtitle_time">Среднее время тренировки</string>
     <string name="tv_subtitle_tiles">Для количества костей</string>
     <string name="tv_subtitle_eq_tiles">Для количества одинаковых костей</string>

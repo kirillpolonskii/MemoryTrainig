@@ -168,6 +168,7 @@
     <string name="phr_train_moves_amount">Moves amount:</string>
     <string name="det_train_mistakes_amount">Mistakes amount (one answer / multiple answers):</string>
     <!--STRINGS FOR STATISTICS-->
+    <string name="tbr_stat_title">Statistics</string>
     <string name="tv_subtitle_time">Average time of a training</string>
     <string name="tv_subtitle_tiles">For the amount of tiles</string>
     <string name="tv_subtitle_eq_tiles">For the amount of equal tiles</string>

@@ -44,6 +44,7 @@
         style="@style/SegmentedButtonGroupStyle"
         tools:ignore="TouchTargetSizeCheck"
         android:layout_marginStart="@dimen/settings_small_margin"
+        android:layout_marginEnd="5dp"
         android:layout_marginTop="@dimen/settings_small_margin"
         >
         <com.addisonelliott.segmentedbutton.SegmentedButton

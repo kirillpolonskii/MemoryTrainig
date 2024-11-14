@@ -41,7 +41,6 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.pretrain_sequence_layout);
 
         SharedPreferences sharedPreferences =
