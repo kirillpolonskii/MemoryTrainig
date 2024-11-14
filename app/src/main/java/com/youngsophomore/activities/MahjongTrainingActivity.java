@@ -19,6 +19,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.youngsophomore.R;
+import com.youngsophomore.data.CollectionsStorage;
 import com.youngsophomore.data.StatParam;
 import com.youngsophomore.data.Training;
 import com.youngsophomore.fragments.FinishDialogFragment;
@@ -27,6 +28,7 @@ import com.youngsophomore.helpers.PrepHelper;
 import com.youngsophomore.helpers.TrainHelper;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 @SuppressLint("MissingInflatedId")
 public class MahjongTrainingActivity extends AppCompatActivity implements
@@ -70,11 +72,6 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
                 }
                 
                 ConstraintLayout constraintLayout = findViewById(R.id.cst_lt_chld_mhj);
-                Guideline guidelineTop = findViewById(R.id.guideline_top);
-                Guideline guidelineBottom = findViewById(R.id.guideline_bottom);
-                Guideline guidelineLeft = findViewById(R.id.guideline_left);
-                Guideline guidelineRight = findViewById(R.id.guideline_right);
-                setGuidelines(mhjTilesAmount, guidelineTop, guidelineBottom, guidelineLeft, guidelineRight);
 
                 ArrayList<ImageButton> btnTiles = new ArrayList<>();
                 for(int i = 0; i < constraintLayout.getChildCount(); ++i){
@@ -240,63 +237,6 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
             }
         }
         return correctAnswer;
-    }
-
-    private void setGuidelines(int mahjongTilesAmount,
-                               Guideline guidelineTop, Guideline guidelineBottom,
-                               Guideline guidelineLeft, Guideline guidelineRight){
-        int width = getResources().getDisplayMetrics().widthPixels;
-        int height = getResources().getDisplayMetrics().heightPixels;
-        
-        if (width <= 900){ // For small phones
-            
-            if(mahjongTilesAmount == 12){
-                // Set big vert and small horiz indents
-                guidelineTop.setGuidelinePercent(
-                        Float.parseFloat(getResources().getString(R.string.m_training_big_top_gl)));
-                guidelineBottom.setGuidelinePercent(
-                        1.0f - Float.parseFloat(getResources().getString(R.string.m_training_big_top_gl)));
-                guidelineLeft.setGuidelinePercent(
-                        Float.parseFloat(getResources().getString(R.string.m_training_small_left_gl)));
-                guidelineRight.setGuidelinePercent(
-                        1.0f - Float.parseFloat(getResources().getString(R.string.m_training_small_left_gl)));
-            }
-            else{
-                // Set small vert and small horiz indents
-                guidelineTop.setGuidelinePercent(
-                        Float.parseFloat(getResources().getString(R.string.m_training_small_top_gl)));
-                guidelineBottom.setGuidelinePercent(
-                        Float.parseFloat(getResources().getString(R.string.m_training_small_bottom_gl)));
-                guidelineLeft.setGuidelinePercent(
-                        Float.parseFloat(getResources().getString(R.string.m_training_small_left_gl)));
-                guidelineRight.setGuidelinePercent(
-                        1.0f - Float.parseFloat(getResources().getString(R.string.m_training_small_left_gl)));
-            }
-        }
-        else{ // For big phones
-            if(mahjongTilesAmount == 12){
-                // Set big vert and small horiz indents
-                guidelineTop.setGuidelinePercent(
-                        Float.parseFloat(getResources().getString(R.string.m_training_big_top_gl)));
-                guidelineBottom.setGuidelinePercent(
-                        1.0f - Float.parseFloat(getResources().getString(R.string.m_training_big_top_gl)));
-                guidelineLeft.setGuidelinePercent(
-                        Float.parseFloat(getResources().getString(R.string.m_training_small_left_gl)));
-                guidelineRight.setGuidelinePercent(
-                        1.0f - Float.parseFloat(getResources().getString(R.string.m_training_small_left_gl)));
-            }
-            else{
-                // Set small vert and small horiz indents
-                guidelineTop.setGuidelinePercent(
-                        Float.parseFloat(getResources().getString(R.string.m_training_small_top_gl)));
-                guidelineBottom.setGuidelinePercent(
-                        Float.parseFloat(getResources().getString(R.string.m_training_big_bottom_gl)));
-                guidelineLeft.setGuidelinePercent(
-                        Float.parseFloat(getResources().getString(R.string.m_training_small_left_gl)));
-                guidelineRight.setGuidelinePercent(
-                        1.0f - Float.parseFloat(getResources().getString(R.string.m_training_small_left_gl)));
-            }
-        }
     }
 
     @Override
