@@ -162,11 +162,11 @@
     <string name="tv_save_answer">Save an answer</string>
     <string name="tv_remind_image">Show an image</string>
 
-    <string name="m_training_small_top_gl">0.1</string>
-    <string name="m_training_big_top_gl">0.3</string>
+    <string name="m_training_small_top_gl">0.08</string>
+    <string name="m_training_big_top_gl">0.25</string>
     <string name="m_training_small_bottom_gl">0.96</string>
     <string name="m_training_big_bottom_gl">0.93</string>
-    <string name="m_training_small_left_gl">0.05</string>
+    <string name="m_training_small_left_gl">0.1</string>
     <!--STRINGS FOR FINISH DIALOGS-->
     <string name="finish_dialog_title">The training is over!</string>
     <string name="training_dur">Time of the training:</string>

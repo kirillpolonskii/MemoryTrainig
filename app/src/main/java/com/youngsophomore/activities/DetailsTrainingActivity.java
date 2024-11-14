@@ -40,6 +40,7 @@ import java.util.HashSet;
 public class DetailsTrainingActivity extends AppCompatActivity implements
         FinishDialogFragment.FinishDialogListener {
     private static final String STOPWATCH_FRAGMENT_TAG = "stopwatch_fragment_tag";
+    CountDownTimer countDownTimer, pretrainSequenceTimer;
     int curQuestionInd = 0;
     ArrayList<Question> questionsCollection;
     TextView tvQuestionText;
@@ -73,7 +74,7 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
         TextView tvCurPhraseNum = findViewById(R.id.tv_cur_elem_num);
         TextView tvPretrainTip = findViewById(R.id.tv_pretrain_tip);
         tvPretrainTip.setText(getString(R.string.tv_pretrain_tip_det));
-        CountDownTimer countDownTimer = new CountDownTimer(3000 + 200, 1000) {
+        countDownTimer = new CountDownTimer(3000 + 200, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 tvCountdown.setText(String.valueOf(millisUntilFinished / 1000));
@@ -111,7 +112,7 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
                 constraintSet.applyTo(cntLytPretrain);
                 ivCollectionImage.setImageURI(imageUri);
 
-                CountDownTimer pretrainSequenceTimer = new CountDownTimer(
+                pretrainSequenceTimer = new CountDownTimer(
                         imageShowTime * 1000 + 200,  1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
@@ -345,6 +346,16 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (countDownTimer != null){
+            countDownTimer.cancel();
+        }
+        if (pretrainSequenceTimer != null){
+            pretrainSequenceTimer.cancel();
+        }
+    }
 
     @Override
     public void onFinishPosClick(DialogFragment dialog) {

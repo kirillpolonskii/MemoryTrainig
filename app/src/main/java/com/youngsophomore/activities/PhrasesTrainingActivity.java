@@ -30,6 +30,7 @@ import java.util.ArrayList;
 public class PhrasesTrainingActivity extends AppCompatActivity implements
         FinishDialogFragment.FinishDialogListener,
         PhrasesTrainingAdapter.PhraseTrainingListener {
+    CountDownTimer countDownTimer, pretrainSequenceTimer;
     private static final String STOPWATCH_FRAGMENT_TAG = "stopwatch_fragment_tag";
     FragmentManager fragmentManager;
     SharedPreferences sharedPreferences;
@@ -65,7 +66,7 @@ public class PhrasesTrainingActivity extends AppCompatActivity implements
 
         TextView tvCountdown = findViewById(R.id.tv_countdown);
         TextView tvCurPhraseNum = findViewById(R.id.tv_cur_elem_num);
-        CountDownTimer countDownTimer = new CountDownTimer(3000 + 200, 1000) {
+        countDownTimer = new CountDownTimer(3000 + 200, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 tvCountdown.setText(String.valueOf(millisUntilFinished / 1000));
@@ -75,7 +76,7 @@ public class PhrasesTrainingActivity extends AppCompatActivity implements
             public void onFinish() {
                 tvCountdown.setTextSize(TypedValue.COMPLEX_UNIT_PX,
                         getResources().getDimension(R.dimen.w_training_seq_text_size));
-                CountDownTimer pretrainSequenceTimer = new CountDownTimer(
+                pretrainSequenceTimer = new CountDownTimer(
                         phrasesCollection.size() * phraseShowTime * 1000 + 200, phraseShowTime * 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
@@ -135,6 +136,17 @@ public class PhrasesTrainingActivity extends AppCompatActivity implements
                 String.valueOf(movesAmount)
         );
         finishFragment.show(getSupportFragmentManager(), "FinishDialogFragment");
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (countDownTimer != null){
+            countDownTimer.cancel();
+        }
+        if (pretrainSequenceTimer != null){
+            pretrainSequenceTimer.cancel();
+        }
     }
 
     @Override

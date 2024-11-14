@@ -22,16 +22,20 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.youngsophomore.R;
+import com.youngsophomore.data.CollectionsStorage;
 import com.youngsophomore.data.StatParam;
 import com.youngsophomore.data.Training;
+import com.youngsophomore.fragments.AddPhraseFragment;
 import com.youngsophomore.fragments.FinishDialogFragment;
 import com.youngsophomore.fragments.StopwatchFragment;
+import com.youngsophomore.helpers.PrepHelper;
 import com.youngsophomore.helpers.TrainHelper;
 
 import java.util.ArrayList;
 
 public class ColorsTrainingActivity extends AppCompatActivity implements
         FinishDialogFragment.FinishDialogListener {
+    CountDownTimer countDownTimer, pretrainSequenceTimer;
     private static final String STOPWATCH_FRAGMENT_TAG = "stopwatch_fragment_tag";
     int curColorShowInd = 0, curColorSeqInd = 0;
     private int mistakesAmount = 0;
@@ -48,14 +52,16 @@ public class ColorsTrainingActivity extends AppCompatActivity implements
         int colorShowTime = sharedPreferences.getInt(getString(R.string.saved_color_show_time_key), 2);
 
         TextView tvCountdown = findViewById(R.id.tv_countdown);
-        CountDownTimer countDownTimer = new CountDownTimer(3000 + 200, 1000) {
+        countDownTimer = new CountDownTimer(3000 + 200, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
+                Log.d(CollectionsStorage.DEBUG_TAG, "in beg of tvCountdown.onTick");
                 tvCountdown.setText(String.valueOf(millisUntilFinished / 1000));
             }
 
             @Override
             public void onFinish() {
+                Log.d(CollectionsStorage.DEBUG_TAG, "in beg of tvCountdown.onFinish");
                 ArrayList<Integer> paletteClr = TrainHelper.Colors.generatePalette(distinctColorsAmount);
                 ArrayList<Integer> colorSeq = TrainHelper.Colors.generateColors(colorsAmount, paletteClr);
                 // Replace TextView for countdown with ImageView for the sequence of colors
@@ -84,11 +90,12 @@ public class ColorsTrainingActivity extends AppCompatActivity implements
                 constraintSet.applyTo(constraintLayout);
 
                 TextView tvCurColorNum = findViewById(R.id.tv_cur_elem_num);
-                CountDownTimer pretrainSequenceTimer = new CountDownTimer(
+                pretrainSequenceTimer = new CountDownTimer(
                         colorsAmount * colorShowTime * 1000 + 200, colorShowTime * 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
                         if(curColorShowInd < colorSeq.size()){
+                            Log.d(CollectionsStorage.DEBUG_TAG, "in beg of pretrainSequenceTimer.onTick");
                             ivCurColor.setBackgroundColor(getResources().getColor(colorSeq.get(curColorShowInd)));
                             ++curColorShowInd;
                             tvCurColorNum.setText(String.valueOf(curColorShowInd));
@@ -98,6 +105,7 @@ public class ColorsTrainingActivity extends AppCompatActivity implements
                     @SuppressLint("ClickableViewAccessibility")
                     @Override
                     public void onFinish() {
+                        Log.d(CollectionsStorage.DEBUG_TAG, "in beg of pretrainSequenceTimer.onFinish");
                         setContentView(R.layout.activity_colors_training);
                         Bundle bundle = new Bundle();
                         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -203,6 +211,17 @@ public class ColorsTrainingActivity extends AppCompatActivity implements
 
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (countDownTimer != null){
+            countDownTimer.cancel();
+        }
+        if (pretrainSequenceTimer != null){
+            pretrainSequenceTimer.cancel();
+        }
     }
 
     @Override

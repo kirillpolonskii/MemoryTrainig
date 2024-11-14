@@ -33,6 +33,7 @@ import java.util.Arrays;
 
 public class WordsTrainingActivity extends AppCompatActivity implements
         FinishDialogFragment.FinishDialogListener {
+    CountDownTimer countDownTimer, pretrainSequenceTimer;
     private static final String STOPWATCH_FRAGMENT_TAG = "stopwatch_fragment_tag";
     int curWordShowInd = 0, curWordSeqInd = 0, curPaletteSize = TrainHelper.Words.INIT_PAL_SIZE;
     private int mistakesAmount = 0;
@@ -48,7 +49,7 @@ public class WordsTrainingActivity extends AppCompatActivity implements
 
         TextView tvCountdown = findViewById(R.id.tv_countdown);
         TextView tvCurWordNum = findViewById(R.id.tv_cur_elem_num);
-        CountDownTimer countDownTimer = new CountDownTimer(3000 + 200, 1000) {
+        countDownTimer = new CountDownTimer(3000 + 200, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 tvCountdown.setText(String.valueOf(millisUntilFinished / 1000));
@@ -67,7 +68,7 @@ public class WordsTrainingActivity extends AppCompatActivity implements
                 if (wordsCollection.size() < curPaletteSize) curPaletteSize = wordsCollection.size();
                 tvCountdown.setTextSize(TypedValue.COMPLEX_UNIT_PX,
                         getResources().getDimension(R.dimen.w_training_seq_text_size));
-                CountDownTimer pretrainSequenceTimer = new CountDownTimer(
+                pretrainSequenceTimer = new CountDownTimer(
                         wordsCollection.size() * wordShowTime * 1000 + 200, wordShowTime * 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
@@ -126,7 +127,14 @@ public class WordsTrainingActivity extends AppCompatActivity implements
                                         case (MotionEvent.ACTION_UP):
                                             btnWordPal.get(finalI).setElevation(elevPx);
                                             if(btnWordPal.get(finalI).getText() == wordsCollection.get(curWordSeqInd)){
-                                                tvWordsSeq.setText(tvWordsSeq.getText() + " " + wordsCollection.get(curWordSeqInd));
+                                                Log.d(CollectionsStorage.DEBUG_TAG,
+                                                        "tvWordsSeq.getText() = <" + tvWordsSeq.getText() + ">");
+                                                String updatedText = tvWordsSeq.getText() +
+                                                        ((curWordSeqInd != 0) ? " " : "") +
+                                                        wordsCollection.get(curWordSeqInd);
+                                                tvWordsSeq.setText(updatedText);
+                                                Log.d(CollectionsStorage.DEBUG_TAG,
+                                                        "tvWordsSeq.getText() = <" + tvWordsSeq.getText() + ">");
                                                 ++curWordSeqInd;
                                                 if (curWordSeqInd + curPaletteSize > wordsCollection.size())
                                                     --curPaletteSize;
@@ -192,6 +200,17 @@ public class WordsTrainingActivity extends AppCompatActivity implements
             }
         }.start();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (countDownTimer != null){
+            countDownTimer.cancel();
+        }
+        if (pretrainSequenceTimer != null){
+            pretrainSequenceTimer.cancel();
+        }
     }
 
     @Override

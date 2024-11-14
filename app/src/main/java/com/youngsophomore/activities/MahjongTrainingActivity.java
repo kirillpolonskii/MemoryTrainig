@@ -31,6 +31,7 @@ import java.util.ArrayList;
 @SuppressLint("MissingInflatedId")
 public class MahjongTrainingActivity extends AppCompatActivity implements
         FinishDialogFragment.FinishDialogListener {
+    CountDownTimer countDownTimer, showCountdownTimer;
     private static final String STOPWATCH_FRAGMENT_TAG = "stopwatch_fragment_tag";
     private ArrayList<ImageButton> flippedTiles;
     private ArrayList<Integer> flippedTilesNum;
@@ -52,7 +53,7 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
 
         ArrayList<Integer> tilesNum = TrainHelper.Mahjong.generateTiles(mhjTilesAmount, mhjEqualTilesAmount);
         TextView tvCountdown = findViewById(R.id.tv_countdown);
-        CountDownTimer countDownTimer = new CountDownTimer(3000 + 200, 1000) {
+        countDownTimer = new CountDownTimer(3000 + 200, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 
@@ -83,7 +84,7 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
                 for (int i = 0; i < btnBackgroundResources.size(); ++i){
                     btnTiles.get(i).setImageResource(btnBackgroundResources.get(i));
                 }
-                CountDownTimer showCountdownTimer = new CountDownTimer(mhjShowTime * 1000 + 200, 1000) {
+                showCountdownTimer = new CountDownTimer(mhjShowTime * 1000 + 200, 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {}
                     @Override
@@ -273,7 +274,6 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
             }
         }
         else{ // For big phones
-            
             if(mahjongTilesAmount == 12){
                 // Set big vert and small horiz indents
                 guidelineTop.setGuidelinePercent(
@@ -296,6 +296,17 @@ public class MahjongTrainingActivity extends AppCompatActivity implements
                 guidelineRight.setGuidelinePercent(
                         1.0f - Float.parseFloat(getResources().getString(R.string.m_training_small_left_gl)));
             }
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (countDownTimer != null){
+            countDownTimer.cancel();
+        }
+        if (showCountdownTimer != null){
+            showCountdownTimer.cancel();
         }
     }
 

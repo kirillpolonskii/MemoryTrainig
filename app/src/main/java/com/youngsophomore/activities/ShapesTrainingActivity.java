@@ -32,6 +32,7 @@ import java.util.ArrayList;
 
 public class ShapesTrainingActivity extends AppCompatActivity implements
         FinishDialogFragment.FinishDialogListener {
+    CountDownTimer countDownTimer, pretrainSequenceTimer;
     private static final String DEBUG_TAG = "Gestures";
     private static final String STOPWATCH_FRAGMENT_TAG = "stopwatch_fragment_tag";
     int curShapeShowInd = 0, curShapeSeqInd = 0;
@@ -50,7 +51,7 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
         int shapeShowTime = sharedPreferences.getInt(getString(R.string.saved_shape_show_time_key), 2);
 
         TextView tvCountdown = findViewById(R.id.tv_countdown);
-        CountDownTimer countDownTimer = new CountDownTimer(3000 + 200, 1000) {
+        countDownTimer = new CountDownTimer(3000 + 200, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 
@@ -89,7 +90,7 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
                 constraintSet.applyTo(constraintLayout);
 
                 TextView tvCurShapeNum = findViewById(R.id.tv_cur_elem_num);
-                CountDownTimer pretrainSequenceTimer = new CountDownTimer(
+                pretrainSequenceTimer = new CountDownTimer(
                         shapesAmount * shapeShowTime * 1000 + 200, shapeShowTime * 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
@@ -147,7 +148,6 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
                                         case (MotionEvent.ACTION_UP):
                                             int elevPx = getResources().getDimensionPixelSize(R.dimen.btn_stats_elev);
                                             btnShapesSet.get(finalI).setElevation(elevPx);
-                                            // TODO: добавить условие проверки индекса < размера
                                             if(curShapeSeqInd < shapesAmount && paletteShp.get(finalI).intValue() == shapesSeq.get(curShapeSeqInd).intValue()){
                                                 ivShapesSeq.get(curShapeSeqInd).setVisibility(View.VISIBLE);
                                                 ivShapesSeq.get(curShapeSeqInd).setBackgroundResource(
@@ -208,6 +208,17 @@ public class ShapesTrainingActivity extends AppCompatActivity implements
                 }.start();
             }
         }.start();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (countDownTimer != null){
+            countDownTimer.cancel();
+        }
+        if (pretrainSequenceTimer != null){
+            pretrainSequenceTimer.cancel();
+        }
     }
 
     @Override

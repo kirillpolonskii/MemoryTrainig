@@ -36,11 +36,10 @@
 
         android:scrollbars="vertical"
         style="@style/SettingsTextViewStyle"
-        android:text="fnoishr"
 
         />
     <HorizontalScrollView
-        android:id="@+id/hscrv_words_pal"
+        android:id="@+id/h_scr_v_words_pal"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/guideline_top_pal"
@@ -68,13 +67,14 @@
                 app:layout_constraintBottom_toTopOf="@id/guideline_raw1_pal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/btn_word_2"
+                app:layout_constraintVertical_bias="1"
+                app:layout_constraintHorizontal_chainStyle="packed"
 
                 android:text="rgge5geth"
                 android:theme="@style/WordsPalBtnStyle"
                 android:background="@drawable/btn_save_bg"
                 android:elevation="@dimen/btn_stats_elev"
                 android:layout_margin="5dp"
-
                 />
             <Button
                 android:id="@+id/btn_word_2"
@@ -84,6 +84,8 @@
                 app:layout_constraintBottom_toTopOf="@id/guideline_raw1_pal"
                 app:layout_constraintStart_toEndOf="@id/btn_word_1"
                 app:layout_constraintEnd_toStartOf="@id/btn_word_3"
+                app:layout_constraintVertical_bias="1"
+                app:layout_constraintHorizontal_bias="0"
 
                 android:text="rggeth"
                 android:theme="@style/WordsPalBtnStyle"
@@ -98,21 +100,28 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/guideline_raw1_pal"
                 app:layout_constraintStart_toEndOf="@id/btn_word_2"
+                app:layout_constraintVertical_bias="1"
+                app:layout_constraintHorizontal_bias="0"
 
                 android:text="rgge5h"
                 android:theme="@style/WordsPalBtnStyle"
                 android:background="@drawable/btn_save_bg"
-                android:layout_margin="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="5dp"
+
                 />
             <Button
                 android:id="@+id/btn_word_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintTop_toBottomOf="@id/guideline_raw1_pal"
                 app:layout_constraintBottom_toTopOf="@id/guideline_raw2_pal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/btn_word_5"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintHorizontal_chainStyle="packed"
 
                 android:text="rth"
                 android:theme="@style/WordsPalBtnStyle"
@@ -128,6 +137,7 @@
                 app:layout_constraintBottom_toTopOf="@id/guideline_raw2_pal"
                 app:layout_constraintStart_toEndOf="@id/btn_word_4"
                 app:layout_constraintEnd_toStartOf="@id/btn_word_6"
+                app:layout_constraintHorizontal_bias="0"
 
                 android:text="rgge5geth"
                 android:theme="@style/WordsPalBtnStyle"
@@ -142,22 +152,28 @@
                 app:layout_constraintTop_toBottomOf="@id/guideline_raw1_pal"
                 app:layout_constraintBottom_toTopOf="@id/guideline_raw2_pal"
                 app:layout_constraintStart_toEndOf="@id/btn_word_5"
+                app:layout_constraintHorizontal_bias="0"
 
                 android:text="rgge5geth"
                 android:theme="@style/WordsPalBtnStyle"
                 android:background="@drawable/btn_save_bg"
                 android:elevation="@dimen/btn_stats_elev"
-                android:layout_margin="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="5dp"
                 />
             <Button
                 android:id="@+id/btn_word_7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintTop_toBottomOf="@id/guideline_raw2_pal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/btn_word_8"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintHorizontal_chainStyle="packed"
 
                 android:text="rgge5geth"
                 android:theme="@style/WordsPalBtnStyle"
@@ -173,6 +189,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/btn_word_7"
                 app:layout_constraintEnd_toStartOf="@id/btn_word_9"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintHorizontal_bias="0"
 
                 android:text="rgge5geh"
                 android:theme="@style/WordsPalBtnStyle"
@@ -187,12 +205,17 @@
                 app:layout_constraintTop_toBottomOf="@id/guideline_raw2_pal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/btn_word_8"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintHorizontal_bias="0"
 
                 android:text="rgge5geth"
                 android:theme="@style/WordsPalBtnStyle"
                 android:background="@drawable/btn_save_bg"
                 android:elevation="@dimen/btn_stats_elev"
-                android:layout_margin="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="5dp"
                 />
 
             <androidx.constraintlayout.widget.Guideline
