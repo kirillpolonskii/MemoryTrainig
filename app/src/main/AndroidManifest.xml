@@ -10,60 +10,90 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:screenOrientation="portrait"
+        android:screenOrientation="locked"
         android:supportsRtl="true"
         android:theme="@style/Theme.MemoryTraining"
         tools:ignore="DiscouragedApi,LockedOrientationActivity"
         tools:targetApi="31">
         <activity
             android:name=".activities.StatisticsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".activities.DetailsTrainingActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".activities.PhrasesTrainingActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".activities.WordsTrainingActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".activities.ShapesTrainingActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".activities.ColorsTrainingActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".activities.AddImageActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".activities.DetailsSettingsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".activities.AddPhrasesCollectionActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".activities.PhrasesSettingsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".activities.WordsSettingsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".activities.ShapesSettingsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".activities.ColorsSettingsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".activities.MahjongSettingsActivity"
             android:exported="false"
-            android:theme="@style/Theme.MemoryTraining" />
+            android:theme="@style/Theme.MemoryTraining"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".activities.MahjongTrainingActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".activities.MainMenuActivity"
-            android:configChanges="layoutDirection|locale"
+            android:configChanges="layoutDirection|locale|orientation"
             android:exported="true"
             android:screenOrientation="portrait"
             tools:ignore="DiscouragedApi,LockedOrientationActivity">
