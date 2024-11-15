@@ -677,6 +677,7 @@
 
                 android:text="@string/tv_subtitle_time_det"
                 style="@style/SettingsTextViewStyle.MarginHorizontal"
+                android:gravity="center"
                 />
             <TextView
                 android:id="@+id/tv_subtitle_time_collect"
@@ -690,7 +691,7 @@
                 app:layout_constraintVertical_bias="0"
 
                 android:text="@string/tv_subtitle_time_collect"
-                style="@style/SettingsTextViewStyle.MarginHorizontal"
+                style="@style/SettingsTextViewStyle.MarginStart"
                 />
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_collect_time"
@@ -700,6 +701,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+
+                android:layout_marginHorizontal="3dp"
                 />
 
             <androidx.constraintlayout.widget.Guideline

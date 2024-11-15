@@ -101,7 +101,7 @@
         tools:ignore="TouchTargetSizeCheck"
         android:layout_marginStart="@dimen/settings_small_margin"
         android:layout_marginEnd="@dimen/settings_medium_margin"
-        android:layout_marginTop="@dimen/settings_medium_margin"
+        android:layout_marginTop="@dimen/settings_large_margin"
         >
         <com.addisonelliott.segmentedbutton.SegmentedButton
             android:layout_width="match_parent"
