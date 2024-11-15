@@ -1,11 +1,9 @@
 package com.youngsophomore.data;
-/*
-* Класс оборачивает операции записи коллекций в текстовые файлы
-* */
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.util.Log;
 
 import com.youngsophomore.helpers.TrainHelper;
 
@@ -18,7 +16,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class CollectionsStorage {
-
+    public static final String DEBUG_TAG = "DEBUG_TAG";
     public static ArrayList<String> getCollectionsTitles(SharedPreferences sharedPreferences, String key){
         String strWordsCollectionsTitles = sharedPreferences.getString(key, "");
         String[] splittedWordsCollectionsTitles = strWordsCollectionsTitles.split(",");
@@ -33,6 +31,9 @@ public class CollectionsStorage {
             String strWordsCollectionsTitles,
             SharedPreferences sharedPreferences,
             String wordsCollectionsTitlesKey){
+        while (newCollection.charAt(0) == ' '){
+            newCollection = newCollection.substring(1);
+        }
         while(newCollection.contains("  ")){
             newCollection = newCollection.replace("  ", " ");
         }
@@ -65,32 +66,30 @@ public class CollectionsStorage {
                                              String phrasesCollectionsTitlesKey,
                                              SharedPreferences sharedPreferences,
                                              Context context){
-        // add title to collection in shared preferences
+        // Add title to collection in shared preferences
         String strPhrasesCollectionsTitles =
                 sharedPreferences.getString(phrasesCollectionsTitlesKey, "");
         strPhrasesCollectionsTitles += title + ",";
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(phrasesCollectionsTitlesKey, strPhrasesCollectionsTitles);
         editor.apply();
-        // write newCollection in title.txt
         try {
-            File filePath = new File(context.getExternalFilesDir(null).getAbsolutePath() + "/phrases");
-            
-            String fileName = "/" + title + ".txt";
-            File outFile = new File(filePath, fileName);
+            File phrasesDir = new File(context.getFilesDir(), "phrases");
+            Log.d(DEBUG_TAG, "phrasesDir was created = " + phrasesDir.mkdirs());
+            String fileName = title + ".txt";
+            File outFile = new File(phrasesDir, fileName);
             FileOutputStream fos = new FileOutputStream(outFile);
             OutputStreamWriter osw = new OutputStreamWriter(fos);
-            
             for(String phrase : newCollection){
                 osw.write(phrase);
                 osw.write("|");
             }
-            osw.flush();
             osw.close();
             fos.close();
         }
         catch (IOException e) {
-            
+            String err = (e.getMessage() == null) ? "saving phrases failed" : e.getMessage();
+            Log.d(DEBUG_TAG, err);
         }
     }
 
@@ -99,7 +98,7 @@ public class CollectionsStorage {
                                                String savedPhrasesCollectionPositionKey,
                                                SharedPreferences sharedPreferences,
                                                Context context){
-        // delete title from strPhrasesCollectionsTitles in SharedPreferences
+        // Delete title from strPhrasesCollectionsTitles in SharedPreferences
         String strPhrasesCollectionsTitles = sharedPreferences.getString(phrasesCollectionsTitlesKey, "");
         strPhrasesCollectionsTitles = strPhrasesCollectionsTitles.replace(title + ",", "");
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -107,25 +106,25 @@ public class CollectionsStorage {
         editor.putInt(savedPhrasesCollectionPositionKey, 0);
         editor.apply();
         try {
-            File filePath = new File(context.getExternalFilesDir(null).getAbsolutePath() + "/phrases");
-            
-            String fileName = "/" + title + ".txt";
-            File deleteFile = new File(filePath, fileName);
+            File phrasesDir = new File(context.getFilesDir(), "phrases");
+            String fileName = title + ".txt";
+            File outFile = new File(phrasesDir, fileName);
+            outFile.delete();
         }
         catch (NullPointerException e) {
-            
+            String err = (e.getMessage() == null) ? "deleting phrases failed" : e.getMessage();
+            Log.d(DEBUG_TAG, err);
         }
     }
 
     public static ArrayList<String> getPhrasesCollection(
             String title,
-            String pathName){
+            Context context){
         ArrayList<String> phrasesCollection = new ArrayList<>();
         try {
-            File filePath = new File(pathName);
-            
-            String fileName = "/" + title + ".txt";
-            File inFile = new File(filePath, fileName);
+            File phrasesDir = new File(context.getFilesDir(), "phrases");
+            String fileName = title + ".txt";
+            File inFile = new File(phrasesDir, fileName);
             
             Scanner scanner = new Scanner(inFile);
             scanner.useDelimiter("\\|");
@@ -134,7 +133,8 @@ public class CollectionsStorage {
             }
         }
         catch (IOException e) {
-            
+            String err = (e.getMessage() == null) ? "reading phrases failed" : e.getMessage();
+            Log.d(DEBUG_TAG, err);
         }
         return phrasesCollection;
     }
@@ -153,12 +153,10 @@ public class CollectionsStorage {
         strQuestionsCollectionsTitles += title + ",";
         editor.putString(questionsCollectionsTitlesKey, strQuestionsCollectionsTitles);
         editor.apply();
-        // add a folder named "title"
         // write answers to questionNNN in title/questionNNN.txt
         try {
-            File questionsDir = new File(context.getExternalFilesDir(null).getAbsolutePath()
-                    + "/details" + "/" + title);
-            
+            File questionsDir = new File(context.getFilesDir(), "details" + "/" + title);
+            Log.d(DEBUG_TAG, "questionsDir was created = " + questionsDir.mkdirs());
             for(int i = 0; i < newCollection.size(); ++i){
                 String questionNum = "question";
                 if(i < 10){
@@ -170,34 +168,32 @@ public class CollectionsStorage {
                 else{
                     questionNum += String.valueOf(i);
                 }
-                String fileName = "/" + questionNum + ".txt";
+                String fileName = questionNum + ".txt";
                 File outFile = new File(questionsDir, fileName);
 
                 FileOutputStream fos = new FileOutputStream(outFile);
                 OutputStreamWriter osw = new OutputStreamWriter(fos);
-                
                 osw.write(newCollection.get(i).getQuestionText());
                 osw.write("\n");
                 osw.write(newCollection.get(i).getAnswersInOneString(false));
-                osw.flush();
                 osw.close();
                 fos.close();
             }
-
-
         }
         catch (IOException e) {
-            
+            String err = (e.getMessage() == null) ? "saving questions failed" : e.getMessage();
+            Log.d(DEBUG_TAG, err);
         }
     }
 
-    public static ArrayList<Question> getQuestionsCollection(String questionDir){
-        File questionsDir = new File(questionDir);
+    public static ArrayList<Question> getQuestionsCollection(String title, Context context){
+        File questionsDir = new File(context.getFilesDir(),
+                "details" + "/" + title);
         File[] fullQuestionsFiles = questionsDir.listFiles();
         int questionsAmount = Math.min(fullQuestionsFiles.length, 10);
         ArrayList<Integer> questionNums = TrainHelper.getRandomNumsInRange(questionsAmount, 0, fullQuestionsFiles.length);
         ArrayList<File> questionsFiles = new ArrayList<>();
-        for (int i = 0; i < 10 && i < fullQuestionsFiles.length; ++i){
+        for (int i = 0; i < questionsAmount; ++i){
             questionsFiles.add(fullQuestionsFiles[questionNums.get(i)]);
         }
         ArrayList<Question> questions = new ArrayList<>();
@@ -213,7 +209,8 @@ public class CollectionsStorage {
                 questions.add(curQuestion);
             }
             catch (Exception e){
-
+                String err = (e.getMessage() == null) ? "reading questions failed" : e.getMessage();
+                Log.d(DEBUG_TAG, err);
             }
 
         }
@@ -231,8 +228,7 @@ public class CollectionsStorage {
         editor.putString(questionsCollectionsTitleKey, strQuestionsCollectionsTitles);
         editor.putInt(savedQuestionsCollectionPositionKey, 0);
         editor.apply();
-        File questionsDir = new File(context.getExternalFilesDir(null).getAbsolutePath()
-                + "/details" + "/" + title);
+        File questionsDir = new File(context.getFilesDir(), "details" + "/" + title);
         if (questionsDir.isDirectory())
             for (File child : questionsDir.listFiles())
                 child.delete();

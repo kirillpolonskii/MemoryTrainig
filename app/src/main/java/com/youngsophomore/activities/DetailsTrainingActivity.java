@@ -64,8 +64,7 @@ public class DetailsTrainingActivity extends AppCompatActivity implements
         );
         String questionsCollectionTitle = questionsCollectionsTitles.get(questionsCollectionPosition);
         questionsCollection = CollectionsStorage.getQuestionsCollection(
-                getExternalFilesDir(null).getAbsolutePath() +
-                        "/details" + "/" + questionsCollectionTitle);
+                questionsCollectionTitle, this);
 
         TextView tvCountdown = findViewById(R.id.tv_countdown);
         TextView tvCurPhraseNum = findViewById(R.id.tv_cur_elem_num);

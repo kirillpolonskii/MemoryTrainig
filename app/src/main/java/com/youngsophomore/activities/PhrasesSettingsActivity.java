@@ -160,7 +160,6 @@ public class PhrasesSettingsActivity extends AppCompatActivity
     @Override
     public void onResume(){
         super.onResume();
-        
         phrasesCollectionsTitles.clear();
         phrasesCollectionsTitles.addAll(CollectionsStorage.getCollectionsTitles(
                         sharedPreferences, getString(R.string.phrases_collections_titles_key)));

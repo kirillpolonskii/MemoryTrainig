@@ -52,7 +52,7 @@ public class PhrasesTrainingActivity extends AppCompatActivity implements
         );
         ArrayList<String> origPhrasesCollection = CollectionsStorage.getPhrasesCollection(
                 phrasesCollectionsTitles.get(phrasesCollectionPosition),
-                getApplicationContext().getExternalFilesDir(null).getAbsolutePath() + "/phrases"
+                this
         );
         ArrayList<Integer> indicesPerm = TrainHelper.getRandomIndicesPerm(0, origPhrasesCollection.size());
         phrasesCollection = TrainHelper.Phrases.generatePhrasesList(origPhrasesCollection, indicesPerm);

@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
@@ -17,6 +18,7 @@ import android.widget.ImageButton;
 import com.addisonelliott.segmentedbutton.SegmentedButton;
 import com.addisonelliott.segmentedbutton.SegmentedButtonGroup;
 import com.youngsophomore.R;
+import com.youngsophomore.data.CollectionsStorage;
 import com.youngsophomore.data.Question;
 import com.youngsophomore.fragments.InfoDialogFragment;
 import com.youngsophomore.viewgroups.MyMotionLayout;
@@ -208,11 +210,14 @@ public class MainMenuActivity extends AppCompatActivity {
                 strQuestionsCollectionsTitles);
         editor.apply();
         // create necessary directories
-        File phrasesDir = new File(getExternalFilesDir(null).getAbsolutePath() + "/phrases");
 
+        File phrasesDir = new File(getFilesDir(), "phrases");
+        Log.d(CollectionsStorage.DEBUG_TAG, "phrasesDir was created = " + phrasesDir.mkdirs());
+        Log.d(CollectionsStorage.DEBUG_TAG, "phrasesDir = " + phrasesDir);
         try {
-            String fileName = "/" + phrasesCollectionTitle + ".txt";
+            String fileName = phrasesCollectionTitle + ".txt";
             File outFile = new File(phrasesDir, fileName);
+            Log.d(CollectionsStorage.DEBUG_TAG, "outFile = " + outFile);
             FileOutputStream fos = new FileOutputStream(outFile);
             OutputStreamWriter osw = new OutputStreamWriter(fos);
             
@@ -225,12 +230,13 @@ public class MainMenuActivity extends AppCompatActivity {
                 osw.write(phrase);
                 osw.write("|");
             }
-            osw.flush();
+            //osw.flush();
             osw.close();
             fos.close();
         }
         catch (IOException e) {
-            
+            String err = (e.getMessage() == null) ? "saving phrases failed" : e.getMessage();
+            Log.d(CollectionsStorage.DEBUG_TAG, err);
         }
         // init for details settings
         // make all necessary directories
@@ -256,8 +262,10 @@ public class MainMenuActivity extends AppCompatActivity {
         question2.putAnswersInOneString();
         questionCollection.add(question2);
         try {
-            File questionsDir = new File(getExternalFilesDir(null).getAbsolutePath()
-                    + "/details" + "/" + questionsCollectionTitle);
+            File questionsDir = new File(getFilesDir(),
+                    "details" + "/" + questionsCollectionTitle);
+            Log.d(CollectionsStorage.DEBUG_TAG, "questionsDir was created = " + questionsDir.mkdirs());
+            Log.d(CollectionsStorage.DEBUG_TAG, "questionsDir = " + questionsDir);
             for(int i = 0; i < questionCollection.size(); ++i){
                 String questionNum = "question";
                 if(i < 10){
@@ -269,7 +277,7 @@ public class MainMenuActivity extends AppCompatActivity {
                 else{
                     questionNum += String.valueOf(i);
                 }
-                String fileName = "/" + questionNum + ".txt";
+                String fileName = questionNum + ".txt";
                 File outFile = new File(questionsDir, fileName);
 
                 FileOutputStream fos = new FileOutputStream(outFile);
@@ -278,12 +286,11 @@ public class MainMenuActivity extends AppCompatActivity {
                 osw.write(questionCollection.get(i).getQuestionText());
                 osw.write("\n");
                 osw.write(questionCollection.get(i).getAnswersInOneString(false));
-                osw.flush();
                 osw.close();
                 fos.close();
             }
 
-            String imageName = "/details_test_image.png";
+            String imageName = "details_test_image.png";
             File testImage = new File(questionsDir, imageName);
             InputStream inputStream = getResources().openRawResource(R.raw.details_test_img);
             OutputStream out = new FileOutputStream(testImage);
@@ -299,8 +306,8 @@ public class MainMenuActivity extends AppCompatActivity {
             editor.apply();
         }
         catch (IOException e) {
-            
+            String err = (e.getMessage() == null) ? "saving questions failed" : e.getMessage();
+            Log.d(CollectionsStorage.DEBUG_TAG, err);
         }
     }
-
 }

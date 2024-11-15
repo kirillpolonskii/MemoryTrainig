@@ -35,7 +35,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StatisticsActivity extends AppCompatActivity {
-    private static final String DEBUG_TAG = "Gestures";
     SharedPreferences sharedPreferences;
     // MHJ
     int[] mhjTilesAmounts = {12, 24};
