@@ -116,7 +116,7 @@ public class StopwatchFragment extends Fragment {
     }
 
     private void runTimer(View view) {
-        final TextView tv_stopwatch = view.findViewById(R.id.tv_stopwatch);
+        final TextView tvStopwatch = view.findViewById(R.id.tv_stopwatch);
         final Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
@@ -126,7 +126,7 @@ public class StopwatchFragment extends Fragment {
                 int decisecs = decisecond % 10;
                 String time = String.format(Locale.getDefault(),
                         "%02d:%02d:%02d", minutes, secs, decisecs);
-                tv_stopwatch.setText(time);
+                tvStopwatch.setText(time);
                 if (running) {
                     ++decisecond;
                 }
