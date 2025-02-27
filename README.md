@@ -1,4 +1,4 @@
-# MemoryTraining
+# <img src="app/src/main/ic_launcher-playstore.png" width="40" height="40" align="top"> MemoryTraining
 Мобильное приложение с шестью видами тренировок памяти и отслеживанием статистики ошибок.
 
  
